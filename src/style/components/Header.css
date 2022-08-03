@@ -1,0 +1,42 @@
+.header {
+    height: 130px;
+    background-color: #2E493A;
+}
+
+.headercontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    height: 130px;
+    margin: 0 auto;
+}
+
+.headerleft {
+    width : 80%
+}
+
+.headerright {
+    width : 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #EFEDE1;
+    cursor: pointer;
+}
+
+.login, .signup {
+    font-size: 1.1rem;
+    color: #EFEDE1;
+    cursor: pointer;
+}
+
+.lectureBtn {
+    cursor: pointer;
+}

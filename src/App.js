@@ -9,7 +9,7 @@ import SearchBar from './components/SearchBar';
 
 const App = () => {
   return (
-    <>
+    <section className='appcontainer'>
       <Routes>
         <Route path="/" element={<MainPage/>}/>
         <Route path="/my" element={<MyPage/>}/>
@@ -18,7 +18,7 @@ const App = () => {
         <Route path='/search' element={<SearchBar/>}/>
         <Route path="*" element={<div>404</div>}/>
       </Routes>
-    </>
+    </section>
   );
 };
 
