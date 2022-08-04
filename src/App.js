@@ -10,10 +10,23 @@ import ConsultingPage from './pages/Consulting/ConsultingPage';
 import CommunityPage from './pages/Community/CommunityPage';
 import ClubPage from './pages/Club/ClubPage';
 import LecturePage from './pages/Lecture/LecturePage';
-import Mentoring from './components/Mentoring';
+import MentoringPage from './pages/Mentoring/MentoringPage';
+import MentoringUploadPage from './pages/Mentoring/MentoringUploadPage';
+import MentoringDetailPage from './pages/Mentoring/MentoringDetailPage';
 
 
 const App = () => {
+  
+console.log('______                            _   ');
+console.log('| ___ ＼          _              | |  ');
+console.log('| |_/  /    ___  (_)  __ _   ___ | |_ ');
+console.log('|     /   /  _ ＼    / _` | / __|| __|');
+console.log('|  |＼＼  |  __/  _ | (_| || (__ | |_ ');
+console.log('＼_| ＼_| ＼___| (_) ＼__,_| ＼___| ＼__|');
+console.log('%c 금오공대 멋쟁이 사자처럼', 'font-size:50px; color:orange;');
+console.log('%c @likelionkumoh', 'font-size:25px; color:orange;');
+console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
+
   return (
     <section className='appcontainer'>
       <Routes>
@@ -34,3 +47,14 @@ const App = () => {
 };
 
 export default App;
+
+function Mentoring() {
+  return (
+    ///mentoring/* => 와일드 카드 형태, 라우터 중첩시 사용
+      <Routes>
+          <Route path='' element={<MentoringPage/>}/>
+          <Route path='upload' element={<MentoringUploadPage/>}/>
+          <Route path='detail' element={<MentoringDetailPage/>}/>
+      </Routes>
+  );
+};
