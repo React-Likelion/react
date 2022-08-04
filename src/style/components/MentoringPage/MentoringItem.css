@@ -1,0 +1,72 @@
+
+.mentoringItem{
+    /* border: 1px solid blue; */
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 47%;
+    border-radius: 8px;
+    margin-bottom: 2%;
+    box-shadow: 0px 2px 3px gray;
+}
+.itemBox{
+    margin: 1.5%;
+}
+.tagBox{
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: row;
+}
+.tagItem{
+    border: 2px solid #7DC59D;
+    border-radius: 8px;
+    margin-right: 2%;
+    margin-bottom: 0.5%;
+    width: 5vh;
+    text-align: center;
+    background-color: #7DC59D;
+    color: white;
+}
+.showBox{
+    display: flex;
+    flex-direction: row;;
+    justify-content: space-between;
+}
+.imgBox{
+    border: 1px solid;
+    width: 20%;
+    height: 12vh;
+    margin-left: 0px;
+    border-radius: 8px;
+}
+.showDetail{
+    /* border: 1px solid; */
+    width: 75%;
+}
+.showTitle{
+    color: #2E493A;
+    border-bottom: 1px solid;
+    font-weight: bold;
+}
+.showContent{
+    border-bottom: 1px solid;
+    color: #2E493A;
+}
+.showProfile{
+    display: flex;
+    flex-direction: row;
+}
+.showNickName{
+    color: #7DC59D;
+    opacity: 0.6;
+    margin-right: 5%;
+    font-weight: bold;
+}
+.showMember{
+    color: #7DC59D;
+    font-weight: bold;
+}
+
+@media ( max-width: 600px ) {
+    .mentoringItem{
+        width: 100%;
+    }
+}

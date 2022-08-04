@@ -1,0 +1,14 @@
+
+.selectBar{
+    display: flex;
+    justify-content: flex-end;
+    width: 85%;
+    margin-top: 1%;
+    margin-bottom: 0.2%;
+}
+.viewSection{
+    /* border: 1px solid pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
