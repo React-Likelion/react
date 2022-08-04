@@ -1,10 +1,14 @@
 import React from 'react';
 import Header from './../../components/Header';
-import '../../style/pages/Mentoring/MentoringPage.css'
 import Navbar from '../../components/Navbar';
 import MentoringBox from './../../components/MentoringPage/MentoringBox';
+import '../../style/pages/Mentoring/MentoringPage.css'
+import { useNavigate } from 'react-router-dom';
+
 
 const MentoringPage = () => {
+    const navigate = useNavigate();
+
     const optionList = [
         "인기순", "최신순"
     ]
@@ -12,10 +16,18 @@ const MentoringPage = () => {
     const optionHandler = (e) => {
 
     }
+
+    const onClickBtnHandler = (e) => {
+        console.log("z")
+        navigate('upload');
+    }
     return (
         <div>
             <Header />
             <Navbar />
+            <div className='postBtnBox'>
+                <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>
+            </div>
             <div style={{border:'2px solid red'}}>
                 필터링 박스
             </div>
