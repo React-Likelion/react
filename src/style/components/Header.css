@@ -29,6 +29,7 @@
     font-weight: bold;
     color: #EFEDE1;
     cursor: pointer;
+    font-family: 'Playfair Display';
 }
 
 .login, .signup {
