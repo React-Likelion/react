@@ -1,7 +1,7 @@
 import React,{useState, useRef} from 'react';
 import '../../style/components/LecturePage/LectureCategory.css';
 
-const LectureCategory = () => {
+const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData}) => {
     const [detailIt,setDetailIt] = useState(true);
     const [detailFinance,setDetailFinance] = useState(true);
     const [detailProductPlan,setDetailProductPlan] = useState(true);
@@ -10,38 +10,216 @@ const LectureCategory = () => {
     const [detailDesign,setDetailDesign] = useState(true);
     const [detailForeign,setDetailForeign] = useState(true);
     const ref = useRef();
+    const infoArray = [
+        'IT 프로그래밍',
+        '금융 제테크',
+        '제품 기획',
+        '비즈니스',
+        '마케팅',
+        '디자인',
+        '외국어',
+    ];
     
     const clickIt = (e)=>{
         // console.log((e.target.innerHTML).split('<')[0]);
-        // console.log(ref.current.__reactProps$fn9mcx9ek2k.children[0]);
-
+        //console.log(ref.current.__reactProps$fn9mcx9ek2k.children[0]);
         setDetailIt(!detailIt);
+        const categoryDataBool = categoryData==='';
+        console.log(categoryDataBool);
+        console.log(categoryData);
+        let existenceBool = false;
+        for(let value of infoArray){
+            if((e.target.innerHTML).split('<')[0]===value){
+                existenceBool=true;
+            }
+        }
+        if(categoryDataBool){
+            setCategoryData((e.target.innerHTML).split('<')[0]);
+        }else if(existenceBool){
+            for(let i=0; i<infoArray.length; i++){
+                if(infoArray[i]===(e.target.innerHTML).split('<')[0]){
+                    infoArray.splice(i,1);
+                    break;
+                }
+            }
+            for(let value of infoArray){
+                if(categoryData===value){
+                    setDetailCategoryData('');
+                    setCategoryData((e.target.innerHTML).split('<')[0]);
+                }
+            }
+        }
     };
-    const clickFinance = ()=>{
+    const clickFinance = (e)=>{
         setDetailFinance(!detailFinance);
+        const categoryDataBool = categoryData==='';
+        console.log(categoryDataBool);
+        let existenceBool = false;
+        for(let value of infoArray){
+            if((e.target.innerHTML).split('<')[0]===value){
+                existenceBool=true;
+            }
+        }
+        if(categoryDataBool){
+            setCategoryData((e.target.innerHTML).split('<')[0]);
+        }else if(existenceBool){
+            for(let i=0; i<infoArray.length; i++){
+                if(infoArray[i]===(e.target.innerHTML).split('<')[0]){
+                    infoArray.splice(i,1);
+                    break;
+                }
+            }
+            for(let value of infoArray){
+                if(categoryData===value){
+                    setDetailCategoryData('');
+                    setCategoryData((e.target.innerHTML).split('<')[0]);
+                }
+            }
+        }
     };
-    const clickProductPlan = ()=>{
+    const clickProductPlan = (e)=>{
         setDetailProductPlan(!detailProductPlan);
+        const categoryDataBool = categoryData==='';
+        console.log(categoryDataBool);
+        let existenceBool = false;
+        for(let value of infoArray){
+            if((e.target.innerHTML).split('<')[0]===value){
+                existenceBool=true;
+            }
+        }
+        if(categoryDataBool){
+            setCategoryData((e.target.innerHTML).split('<')[0]);
+        }else if(existenceBool){
+            for(let i=0; i<infoArray.length; i++){
+                if(infoArray[i]===(e.target.innerHTML).split('<')[0]){
+                    infoArray.splice(i,1);
+                    break;
+                }
+            }
+            for(let value of infoArray){
+                if(categoryData===value){
+                    setDetailCategoryData('');
+                    setCategoryData((e.target.innerHTML).split('<')[0]);
+                }
+            }
+        }
     };
-    const clickBusiness = ()=>{
+    const clickBusiness = (e)=>{
         setDetailBusiness(!detailBusiness);
+        const categoryDataBool = categoryData==='';
+        console.log(categoryDataBool);
+        let existenceBool = false;
+        for(let value of infoArray){
+            if((e.target.innerHTML).split('<')[0]===value){
+                existenceBool=true;
+            }
+        }
+        if(categoryDataBool){
+            setCategoryData((e.target.innerHTML).split('<')[0]);
+        }else if(existenceBool){
+            for(let i=0; i<infoArray.length; i++){
+                if(infoArray[i]===(e.target.innerHTML).split('<')[0]){
+                    infoArray.splice(i,1);
+                    break;
+                }
+            }
+            for(let value of infoArray){
+                if(categoryData===value){
+                    setDetailCategoryData('');
+                    setCategoryData((e.target.innerHTML).split('<')[0]);
+                }
+            }
+        }
     };
-    const clickMarketing = ()=>{
+    const clickMarketing = (e)=>{
         setDetailMarketing(!detailMarketing);
+        const categoryDataBool = categoryData==='';
+        console.log(categoryDataBool);
+        let existenceBool = false;
+        for(let value of infoArray){
+            if((e.target.innerHTML).split('<')[0]===value){
+                existenceBool=true;
+            }
+        }
+        if(categoryDataBool){
+            setCategoryData((e.target.innerHTML).split('<')[0]);
+        }else if(existenceBool){
+            for(let i=0; i<infoArray.length; i++){
+                if(infoArray[i]===(e.target.innerHTML).split('<')[0]){
+                    infoArray.splice(i,1);
+                    break;
+                }
+            }
+            for(let value of infoArray){
+                if(categoryData===value){
+                    setDetailCategoryData('');
+                    setCategoryData((e.target.innerHTML).split('<')[0]);
+                }
+            }
+        }
     };
-    const clickDesign = ()=>{
+    const clickDesign = (e)=>{
         setDetailDesign(!detailDesign);
+        const categoryDataBool = categoryData==='';
+        console.log(categoryDataBool);
+        let existenceBool = false;
+        for(let value of infoArray){
+            if((e.target.innerHTML).split('<')[0]===value){
+                existenceBool=true;
+            }
+        }
+        if(categoryDataBool){
+            setCategoryData((e.target.innerHTML).split('<')[0]);
+        }else if(existenceBool){
+            for(let i=0; i<infoArray.length; i++){
+                if(infoArray[i]===(e.target.innerHTML).split('<')[0]){
+                    infoArray.splice(i,1);
+                    break;
+                }
+            }
+            for(let value of infoArray){
+                if(categoryData===value){
+                    setDetailCategoryData('');
+                    setCategoryData((e.target.innerHTML).split('<')[0]);
+                }
+            }
+        }
     };
-    const clickForeign = ()=>{
+    const clickForeign = (e)=>{
         setDetailForeign(!detailForeign);
+        const categoryDataBool = categoryData==='';
+        console.log(categoryDataBool);
+        let existenceBool = false;
+        for(let value of infoArray){
+            if((e.target.innerHTML).split('<')[0]===value){
+                existenceBool=true;
+            }
+        }
+        if(categoryDataBool){
+            setCategoryData((e.target.innerHTML).split('<')[0]);
+        }else if(existenceBool){
+            for(let i=0; i<infoArray.length; i++){
+                if(infoArray[i]===(e.target.innerHTML).split('<')[0]){
+                    infoArray.splice(i,1);
+                    break;
+                }
+            }
+            for(let value of infoArray){
+                if(categoryData===value){
+                    setDetailCategoryData('');
+                    setCategoryData((e.target.innerHTML).split('<')[0]);
+                }
+            }
+        }
     };
     const clickCategory = (e)=>{
         const lectureCategory = e.target.innerHTML;
-        console.log(lectureCategory);
+        console.log(e);
+        setDetailCategoryData(lectureCategory);
         //클릭한 Category값을 이용한 filter 기능 수행
-
     }
 
+    
     return (
         <div>
             <h2>전체 강의</h2>
@@ -66,6 +244,7 @@ const LectureCategory = () => {
                     <li
                     style={{cursor:'pointer'}}
                     onClick={clickFinance}
+                    ref={ref}
                     >금융 제테크
                     {
 
@@ -81,6 +260,7 @@ const LectureCategory = () => {
                     <li
                     style={{cursor:'pointer'}}
                     onClick={clickProductPlan}
+                    ref={ref}
                     >제품 기획
                     {
                         (detailProductPlan) ||
@@ -93,6 +273,7 @@ const LectureCategory = () => {
                     <li
                     style={{cursor:'pointer'}}
                     onClick={clickBusiness}
+                    ref={ref}
                     >비즈니스
                     {
                         (detailBusiness) ||
@@ -107,6 +288,7 @@ const LectureCategory = () => {
                     <li
                     style={{cursor:'pointer'}}
                     onClick={clickMarketing}
+                    ref={ref}
                     >마케팅
                     {
                         (detailMarketing) ||
@@ -120,6 +302,7 @@ const LectureCategory = () => {
                     <li
                     style={{cursor:'pointer'}}
                     onClick={clickDesign}
+                    ref={ref}
                     >디자인
                     {
                         (detailDesign)||
@@ -133,6 +316,7 @@ const LectureCategory = () => {
                     <li
                     style={{cursor:'pointer'}}
                     onClick={clickForeign}
+                    ref={ref}
                     >외국어
                     {
                         (detailForeign)||

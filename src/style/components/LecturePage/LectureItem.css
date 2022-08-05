@@ -1,0 +1,21 @@
+#LectureItemDiv {
+  width: 25%;
+  margin: 2%;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 1%;
+}
+#LectureItemImg img {
+  width: 100%;
+  border-radius: 10px;
+}
+#LectureItemTitle p {
+  font-size: 14px;
+}
+#LectureItemInfo {
+  width: 70%;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 10%;
+}
