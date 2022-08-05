@@ -1,0 +1,14 @@
+#lectureCategorySection {
+  border-left: 1px solid #2e493a;
+}
+#lectureCategorySection ul {
+  list-style-type: none;
+  color: #2e493a;
+}
+#lectureCategorySection li {
+  font-size: 18px;
+  margin: 40% 0;
+}
+#lectureCategorySection li li {
+  font-size: 14px;
+}
