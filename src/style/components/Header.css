@@ -34,6 +34,7 @@
 
 .login, .signup {
     font-size: 1.1rem;
+    min-width: 65px;
     color: #EFEDE1;
     cursor: pointer;
 }
