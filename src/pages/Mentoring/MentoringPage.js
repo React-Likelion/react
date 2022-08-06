@@ -18,7 +18,6 @@ const MentoringPage = () => {
     }
 
     const onClickBtnHandler = (e) => {
-        console.log("z")
         navigate('upload');
     }
     return (
