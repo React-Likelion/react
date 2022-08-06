@@ -1,0 +1,102 @@
+.detailBox{
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* border: 1px solid; */
+    border-radius: 8px;
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 600px;
+    padding: 1%;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+#detailTitleBox{
+    /* border: 1px solid red; */
+    margin-left: 3%;
+    color: #2E493A;
+    font-size: larger;
+    font-weight: bolder;
+}
+#detailImgBox{
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#detailImgBox img{
+    margin: 2%;
+}
+.detailSmallBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#detailContentBox{
+    width: 85%;
+    /* border: 1px solid blue; */
+    border-radius: 8px;
+    margin: 1%;
+    padding: 1%;
+    background-color: #EFEDE1;
+    color: rgba(46, 73, 58);
+}
+.detailProfileBox{
+    /* border: 1px solid orange; */
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+    border-radius: 8px;
+    margin: 1%;
+    padding: 1%;
+    background-color: #EFEDE1;
+}
+#profileImg{
+    margin: 2%;
+    /* background-color: #EFEDE1; */
+    color: rgba(46, 73, 58);
+}
+.profileDetailBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 25%;
+    margin-left: 1%;
+    /* border: 1px solid purple; */
+}
+#info{
+    /* border: 1px solid; */
+    background-color: #EFEDE1;
+    color: rgba(46, 73, 58);
+}
+.detailTagBox{
+    display: flex;
+    flex-direction: row;
+}
+.detailTagItem{
+    border: 2px solid #7DC59D;
+    border-radius: 8px;
+    margin-right: 2%;
+    margin-bottom: 0.5%;
+    width: 5vh;
+    text-align: center;
+    background-color: #7DC59D;
+    color: white;
+}
+.joinBtn{
+    width: 85%;
+    margin: 1%;
+    padding: 1%;
+    /* border: 1px solid #2E493A; */
+    border-radius: 8px;
+    background-color: #749683;
+    color: white;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+}
+

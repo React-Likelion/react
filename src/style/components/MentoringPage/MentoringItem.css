@@ -2,7 +2,7 @@
 .mentoringItem{
     /* border: 1px solid blue; */
     background-color: rgba(255, 255, 255, 0.3);
-    width: 47%;
+    /* width: 47%; */
     border-radius: 8px;
     margin-bottom: 2%;
     box-shadow: 0px 2px 3px gray;
@@ -64,9 +64,18 @@
     color: #7DC59D;
     font-weight: bold;
 }
-
-@media ( max-width: 600px ) {
+/* 해상도 1024 */
+@media (min-width:1024px) {
     .mentoringItem{
-        width: 100%;
-    }
-}
+    width: 47%;
+}}
+/* 해상도 768px ~ 1023px */
+@media (min-width:768px) and (max-width:1023px) {
+    .mentoringItem{
+    width: 47%;
+}}
+/* 해상도 480px ~ 767px */
+@media (max-width:767px) {
+    .mentoringItem{
+    width: 100%;
+}}
