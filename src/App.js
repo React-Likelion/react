@@ -13,6 +13,7 @@ import LecturePage from './pages/Lecture/LecturePage';
 import MentoringPage from './pages/Mentoring/MentoringPage';
 import MentoringUploadPage from './pages/Mentoring/MentoringUploadPage';
 import MentoringDetailPage from './pages/Mentoring/MentoringDetailPage';
+import MentoringChat from './components/MentoringPage/MentoringChat';
 
 
 const App = () => {
@@ -54,7 +55,8 @@ function Mentoring() {
       <Routes>
           <Route path='' element={<MentoringPage/>}/>
           <Route path='upload' element={<MentoringUploadPage/>}/>
-          <Route path='detail' element={<MentoringDetailPage/>}/>
+          <Route path='detail/:id' element={<MentoringDetailPage/>}/>
+          <Route path='detail/:id/chating/:id' element={<MentoringChat/>}/>
       </Routes>
   );
 };
