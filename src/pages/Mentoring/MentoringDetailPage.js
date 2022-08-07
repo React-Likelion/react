@@ -41,4 +41,4 @@ const MentoringDetailPage = () => {
     );
 };
 
-export default MentoringDetailPage;
+export default MentoringDetailPage; 

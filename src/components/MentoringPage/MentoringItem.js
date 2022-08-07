@@ -1,9 +1,17 @@
 import React from 'react';
 import '../../style/components/MentoringPage/MentoringItem.css'
+import { useNavigate } from 'react-router-dom';
+
 
 function MentoringItem() {
+    const navigate = useNavigate();
+
+    const onClickItemBox = () => {
+        navigate('/mentoring/detail')
+    }
+    
     return (
-        <div className='mentoringItem'>
+        <div className='mentoringItem' onClick={onClickItemBox}>
             <div className='itemBox'>
                 <section className='tagBox'>
                     <div className='tagItem'>사업</div>
