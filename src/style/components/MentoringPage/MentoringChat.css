@@ -1,0 +1,29 @@
+.backGround{
+    border: 1px solid;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.viewArea{
+    border: 1px solid;
+    text-align: center;
+}
+.chatBox{
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.writingBox{
+    border: 1px solid;
+}
+#veiwBox{
+    border: 1px solid red;
+    border-radius: 8px;
+}
