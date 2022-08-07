@@ -1,0 +1,75 @@
+#main-contents-item {
+    height: 300px;
+}
+
+#lecture_container, #mentoring_container, 
+#club_container, #community_container {
+    display: grid;
+    height: auto;
+}
+
+#lecture_container, #mentoring_container, 
+#club_container {
+    grid-template-columns: 1fr 1fr;
+}
+
+#community_container {
+    grid-template-columns: 1fr;
+}
+
+#lecture-item, #mentoring-item, #club-item {
+    height: 200px;
+    margin: 5px;
+}
+
+#community-item {
+     height: 75px;
+     background-color: #D8E2D2;
+     margin: 5px;
+}
+
+#lecture-item > div:nth-child(1),
+#mentoring-item > div:nth-child(1), 
+#club-item > div:nth-child(1) {
+    width: 94%;
+    height: 120px;
+    background-color: #D8E2D2;
+    border-radius: 10px;
+    margin: 3%;
+}
+
+#lecture-item > div:nth-child(2),
+#mentoring-item > div:nth-child(2),
+#club-item > div:nth-child(2) {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 13px;
+    color: #3F3F3F;
+}
+
+#mentoring-item > span:nth-child(3),
+#mentoring-item > span:nth-child(4),
+#mentoring-item > span:nth-child(5) {
+    font-size: 14px;
+    margin: 7px;
+    background-color: #7DC59D;
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: #EFEDE1;
+    font-weight: bold;
+    color: #3F3F3F;
+}
+
+#club-item > div:nth-child(3) {
+    font-size: 14px;
+    margin: 7px 3px 0px 15px;
+    font-weight: bold;
+    color: #3F3F3F;
+}
+
+@media (max-width:500px) {
+    #lecture_container, #mentoring_container, 
+    #club_container {
+        grid-template-columns: 1fr;
+    }
+}
