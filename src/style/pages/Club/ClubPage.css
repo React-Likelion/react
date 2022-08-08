@@ -4,13 +4,18 @@
     margin-top: 50px;
 }
 
-.sortBtn {
+.sortBtnBox {
     margin-bottom: 20px;
-    margin-right: 20px;
+    margin-right: 35px;
     text-align: right;
 }
 
-.postBtnBox{
+.sortBtn {
+    border: 2px solid #749683;
+    border-radius: 8px;
+}
+
+.SearchPostBox{
     /* border: 1px solid; */
     display: flex;
     justify-content: flex-end;

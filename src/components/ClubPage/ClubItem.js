@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import "../../style/components/ClubPage/ClubItem.css"
 
 const ClubItem = ({dummyData}) => {
+    const navigate = useNavigate();
+
+    const goDetailPage = () => {
+        navigate(`/club/detail/${dummyData.id}`)
+    }
+
     return (
-        <section className='clubItemContainer'>
+        <section onClick={goDetailPage} className='clubItemContainer'>
             <div className='clubItemBox'>
                 <div className='clubContents'>
                     <div className='clubImgBox'>
