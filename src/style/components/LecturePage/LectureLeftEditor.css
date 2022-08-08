@@ -1,0 +1,23 @@
+.title-input {
+  width: 500px;
+  height: 40px;
+  margin: 10px 10px 10px 0;
+}
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+  min-height: 600px;
+}
+.submit-button {
+  width: 20%;
+  font-size: 20px;
+  padding: 20px;
+  border: none;
+  background-color: #2e493a;
+  border-radius: 5px;
+  display: block;
+  margin: 10px auto;
+  color: #efede1;
+  cursor: pointer;
+}
+.submit-button:hover {
+  background-color: #22382c;
+}

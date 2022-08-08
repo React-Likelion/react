@@ -8,22 +8,17 @@
   align-items: center;
 }
 
-.lecture,
-.mentoring,
-.club,
-.community,
-.consulting {
+.navbarcontainer div {
   color: #3f3f3f;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
 }
 
-.lecture:hover,
-.mentoring:hover,
-.club:hover,
-.community:hover,
-.consulting:hover {
+.navbarcontainer div:hover {
+  border-bottom: 5px solid #749683;
+}
+.selectNav {
   border-bottom: 5px solid #749683;
 }
 .navbarcontainer div {

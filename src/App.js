@@ -13,6 +13,7 @@ import LecturePage from './pages/Lecture/LecturePage';
 import MentoringPage from './pages/Mentoring/MentoringPage';
 import MentoringUploadPage from './pages/Mentoring/MentoringUploadPage';
 import MentoringDetailPage from './pages/Mentoring/MentoringDetailPage';
+import LectureDetailPage from './pages/Lecture/LectureDetailPage';
 
 
 const App = () => {
@@ -36,6 +37,7 @@ console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
         <Route path="/signup" element={<SignUpPage/>}/>
         <Route path='/search' element={<SearchBar/>}/>
         <Route path='/lecture' element={<LecturePage/>}/>
+        <Route path='/lecture/detail' element={<LectureDetailPage/>}/>
         <Route path='/mentoring/*' element={<Mentoring/>}/>
         <Route path='/club' element={<ClubPage/>}/>
         <Route path='/community' element={<CommunityPage/>}/>

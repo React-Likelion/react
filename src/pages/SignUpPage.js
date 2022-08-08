@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import '../style/pages/SignUpPage.css';
+import { Link } from 'react-router-dom';
 
 const SignUpPage = () => {
     const [signUpData,setSignUpData] = useState({
@@ -55,6 +56,7 @@ const SignUpPage = () => {
                 
                 <form id="signupForm">
                     <h2>회원가입</h2>
+                    <article>이미 회원이신가요 ? <Link to='/login' id="goToLogin">로그인 하러 가기</Link></article>
                     <input type="text" onChange={handleChangeData} name='id' placeholder='아이디를 입력하세요' /><br />
                     <input type="password" onChange={handleChangeData} name='password' placeholder='비밀번호를 입력하세요' /><br />
                     <input type="password" placeholder='비밀번호를 한번 더 입력하세요' /><br />
