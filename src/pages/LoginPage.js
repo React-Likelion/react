@@ -24,11 +24,15 @@ const LoginPage = () => {
         axios.post(`${PROXY}/accounts/login/`, loginData)
         .then((res) => {
             console.log(res);
+            localStorage.setItem('accessToken',res.data.token.access_token);
+            localStorage.setItem('refreshToken',res.data.token.refresh_token);
+            localStorage.setItem('nickname',res.data.token.nickname);
+            if(localStorage.getItem('accessToken')) {navigate('/');}
         })
         .catch((err) => {
             console.log(err);
+            alert("로그인 실패");
         })
-        navigate('/');
     };
 
     return (
