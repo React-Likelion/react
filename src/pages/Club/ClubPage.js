@@ -15,10 +15,12 @@ const ClubPage = () => {
         location: "구미 옥계동",
         members: 5,
         img: "/img/lectureBtn"
-
+    }
+    
     const onClickBtnHandler = (e) => {
         navigate('upload');
     }
+
     return (
         <section>
             <Header/>
