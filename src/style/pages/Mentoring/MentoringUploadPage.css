@@ -1,0 +1,43 @@
+.MentoringUploadPage {
+    background-color: #efede1;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.MentoringUploadPage > .upload-container > .tag-box {
+    width: 95%;
+    height: auto;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: #EFEDE1;
+}
+
+.upload-container > .tag-box > input {
+    background-color: #efede1;
+    border: none;
+    outline: none;
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+    font-family: 'NanumSquare';
+    font-size: 18px;
+}
+
+.upload-container > .tag-box > .mentoring-ex-tag {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.upload-container > .tag-box > .mentoring-ex-tag > div {
+    width: 80%;
+    height: 40px;
+    line-height: 40px;
+    margin: 20px auto;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #7DC59D;
+    
+}
