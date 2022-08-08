@@ -18,6 +18,7 @@ import MentoringUploadPage from './pages/Mentoring/MentoringUploadPage';
 import MentoringDetailPage from './pages/Mentoring/MentoringDetailPage';
 import LectureDetailPage from './pages/Lecture/LectureDetailPage';
 import MentoringChat from './components/MentoringPage/MentoringChat';
+import MentoringChatPage from './pages/Mentoring/MentoringChatPage';
 
 
 
@@ -69,8 +70,8 @@ function Mentoring() {
       <Routes>
           <Route path='' element={<MentoringPage/>}/>
           <Route path='upload' element={<MentoringUploadPage/>}/>
-          <Route path='detail' element={<MentoringDetailPage/>}/>
-          <Route path='detail/:id/chating/:id' element={<MentoringChat/>}/>
+          <Route path='detail/:id' element={<MentoringDetailPage/>}/>
+          <Route path='detail/:id/chating/:id' element={<MentoringChatPage/>}/>
       </Routes>
   );
 };
