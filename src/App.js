@@ -70,7 +70,7 @@ function Mentoring() {
       <Routes>
           <Route path='' element={<MentoringPage/>}/>
           <Route path='upload' element={<MentoringUploadPage/>}/>
-          <Route path='detail' element={<MentoringDetailPage/>}/>
+          <Route path='detail/:id' element={<MentoringDetailPage/>}/>
           <Route path='detail/:id/chating/:id' element={<MentoringChat/>}/>
       </Routes>
   );
