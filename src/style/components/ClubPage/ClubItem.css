@@ -1,0 +1,42 @@
+.clubItemContainer {
+    width: 100%;
+    height: 321px;
+    background-color: #D8E2D2;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.clubContents{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.clubItemBox {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.clubImg{
+    width: 100%;
+    height: 200px;
+    border-radius: 30px;
+}
+
+.clubLocation {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.clubName{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.clubNameMemberBox {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
