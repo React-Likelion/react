@@ -1,12 +1,17 @@
 import React from 'react';
 import Header from './../../components/Header';
 import '../../style/pages/Mentoring/MentoringDetailPage.css'
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import MentoringInfo from '../../components/MentoringPage/MentoringInfo';
+import {dummyData} from '../../data/mentoringpage_info.js'
+
 
 const MentoringDetailPage = () => {
-    const navigate = useNavigate();
-    
-    
+    const params = useParams();
+    const tmp_result = dummyData.filter((element)=>{return params.id === String(element.id)})
+
+    // console.log(tmp_result[0])
+
         //먼저 멘토멘티 리스트 받아오기
     // axios.get(`/mentorings/${id}`)
     //     .then(response=>{
@@ -16,41 +21,10 @@ const MentoringDetailPage = () => {
     //             alert('멘토링 리스트를 가져오는데 실패했습니다.')
     //         }
     //     })
-    const id = 1;
     return (
         <div>
             <Header />
-            <div className='detailBox'>
-                <div id='detailTitleBox'>
-                    사업계획서 기획에서 창업 지원사업까지 🚀
-                    {/* {title} */}
-                </div>
-                <div id='detailImgBox'>
-                    <img src='/img/Example.png' alt='이미지'/>
-                </div>
-                <section className='detailSmallBox'>
-                    <div id='detailContentBox'>
-                        예비 창업자, 창업에 관심있는 분들~
-                        수많은 창업지원사업들을 선별하여 매주 추천해드립니다!!
-                        {/* {descroption} */}
-                    </div>
-                    <section className='detailProfileBox'>
-                        <div id='profileImg'>
-                            <img src='/img/Profile.png' alt='이미지'/>
-                            <br/>닉네임
-                        </div>
-                        <section className='profileDetailBox'>
-                            <div id='info'>멤버 2 명 / 정원 5 명 {/* 멤버{member_cnt}명/정원{limit}명 */}</div>
-                            <div className='detailTagBox'>
-                                <div className='detailTagItem'>사업{/* {tag} */}</div>
-                                <div className='detailTagItem'>기획</div>
-                                <div className='detailTagItem'>창업</div>
-                            </div>
-                        </section>
-                    </section>
-                    <div className='joinBtn' onClick={()=>navigate(`chating/${id}`)}>입장 신청하기</div>
-                </section>
-            </div>
+            <MentoringInfo id={tmp_result[0].id} image={tmp_result[0].image} title={tmp_result[0].title} description={tmp_result[0].description} tag={tmp_result[0].tag} limit={tmp_result[0].limit} member_cnt={tmp_result[0].member_cnt}/>
         </div>
     );
 };
