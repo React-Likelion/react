@@ -3,6 +3,7 @@ import '../style/pages/MainPage.css';
 import Header from './../components/Header';
 import Navbar from './../components/Navbar';
 import MainBox from '../components/MainPage/MainBox';
+import Product from '../components/MainPage/Carousel';
 
 const MainPage = () => {
     return (
@@ -11,6 +12,7 @@ const MainPage = () => {
             <Navbar />
             <section className='main-container'>
                 {/* 메인 배너 */}
+                <Product/>
                 <article id='main-banner'>
                     {/* <div>Re:act<br/><span>제2의 삶을 응원합니다</span></div>
                     <div>
