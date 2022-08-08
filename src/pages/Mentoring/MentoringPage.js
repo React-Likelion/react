@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 import MentoringBox from './../../components/MentoringPage/MentoringBox';
 import '../../style/pages/Mentoring/MentoringPage.css'
 import { useNavigate } from 'react-router-dom';
+import Filter from './../../components/Filter';
 
 
 const MentoringPage = () => {
@@ -21,17 +22,17 @@ const MentoringPage = () => {
         navigate('upload');
     }
     return (
-        <div>
+        <div className='pageAll'>
             <Header />
             <Navbar />
             <div className='postBtnBox'>
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>
             </div>
-            <div style={{border:'2px solid red'}}>
-                필터링 박스
+            <div>
+                <Filter />
             </div>
             <div className='selectBar'>
-                <select onChange={optionHandler} /*value={option}*/>
+                <select onChange={optionHandler} id='selectBox'/*value={option}*/>
                         <option disabled>정렬</option>
                         {
                             optionList.map((op,i) => (

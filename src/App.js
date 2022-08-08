@@ -8,11 +8,16 @@ import SignUpPage from './pages/SignUpPage.js';
 import SearchBar from './components/SearchBar';
 import ConsultingPage from './pages/Consulting/ConsultingPage';
 import CommunityPage from './pages/Community/CommunityPage';
+import CommunityUploadPage from './pages/Community/CommunityUploadPage';
 import ClubPage from './pages/Club/ClubPage';
+import ClubUploadPage from './pages/Club/ClubUploadPage';
 import LecturePage from './pages/Lecture/LecturePage';
+import LectureUploadPage from './pages/Lecture/LectureUploadPage';
 import MentoringPage from './pages/Mentoring/MentoringPage';
 import MentoringUploadPage from './pages/Mentoring/MentoringUploadPage';
 import MentoringDetailPage from './pages/Mentoring/MentoringDetailPage';
+import MentoringChat from './components/MentoringPage/MentoringChat';
+
 
 
 const App = () => {
@@ -35,10 +40,10 @@ console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignUpPage/>}/>
         <Route path='/search' element={<SearchBar/>}/>
-        <Route path='/lecture' element={<LecturePage/>}/>
+        <Route path='/lecture/*' element={<Lecture/>}/>
         <Route path='/mentoring/*' element={<Mentoring/>}/>
-        <Route path='/club' element={<ClubPage/>}/>
-        <Route path='/community' element={<CommunityPage/>}/>
+        <Route path='/club/*' element={<Club/>}/>
+        <Route path='/community/*' element={<Community/>}/>
         <Route path='/consulting' element={<ConsultingPage/>}/>
         <Route path="*" element={<div>404</div>}/>
       </Routes>
@@ -48,6 +53,15 @@ console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
 
 export default App;
 
+function Lecture() {
+  return (
+      <Routes>
+          <Route path='' element={<LecturePage/>}/>
+          <Route path='upload' element={<LectureUploadPage/>}/>
+      </Routes>
+  );
+};
+
 function Mentoring() {
   return (
     ///mentoring/* => 와일드 카드 형태, 라우터 중첩시 사용
@@ -55,6 +69,25 @@ function Mentoring() {
           <Route path='' element={<MentoringPage/>}/>
           <Route path='upload' element={<MentoringUploadPage/>}/>
           <Route path='detail' element={<MentoringDetailPage/>}/>
+          <Route path='detail/:id/chating/:id' element={<MentoringChat/>}/>
+      </Routes>
+  );
+};
+
+function Club() {
+  return (
+      <Routes>
+          <Route path='' element={<ClubPage/>}/>
+          <Route path='upload' element={<ClubUploadPage/>}/>
+      </Routes>
+  );
+};
+
+function Community() {
+  return (
+      <Routes>
+          <Route path='' element={<CommunityPage/>}/>
+          <Route path='upload' element={<CommunityUploadPage/>}/>
       </Routes>
   );
 };
