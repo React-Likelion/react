@@ -5,6 +5,7 @@ import "../../style/pages/Club/ClubPage.css"
 import Header from './../../components/Header';
 import Navbar from './../../components/Navbar';
 import {useNavigate} from 'react-router-dom';
+import SearchBar from './../../components/SearchBar';
 
 const ClubPage = () => {
     const navigate = useNavigate();
@@ -27,13 +28,14 @@ const ClubPage = () => {
         <section>
             <Header/>
             <Navbar/>
-            <div className='postBtnBox'>
+            <div className='SearchPostBox'>
+                {/* <div><SearchBar /></div> */}
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>동호회 등록하기</div>
             </div>
             <Filter/>
             <div className='clubPageContent'>
-                <div className='sortBtn'>
-                    <select>
+                <div className='sortBtnBox'>
+                    <select className='sortBtn'>
                         <option>최신순</option>
                         <option>인기순</option>
                     </select>

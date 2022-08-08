@@ -18,6 +18,8 @@ import MentoringUploadPage from './pages/Mentoring/MentoringUploadPage';
 import MentoringDetailPage from './pages/Mentoring/MentoringDetailPage';
 import LectureDetailPage from './pages/Lecture/LectureDetailPage';
 import MentoringChat from './components/MentoringPage/MentoringChat';
+import ClubDetailPage from './pages/Club/ClubDetailPage';
+import ClubPictureUploadPage from './pages/Club/ClubPictureUploadPage';
 
 
 
@@ -80,7 +82,9 @@ function Club() {
   return (
       <Routes>
           <Route path='' element={<ClubPage/>}/>
+          <Route path='detail/:clubId' element={<ClubDetailPage />} />
           <Route path='upload' element={<ClubUploadPage/>}/>
+          <Route path='/detail/:clubId/pictureUpload' element={<ClubPictureUploadPage />} />
       </Routes>
   );
 };

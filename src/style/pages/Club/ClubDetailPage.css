@@ -1,0 +1,34 @@
+.clubDeailContainer {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.ClubDetailCenter {
+
+}
+
+.ClubDetailLeft {
+    
+}
+
+.ClubDetailRight {
+    
+}
+
+
+.clubImageUploadBtn {
+    width: 15%;
+    display: flex;
+    background-color: #749683;
+    color: white;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.clubImageUploadBtn img {
+    width: 30px;
+    height: 30px;
+}

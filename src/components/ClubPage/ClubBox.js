@@ -8,6 +8,9 @@ const ClubBox = ({dummyData}) => {
             <ClubItem dummyData={dummyData} />
             <ClubItem dummyData={dummyData}  />
             <ClubItem dummyData={dummyData}  />
+            <ClubItem dummyData={dummyData} />
+            <ClubItem dummyData={dummyData}  />
+            <ClubItem dummyData={dummyData}  />
         </section>
     );
 }
