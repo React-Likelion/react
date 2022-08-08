@@ -1,0 +1,14 @@
+.CommunityUploadPage {
+    background-color: #efede1;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.CommunityUploadPage > .upload-container > div > input {
+    font-family: 'NanumSquare';
+}
+
+.CommunityUploadPage > .upload-container > textarea {
+    min-height: 70vh;
+}

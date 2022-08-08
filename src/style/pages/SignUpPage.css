@@ -85,3 +85,11 @@
 #signupForm > div > button {
   font-family: "NanumSquare";
 }
+#goToLogin {
+  color: #2e493a;
+  font-size: 14px;
+}
+#signupForm article {
+  text-align: right;
+  font-size: 14px;
+}

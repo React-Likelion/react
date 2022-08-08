@@ -16,6 +16,8 @@ import LectureUploadPage from './pages/Lecture/LectureUploadPage';
 import MentoringPage from './pages/Mentoring/MentoringPage';
 import MentoringUploadPage from './pages/Mentoring/MentoringUploadPage';
 import MentoringDetailPage from './pages/Mentoring/MentoringDetailPage';
+import LectureDetailPage from './pages/Lecture/LectureDetailPage';
+import MentoringChat from './components/MentoringPage/MentoringChat';
 import MentoringChatPage from './pages/Mentoring/MentoringChatPage';
 
 

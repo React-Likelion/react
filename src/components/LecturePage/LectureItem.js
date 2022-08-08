@@ -2,12 +2,18 @@ import React from 'react';
 import '../../style/components/LecturePage/LectureItem.css';
 import { useNavigate } from 'react-router-dom';
 
-const LectureItem = ({title,img,price}) => {
+const LectureItem = ({id,title,img,price}) => {
     const navigate = useNavigate();
-
+    const propsArray = [
+        {lectureId:id,
+        lectureTitle:title,
+        lectureImg:img,
+        lecturePrice:price,
+    },
+    ];
     const clickLectureItem = ()=>{
         //강의 상세 페이지로 이동하도록
-        navigate('/');
+        navigate('/lecture/detail',{state:{lecture:propsArray}});
     };
 
     const priceMent = `월 ${price}원`;

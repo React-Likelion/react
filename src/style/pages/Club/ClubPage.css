@@ -1,0 +1,35 @@
+.clubPageContent {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.sortBtn {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    text-align: right;
+}
+
+.postBtnBox{
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: flex-end;
+    width: 60%;
+    height: 40px;
+    margin: 0 auto;
+}
+.postBtn{
+    display: flex;
+    background-color: #749683;
+    color: white;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.postBtn img{
+    width: 30px;
+    height: 30px;
+}
