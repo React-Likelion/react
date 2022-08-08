@@ -10,6 +10,7 @@ const ClubPage = () => {
     const navigate = useNavigate();
 
     const dummyData = {
+
         id: 1,
         name: "골프 동호회",
         location: "구미 옥계동",
@@ -20,6 +21,7 @@ const ClubPage = () => {
     const onClickBtnHandler = (e) => {
         navigate('upload');
     }
+
 
     return (
         <section>

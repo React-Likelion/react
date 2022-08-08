@@ -12,3 +12,11 @@
 #lectureCategorySection li li {
   font-size: 14px;
 }
+#lectureCategorySection li li:hover {
+  font-size: 18px;
+  font-weight: 400;
+}
+#lectureCategorySection li:hover {
+  font-size: 22px;
+  font-weight: 400;
+}
