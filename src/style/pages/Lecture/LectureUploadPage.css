@@ -1,0 +1,115 @@
+.LectureUploadPage {
+    background-color: #efede1;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+/* 흰 배경 */
+.upload-container {
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 70%;
+    height: auto;
+    margin: 30px auto 0px;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* 등록 텍스트 */
+.upload-container > div:nth-child(1) {
+    font-size: 28px;
+    font-weight: 900;
+    color: #749683;
+    margin: 10px;
+}
+
+/* 그리드 박스 */
+.upload-container > div:nth-child(2) {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+/* 그리드 박스 텍스트 */
+.upload-container > div:nth-child(2) > div {
+    background-color: #efede1;
+    color: #555555;
+    margin: 8px;
+    text-align: center;
+    line-height: 45px;
+    height: 45px;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+/* 그리드 박스 인풋창 */
+.upload-container > div:nth-child(2) > input {
+    background-color: #efede1;
+    color: #555555;
+    margin: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* text area */
+.upload-container > textarea {
+    width: calc(100% - 46px);
+    height: 30vh;
+    margin: 8px;
+    background-color: #efede1;
+    border: none;
+    outline: none;
+    font-family: 'NanumSquare';
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 5px;
+    resize: none;
+}
+
+/* 사진 업로드 버튼 */
+.upload-container > .picture-upload-btn {
+    width: 90%;
+    height: 50px;
+    border: 3px solid #749683;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    margin: 10px auto;
+    display: block;
+    color: #749683;
+    font-family: 'NanumSquare';
+    font-size: 20px;
+}
+
+.upload-container > .picture-upload-btn:hover {
+    background-color: #749683;
+    color: #fff;
+    font-weight: bold;
+}
+
+.upload-container > .checkbox-text {
+    font-size: 15px;
+    font-weight: bold;
+    color: #749683;
+    margin: 0 60px;
+}
+
+/* 등록하기 버튼 */
+.upload-container > .upload-btn {
+    width: 90%;
+    height: 50px;
+    background-color: #749683;
+    border-radius: 10px;
+    border: none;
+    margin:10px auto;
+    display: block;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'NanumSquare';
+}
+
+.upload-container > .upload-btn:hover {
+    background-color: #2E493A;
+}

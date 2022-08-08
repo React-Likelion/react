@@ -1,0 +1,20 @@
+.main-container {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#main-banner {
+    background-color: #749683;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-banner > div > div {
+    background-color: #b3d4c2;
+    width: 80%;
+}

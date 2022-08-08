@@ -1,10 +1,17 @@
-
+.pageAll{
+    background-color: #EFEDE1;
+}
 .selectBar{
     display: flex;
     justify-content: flex-end;
     width: 85%;
     margin-top: 1%;
-    margin-bottom: 0.2%;
+    margin-bottom: 1%;
+}
+#selectBox{
+    border: 2px solid #749683;
+    border-radius: 8px;
+
 }
 .viewSection{
     /* border: 1px solid pink; */

@@ -2,10 +2,12 @@ import React from 'react';
 import {useNavigate} from "react-router-dom"
 import "../style/components/Header.css"
 
-
 const Header = () => {
     const navigate = useNavigate();
-
+    
+    const goUpload = () => {
+        navigate('/lecture/upload')
+    }
     const goLogin = () => {
         navigate("/login")
     }
@@ -23,7 +25,8 @@ const Header = () => {
                     <span onClick={goHome} className='logo'>Re:act</span>
                 </div>
                 <div className='headerright'>
-                    <span><img src='img/lectureBtn.png' className='lectureBtn' /></span>
+                    <span onClick={goUpload}><img src={`${process.env.PUBLIC_URL}/img/lectureBtn.png`} 
+                    className='lectureBtn' /></span>
                     {/* 라우터 파지면 Link or useNavigate 하기 */}
                     <span onClick={goLogin} className='login'>로그인</span>
                     <span onClick={goSignUp} className='signup'>회원가입</span>
