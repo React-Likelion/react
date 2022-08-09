@@ -26,7 +26,7 @@ const ClubDetailPage = () => {
     return (
         <section className='ClubDetailPage'>
             <Header/>
-            <Navbar/>
+            <Navbar val={'club'}/>
             <div className='clubDeailContainer'>
                 <div className='clubDetailLeft'>
                     <div><ClubInfo/></div>

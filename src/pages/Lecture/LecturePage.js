@@ -14,7 +14,7 @@ const LecturePage = () => {
     return (
         <div id="lecturePageDiv">
             <Header />
-            <Navbar />
+            <Navbar val={'lecture'}/>
             <div id="lectureContainerBox">
                 <section id="lectureLeftContainer">
                     <LectureCategory setDetailCategoryData={setDetailCategoryData} setCategoryData={setCategoryData} categoryData={categoryData} />

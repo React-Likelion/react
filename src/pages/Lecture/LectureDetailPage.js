@@ -47,7 +47,7 @@ const LectureDetailPage = () => {
     return (
         <div>
             <Header />
-            <Navbar />
+            <Navbar val={'lecture'}/>
             <div id="LectureDetailDiv">
                 <section id="LectureLeftSection">
                     <LectureLeft lectureImg={lectureImg} classModify={classModify} lectureTitle={lectureTitle} />
