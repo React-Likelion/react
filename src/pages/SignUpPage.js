@@ -24,14 +24,15 @@ const SignUpPage = () => {
 
     const clickSignUp = (e)=>{
         e.preventDefault();
-        console.log(signUpData);
         //회원가입 통신
         axios.post(`${PROXY}/accounts/signup/`, signUpData)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
+            alert("입력한 이메일을 확인해주세요 !");
         })
         .catch((err) => {
-            console.log(err);
+            // console.log(err);
+            alert("회원가입에 실패하였습니다.");
         })
     };
 
@@ -44,16 +45,16 @@ const SignUpPage = () => {
                 
                 <form id="signupForm">
                     <h2>회원가입</h2>
-                    <article>이미 회원이신가요 ? <Link to='/login' id="goToLogin">로그인 하러 가기</Link></article>
                     <input type="text" onChange={handleChangeData} name='identification' placeholder='아이디를 입력하세요' /><br />
                     <input type="password" onChange={handleChangeData} name='password' placeholder='비밀번호를 입력하세요' /><br />
                     <input type="password" onChange={handleChangeData} name='password2' placeholder='비밀번호를 한번 더 입력하세요' /><br />
                     <input type="text" onChange={handleChangeData} name='name' placeholder='이름을 입력하세요' /><br />
                     <input type="text" onChange={handleChangeData} name='nickname' placeholder='닉네임을 입력하세요' /><br />
                     <input type="text" name='email' onChange={handleChangeData} placeholder='이메일' />
-                    <input type="text" onChange={handleChangeData} name='birth' placeholder='생년월일을 입력하세요(0000-00-0 0)' /><br />
+                    <input type="text" onChange={handleChangeData} name='birth' placeholder='생년월일을 입력하세요 (ex)0000-00-00)' /><br />
                     <input type="text" onChange={handleChangeData} name='job' placeholder='직업을 입력하세요' /><br />
-                    <button type="button" onClick={clickSignUp} id="signupSubmit">가입하기</button>
+                    <button type="button" onClick={clickSignUp} id="signupSubmit">가입하기</button><br/>
+                    <article>이미 회원이신가요 ? <Link to='/login' id="goToLogin">로그인 하러 가기</Link></article>
                 </form>
             </section>
         </div>

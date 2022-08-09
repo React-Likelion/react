@@ -25,8 +25,11 @@
   font-family: "Playfair Display";
 }
 #signupRight h2 {
+  text-align: center;
+  font-weight: bold;
   color: #2e493a;
   margin: 3%;
+  height: 50px;
 }
 #signupForm input:focus {
   outline: none;
@@ -49,12 +52,12 @@
   border-bottom: 1px solid #2e493a;
   background-color: #efede1;
   width: 100%;
-  height: 7%;
+  height: 8%;
   margin: 2px auto;
   color: #2e493a;
 }
 #signupForm input[type="password"] {
-  font-family: "맑은 고딕";
+  font-family: "NanumSquareac";
 }
 #signupForm button {
   border: 1px solid #2e493a;
@@ -90,6 +93,6 @@
   font-size: 14px;
 }
 #signupForm article {
-  text-align: right;
+  text-align: center;
   font-size: 14px;
 }
