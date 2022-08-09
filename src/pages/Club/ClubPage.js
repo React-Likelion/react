@@ -27,7 +27,7 @@ const ClubPage = () => {
     return (
         <section>
             <Header/>
-            <Navbar/>
+            <Navbar val={'club'}/>
             <div className='SearchPostBox'>
                 {/* <div><SearchBar /></div> */}
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>동호회 등록하기</div>

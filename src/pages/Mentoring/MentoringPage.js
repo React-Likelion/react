@@ -24,7 +24,7 @@ const MentoringPage = () => {
     return (
         <div className='pageAll'>
             <Header />
-            <Navbar />
+            <Navbar val={'mentoring'}/>
             <div className='postBtnBox'>
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>
             </div>
