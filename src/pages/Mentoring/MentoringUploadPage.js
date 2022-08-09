@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header.js';
 import '../../style/pages/Mentoring/MentoringUploadPage.css';
+import ImagePreview from '../../components/ImagePreview.js';
 
 const MentoringUploadPage = () => {
     return (
@@ -31,7 +32,7 @@ const MentoringUploadPage = () => {
                     </div>
                     <div id='mentoring-tag-box'><div className='mentoring-tag'></div></div>
                 </div>
-                <button className='picture-upload-btn'>대표사진 첨부하기</button>
+                <ImagePreview text={'대표 사진 첨부하기'}/>
                 <div className='picture-preview-box'></div>
                 <button className='upload-btn'>등록하기</button>
             </div>

@@ -4,3 +4,16 @@
     min-height: 100vh;
     padding-bottom: 50px;
 }
+
+#picture-upload-title {
+    background-color: #efede1;
+    color: #555555;
+    margin: 5px auto;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    border-radius: 5px;
+    width: 90%;
+    height: 50px;
+    display: block;
+}

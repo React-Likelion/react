@@ -1,0 +1,40 @@
+.preview-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    height: auto;
+    padding: 5%;
+    border-radius: 10px;
+    margin: 20px auto;
+    border: 3px solid #749683;
+}
+
+.preview-box > div {
+    width: 100%;
+    height: 100%;
+}
+
+.preview-box > div > div {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    width: 90%;
+    margin: 0 auto -60px;
+}
+
+.preview-box > div > div > button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.274);
+    color: #749683;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.preview-box > div > img {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+}
