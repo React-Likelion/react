@@ -1,29 +1,30 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import '../../style/components/MainPage/MainCarousel.css';
 
 // 캐러셀 이라는 부트스트랩 예시 이용 -> 회전목마 구현
-const Product = () => {
+const MainCarousel = () => {
     return (
-        <div style={{width:'40%', margin:'auto'}}>
-            <Carousel variant="dark">
+        <div style={{width:'80%', height:'auto', margin:'auto'}}>
+            <Carousel >
                 <Carousel.Item>
                     <img 
                     className="d-block w-100"
-                    src='{props.product.image}'
+                    src='/img/mainbanner.png'
                     alt="사진1"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src="holder.js/400x400?text=Second slide&bg=282c34"
+                    src="/img/mainbanner.png"
                     alt="사진2"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src="holder.js/400x400?text=Third slide&bg=20232a"
+                    src="/img/mainbanner.png"
                     alt="사진3"
                     />
                 </Carousel.Item>
@@ -32,4 +33,4 @@ const Product = () => {
     );
 };
 
-export default Product;
+export default MainCarousel;
