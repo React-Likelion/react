@@ -26,3 +26,10 @@
 #LectureRightSection button:hover {
   background-color: #22382c;
 }
+#likeArticle {
+  text-align: center;
+}
+#likeArticle span,
+#likeArticle img {
+  margin: 3%;
+}
