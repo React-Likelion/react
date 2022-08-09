@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header.js';
 import '../../style/pages/Club/ClubUploadPage.css';
+import ImagePreview from '../../components/ImagePreview.js';
 
 const ClubUploadPage = () => {
     return (
@@ -21,7 +22,7 @@ const ClubUploadPage = () => {
                     <input></input>
                 </div>
                 <textarea id='description-textarea' placeholder='수업이나 활동 내용 입력'></textarea><br/>
-                <button className='picture-upload-btn'>대표사진 등록하기</button>
+                <ImagePreview text={'대표 사진 첨부하기'}/>
                 <div className='picture-preview-box'></div>
                 <button className='upload-btn'>등록하기</button>
             </div>
