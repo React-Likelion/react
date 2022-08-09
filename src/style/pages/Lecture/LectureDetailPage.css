@@ -33,3 +33,17 @@
 #likeArticle img {
   margin: 3%;
 }
+#modalBtn {
+  border: none;
+  background-color: #2e493a;
+  color: #efede1;
+  padding: 3%;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  margin: 3%;
+}
+#modalDiv {
+  padding: 3%;
+}

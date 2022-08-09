@@ -5,6 +5,7 @@ import '../../style/pages/Lecture/LectureDetailPage.css';
 import { useLocation } from 'react-router-dom';
 import LectureLeft from '../../components/LecturePage/LectureLeft';
 import LectureRight from '../../components/LecturePage/LectureRight';
+import Modal from 'react-bootstrap/Modal';
 
 const LectureDetailPage = () => {
     const location = useLocation();
@@ -17,6 +18,7 @@ const LectureDetailPage = () => {
     const [classModify,setClassModify] = useState(false);
     const [likeState,setLikeState] = useState(false);
     const [likeCount,setLikeCount] = useState(0);
+    const [applicationModal,setApplicationModal] = useState(false);
 
     useEffect(()=>{
         //강의를 구매하였는지에 대한 state 실행
@@ -28,6 +30,7 @@ const LectureDetailPage = () => {
 
     const clickRegistration = ()=>{
         console.log('강의 신청 폼 or 페이지 or 모달 이동');
+        handleShow();
     };
     const clickWatch = ()=>{
         console.log('강의시청 유튜브 링크이동');
@@ -35,7 +38,6 @@ const LectureDetailPage = () => {
     };
     const clickLectureModify = ()=>{
         console.log('강의 수정 로직 실행');
-        
         setClassModify(!classModify);
     };
     const myLecture = ()=>{
@@ -43,6 +45,8 @@ const LectureDetailPage = () => {
     };
     const purchaseLecture = ()=>{
         setPurchaseStatus(!purchaseStatus);
+        alert('클래스 수강 시작!');
+        handleClose();
     };
     const clickUnFill = ()=>{
         if(!purchaseStatus){
@@ -60,6 +64,8 @@ const LectureDetailPage = () => {
             setLikeState(!likeState);
         }
     };
+    const handleClose = () => setApplicationModal(false);
+    const handleShow = () => setApplicationModal(true);
 
     return (
         <div>
@@ -73,8 +79,7 @@ const LectureDetailPage = () => {
                     
                     {/*클래스 수정/시청/신청 잘 돌아가는지 확인용, 통신하고 구현하면 지울것*/}
                     --로직 확인용
-                    <button type="button" onClick={myLecture}>나의 강의</button>
-                    <button type="button" onClick={purchaseLecture}>구매한 강의</button> 로직 확인용--
+                    <button type="button" onClick={myLecture}>나의 강의</button> 로직 확인용--
 
                     <LectureRight lectureId={lectureId} lectureTitle={lectureTitle} lecturePrice={lecturePrice} />
                     {/* 조건
@@ -99,7 +104,20 @@ const LectureDetailPage = () => {
                         <button type="button" onClick={clickWatch}>클래스 시청하기</button>:
                         <button type="button" onClick={clickRegistration}>클래스 신청하기</button>
                     }
-
+                    {
+                        (!applicationModal) ||
+                        <div id="modalDiv">
+                            <Modal className="modal-container" show={applicationModal} onHide={handleClose}>
+                            <img src={lectureImg} alt="강의 이미지" /><br/>
+                            <p> &nbsp; 제목 : {lectureTitle}</p>
+                            <p> &nbsp; 가격 : {lecturePrice}</p>
+                            <p> &nbsp; 강의를 신청하시겠습니까?</p>
+                            <hr />
+                            <p> &nbsp; 차감 포인트 : 100,000 → 82,200</p>
+                            <button id="modalBtn" type="button" onClick={purchaseLecture}>클래스 수강시작</button>
+                            </Modal>
+                        </div>
+                    }
                     
                 </section>
             </div>
