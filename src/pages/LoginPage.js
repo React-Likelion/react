@@ -37,7 +37,7 @@ const LoginPage = () => {
     return (
         <section id="login-container">
             <section id="login-left">
-                <h1 onClick={() => navigate('/')}>Re:act</h1>
+                <img onClick={() => navigate('/')} src={`${process.env.PUBLIC_URL}/img/react_logo.png`} />
             </section>
             <section id="login-right">
                 <div id="login-form">

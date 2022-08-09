@@ -19,12 +19,10 @@
 }
 
 .logo {
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: #EFEDE1;
     cursor: pointer;
-    font-family: 'Playfair Display';
-    line-height: 120px;
+    width: 200px;
+    height: 90px;
+    margin: 20px 0;
 }
 
 .lectureBtn {
