@@ -14,10 +14,6 @@ const SignUpPage = () => {
         birth:'',
         job:'',
     });
-    // const [emailData,setEmailData] = useState({
-    //     emailId:'',
-    //     emailAddress:'',
-    // });
 
     const handleChangeData = (e) => {
         setSignUpData({
@@ -25,13 +21,6 @@ const SignUpPage = () => {
             [e.target.name]: e.target.value,
         });
     };
-    // const handleChangeEmail = (e)=>{
-    //     setEmailData({
-    //         ...emailData,
-    //         [e.target.name]: e.target.value,
-    //     });
-    //     //codeIssued();
-    // }
 
     const clickSignUp = (e)=>{
         e.preventDefault();
@@ -45,17 +34,6 @@ const SignUpPage = () => {
             console.log(err);
         })
     };
-    // const codeIssued = ()=>{
-    //     console.log(emailData);
-    //     const emailAdd = `${emailData.emailId}@${emailData.emailAddress}`; //이메일 총 주소
-    //     console.log(emailAdd);
-    //     //인증번호 통신 후 인증 성공시
-    //     setSignUpData({
-    //         ...signUpData,
-    //         email:emailAdd,
-    //     }); //이메일을 회원가입 정보에 추가
-    // };
-      
 
     return (
         <div id="signupDiv">
