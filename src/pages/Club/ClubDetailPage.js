@@ -30,7 +30,7 @@ const ClubDetailPage = () => {
             <div className='clubDeailContainer'>
                 <div className='clubDetailLeft'>
                     <div><ClubInfo/></div>
-                    <div className='clubImageUploadBtn' onClick={goPhotoUpload}><img src='img/Teacher.png' alt=''/>사진 업로드하기</div>
+                    <div className='clubImageUploadBtn' onClick={goPhotoUpload}><img src={`${process.env.PUBLIC_URL}/img/Teacher.png`} alt=''/>사진 업로드하기</div>
                 </div>
                 <div className='clubDetailCenter'>
                     <ClubBoard />

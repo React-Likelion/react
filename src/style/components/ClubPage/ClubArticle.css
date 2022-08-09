@@ -1,0 +1,48 @@
+.clubArticle {
+    display: flex;
+    text-align: center;
+}
+
+.clubArticleTitle {
+    display: flex;
+    justify-content: center;
+    width: 48%;
+    color: #2E493A;
+}
+
+.clubArticleTitleNum {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.clubArticleTitleContentBox {
+    display: flex;
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 2px;
+}
+
+.clubArticleTitleContent {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.clubArticleTitleComment {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #FF0000;
+}
+
+.clubArticleWriter {
+    width: 26%;
+    color: #2E493A;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.clubArticleDate {
+    width: 26%;
+    color: #2E493A;
+    font-size: 1rem;
+}

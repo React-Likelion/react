@@ -1,0 +1,28 @@
+.clubInfo {
+    width: 15vw;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.clubMembers {
+    color: #6F6F6F;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.clubInvite {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.clubArticleUplodBtn {
+    height: 6vh;
+    line-height: 6vh;
+    margin : 15px 0 20px 0;
+    font-size : 1.5rem;
+    color : #EFEDE1;
+    background-color: #2E493A;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}

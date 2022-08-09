@@ -1,23 +1,28 @@
 .clubDeailContainer {
     width: 70%;
     margin: 0 auto;
+    display: flex;
+}
+.ClubDetailLeft {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
 }
 
 .ClubDetailCenter {
-
+    display: flex;
+    width: 33%;
 }
 
-.ClubDetailLeft {
-    
-}
 
 .ClubDetailRight {
-    
+    width: 33%;
+    display: flex;
+    flex-direction: column;
 }
 
 
 .clubImageUploadBtn {
-    width: 15%;
     display: flex;
     background-color: #749683;
     color: white;

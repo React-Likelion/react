@@ -1,5 +1,5 @@
 .clubItemContainer {
-    width: 400px;
+    width: 20vw;
     height: 321px;
     background-color: #D8E2D2;
     margin: 0 20px 40px 20px;
@@ -22,6 +22,7 @@
     width: 100%;
     height: 200px;
     border-radius: 30px;
+    margin-bottom: 5px;
 }
 
 .clubLocation {
