@@ -4,20 +4,14 @@
 }
 
 .headercontainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 80%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    width: 90%;
     height: 130px;
     margin: 0 auto;
 }
 
-.headerleft {
-    width : 80%
-}
-
 .headerright {
-    width : 20%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -30,15 +24,23 @@
     color: #EFEDE1;
     cursor: pointer;
     font-family: 'Playfair Display';
-}
-
-.login, .signup {
-    font-size: 1.1rem;
-    min-width: 65px;
-    color: #EFEDE1;
-    cursor: pointer;
+    line-height: 120px;
 }
 
 .lectureBtn {
     cursor: pointer;
+    width: 60px;
+    height: 60px;
+}
+
+.user-text {
+    font-size: 1.1em;
+    min-width: 65px;
+    color: #EFEDE1;
+    cursor: pointer;
+    text-align: center;
+}
+
+#my {
+    min-width: 88px;
 }
