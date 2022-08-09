@@ -2,3 +2,11 @@
   background-color: #efede1;
   height: 100%;
 }
+
+#none-show-screen {
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

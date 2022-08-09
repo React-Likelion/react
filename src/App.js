@@ -1,5 +1,6 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import './App.css';
 import MainPage from './pages/MainPage.js';
 import MyPage from './pages/MyPage.js';
@@ -33,8 +34,14 @@ console.log('%c 금오공대 멋쟁이 사자처럼', 'font-size:50px; color:ora
 console.log('%c @likelionkumoh', 'font-size:25px; color:orange;');
 console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
 
+  const showDevice = useMediaQuery({
+    query : "(min-width:420px)"
+  });
+
   return (
     <section className='appcontainer'>
+      {showDevice
+      ?
       <Routes>
         <Route path="/" element={<MainPage/>}/>
         <Route path="/my" element={<MyPage/>}/>
@@ -48,6 +55,9 @@ console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
         <Route path='/consulting' element={<ConsultingPage/>}/>
         <Route path="*" element={<div>404</div>}/>
       </Routes>
+      :
+      <div id='none-show-screen'>해상도를 높여주세요 !</div>
+      }
     </section>
   );
 };
