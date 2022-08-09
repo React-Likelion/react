@@ -20,18 +20,17 @@ const LoginPage = () => {
     };
     const handleClickLogin = (e)=>{
         // 로그인 통신
-        console.log(loginData);
         axios.post(`${PROXY}/accounts/login/`, loginData)
         .then((res) => {
-            console.log(res);
-            localStorage.setItem('accessToken',res.data.token.access_token);
-            localStorage.setItem('refreshToken',res.data.token.refresh_token);
+            // console.log(res);
+            localStorage.setItem('react_accessToken',res.data.token.access_token);
+            localStorage.setItem('react_refreshToken',res.data.token.refresh_token);
             localStorage.setItem('nickname',res.data.token.nickname);
-            if(localStorage.getItem('accessToken')) {navigate('/');}
+            if(localStorage.getItem('react_accessToken')) {navigate('/');}
         })
         .catch((err) => {
-            console.log(err);
-            alert("로그인 실패");
+            // console.log(err);
+            alert("로그인에 실패하였습니다.");
         })
     };
 

@@ -32,26 +32,29 @@
 #login-form > h1 {
     color: #2e493a;
     font-size: 30px;
+    font-weight: bold;
     margin: 3%;
     text-align: center;
 }
 
-#login-form input:focus {
-    outline: none;
-}
-
 #login-form {
     min-width: 400px;
+    padding: 0 20px;
 }
 
 #login-form > input {
     border: none;
+    outline: none;
     border-bottom: 1px solid #2e493a;
     background-color: #efede1;
     width: 100%;
-    height: 30px;
+    height: 40px;
     margin: 8px auto;
     font-size: 16px;
+}
+
+#login-form > input[type="password"] {
+    font-family: "NanumSquareac";
 }
 
 #login-form > button {
