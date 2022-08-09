@@ -4,6 +4,7 @@ import Header from './../components/Header';
 import Navbar from './../components/Navbar';
 import MainBox from '../components/MainPage/MainBox';
 import MainCarousel from '../components/MainPage/MainCarousel';
+import Footer from '../components/Footer.js';
 
 const MainPage = () => {
     return (
@@ -16,6 +17,7 @@ const MainPage = () => {
                 {/* 메인 박스 */}
                 <MainBox/>
             </section>
+            <Footer/>
         </>
     );
 };
