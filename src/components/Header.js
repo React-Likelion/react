@@ -19,7 +19,10 @@ const Header = () => {
     }
     const goLogout = () => {
         // 로그아웃 통신 추가
-        navigate("/")
+        localStorage.removeItem('nickname');
+        localStorage.removeItem('react_refreshToken');
+        localStorage.removeItem('react_accessToken');
+        navigate("/");
     }
     const goMypage = () => {
         navigate("/my")
@@ -29,7 +32,8 @@ const Header = () => {
         <section className='header'>
             <div className='headercontainer'>
                 <div className='headerleft'>
-                    <span onClick={goHome} className='logo'>Re:act</span>
+                    <img onClick={goHome} className='logo' src={`${process.env.PUBLIC_URL}/img/react_logo.png`} 
+                     />
                 </div>
                 <div className='headerright'>
                     <span onClick={goUpload}><img src={`${process.env.PUBLIC_URL}/img/lectureBtn.png`} 

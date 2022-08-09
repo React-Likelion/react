@@ -12,10 +12,10 @@
     align-items: center;
 }
 
-#login-left > h1 {
-    color: #efede1;
-    font-size: 80px;
-    font-family: 'Playfair Display';
+#login-left > img {
+    width: 50%;
+    max-width: 280px;
+    min-width: 180px;
     cursor: pointer;
 }
 

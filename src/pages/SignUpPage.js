@@ -2,9 +2,12 @@ import React,{useState} from 'react';
 import '../style/pages/SignUpPage.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { PROXY } from '../data/serverUrl';
 
 const SignUpPage = () => {
+
+    const navigate = useNavigate();
     const [signUpData,setSignUpData] = useState({
         identification:'',
         password:'',
@@ -39,7 +42,7 @@ const SignUpPage = () => {
     return (
         <div id="signupDiv">
             <section id="signupLeft">
-                <h1>Re:act</h1>
+                <img onClick={() => navigate('/')} src={`${process.env.PUBLIC_URL}/img/react_logo.png`} />
             </section>
             <section id="signupRight">
                 

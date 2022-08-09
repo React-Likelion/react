@@ -19,10 +19,11 @@
   align-items: center;
   background-color: #efede1;
 }
-#signupLeft h1 {
-  color: #efede1;
-  font-size: 80px;
-  font-family: "Playfair Display";
+#signupLeft img {
+  width: 50%;
+    max-width: 280px;
+    min-width: 180px;
+    cursor: pointer;
 }
 #signupRight h2 {
   text-align: center;
