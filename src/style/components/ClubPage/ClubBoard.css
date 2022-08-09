@@ -1,0 +1,26 @@
+.ClubBoard {
+    width: 39vw;
+    margin: 0 50px 0 50px;
+    background-color: rgb(255, 255, 255, 0.3);;
+}
+
+.clubBoardHeader {
+    display: flex;
+    text-align: center;
+}
+
+.clubBoardHeader > span {
+    color: #2E493A;
+}
+
+.clubBoardTitle {
+    width: 48%;
+}
+
+.clubBoardWriter{
+    width: 26%;
+}
+
+.clubBoardDate{
+    width: 26%
+}

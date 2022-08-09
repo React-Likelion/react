@@ -85,6 +85,7 @@ function Club() {
           <Route path='detail/:clubId' element={<ClubDetailPage />} />
           <Route path='upload' element={<ClubUploadPage/>}/>
           <Route path='/detail/:clubId/pictureUpload' element={<ClubPictureUploadPage />} />
+          <Route path='/detail/:clubId/articleUpload' element={<CommunityUploadPage />} />
       </Routes>
   );
 };
