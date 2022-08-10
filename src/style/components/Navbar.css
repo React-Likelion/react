@@ -8,8 +8,9 @@
   align-items: center;
 }
 
-.navbarcontainer div {
+.navbarcontainer > div {
   color: #3f3f3f;
+  min-width: 100px;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;

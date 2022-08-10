@@ -1,5 +1,6 @@
 .clubInfo {
     width: 15vw;
+    min-width: 100px;
     text-align: center;
     margin: 0 auto;
 }
