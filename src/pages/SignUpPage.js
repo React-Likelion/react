@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { PROXY } from '../data/serverUrl';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './../services/firebase';
 
 const SignUpPage = () => {
-
     const navigate = useNavigate();
     const [signUpData,setSignUpData] = useState({
         identification:'',
@@ -26,7 +27,7 @@ const SignUpPage = () => {
     };
 
     const clickSignUp = (e)=>{
-        e.preventDefault();
+        // e.preventDefault();
         //회원가입 통신
         axios.post(`${PROXY}/accounts/signup/`, signUpData)
         .then((res) => {
@@ -38,6 +39,22 @@ const SignUpPage = () => {
             alert("회원가입에 실패하였습니다.");
         })
     };
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
+    
+    // `회원가입` 버튼의 onClick에 할당
+    const register = async () => {
+        //데이터의 이메일, 비밀번호 저장
+        setRegisterEmail(signUpData.email);
+        setRegisterPassword(signUpData.password);
+        try {
+            const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+            console.log(user);
+            
+        } catch(err){
+            console.log(err.messages);
+        }
+    }
 
     return (
         <div id="signupDiv">
@@ -56,7 +73,10 @@ const SignUpPage = () => {
                     <input type="text" name='email' onChange={handleChangeData} placeholder='이메일' />
                     <input type="text" onChange={handleChangeData} name='birth' placeholder='생년월일을 입력하세요 (ex)0000-00-00)' /><br />
                     <input type="text" onChange={handleChangeData} name='job' placeholder='직업을 입력하세요' /><br />
-                    <button type="button" onClick={clickSignUp} id="signupSubmit">가입하기</button><br/>
+                    <button type="button" onClick={()=>{
+                        clickSignUp()
+                        register()
+                    }} id="signupSubmit">가입하기</button><br/>
                     <article>이미 회원이신가요 ? <Link to='/login' id="goToLogin">로그인 하러 가기</Link></article>
                 </form>
             </section>
