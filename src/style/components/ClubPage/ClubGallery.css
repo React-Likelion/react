@@ -1,0 +1,42 @@
+.clubGalleryContainer {
+    width: 14vw;
+    height: 35vh;
+    background-color: rgb(255, 255, 255, 0.3);
+}
+
+.clubGalleryHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px
+}
+
+.clubGalleryTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2E493A;
+}
+
+.clubGalleryMore {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #7C7C7C;
+    width: 90px;
+    text-align: center;
+    height: 30px;
+    border: 3px solid #749683;
+    border-radius: 10px;
+}
+
+.clubGalleryPhotos{
+    height: 80%;
+    margin-top: -15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.clubGalleryImg {
+    width: 40%;
+    margin: 0 10px 0 10px;
+}

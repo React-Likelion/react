@@ -11,7 +11,7 @@ const ClubArticle = () => {
                         <p className='clubArticleTitleComment'>[123]</p>
                     </p>
                 </div>
-                <p className='clubArticleWriter'>유리구슬</p>
+                <p className='clubArticleWriter'>레쓰비</p>
                 <p className='clubArticleDate'>08.10</p>
             </div>
         </section>
