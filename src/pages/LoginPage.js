@@ -19,18 +19,25 @@ const LoginPage = () => {
         });
     };
     const handleClickLogin = (e)=>{
+        // 입력 안된 값 처리
+        if(Object.values(loginData).includes('')) {
+            alert("아이디 또는 비밀번호가 입력되지 않았습니다.");
+            return;
+        }
         // 로그인 통신
         axios.post(`${PROXY}/accounts/login/`, loginData)
         .then((res) => {
-            // console.log(res);
             localStorage.setItem('react_accessToken',res.data.token.access_token);
             localStorage.setItem('react_refreshToken',res.data.token.refresh_token);
             localStorage.setItem('nickname',res.data.token.nickname);
             if(localStorage.getItem('react_accessToken')) {navigate('/');}
         })
         .catch((err) => {
-            // console.log(err);
-            alert("로그인에 실패하였습니다.");
+            if(err.response.data.non_field_errors) {
+                alert(err.response.data.non_field_errors);
+            } else {
+                alert("로그인에 실패하였습니다.");
+            }
         })
     };
 
