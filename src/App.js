@@ -21,6 +21,7 @@ import LectureDetailPage from './pages/Lecture/LectureDetailPage';
 import MentoringChat from './components/MentoringPage/MentoringChat';
 import ClubDetailPage from './pages/Club/ClubDetailPage';
 import ClubPictureUploadPage from './pages/Club/ClubPictureUploadPage';
+import ClubGalleryDetail from './pages/Club/ClubGalleryDetail';
 
 
 
@@ -96,6 +97,7 @@ function Club() {
           <Route path='upload' element={<ClubUploadPage/>}/>
           <Route path='/detail/:clubId/pictureUpload' element={<ClubPictureUploadPage />} />
           <Route path='/detail/:clubId/articleUpload' element={<CommunityUploadPage />} />
+          <Route path='/detail/:clubId/galleryDetail' element={<ClubGalleryDetail />} />
       </Routes>
   );
 };
