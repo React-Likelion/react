@@ -23,7 +23,6 @@
 }
 
 .FilterItems {
-    color : #749683;
     min-width: 88px;
     height: 140px;
     padding-right: 10px;
@@ -51,6 +50,15 @@
     margin-bottom: 10px;
     padding: 1px 0 1px 10px;
     border-radius: 10px;
+    color : #749683;
+}
+
+.FilterItem:hover {
+    margin-bottom: 10px;
+    padding: 1px 0 1px 10px;
+    border-radius: 10px;
+    background-color: #2E493A;
+    color: #FFFFFF;
 }
 
 .FilterItem-choice {
