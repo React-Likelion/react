@@ -1,5 +1,6 @@
 .clubGalleryContainer {
     width: 14vw;
+    min-width: 200px;
     height: 35vh;
     background-color: rgb(255, 255, 255, 0.3);
 }

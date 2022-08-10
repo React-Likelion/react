@@ -6,6 +6,36 @@
     border-radius: 20px;
 }
 
+@media (min-width : 1320px) {
+    .clubItemContainer {
+        width: 20vw;
+        height: 321px;
+        background-color: #D8E2D2;
+        margin: 0 20px 40px 20px;
+        border-radius: 20px;
+    }
+}
+
+@media (min-width : 920px) and (max-width : 1319px) {
+    .clubItemContainer {
+        width: 30vw;
+        height: 321px;
+        background-color: #D8E2D2;
+        margin: 0 20px 40px 20px;
+        border-radius: 20px;
+    }
+}
+
+@media (min-width : 420px) and (max-width : 919px) {
+    .clubItemContainer {
+        width: 70vw;
+        height: 321px;
+        background-color: #D8E2D2;
+        margin: 0 20px 40px 20px;
+        border-radius: 20px;
+    }
+}
+
 .clubContents{
     padding-top: 20px;
     display: flex;

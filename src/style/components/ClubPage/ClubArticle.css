@@ -1,5 +1,6 @@
 .clubArticle {
     margin-bottom: -20px;
+    min-width: 380px;
     display: flex;
     align-items: center;
     text-align: center;
