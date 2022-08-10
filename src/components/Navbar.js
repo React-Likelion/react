@@ -18,7 +18,6 @@ const Navbar = ({val}) => {
             [`${val}`]: true
         });
     }, []);
-    console.log(category);
     
     return (
         <section className="navbar">
