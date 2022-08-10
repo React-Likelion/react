@@ -10,21 +10,21 @@ const MainCarousel = () => {
                 <Carousel.Item>
                     <img 
                     className="d-block w-100"
-                    src='/img/mainbanner.png'
+                    src='/img/main.png'
                     alt="사진1"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src="/img/mainbanner.png"
+                    src="/img/main.png"
                     alt="사진2"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src="/img/mainbanner.png"
+                    src="/img/main.png"
                     alt="사진3"
                     />
                 </Carousel.Item>
