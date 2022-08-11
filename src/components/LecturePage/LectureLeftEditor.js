@@ -4,11 +4,11 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {PROXY} from '../../data/serverUrl.js';
 import '../../style/components/LecturePage/LectureLeftEditor.css';
-import { lectureCategoryData } from '../../data/lectureCategoryData.js';
+import { lectureCategoryData } from '../../data/CategoryData.js';
 
 // {setDesc, desc, setImage}
 const LectureLeftEditor = ({lectureId,titleLecture,lecturePrice,categoryData,detailCategoryData}) => { // (1)
-
+    const dummy = '<p>테스트용 html코드입니다.</p>';
     const imgLink = "http://localhost:3000/images/"
     const [lectureData,setLectureData] = useState({
         'id':lectureId,
@@ -115,7 +115,7 @@ const LectureLeftEditor = ({lectureId,titleLecture,lecturePrice,categoryData,det
             config={{ // (4)
                 extraPlugins: [uploadPlugin]
             }}
-            data="<p>Hello World</p>"
+            data={dummy}
             onReady={editor => {
                 // console.log('Editor is ready to use!', editor);
             }}
