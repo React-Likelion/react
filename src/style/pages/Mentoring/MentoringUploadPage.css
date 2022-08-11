@@ -13,23 +13,55 @@
     background-color: #EFEDE1;
 }
 
-.upload-container > .tag-box > input {
+.upload-container > .tag-box > div {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.upload-container > .tag-box > div > input {
     background-color: #efede1;
     border: none;
     outline: none;
-    width: 90%;
+    width: 80%;
     height: 50px;
     margin: 0 auto;
-    display: block;
     font-family: 'NanumSquare';
     font-size: 18px;
+    border-radius: 5px;
+    margin: 10px 5px;
 }
 
-.upload-container > .tag-box > .mentoring-ex-tag {
+.upload-container > .tag-box > div > input:focus {
+    border: 3px solid #7496838f;
+}
+
+.upload-container > .tag-box > div > button {
+    background-color: #749683;
+    color: #efede1;
+    border: none;
+    outline: none;
+    width: 15%;
+    height: 48px;
+    border-radius: 10px;
+    font-weight: bolder;
+    margin: 0 8px;
+}
+
+.upload-container > .tag-box > div > button:hover {
+    background-color: #2E493A;
+}
+
+.upload-container > .tag-box > .mentoring-ex-tag, 
+.upload-container > .tag-box > .mentoring-write-tag
+ {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
-.upload-container > .tag-box > .mentoring-ex-tag > div {
+
+.upload-container > .tag-box > .mentoring-ex-tag > div,
+.upload-container > .tag-box > .mentoring-write-tag > div
+ {
     width: 80%;
     height: 40px;
     line-height: 40px;
@@ -40,4 +72,66 @@
     text-align: center;
     background-color: #7DC59D;
     
+}
+
+.upload-container > .tag-box > .mentoring-write-tag > div:hover {
+    background-color: #ffbdb4;
+    cursor: pointer;
+}
+
+.upload-container > div > select {
+    width: 90%;
+    height: 80%;
+    margin: 6px 5%;
+    border: 3px solid #749683;
+    color: #749683;
+    border-radius: 15px;
+    background-color: #efede1;
+    text-align: center;
+    outline: none;
+    font-size: 20px;
+}
+
+#age-btn-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.5fr;
+    place-items: center;
+    width: 90%;
+    height: 100%;
+    height: 45px;
+    margin: 0 auto;
+}
+
+#age-btn-box > .unclicked {
+    font-size: 18px;
+    border: none;
+    width: 95%;
+    height: 80%;
+    margin: 5%;
+    font-weight: bold;
+    color: #efede1;
+    border-radius: 15px;
+    background-color: #749683;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+
+#age-btn-box > .clicked {
+    font-size: 18px;
+    border: none;
+    width: 95%;
+    height: 80%;
+    margin: 5%;
+    font-weight: bold;
+    color: #efede1;
+    border-radius: 15px;
+    background-color: #2E493A;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+
+#age-btn-box > button:hover {
+    background-color: #2E493A;
 }

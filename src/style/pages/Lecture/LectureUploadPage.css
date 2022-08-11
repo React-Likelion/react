@@ -60,7 +60,7 @@
 
 /* text area */
 .upload-container > textarea {
-    width: calc(100% - 46px);
+    width: calc(100% - 16px);
     height: 30vh;
     margin: 8px;
     background-color: #efede1;
