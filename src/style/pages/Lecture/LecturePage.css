@@ -1,19 +1,97 @@
-#lectureContainerBox {
-  width: 70%;
-  display: flex;
-  margin: 0 auto;
+@media (min-width: 1024px) {
+  #lectureContainerBox {
+    width: 70%;
+    display: flex;
+    margin: 0 auto;
+  }
+  #lectureLeftContainer {
+    width: 14%;
+  }
+  #lectureLeftCategory {
+    display: block;
+  }
+  #lectureLeftCategoryModal {
+    display: none;
+  }
+  #lectureRightContainer {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 4%;
+    margin: 0 5%;
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  #lectureRightContainer span {
+    font-size: 12px;
+  }
+  #lectureRightContainerHeader {
+    display: flex;
+  }
+  #lectureRightContainerHeader section {
+    width: 70%;
+  }
+  #lectureRightContainerHeader article {
+    width: 30%;
+  }
 }
-#lectureLeftContainer {
-  width: 14%;
+@media (min-width: 768px) and (max-width: 1023px) {
+  #lectureContainerBox {
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+  }
+  #lectureLeftContainer {
+    width: 14%;
+  }
+  #lectureLeftCategory {
+    display: block;
+  }
+  #lectureLeftCategoryModal {
+    display: none;
+  }
+  #lectureRightContainer {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 4%;
+    margin: 0 5%;
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  #lectureRightContainer span {
+    font-size: 12px;
+  }
 }
-#lectureRightContainer {
-  background-color: rgba(255, 255, 255, 0.3);
-  padding: 4%;
-  margin: 0 5%;
-  width: 70%;
-  height: 100%;
-  border-radius: 10px;
-}
-#lectureRightContainer span {
-  font-size: 12px;
+
+@media (max-width: 767px) {
+  #lectureContainerBox {
+    transition: 0.25s all;
+    width: 70%;
+    display: flex;
+    margin: 0 auto;
+  }
+  #lectureLeftContainer {
+    width: 14%;
+  }
+  #lectureLeftCategory {
+    display: none;
+  }
+  #lectureLeftCategoryModal {
+    display: block;
+    width: 30px;
+  }
+  #categoryIcon {
+    width: 100%;
+    cursor: pointer;
+  }
+  #lectureRightContainer {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 4%;
+    margin: 0 5%;
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  #lectureRightContainer span {
+    font-size: 12px;
+  }
 }
