@@ -79,6 +79,16 @@ const LectureDetailPage = () => {
                 <section id="LectureLeftSection">
                     <LectureLeft lectureId={lectureId} lectureImg={lectureImg} classModify={classModify} lectureTitle={lectureTitle} lecturePrice={lecturePrice} categoryData={categoryData} detailCategoryData={detailCategoryData} />
                 </section>
+
+                <section id="LectureRightSectionButton">
+                {
+                    (myLecutureStatus)?
+                    <button type="button" onClick={clickLectureModify}>클래스 수정하기</button>:
+                    (purchaseStatus)?
+                    <button type="button" onClick={clickWatch}>클래스 시청하기</button>:
+                    <button type="button" onClick={clickRegistration}>클래스 신청하기</button>
+                }
+                </section>
                 <section id="LectureRightSection">
                     
                     {/*클래스 수정/시청/신청 잘 돌아가는지 확인용, 통신하고 구현하면 지울것*/}
