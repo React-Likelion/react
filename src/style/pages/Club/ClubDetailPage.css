@@ -1,22 +1,24 @@
 .clubDeailContainer {
-    width: 70%;
+    width: 90%;
     margin: 0 auto;
-    display: flex;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
 }
 .ClubDetailLeft {
-    width: 33%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
 
 .ClubDetailCenter {
     display: flex;
-    width: 33%;
+    width: 100%;
 }
 
 
 .ClubDetailRight {
-    width: 33%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
