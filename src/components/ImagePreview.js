@@ -46,7 +46,10 @@ const ImagePreview = ({text, setImages}) => {
                 {
                     detailImgs.map((ele)=>{
                         return <div>
-                            <div><div></div><button value={ele} onClick={removeImage}>X</button></div>
+                            <div>
+                                <div></div>
+                                <button value={ele} onClick={removeImage}>X</button>
+                            </div>
                             <img src={ele} alt="사진미리보기" />
                         </div>
                             
