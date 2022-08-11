@@ -2,13 +2,14 @@ import React from 'react';
 import '../../style/components/LecturePage/LectureLeft.css';
 import LectureLeftEditor from './LectureLeftEditor';
 
-const LectureLeft = ({lectureImg,classModify,lectureTitle}) => {
+const LectureLeft = ({lectureId,lectureImg,classModify,lectureTitle,lecturePrice,categoryData,detailCategoryData}) => {
     console.log(classModify);
+    console.log(lectureId);
     return (
         <div id="LectureLeftDiv">
             {
                 (classModify)?
-                <LectureLeftEditor titleLecture={lectureTitle} />:
+                <LectureLeftEditor lectureId={lectureId} titleLecture={lectureTitle} lecturePrice={lecturePrice} categoryData={categoryData} detailCategoryData={detailCategoryData} />:
                 <img src={lectureImg} alt="강의 이미지" />
             }
         </div>

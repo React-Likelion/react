@@ -1,22 +1,77 @@
-#lectureCategorySection {
-  border-left: 1px solid #2e493a;
+@media (min-width: 1024px) {
+  #lectureCategorySection {
+    border-left: 1px solid #2e493a;
+  }
+  #lectureCategorySection ul {
+    list-style-type: none;
+    color: #2e493a;
+  }
+  #lectureCategorySection li {
+    font-size: 18px;
+    margin: 40% 0;
+  }
+  #lectureCategorySection li li {
+    font-size: 14px;
+  }
+  #lectureCategorySection li li:hover {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  #lectureCategorySection li:hover {
+    font-size: 22px;
+    font-weight: 400;
+  }
 }
-#lectureCategorySection ul {
-  list-style-type: none;
-  color: #2e493a;
+@media (min-width: 768px) and (max-width: 1023px) {
+  #lectureCategorySection {
+    border-left: 1px solid #2e493a;
+  }
+  #lectureCategorySection ul {
+    list-style-type: none;
+    color: #2e493a;
+  }
+  #lectureCategorySection li {
+    font-size: 14px;
+    margin: 40% 0;
+  }
+  #lectureCategorySection li li {
+    font-size: 10px;
+  }
+  #lectureCategorySection li li:hover {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  #lectureCategorySection li:hover {
+    font-size: 16px;
+    font-weight: 400;
+  }
 }
-#lectureCategorySection li {
-  font-size: 18px;
-  margin: 40% 0;
-}
-#lectureCategorySection li li {
-  font-size: 14px;
-}
-#lectureCategorySection li li:hover {
-  font-size: 18px;
-  font-weight: 400;
-}
-#lectureCategorySection li:hover {
-  font-size: 22px;
-  font-weight: 400;
+@media (max-width: 767px) {
+  #lectureCategoryDiv {
+    padding: 20px;
+    position: relative;
+  }
+  #lectureCategoryDiv h2 {
+    font-size: 16px;
+  }
+  #lectureCategorySection ul {
+    list-style-type: none;
+    color: #2e493a;
+    padding: 20px;
+  }
+  #lectureCategorySection li {
+    font-size: 18px;
+    margin: 30px 0;
+  }
+  #lectureCategorySection li li {
+    font-size: 14px;
+  }
+  #lectureCategorySection li li:hover {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  #lectureCategorySection li:hover {
+    font-size: 22px;
+    font-weight: 400;
+  }
 }

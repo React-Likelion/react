@@ -88,11 +88,13 @@ function SearchBar() {
     return (
         <div className='searchBox'>
             <input id='inputBar'type="text" value={search} onChange={onChangeSearch} placeholder='검색어를 입력해주세요'/>
-            <button id='searchBtn' /* onClickSearch */>검색</button>
-            <div id='filterBox'>
-                {filterTitle.map(movie => <div><span>{movie.title}</span></div>)}
+            <div>
+              <img style={{cursor:"pointer", width:"90%",margin:"10%"}} src='/img/searchGlass.png' alt='검색돋보기' />
             </div>
-            <Footer />
+            {/* <div id='filterBox'>
+                {filterTitle.map(movie => <div><span>{movie.title}</span></div>)}
+            </div> */}
+            {/* <Footer /> */}
         </div>
     );
 }

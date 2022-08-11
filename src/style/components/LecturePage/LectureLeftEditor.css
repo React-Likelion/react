@@ -21,3 +21,19 @@
 .submit-button:hover {
   background-color: #22382c;
 }
+#categoryBox {
+  margin: 2%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#categoryBox > select {
+  width: 90%;
+  height: 100%;
+  margin: 0 5%;
+  border: 3px solid #749683;
+  color: #749683;
+  border-radius: 15px;
+  background-color: #efede1;
+  text-align: center;
+  outline: none;
+}
