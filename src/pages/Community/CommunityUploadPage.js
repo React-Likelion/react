@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from '../../components/Header.js';
 import '../../style/pages/Community/CommunityUploadPage.css';
+import ImagePreview from '../../components/ImagePreview.js';
+import { useNavigate } from 'react-router-dom';
 
 const CommunityUploadPage = () => {
+
+    const navigate = useNavigate();
+    const [images, setImages] = useState();
+
     return (
         <section className='CommunityUploadPage'>
             <Header/>
@@ -13,7 +19,7 @@ const CommunityUploadPage = () => {
                     <input placeholder='제목을 입력해주세요'></input>
                 </div>
                 <textarea id='description-textarea' placeholder='본문이나 내용을 입력해주세요'></textarea><br/>
-                <button className='picture-upload-btn'>파일 첨부하기</button>
+                <ImagePreview text={'이미지 첨부하기'} setImages={setImages}/>
                 <div className='picture-preview-box'></div>
                 <button className='upload-btn'>작성하기</button>
             </div>
