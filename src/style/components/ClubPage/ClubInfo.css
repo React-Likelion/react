@@ -1,3 +1,4 @@
+
 .clubInfo {
     width: 15vw;
     min-width: 100px;
@@ -5,22 +6,26 @@
     margin: 0 auto;
 }
 
+.clubName{
+    font-size: 30px;
+}
+
 .clubMembers {
     color: #6F6F6F;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 20px;
 }
 
 .clubInvite {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 20px;
 }
 
 .clubArticleUplodBtn {
     height: 6vh;
     line-height: 6vh;
     margin : 15px 0 20px 0;
-    font-size : 1.5rem;
+    font-size: 30px;
     color : #EFEDE1;
     background-color: #2E493A;
     border-radius: 10px;

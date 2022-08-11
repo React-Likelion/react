@@ -9,7 +9,6 @@ import Header from './../../components/Header';
 import Navbar from './../../components/Navbar';
 import ClubChat from '../../components/ClubPage/ClubChat';
 import ClubGallery from '../../components/ClubPage/ClubGallery';
-
 const ClubDetailPage = () => {
     let params = useParams();
     const navigate = useNavigate();

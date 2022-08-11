@@ -9,7 +9,7 @@ const ClubInfo = () => {
     }
 
     return (
-        <section>
+        <section className='ClubInfoContainer'>
             <div className='clubInfo'>
                 <img className='clubImg' src={`${process.env.PUBLIC_URL}/img/Example.png`} />
                 <p className='clubName'>언더파 골프 클럽</p>
