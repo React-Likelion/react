@@ -53,4 +53,18 @@ const fieldData = [
 
 const ageData = ['40대', '50대', '60대', '70대 이상'];
 
-export {lectureCategoryData, locationData, fieldData, ageData};
+const jobData = [
+    '관리자',
+    '전문가 및 관련 종사자',
+    '사무 종사자',
+    '서비스 종사자',
+    '판매 종사자',
+    '농림 어업 숙련 종사자',
+    '기은원 및 관련 기능 종사자',
+    '장치 기계 조작 및 조립 종사자',
+    '단순 노무 종사자',
+    '군인 및 학생',
+    '없음'
+]
+
+export {lectureCategoryData, locationData, fieldData, ageData, jobData};
