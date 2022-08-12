@@ -17,7 +17,7 @@ const LectureUploadPage = () => {
         title : '',
         price : 0,
         field : '',
-        tag : '',
+        tag : '선택 안함',
         description : ''
     });
 

@@ -27,8 +27,10 @@ const LoginPage = () => {
         // 로그인 통신
         axios.post(`${PROXY}/accounts/login/`, loginData)
         .then((res) => {
+            console.log(res.data);
             localStorage.setItem('react_accessToken',res.data.token.access_token);
             localStorage.setItem('react_refreshToken',res.data.token.refresh_token);
+            localStorage.setItem('email',res.data.token.email);
             localStorage.setItem('nickname',res.data.token.nickname);
             if(localStorage.getItem('react_accessToken')) {navigate('/');}
         })
