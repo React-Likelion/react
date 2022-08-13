@@ -1,6 +1,6 @@
 import { database } from './firebase';
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, serverTimestamp, query} from "firebase/firestore/lite";
+import { collection, addDoc, getDocs, serverTimestamp, query, orderBy, , doc } from "firebase/firestore/lite";
 import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 
@@ -9,7 +9,6 @@ function Chat() {
 
     const [msg, setMsg] = useState(""); //메세지
     const [chats, setChats]=useState([]); //채팅 목록
-
     const handleOnChange = (e) => {
         setMsg(e.target.value);
     };
@@ -32,7 +31,7 @@ function Chat() {
     //read messages
     useEffect(()=>{
         const getData = async () => {
-            const q = await query(usersCollectionRef);
+            const q = await query(usersCollectionRef, orderBy("timestamp","desc"));
             const data = await getDocs(q);
             const newData = data.docs.map((doc) => ({
                 ...doc.data()
@@ -43,7 +42,8 @@ function Chat() {
         getData();
     },[]);
 
-    console.log(chats)
+    // console.log(chats)
+
     return (
         
         <div className="chat-container">
