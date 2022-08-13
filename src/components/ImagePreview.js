@@ -1,27 +1,31 @@
 import { useRef , useState } from 'react';
 import '../style/components/ImagePreview.css';
 
-const ImagePreview = ({text}) => {
+const ImagePreview = ({text, setImages}) => {
 
     const selectFile = useRef("");
     const [detailImgs,setDetailImgs] = useState([]); // 웹상에 보여지는 url 리스트
-    
+
+    // 업로드 하는 함수
     const handleImageUpload = (e) => {
         const fileArr = e.target.files;
-        let fileURLs = [];
-       
-        let file;
+        setImages(e.target.files);
+
+        const fileUrls = [];
+        let file; // file 객체 하나 저장
         let filesLength = fileArr.length > 5 ? 5 : fileArr.length;
-    
+        
         for (let i = 0; i < filesLength; i++) {
           file = fileArr[i];
         
           let reader = new FileReader();
+          // 읽기가 성공적으로 완료되면 이미지 URL 저장
           reader.onload = () => {
-            console.log(reader.result);
-            fileURLs[i] = reader.result;
-            setDetailImgs([...fileURLs]);
+            fileUrls.push(reader.result);
+            setDetailImgs([...fileUrls]);
           };
+          // 바이너리 파일을 Base64 Encode 문자열로 변환
+          // readAsDataURL method : byte to string
           reader.readAsDataURL(file);
         }
       };
@@ -42,7 +46,10 @@ const ImagePreview = ({text}) => {
                 {
                     detailImgs.map((ele)=>{
                         return <div>
-                            <div><div></div><button value={ele} onClick={removeImage}>X</button></div>
+                            <div>
+                                <div></div>
+                                <button value={ele} onClick={removeImage}>X</button>
+                            </div>
                             <img src={ele} alt="사진미리보기" />
                         </div>
                             

@@ -2,7 +2,7 @@ import React from 'react';
 import LectureItem from './LectureItem';
 import '../../style/components/LecturePage/LectureBox.css';
 
-const LectureBox = () => {
+const LectureBox = ({categoryData,detailCategoryData}) => {
     //axios로 필터링 된 강의에 대한 정보들을 받아옴
     //정보의 형태는 [object]
     //그걸 map형태로 뿌려줌
@@ -44,7 +44,7 @@ const LectureBox = () => {
         <div id="LectureBoxDiv">
             {
                 filterLecture.map((ele)=>{
-                    return <LectureItem key={ele.id} title={ele.title} img={ele.img} price={ele.price} />;
+                    return <LectureItem id={ele.id} key={ele.id} title={ele.title} img={ele.img} price={ele.price} categoryData={categoryData} detailCategoryData={detailCategoryData} />;
                 })
             }
         </div>

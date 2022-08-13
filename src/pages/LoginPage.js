@@ -25,10 +25,15 @@ const LoginPage = () => {
         });
     };
     const handleClickLogin = (e)=>{
+        // 입력 안된 값 처리
+        if(Object.values(loginData).includes('')) {
+            alert("아이디 또는 비밀번호가 입력되지 않았습니다.");
+            return;
+        }
         // 로그인 통신
         axios.post(`${PROXY}/accounts/login/`, loginData)
         .then((res) => {
-            // console.log(res);
+            console.log(res.data);
             localStorage.setItem('react_accessToken',res.data.token.access_token);
             localStorage.setItem('react_refreshToken',res.data.token.refresh_token);
             localStorage.setItem('email',res.data.token.email);

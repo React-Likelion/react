@@ -1,49 +1,123 @@
-#LectureDetailDiv {
-  display: flex;
-  width: 70%;
-  margin: 0 auto;
-  justify-content: space-evenly;
+@media (min-width: 1024px) {
+  #LectureDetailDiv {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+  }
+  #LectureLeftSection {
+    width: 65%;
+  }
+  #LectureRightSection {
+    width: 25%;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 2%;
+  }
+  #LectureRightSection button {
+    border: none;
+    background-color: #2e493a;
+    color: #efede1;
+    padding: 3%;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  #LectureRightSection button:hover {
+    background-color: #22382c;
+  }
+  #likeArticle {
+    text-align: center;
+  }
+  #likeArticle span,
+  #likeArticle img {
+    margin: 3%;
+  }
+  #LectureRightSectionButton {
+    display: none;
+  }
+  #modalBtn {
+    border: none;
+    background-color: #2e493a;
+    color: #efede1;
+    padding: 3%;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    margin: 3%;
+  }
+  #modalDiv {
+    padding: 3%;
+  }
 }
-#LectureLeftSection {
-  width: 65%;
-}
-#LectureRightSection {
-  width: 25%;
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  padding: 2%;
-}
-#LectureRightSection button {
-  border: none;
-  background-color: #2e493a;
-  color: #efede1;
-  padding: 3%;
-  border-radius: 10px;
-  display: block;
-  margin: 0 auto;
-  cursor: pointer;
-}
-#LectureRightSection button:hover {
-  background-color: #22382c;
-}
-#likeArticle {
-  text-align: center;
-}
-#likeArticle span,
-#likeArticle img {
-  margin: 3%;
-}
-#modalBtn {
-  border: none;
-  background-color: #2e493a;
-  color: #efede1;
-  padding: 3%;
-  border-radius: 10px;
-  display: block;
-  margin: 0 auto;
-  cursor: pointer;
-  margin: 3%;
-}
-#modalDiv {
-  padding: 3%;
+@media (min-width: 768px) and (max-width: 1023px) {
+  #LectureDetailDiv {
+    width: 70%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+  }
+  #LectureLeftSection {
+    width: 100%;
+  }
+  #LectureRightSection {
+    width: 40%;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 2%;
+    display: none;
+  }
+  #LectureRightSectionButton {
+    display: block;
+    margin: 3% 0;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+  }
+  #LectureRightSectionButton button {
+    border: none;
+    background-color: #2e493a;
+    color: #efede1;
+    padding: 2%;
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  #LectureRightSection button {
+    border: none;
+    background-color: #2e493a;
+    color: #efede1;
+    padding: 3%;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  #LectureRightSection button:hover {
+    background-color: #22382c;
+  }
+  #likeArticle {
+    text-align: center;
+  }
+  #likeArticle span,
+  #likeArticle img {
+    margin: 3%;
+  }
+  #modalBtn {
+    border: none;
+    background-color: #2e493a;
+    color: #efede1;
+    padding: 3%;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    margin: 3%;
+  }
+  #modalDiv {
+    padding: 3%;
+  }
 }

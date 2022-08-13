@@ -29,15 +29,26 @@ const SignUpPage = () => {
 
     const clickSignUp = (e)=>{
         // e.preventDefault();
+        // 입력 안된 값 처리
+        if (Object.values(signUpData).includes('')) {
+            alert("입력되지 않은 값이 있습니다.");
+            return;
+        }
+        
         //회원가입 통신
         axios.post(`${PROXY}/accounts/signup/`, signUpData)
         .then((res) => {
-            // console.log(res);
             alert("입력한 이메일을 확인해 계정을 활성화 해주세요 !");
         })
         .catch((err) => {
-            // console.log(err);
-            alert("회원가입에 실패하였습니다.");
+            console.log(err);
+            const errText = [];
+            Object.keys(err.response.data).map((ele, idx) => {
+                if(Object.keys(signUpData).includes(ele)) {
+                    errText.push(err.response.data[`${ele}`][0]+"\n");
+                }
+            })
+            alert(errText);
         })
     };
     const [registerEmail, setRegisterEmail] = useState("");
@@ -45,7 +56,7 @@ const SignUpPage = () => {
     
     // `회원가입` 버튼의 onClick에 할당
     const register = async () => {
-        //데이터의 이메일, 비밀번호 저장
+        // 데이터의 이메일, 비밀번호 저장
         setRegisterEmail(signUpData.email);
         setRegisterPassword(signUpData.password);
         try {

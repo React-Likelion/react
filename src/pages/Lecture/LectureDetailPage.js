@@ -13,12 +13,16 @@ const LectureDetailPage = () => {
     const lectureTitle = location.state.lecture[0].lectureTitle;
     const lectureImg = location.state.lecture[0].lectureImg;
     const lecturePrice = location.state.lecture[0].lecturePrice;
+    const categoryData = location.state.lecture[0].categoryData;
+    const detailCategoryData = location.state.lecture[0].detailCategoryData;
+
     const [purchaseStatus,setPurchaseStatus] = useState(false);
     const [myLecutureStatus,setMyLectureStatus] = useState(false);
     const [classModify,setClassModify] = useState(false);
     const [likeState,setLikeState] = useState(false);
     const [likeCount,setLikeCount] = useState(0);
     const [applicationModal,setApplicationModal] = useState(false);
+    console.log(location);
 
     useEffect(()=>{
         //강의를 구매하였는지에 대한 state 실행
@@ -73,7 +77,17 @@ const LectureDetailPage = () => {
             <Navbar val={'lecture'}/>
             <div id="LectureDetailDiv">
                 <section id="LectureLeftSection">
-                    <LectureLeft lectureImg={lectureImg} classModify={classModify} lectureTitle={lectureTitle} />
+                    <LectureLeft lectureId={lectureId} lectureImg={lectureImg} classModify={classModify} lectureTitle={lectureTitle} lecturePrice={lecturePrice} categoryData={categoryData} detailCategoryData={detailCategoryData} />
+                </section>
+
+                <section id="LectureRightSectionButton">
+                {
+                    (myLecutureStatus)?
+                    <button type="button" onClick={clickLectureModify}>클래스 수정하기</button>:
+                    (purchaseStatus)?
+                    <button type="button" onClick={clickWatch}>클래스 시청하기</button>:
+                    <button type="button" onClick={clickRegistration}>클래스 신청하기</button>
+                }
                 </section>
                 <section id="LectureRightSection">
                     

@@ -15,7 +15,7 @@
 }
 
 .clubArticleTitleNum {
-    font-size: 1.2rem;
+    font-size: 20px;
     margin-left: 20px;
     font-weight: bold;
 }
@@ -29,13 +29,13 @@
 
 .clubArticleTitleContent {
     margin-top: 15px;
-    font-size: 1.2rem;
+    font-size: 23px;
     margin-right: 10px;
     font-weight: bold;
 }
 
 .clubArticleTitleComment {
-    font-size: 1.1rem;
+    font-size: 20px;
     font-weight: bold;
     color: #FF0000;
 }
@@ -50,5 +50,5 @@
 .clubArticleDate {
     width: 26%;
     color: #2E493A;
-    font-size: 1rem;
+    font-size: 17px;
 }
