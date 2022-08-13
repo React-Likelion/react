@@ -2,6 +2,7 @@ import { database } from './firebase';
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, serverTimestamp, query} from "firebase/firestore/lite";
 import { useParams } from 'react-router-dom';
+import Header from '../components/Header';
 
 function Chat() {
     const {id}=useParams();
@@ -23,7 +24,7 @@ function Chat() {
         try {
             const res = await addDoc(usersCollectionRef, newChat);
             setChats([...chats, newChat]);
-        console.log(res); // res는 undefined입니다.
+            console.log(res); // res는 undefined입니다.
         } catch (e) {
             console.log(e);
         }
@@ -44,8 +45,9 @@ function Chat() {
 
     console.log(chats)
     return (
+        
         <div className="chat-container">
-        <div className="chat-top">헤더</div>
+            <Header/>
         <div className="chat-middle">
             채팅페이지
         {

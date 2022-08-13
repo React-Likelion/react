@@ -84,7 +84,6 @@ const SignUpPage = () => {
                     <input type="text" onChange={handleChangeData} name='nickname' placeholder='닉네임을 입력하세요' /><br />
                     <input type="text" name='email' onChange={handleChangeData} placeholder='이메일' />
                     <input type="text" onChange={handleChangeData} name='birth' placeholder='생년월일을 입력하세요 (ex)0000-00-00)' /><br />
-                    <input type="text" onChange={handleChangeData} name='job' placeholder='직업을 입력하세요' /><br />
                     <select id='signup-select-box' onChange={handleChangeData} name='job'>
                         <option value='' defaultValue>선택</option>
                         {jobData.map((ele, idx) => <option key={idx} value={ele}>{ele}</option>)}

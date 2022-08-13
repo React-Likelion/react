@@ -55,7 +55,6 @@ console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
         <Route path='/club/*' element={<Club/>}/>
         <Route path='/community/*' element={<Community/>}/>
         <Route path='/consulting' element={<ConsultingPage/>}/>
-        <Route path='/chat' element={<Chat/>}/>
         <Route path="*" element={<div>404</div>}/>
       </Routes>
       :
@@ -84,7 +83,7 @@ function Mentoring() {
           <Route path='' element={<MentoringPage/>}/>
           <Route path='upload' element={<MentoringUploadPage/>}/>
           <Route path='detail/:id' element={<MentoringDetailPage/>}/>
-          {/* <Route path='detail/:id/room/:id' element={<Chat/>}/> */}
+          <Route path='detail/:id/room/:id' element={<Chat/>}/>
       </Routes>
   );
 };
