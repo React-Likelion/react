@@ -1,3 +1,8 @@
+.tallbackGround{
+        background-color: rgba(255, 255, 255, 0.3);
+
+}
+
 .backGround{
     border: 1px solid;
     border-radius: 8px;

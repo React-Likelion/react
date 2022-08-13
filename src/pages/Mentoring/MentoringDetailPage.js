@@ -5,9 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MentoringDetailPage = () => {
     const navigate = useNavigate();
-    
-    
-        //먼저 멘토멘티 리스트 받아오기
+    //먼저 멘토멘티 리스트 받아오기
     // axios.get(`/mentorings/${id}`)
     //     .then(response=>{
     //         if(response.data.success){
@@ -26,7 +24,7 @@ const MentoringDetailPage = () => {
                     {/* {title} */}
                 </div>
                 <div id='detailImgBox'>
-                    <img src='/img/Example.png' alt='이미지'/>
+                    <img src='/img/Example.png' alt='이미지' />
                 </div>
                 <section className='detailSmallBox'>
                     <div id='detailContentBox'>
@@ -36,8 +34,8 @@ const MentoringDetailPage = () => {
                     </div>
                     <section className='detailProfileBox'>
                         <div id='profileImg'>
-                            <img src='/img/Profile.png' alt='이미지'/>
-                            <br/>닉네임
+                            <img src='/img/Profile.png' alt='이미지' />
+                            <br />닉네임
                         </div>
                         <section className='profileDetailBox'>
                             <div id='info'>멤버 2 명 / 정원 5 명 {/* 멤버{member_cnt}명/정원{limit}명 */}</div>
@@ -48,11 +46,12 @@ const MentoringDetailPage = () => {
                             </div>
                         </section>
                     </section>
-                    <div className='joinBtn' onClick={()=>navigate(`chating/${id}`)}>입장 신청하기</div>
+                    <div className='joinBtn' onClick={() => navigate(`room/${id}`)}>입장 신청하기</div>
                 </section>
             </div>
         </div>
     );
 };
 
-export default MentoringDetailPage; 
+export default MentoringDetailPage;
+

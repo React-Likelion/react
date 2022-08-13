@@ -3,9 +3,15 @@ import '../style/pages/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
 import { PROXY } from '../data/serverUrl';
 import axios from 'axios';
+import { 
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signOut,
+} from 'firebase/auth';
+import { auth } from './../services/firebase';
 
 const LoginPage = () => {
-
+    
     const navigate = useNavigate();
     const [loginData,setLoginData] = useState({
         identification:'',
@@ -43,6 +49,35 @@ const LoginPage = () => {
         })
     };
 
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword]=useState("");
+    const [user,setUser]=useState({});
+
+    onAuthStateChanged(auth, (currentUser)=>{
+        setUser(currentUser);
+    })
+
+    //로그인
+    const login = async () => {
+        setLoginEmail(loginData.identification);
+        setLoginPassword(loginData.password);
+        try {
+            const user = await signInWithEmailAndPassword(
+                auth,
+                loginEmail,
+                loginPassword
+            );
+            console.log(user);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    //로그아웃
+    const logout = async () => {
+        await signOut(auth);
+    };
+
     return (
         <section id="login-container">
             <section id="login-left">
@@ -53,7 +88,10 @@ const LoginPage = () => {
                     <h1>로그인</h1>
                     <input type="text" onChange={handleChangeData} name='identification' placeholder='   아이디를 입력하세요' /><br />
                     <input type="password" onChange={handleChangeData} name='password' placeholder='   비밀번호를 입력하세요' /><br /><br />
-                    <button onClick={handleClickLogin} id="login-btn">로그인하기</button>
+                    <button onClick={() => {
+                        handleClickLogin()
+                        login()
+                        }} id="login-btn">로그인하기</button>
                     <div id='go-sign-text'><br/>아직 회원이 아니신가요 ? <span onClick={() => navigate('/signup')}>회원가입 하러가기</span></div>
                 </div>
             </section>

@@ -18,11 +18,10 @@ import MentoringPage from './pages/Mentoring/MentoringPage';
 import MentoringUploadPage from './pages/Mentoring/MentoringUploadPage';
 import MentoringDetailPage from './pages/Mentoring/MentoringDetailPage';
 import LectureDetailPage from './pages/Lecture/LectureDetailPage';
-import MentoringChat from './components/MentoringPage/MentoringChat';
 import ClubDetailPage from './pages/Club/ClubDetailPage';
 import ClubPictureUploadPage from './pages/Club/ClubPictureUploadPage';
 import ClubGalleryDetail from './pages/Club/ClubGalleryDetail';
-
+import Chat from './services/Chat';
 
 
 const App = () => {
@@ -56,6 +55,7 @@ console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
         <Route path='/club/*' element={<Club/>}/>
         <Route path='/community/*' element={<Community/>}/>
         <Route path='/consulting' element={<ConsultingPage/>}/>
+        <Route path='/chat' element={<Chat/>}/>
         <Route path="*" element={<div>404</div>}/>
       </Routes>
       :
@@ -84,7 +84,7 @@ function Mentoring() {
           <Route path='' element={<MentoringPage/>}/>
           <Route path='upload' element={<MentoringUploadPage/>}/>
           <Route path='detail/:id' element={<MentoringDetailPage/>}/>
-          <Route path='detail/:id/chating/:id' element={<MentoringChat/>}/>
+          {/* <Route path='detail/:id/room/:id' element={<Chat/>}/> */}
       </Routes>
   );
 };
