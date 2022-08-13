@@ -20,7 +20,9 @@
     border-radius: 8px;
     margin-right: 2%;
     margin-bottom: 0.5%;
-    width: 5vh;
+    width: auto;
+    padding-left: 1%;
+    padding-right: 1%;
     text-align: center;
     background-color: #7DC59D;
     color: white;
@@ -40,6 +42,9 @@
 .showDetail{
     /* border: 1px solid; */
     width: 75%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .showTitle{
     color: #2E493A;
@@ -49,6 +54,9 @@
 .showContent{
     border-bottom: 1px solid;
     color: #2E493A;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .showProfile{
     display: flex;

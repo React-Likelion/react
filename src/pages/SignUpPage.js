@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { PROXY } from '../data/serverUrl';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './../services/firebase';
+import { jobData } from '../data/CategoryData';
 
 const SignUpPage = () => {
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ const SignUpPage = () => {
         axios.post(`${PROXY}/accounts/signup/`, signUpData)
         .then((res) => {
             // console.log(res);
-            alert("입력한 이메일을 확인해주세요 !");
+            alert("입력한 이메일을 확인해 계정을 활성화 해주세요 !");
         })
         .catch((err) => {
             // console.log(err);
@@ -73,6 +74,10 @@ const SignUpPage = () => {
                     <input type="text" name='email' onChange={handleChangeData} placeholder='이메일' />
                     <input type="text" onChange={handleChangeData} name='birth' placeholder='생년월일을 입력하세요 (ex)0000-00-00)' /><br />
                     <input type="text" onChange={handleChangeData} name='job' placeholder='직업을 입력하세요' /><br />
+                    <select id='signup-select-box' onChange={handleChangeData} name='job'>
+                        <option value='' defaultValue>선택</option>
+                        {jobData.map((ele, idx) => <option key={idx} value={ele}>{ele}</option>)}
+                    </select>
                     <button type="button" onClick={()=>{
                         clickSignUp()
                         register()

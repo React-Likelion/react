@@ -1,6 +1,5 @@
 import React, { useState }from 'react';
 import '../../style/components/MentoringPage/MentoringChat.css'
-import Header from './../Header';
 
 function MentoringChat() {
     const [ chat, setChat ] = useState({
@@ -21,12 +20,9 @@ function MentoringChat() {
         }
         setChatData([...chatData, newChat])
     }
-    
-    
 
     return (
         <div>
-            <Header />
             <div className='backGround'>
                 <div className='viewArea'>
                     {chatData.map((chat)=>(<div id='veiwBox'>{chat.contents}</div>))}
