@@ -9,9 +9,6 @@ function MentoringItem({id, image, title, description, tag1, tag2, tag3, limit, 
     const onClickItemBox = () => {
         navigate(`/mentoring/detail/${id}`)
     }
-    
-    console.log(image)
-    console.log(typeof(image))
 
     return (
         <div className='mentoringItem' onClick={onClickItemBox}>
