@@ -4,6 +4,8 @@ import Header from '../../components/Header.js';
 import '../../style/pages/Club/ClubUploadPage.css';
 import ImagePreview from '../../components/ImagePreview.js';
 import { locationData, fieldData, ageData } from '../../data/CategoryData.js';
+import axios from 'axios';
+import { PROXY } from '../../data/serverUrl.js';
 
 const ClubUploadPage = () => {
 
@@ -13,12 +15,13 @@ const ClubUploadPage = () => {
 
     const [clubInfo, setClubInfo] = useState({
         location: '',
-        title: '',
+        name: '',
         field: '',
         age_group: '',
         limit: '', 
         description: '',
-        leader_id: ''
+        leader_id: localStorage.getItem('react_userId'),
+        member: localStorage.getItem('react_userId')
     });
 
     const handleClubInfo = (e) => {
@@ -42,7 +45,41 @@ const ClubUploadPage = () => {
             alert("정원은 3명 이상의 숫자 형태이어야 합니다."); 
         }
         // 동호회 등록 통신
+        let form_data = new FormData();
+        form_data.append('image', images[0]);
+        // 나머지 데이터들은 다 JSON으로 맞춰주기
+        form_data.append('name', clubInfo.name);
+        form_data.append('location', clubInfo.location);
+        form_data.append('title', clubInfo.title);
+        form_data.append('description', clubInfo.description);
+        form_data.append('field', clubInfo.field);
+        form_data.append('age_group', clubInfo.age_group);
+        form_data.append('limit', clubInfo.limit);
+        form_data.append('leader_id', clubInfo.leader_id);
+        form_data.append('member', clubInfo.member);
         
+        // 2. axios로 전송
+        axios.post(`${PROXY}/clubs/`, form_data, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+            }
+        })
+        .then((res) => {
+            console.log(res);
+            navigate('/club');
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
+        // formData 출력
+        // for (let key of form_data.keys()) {
+        //     console.log(key);
+        // }
+        // for (let value of form_data.values()) {
+        //     console.log(value);
+        // }
     }
 
 
@@ -57,8 +94,8 @@ const ClubUploadPage = () => {
                         <option value='' defaultValue>선택</option>
                         {locationData.map((ele, idx) => <option key={idx} value={ele}>{ele}</option>)}
                     </select>
-                    <div>모임 이름</div>
-                    <input type='text' onChange={handleClubInfo} name='title'></input>
+                    <div>동호회명</div>
+                    <input type='text' onChange={handleClubInfo} name='name'></input>
                     <div>분야</div>
                     <select onChange={handleClubInfo} name='field'>
                         <option value='' defaultValue>선택</option>
@@ -72,7 +109,7 @@ const ClubUploadPage = () => {
                     <input type='text' onChange={handleClubInfo} name='limit' placeholder='   3명 이상의 숫자로 입력해주세요.'></input>
                 </div>
                 <textarea onChange={handleClubInfo} name='description' id='description-textarea' placeholder='수업이나 활동 내용 입력'></textarea><br/>
-                <ImagePreview text={'대표 사진 첨부하기'} setImages={setImages}/>
+                <ImagePreview text={'대표 사진 첨부하기'} setImages={setImages} imgCnt={1}/>
                 <button className='upload-btn' onClick={clickUpload}>등록하기</button>
             </div>
         </section>

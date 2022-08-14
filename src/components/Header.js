@@ -19,9 +19,11 @@ const Header = () => {
     }
     const goLogout = () => {
         // 로그아웃 통신 추가
-        localStorage.removeItem('nickname');
-        localStorage.removeItem('react_refreshToken');
         localStorage.removeItem('react_accessToken');
+        localStorage.removeItem('react_refreshToken');
+        localStorage.removeItem('react_userId');
+        localStorage.removeItem('react_email');
+        localStorage.removeItem('react_nickname');
         navigate("/");
     }
     const goMypage = () => {

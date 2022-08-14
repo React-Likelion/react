@@ -36,8 +36,9 @@ const LoginPage = () => {
             console.log(res.data);
             localStorage.setItem('react_accessToken',res.data.token.access_token);
             localStorage.setItem('react_refreshToken',res.data.token.refresh_token);
-            localStorage.setItem('email',res.data.token.email);
-            localStorage.setItem('nickname',res.data.token.nickname);
+            localStorage.setItem('react_userId', res.data.token.user);
+            localStorage.setItem('react_email',res.data.token.email);
+            localStorage.setItem('react_nickname',res.data.token.nickname);
             if(localStorage.getItem('react_accessToken')) {navigate('/');}
         })
         .catch((err) => {
