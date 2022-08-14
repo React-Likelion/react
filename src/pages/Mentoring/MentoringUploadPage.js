@@ -4,6 +4,8 @@ import '../../style/pages/Mentoring/MentoringUploadPage.css';
 import ImagePreview from '../../components/ImagePreview.js';
 import { useNavigate } from 'react-router-dom';
 import { locationData, fieldData, ageData } from '../../data/CategoryData.js';
+import { PROXY } from '../../data/serverUrl.js';
+import axios from 'axios';
 
 const MentoringUploadPage = () => {
 
@@ -13,6 +15,7 @@ const MentoringUploadPage = () => {
     const [clicked, setClicked] = useState([]);
 
     const [mentoringInfo, setMentoringInfo] = useState({
+        user_id: localStorage.getItem('react_userId'),
         location: '',
         title: '',
         description: '',
@@ -24,7 +27,7 @@ const MentoringUploadPage = () => {
 
     const handleMentoringInfo = (e) => {
         if(e.target.name === 'age_group') {
-            const modify = [false, false, false, false];
+            const modify = [false, false, false];
             modify[e.target.id] = true;
             setClicked(modify);
         } 
@@ -80,7 +83,42 @@ const MentoringUploadPage = () => {
             alert("정원은 3명 이상의 숫자 형태이어야 합니다."); 
         }
         // 멘토링 등록 통신
+        let form_data = new FormData();
+        form_data.append('image', images[0]);
+        // 나머지 데이터들은 다 JSON으로 맞춰주기
+        form_data.append('user_id', mentoringInfo.user_id);
+        form_data.append('location', mentoringInfo.location);
+        form_data.append('title', mentoringInfo.title);
+        form_data.append('description', mentoringInfo.description);
+        form_data.append('field', mentoringInfo.field);
+        form_data.append('age_group', mentoringInfo.age_group);
+        form_data.append('limit', mentoringInfo.limit);
+        form_data.append('tag', mentoringInfo.tags[0]);
+        form_data.append('tag2', mentoringInfo.tags[1]);
+        form_data.append('tag3', mentoringInfo.tags[2]);
         
+        // 2. axios로 전송
+        axios.post(`${PROXY}/mentorings/`, form_data, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+            }
+        })
+        .then((res) => {
+            console.log(res);
+            navigate('/mentoring');
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
+        // formData 출력
+        // for (let key of form_data.keys()) {
+        //     console.log(key);
+        // }
+        // for (let value of form_data.values()) {
+        //     console.log(value);
+        // }
     }
 
     return (
@@ -94,7 +132,7 @@ const MentoringUploadPage = () => {
                         <option value='' defaultValue>선택</option>
                         {locationData.map((ele, idx) => <option key={idx} value={ele}>{ele}</option>)}
                     </select>
-                    <div>제목</div>
+                    <div>멘토링명</div>
                     <input type='text' onChange={handleMentoringInfo} name='title'></input>
                     <div>멘토링 설명</div>
                     <input type='text' onChange={handleMentoringInfo} name='description'></input>
@@ -129,7 +167,7 @@ const MentoringUploadPage = () => {
                     }
                     <div id='mentoring-tag-box'><div className='mentoring-tag'></div></div>
                 </div>
-                <ImagePreview text={'대표 사진 첨부하기'} setImages={setImages}/>
+                <ImagePreview text={'대표 사진 첨부하기'} setImages={setImages} imgCnt={1}/>
                 <div className='picture-preview-box'></div>
                 <button className='upload-btn' onClick={clickUpload}>등록하기</button>
             </div>
