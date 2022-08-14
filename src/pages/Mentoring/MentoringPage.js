@@ -5,6 +5,7 @@ import MentoringBox from './../../components/MentoringPage/MentoringBox';
 import '../../style/pages/Mentoring/MentoringPage.css'
 import { useNavigate } from 'react-router-dom';
 import Filter from './../../components/Filter';
+import Footer from './../../components/Footer';
 
 
 const MentoringPage = () => {
@@ -22,7 +23,7 @@ const MentoringPage = () => {
         navigate('upload');
     }
     return (
-        <div className='pageAll'>
+        <div>
             <Header />
             <Navbar val={'mentoring'}/>
             <div className='postBtnBox'>
@@ -46,6 +47,7 @@ const MentoringPage = () => {
             <section className='viewSection'>
                 <MentoringBox />
             </section>
+            <Footer/>
         </div>
     );
 };
