@@ -4,6 +4,7 @@ import '../../style/pages/Mentoring/MentoringDetailPage.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
 import { PROXY } from '../../data/serverUrl';
+import Footer from './../../components/Footer';
 
 const MentoringDetailPage = () => {
     const navigate = useNavigate();
@@ -50,6 +51,7 @@ const MentoringDetailPage = () => {
                     <div className='joinBtn' onClick={() => navigate(`room/${mentoringList.id}`)}>입장 신청하기</div>
                 </section>
             </div>
+            <Footer/>
         </div>
     );
 };
