@@ -1,7 +1,7 @@
 import { useRef , useState } from 'react';
 import '../style/components/ImagePreview.css';
 
-const ImagePreview = ({text, setImages}) => {
+const ImagePreview = ({text, setImages, imgCnt}) => {
 
     const selectFile = useRef("");
     const [detailImgs,setDetailImgs] = useState([]); // 웹상에 보여지는 url 리스트
@@ -9,13 +9,17 @@ const ImagePreview = ({text, setImages}) => {
     // 업로드 하는 함수
     const handleImageUpload = (e) => {
         const fileArr = e.target.files;
+        if(fileArr.length > imgCnt) {
+            alert(`사진 첨부는 ${imgCnt}개 까지 가능합니다.`);
+            return;
+        }
         setImages(e.target.files);
-
+        
         const fileUrls = [];
         let file; // file 객체 하나 저장
-        let filesLength = fileArr.length > 5 ? 5 : fileArr.length;
+        // let filesLength = fileArr.length > 5 ? 5 : fileArr.length;
         
-        for (let i = 0; i < filesLength; i++) {
+        for (let i = 0; i < imgCnt; i++) {
           file = fileArr[i];
         
           let reader = new FileReader();
