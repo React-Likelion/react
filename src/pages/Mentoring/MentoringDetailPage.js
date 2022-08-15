@@ -10,7 +10,6 @@ const MentoringDetailPage = () => {
     const navigate = useNavigate();
     const {id} = useParams();
     const [mentoringList, setmentoringList] = useState([]); //멘토링 정보 리스트들
-    const [limit, setLimit] = useState(); //채팅방 최대 인원수
     const [member, setMember] = useState(); //채팅방에 닉네임이 있을때 채팅방에 접근 가능
     const Token = localStorage.getItem('react_accessToken');
     
@@ -19,8 +18,8 @@ const MentoringDetailPage = () => {
         axios.get(`${PROXY}/mentorings/${id}/`)
             .then((res)=>{
                 if(res.data){
-                    setmentoringList(res.data);//가져온 모든 리스트를 배열에 저장한다. 
-                    
+                    console.log(res)
+                    setmentoringList(res.data);//가져온 모든 리스트를 배열에 저장한다.
                 }else{
                     alert('멘토링 리스트를 가져오는데 실패했습니다.')
                 }
@@ -35,14 +34,19 @@ const MentoringDetailPage = () => {
             }
         })
             .then((res) => {
-                console.log(res);
-                alert('입장하였습니당');
-                navigate(`room/${mentoringList.id}`,{
-                    state: {
-                        title: mentoringList.title,
-                    }
-                });
-            })
+                // if(mentoringList.limit === mentoringList.member_cnt){
+                //     alert('인원이 가득 찼습니다')
+                // }else{
+                    alert('입장에 성공하였습니다');
+                    navigate(`room/${mentoringList.id}`,{
+                        state: {
+                            title: mentoringList.title,
+                        }
+                    });
+                }
+                // console.log(res);
+            // }
+            )
             .catch(()=>{alert('로그인 후에 시도해주세요!')})
     }
 

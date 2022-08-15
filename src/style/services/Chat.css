@@ -3,7 +3,7 @@
     flex-direction: column;
     max-width: 40rem;
     background-color: rgba(255, 255, 255, 0.3);
-    /* box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); */
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     border-radius: 0.5rem;
     overflow: hidden;
     margin-left: auto;
@@ -12,12 +12,26 @@
     padding: 2%;
     height: 69vh;
 }
+.topBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 .titleP{
     color: #2E493A;
     font-size: large;
     font-weight: bolder;
-    margin-left: 10%;
     margin-bottom: 3%;
+}
+.delbtn{
+    width: auto;
+    height: 70%;
+    cursor: pointer;
+    border: none;
+    background-color: #749683;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 15px;
 }
 .info-box{
     width: 80%;
@@ -33,6 +47,20 @@
     overflow: auto;
     padding: 2%;
     height: 90%;
+}
+.chat-box::-webkit-scrollbar {
+    width: 10px; /*스크롤바의 너비*/
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: #9e9d94; /*스크롤바의 색상*/
+    opacity: 30%;
+    border-radius: 0.5rem;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background-color: #fffdf6; /*스크롤바 트랙 색상*/
+    border-radius: 0.5rem;
 }
 .nicknameBox-your{
     margin-left: 3px;
