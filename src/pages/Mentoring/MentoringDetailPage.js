@@ -9,9 +9,11 @@ import Footer from './../../components/Footer';
 const MentoringDetailPage = () => {
     const navigate = useNavigate();
     const {id} = useParams();
-    const [mentoringList, setmentoringList] = useState([]);
+    const [mentoringList, setmentoringList] = useState([]); //멘토링 정보 리스트들
+    const [limit, setLimit] = useState(); //채팅방 최대 인원수
+    const [member, setMember] = useState(); //채팅방에 닉네임이 있을때 채팅방에 접근 가능
     const Token = localStorage.getItem('react_accessToken');
-
+    
     useEffect(() => {
         //먼저 멘토멘티 리스트 받아오기
         axios.get(`${PROXY}/mentorings/${id}/`)
@@ -32,13 +34,14 @@ const MentoringDetailPage = () => {
                 'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
             }
         })
-            .then(() => {
-                if(!Token){
-                    alert('로그인 후에 시도해주세요!')
-                } else{
-                    alert('입장하였습니당');
-                    navigate(`room/${mentoringList.id}`);
-                }
+            .then((res) => {
+                console.log(res);
+                alert('입장하였습니당');
+                navigate(`room/${mentoringList.id}`,{
+                    state: {
+                        title: mentoringList.title,
+                    }
+                });
             })
             .catch(()=>{alert('로그인 후에 시도해주세요!')})
     }
