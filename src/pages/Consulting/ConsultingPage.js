@@ -7,7 +7,7 @@ const ConsultingPage = () => {
         <div>
             <Header />
             <Navbar />
-            컨설팅페이지
+            
         </div>
     );
 };

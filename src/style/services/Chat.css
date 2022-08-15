@@ -3,55 +3,86 @@
     flex-direction: column;
     max-width: 40rem;
     background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    /* box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); */
     border-radius: 0.5rem;
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2%;
+    margin-top: 3%;
+    padding: 2%;
+    height: 69vh;
+}
+.titleP{
+    color: #2E493A;
+    font-size: large;
+    font-weight: bolder;
+    margin-left: 10%;
+    margin-bottom: 3%;
+}
+.info-box{
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    background-color: #EFEDE1;
+    height: 90%;
+    border-radius: 0.5rem;
 }
 .chat-box{
     display: flex;
     flex-direction: column;
     overflow: auto;
-    height: 40vh;
-    padding: 1%;
+    padding: 2%;
+    height: 90%;
+}
+.nicknameBox-your{
+    margin-left: 3px;
+    width: 30%;
+    position: relative;
+    left: 1%;
+    font-size: small;
 }
 .chat-smallbox-your{
-    background-color: wheat;
+    background-color: #fffdf6;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     margin: 2px;
-    padding: 3px;
+    padding: 10px;
     width: 30%;
     position: relative;
     left: 1%;
 }
 .chat-smallbox-my{
-    background-color: #98DFFF;
+    background-color: #749683;
     color: white;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     margin: 2px;
-    padding: 3px;
+    padding: 10px;
     width: 30%;
     position: relative;
     left: 68.5%;
 }
 .inputbox{
     border-radius: 0.5rem;
+    height: 10%;
+}
+form{
+    height: 100%;
 }
 .inputbox input{
     width: 80%;
+    height: 98%;
     border: 0px solid;
     border-radius: 0.5rem;
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
+    outline: none;
 }
 .inputbox button{
     width: 20%;
+    height: 100%;
     border: 0px;
     border-radius: 0.3rem;
     border-bottom-left-radius: 0px;

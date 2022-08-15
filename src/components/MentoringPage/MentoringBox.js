@@ -10,7 +10,7 @@ function MentoringBox({sortValue}) {
     console.log(`${PROXY}/mentorings/${sortValue}`)
 
     useEffect(() => {
-        //먼저 멘토멘티 리스트 받아오기(최신순)
+        //먼저 멘토멘티 리스트 받아오기
         axios.get(`${PROXY}/mentorings/${sortValue}`)
             .then((res)=>{
                 if(res.data){
@@ -19,7 +19,7 @@ function MentoringBox({sortValue}) {
                     alert('멘토링 리스트를 가져오는데 실패했습니다.')
                 }
             })
-    }, []);
+    }, [sortValue]);
 
 console.log(mentoringList)
 console.log('정렬 값 :',sortValue);
