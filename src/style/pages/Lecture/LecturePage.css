@@ -5,7 +5,7 @@
     margin: 0 auto;
   }
   #lectureLeftContainer {
-    width: 14%;
+    width: 200px;
   }
   #lectureLeftCategory {
     display: block;
@@ -33,15 +33,34 @@
   #lectureRightContainerHeader article {
     width: 30%;
   }
+  #selecBoxDiv {
+    text-align: right;
+  }
+  #selectBox {
+    margin-top: 10px;
+    position: relative;
+    right: 30px;
+    background-color: #efede1;
+    color: #2e493a;
+    font-weight: 700;
+  }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
+  #selecBoxDiv {
+    text-align: right;
+  }
+  #selectBox {
+    margin-top: 10px;
+    position: relative;
+    right: 30px;
+  }
   #lectureContainerBox {
     width: 90%;
     display: flex;
     margin: 0 auto;
   }
   #lectureLeftContainer {
-    width: 14%;
+    width: 200px;
   }
   #lectureLeftCategory {
     display: block;
@@ -60,9 +79,39 @@
   #lectureRightContainer span {
     font-size: 12px;
   }
+  #selecBoxDiv {
+    text-align: right;
+  }
+  #selectBox {
+    margin-top: 10px;
+    position: relative;
+    right: 30px;
+    background-color: #efede1;
+    color: #2e493a;
+    font-weight: 700;
+  }
 }
 
 @media (max-width: 767px) {
+  #selecBoxDiv {
+    text-align: right;
+  }
+  #selectBox {
+    margin-top: 10px;
+    position: relative;
+    right: 30px;
+    background-color: #efede1;
+    color: #2e493a;
+    font-weight: 700;
+  }
+  #selecBoxDiv {
+    text-align: right;
+  }
+  #selectBox {
+    margin-top: 10px;
+    position: relative;
+    right: 30px;
+  }
   #lectureContainerBox {
     transition: 0.25s all;
     width: 70%;

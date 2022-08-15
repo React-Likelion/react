@@ -8,7 +8,7 @@ import { lectureCategoryData } from '../../data/CategoryData.js';
 
 // {setDesc, desc, setImage}
 const LectureLeftEditor = ({lectureId,titleLecture,lecturePrice,categoryData,detailCategoryData}) => { // (1)
-    const dummy = '<p>테스트용 html코드입니다.</p>';
+    const dummy = '<img src="https://cdn.class101.net/images/5b55d6d6-0e63-4915-9834-3f6bd356c530" alt="이미지" />';
     const imgLink = "http://localhost:3000/images/"
     const [lectureData,setLectureData] = useState({
         'id':lectureId,
@@ -18,9 +18,9 @@ const LectureLeftEditor = ({lectureId,titleLecture,lecturePrice,categoryData,det
         'youtube_link':'',
         'field':categoryData,
         'tag':detailCategoryData,
-        'img':'',
     });
-
+    
+    const [imgFile,setImgFile] = useState([]);
     
     const titleHandler = (e)=>{
         setLectureData({...lectureData,
@@ -53,8 +53,20 @@ const LectureLeftEditor = ({lectureId,titleLecture,lecturePrice,categoryData,det
     const clickModifySubmit = (e)=>{
         
         console.log('수정 제출');
+        console.log(imgFile);
         console.log(lectureData);
-        
+        let data = new FormData();
+
+        for(let i=0; i<imgFile.length; i++){
+            data.append('file',imgFile[i]);
+        }
+        data.append("data", JSON.stringify(lectureData));
+        for (let key of data.keys()) {
+            console.log(key);
+        }
+        for (let value of data.values()) {
+            console.log(value);
+        }
         // axios.put(`${PROXY}/lectures/${lectureId}/`, data, {
         //     headers: {
         //     'Content-type': 'multipart/form-data'
@@ -71,12 +83,12 @@ const LectureLeftEditor = ({lectureId,titleLecture,lecturePrice,categoryData,det
             upload(){
                 return new Promise ((resolve, reject) => {
                         loader.file.then( (file) => {
-                            const data = new FormData();
                             console.log(file);
-                            data.append('file',file);
-                            console.log(data);
-                            setLectureData({...lectureData,
-                                img:data});
+                            setImgFile([
+                                ...imgFile,
+                                file
+                            ]);
+                            console.log(imgFile);
                             // resolve({
                             //     default: `${imgLink}/${res.data.filename}`
                             // });

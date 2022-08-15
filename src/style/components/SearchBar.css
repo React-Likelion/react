@@ -34,3 +34,8 @@
   border: 2px solid pink;
   text-align: center;
 }
+.searchBox div img {
+  position: relative;
+  right: 30px;
+  top: 2px;
+}

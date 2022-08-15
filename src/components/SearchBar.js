@@ -87,7 +87,7 @@ function SearchBar() {
 
     return (
         <div className='searchBox'>
-            <input id='inputBar'type="text" value={search} onChange={onChangeSearch} placeholder='검색어를 입력해주세요'/>
+            <input id='inputBar'type="text" value={search} onChange={onChangeSearch} />
             <div>
               <img style={{cursor:"pointer", width:"90%",margin:"10%"}} src='/img/searchGlass.png' alt='검색돋보기' />
             </div>
