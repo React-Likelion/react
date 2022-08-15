@@ -16,10 +16,9 @@ const LectureUploadPage = () => {
         youtube_link : '',
         title : '',
         price : 0,
-        main_category : '',
-        sub_category : '선택안함',
-        description : '',
-        writer : localStorage.getItem('nickname')
+        field : '',
+        tag : '',
+        description : ''
     });
 
     const changeHandler = (checked, id) => {
@@ -37,9 +36,9 @@ const LectureUploadPage = () => {
         })
     }
 
-    const makeSubCategoryBox = () => {
-        if (!lectureInfo.main_category) return <option value='' defaultValue>선택</option>;
-        const result = lectureCategoryData[lectureInfo.main_category].map((ele, idx) => {
+    const makeTagBox = () => {
+        if (!lectureInfo.field) return <option value='' defaultValue>선택</option>;
+        const result = lectureCategoryData[lectureInfo.field].map((ele, idx) => {
             return <option key={idx} value={ele}>{ele}</option>
         })
         return result;
@@ -70,39 +69,31 @@ const LectureUploadPage = () => {
         // 1. formData 생성 후 데이터 append
         let form_data = new FormData();
         for(let i = 0; i < images.length; i++) {
-            form_data.append(`image${i+1}`, images[i]);
-        } 
+            form_data.append("images", images[i]);
+        }
         // 나머지 데이터들은 다 JSON으로 맞춰주기
-        form_data.append('youtube_link', lectureInfo.youtube_link);
-        form_data.append('title', lectureInfo.title);
-        form_data.append('price', lectureInfo.price);
-        form_data.append('main_category', lectureInfo.main_category);
-        form_data.append('sub_category', lectureInfo.sub_category);
-        form_data.append('description', lectureInfo.description);
-        form_data.append('writer', lectureInfo.writer);
-        
+        form_data.append("data", JSON.stringify(lectureInfo));
         // 2. axios로 전송
-        axios.post(`${PROXY}/lectures/`, form_data, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-            }
-        })
-        .then((res) => {
-            console.log(res);
-            navigate('/lecture');
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        // axios.post(`${PROXY}/lectures/`, form_data, {
+        //     headers: {
+        //       'content-type': 'multipart/form-data'
+        //     }
+        //   })
+        // .then((res) => {
+        //     console.log(res);
+        //     navigate('/lecture');
+        // })
+        // .catch((err) => {
+        //     console.log(err);
+        // })
 
         // formData 출력
-        // for (let key of form_data.keys()) {
-        //     console.log(key);
-        // }
-        // for (let value of form_data.values()) {
-        //     console.log(value);
-        // }
+        for (let key of form_data.keys()) {
+            console.log(key);
+        }
+        for (let value of form_data.values()) {
+            console.log(value);
+        }
 
     }
 
@@ -120,7 +111,7 @@ const LectureUploadPage = () => {
                     <input type='text' onChange={handleLectureInfo} name='price'></input>
                     <div>카테고리</div>
                     <div id='lecture-select-box'>
-                        <select onChange={handleLectureInfo} name='main_category'>
+                        <select onChange={handleLectureInfo} name='field'>
                             <option value='' defaultValue>선택</option>
                             {
                                 Object.keys(lectureCategoryData).map((ele, idx) => {
@@ -128,15 +119,15 @@ const LectureUploadPage = () => {
                                 })
                             }
                         </select> 
-                        <select onChange={handleLectureInfo} name='sub_category'>
-                            {makeSubCategoryBox()}
+                        <select onChange={handleLectureInfo} name='tag'>
+                            {makeTagBox()}
                         </select>
                     </div>
                 </div>
                 <textarea id='description-textarea' 
                     onChange={handleLectureInfo} name='description'
                     placeholder='수업이나 활동 내용 입력'></textarea><br/>
-                    <ImagePreview text={'썸네일 첨부하기'} setImages={setImages} imgCnt={5}/>
+                    <ImagePreview text={'썸네일 첨부하기'} setImages={setImages}/>
                 <div className='picture-preview-box'></div>
                 <div className='checkbox-text'>
                     <input id='1' type='checkbox' onChange={(e) => {changeHandler(e.currentTarget.checked, '1')}} 
