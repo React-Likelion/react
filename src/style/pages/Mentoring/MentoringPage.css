@@ -4,7 +4,7 @@
     width: 85%;
     margin-top: 1%;
     margin-bottom: 1%;
-}
+}g
 #selectBox{
     border: 2px solid #749683;
     border-radius: 8px;
@@ -24,6 +24,10 @@
     width: 60%;
     height: 40px;
     margin: 0 auto;
+}
+.searchBar{
+    width: 68%;
+    margin-right: 2%;
 }
 .postBtn{
     display: flex;

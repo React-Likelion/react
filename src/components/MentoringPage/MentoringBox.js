@@ -4,12 +4,14 @@ import '../../style/components/MentoringPage/MentoringBox.css'
 import axios from "axios";
 import { PROXY } from '../../data/serverUrl';
 
-function MentoringBox() {
+function MentoringBox({sortValue}) {
     const [mentoringList, setmentoringList] = useState([]);
 
+    console.log(`${PROXY}/mentorings/${sortValue}`)
+
     useEffect(() => {
-        //먼저 멘토멘티 리스트 받아오기
-        axios.get(`${PROXY}/mentorings/`)
+        //먼저 멘토멘티 리스트 받아오기(최신순)
+        axios.get(`${PROXY}/mentorings/${sortValue}`)
             .then((res)=>{
                 if(res.data){
                     setmentoringList(res.data);//가져온 모든 리스트를 배열에 저장한다. 
@@ -20,6 +22,7 @@ function MentoringBox() {
     }, []);
 
 console.log(mentoringList)
+console.log('정렬 값 :',sortValue);
 
     return (
         <div className='mentoringBox' >

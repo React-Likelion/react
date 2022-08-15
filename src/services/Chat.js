@@ -10,7 +10,6 @@ function Chat() {
     const {id}=useParams();
     const [nickname, setNickname] = useState();
     
-
     const [msg, setMsg] = useState(""); //메세지
     const [chats, setChats]=useState([]); //채팅 목록
     const handleOnChange = (e) => {
@@ -55,7 +54,7 @@ function Chat() {
                 <div className='chat-box'>
                     {
                         chats.map((ele,i) => {
-                            if(ele.nickname == nickname){
+                            if(ele.nickname === nickname){
                                 return <div className="chat-smallbox-my" key={i}>{ele.text}</div>
                             } else{
                                 return <div className='chat-smallbox-your' key={i}>{ele.text}</div>

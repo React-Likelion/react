@@ -6,17 +6,17 @@ import '../../style/pages/Mentoring/MentoringPage.css'
 import { useNavigate } from 'react-router-dom';
 import Filter from './../../components/Filter';
 import Footer from './../../components/Footer';
+import { useState } from 'react';
+import SearchBar from './../../components/SearchBar';
 
 
 const MentoringPage = () => {
     const navigate = useNavigate();
+    
+    const [sortValue,setSortValue] = useState('');
 
-    const optionList = [
-        "인기순", "최신순"
-    ]
-
-    const optionHandler = (e) => {
-
+    const selectValue = (e) => {
+        setSortValue(e.target.value);
     }
 
     const onClickBtnHandler = (e) => {
@@ -27,25 +27,21 @@ const MentoringPage = () => {
             <Header />
             <Navbar val={'mentoring'}/>
             <div className='postBtnBox'>
+                <div className='searchBar'><SearchBar/></div>
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>
             </div>
             <div>
                 <Filter />
             </div>
             <div className='selectBar'>
-                <select onChange={optionHandler} id='selectBox'/*value={option}*/>
+                <select onChange={selectValue} id='selectBox'>
                         <option disabled>정렬</option>
-                        {
-                            optionList.map((op,i) => (
-                                <option value={op} key={i}>
-                                    {op}
-                                </option>
-                            ))
-                        }
+                        <option value=''>최신순</option>
+                        <option value='listbycnt/'>인기순</option>
                 </select>
             </div>
             <section className='viewSection'>
-                <MentoringBox />
+                <MentoringBox sortValue={sortValue}/>
             </section>
             <Footer/>
         </div>
