@@ -7,8 +7,6 @@ import { PROXY } from '../../data/serverUrl';
 function MentoringBox({sortValue}) {
     const [mentoringList, setmentoringList] = useState([]);
 
-    console.log(`${PROXY}/mentorings/${sortValue}`)
-
     useEffect(() => {
         //먼저 멘토멘티 리스트 받아오기
         axios.get(`${PROXY}/mentorings/${sortValue}`)
@@ -20,9 +18,6 @@ function MentoringBox({sortValue}) {
                 }
             })
     }, [sortValue]);
-
-console.log(mentoringList)
-console.log('정렬 값 :',sortValue);
 
     return (
         <div className='mentoringBox' >
