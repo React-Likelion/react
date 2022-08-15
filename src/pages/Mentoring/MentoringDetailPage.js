@@ -10,6 +10,7 @@ const MentoringDetailPage = () => {
     const navigate = useNavigate();
     const {id} = useParams();
     const [mentoringList, setmentoringList] = useState([]);
+    const Token = localStorage.getItem('react_accessToken');
 
     useEffect(() => {
         //먼저 멘토멘티 리스트 받아오기
@@ -23,6 +24,24 @@ const MentoringDetailPage = () => {
                 }
             })
     }, []);
+
+    const inHandler = (e) => {
+        axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/`, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+            }
+        })
+            .then(() => {
+                if(!Token){
+                    alert('로그인 후에 시도해주세요!')
+                } else{
+                    alert('입장하였습니당');
+                    navigate(`room/${mentoringList.id}`);
+                }
+            })
+            .catch(()=>{alert('로그인 후에 시도해주세요!')})
+    }
 
     return (
         <div>
@@ -48,7 +67,7 @@ const MentoringDetailPage = () => {
                             </div>
                         </section>
                     </section>
-                    <div className='joinBtn' onClick={() => navigate(`room/${mentoringList.id}`)}>입장 신청하기</div>
+                    <div className='joinBtn' onClick={inHandler}>입장하기</div>
                 </section>
             </div>
             <Footer/>
