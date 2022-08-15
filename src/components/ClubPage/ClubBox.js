@@ -2,15 +2,14 @@ import React from 'react';
 import "../../style/components/ClubPage/ClubBox.css"
 import ClubItem from './ClubItem';
 
-const ClubBox = ({dummyData}) => {
+const ClubBox = ({datas}) => {
     return (
         <section className='clubBox'>
-            <ClubItem dummyData={dummyData} />
-            <ClubItem dummyData={dummyData}  />
-            <ClubItem dummyData={dummyData}  />
-            <ClubItem dummyData={dummyData} />
-            <ClubItem dummyData={dummyData}  />
-            <ClubItem dummyData={dummyData}  />
+            {
+               datas&&datas.map((item, idx) => 
+                    <ClubItem item={item} idx={idx}/>
+                )
+            }
         </section>
     );
 }

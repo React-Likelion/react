@@ -1,46 +1,86 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Filter from '../../components/Filter';
 import ClubBox from "../../components/ClubPage/ClubBox"
 import "../../style/pages/Club/ClubPage.css"
 import Header from './../../components/Header';
 import Navbar from './../../components/Navbar';
 import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 import SearchBar from './../../components/SearchBar';
+import {PROXY} from '../../data/serverUrl';
 
 const ClubPage = () => {
     const navigate = useNavigate();
+    const [datas, setDatas] = useState([]);
+    const [sort, setSort] = useState("")
 
-    const dummyData = {
-
-        id: 1,
-        name: "골프 동호회",
-        location: "구미 옥계동",
-        members: 5,
-        img: "/img/lectureBtn"
-    }
-    
     const onClickBtnHandler = (e) => {
         navigate('upload');
     }
 
+    const onSort = (e) => {
+        if(e.target.value == "최신순") {
+            setSort(e.target.value)
+            axios.get(`${PROXY}/clubs/by-newset/`, 
+            {headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
+            }})
+            .then((res) => {
+                console.log(res)
+                setDatas(res.data);
+            })
+            .catch((err) => {
+                console.log(err)
+                alert("최신순 에러")
+            })
+        }
+        else {
+            setSort(e.target.value)
+            axios.get(`${PROXY}/clubs/by-member/`, 
+            {headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
+            }})
+            .then((res) => {
+                setDatas(res.data);
+            })
+            .catch((err) => {
+                alert("인기순 에러")
+            })
+        }
+    }
+
+    useEffect(() => {
+        axios.get(`${PROXY}/clubs/`, 
+        {headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
+        }})
+        .then((res) => {
+            console.log(res.data)
+            setDatas(res.data);
+        })
+        .catch((err) => {
+            alert("error 발생");
+        })
+    }, [])
 
     return (
         <section>
             <Header/>
             <Navbar val={'club'}/>
             <div className='SearchPostBox'>
-                {/* <div><SearchBar /></div> */}
+                <div className='searchBar'><SearchBar /></div>
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>동호회 등록하기</div>
             </div>
             <Filter/>
             <div className='clubPageContent'>
                 <div className='sortBtnBox'>
-                    <select className='sortBtn'>
-                        <option>최신순</option>
-                        <option>인기순</option>
+                    <select value={sort} onChange={onSort} className='sortBtn'>
+                        <option disabled={true} value="">정렬</option>
+                        <option value="최신순">최신순</option>
+                        <option value="인기순">인기순</option>  
                     </select>
                 </div>
-                <ClubBox dummyData={dummyData}/>
+                <ClubBox datas={datas}/>
             </div>
         </section>
     );

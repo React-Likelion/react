@@ -16,9 +16,16 @@
     font-size: 20px;
 }
 
-.clubInvite {
-    font-weight: bold;
-    font-size: 20px;
+.clubJoin {
+    height: 6vh;
+    line-height: 6vh;
+    margin : 15px 0 20px 0;
+    font-size: 30px;
+    color : #EFEDE1;
+    background-color: #2E493A;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
 }
 
 .clubArticleUplodBtn {
