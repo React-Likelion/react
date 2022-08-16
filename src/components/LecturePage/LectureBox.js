@@ -13,86 +13,65 @@ const LectureBox = ({categoryData,detailCategoryData,option}) => {
     const [filterData,setFilterData] = useState([]);
     const [optionBool,setOptionBool] = useState(true);
     const [categoryArray,setCategoryArray] = useState([]);
-
-    // const filterLecture = [
-    //     {
-    //         id:1,
-    //         title:'풀스택 개발자가 알려주는 CSS트랜드, TailWind',
-    //         img:'https://cdn.class101.net/images/5b55d6d6-0e63-4915-9834-3f6bd356c530',
-    //         price:17800,
-    //     },{
-    //         id:2,
-    //         title:'풀스택 개발자가 알려주는 CSS트랜드, TailWind',
-    //         img:'https://cdn.class101.net/images/5b55d6d6-0e63-4915-9834-3f6bd356c530',
-    //         price:17800,
-    //     },{
-    //         id:3,
-    //         title:'풀스택 개발자가 알려주는 CSS트랜드, TailWind',
-    //         img:'https://cdn.class101.net/images/5b55d6d6-0e63-4915-9834-3f6bd356c530',
-    //         price:17800,
-    //     },{
-    //         id:4,
-    //         title:'풀스택 개발자가 알려주는 CSS트랜드, TailWind',
-    //         img:'https://cdn.class101.net/images/5b55d6d6-0e63-4915-9834-3f6bd356c530',
-    //         price:17800,
-    //     },{
-    //         id:5,
-    //         title:'풀스택 개발자가 알려주는 CSS트랜드, TailWind',
-    //         img:'https://cdn.class101.net/images/5b55d6d6-0e63-4915-9834-3f6bd356c530',
-    //         price:17800,
-    //     },{
-    //         id:6,
-    //         title:'풀스택 개발자가 알려주는 CSS트랜드, TailWind',
-    //         img:'https://cdn.class101.net/images/5b55d6d6-0e63-4915-9834-3f6bd356c530',
-    //         price:17800,
-    //     },
-    // ];
+    const [filterBool,setFilterBool] = useState(false);
+    
     useEffect(()=>{
         axios.get(`${PROXY}/lectures/`)
         .then((res)=>{
             setAllLectures(res.data);
             console.log(allLectures);
-            setFilterData(
-                allLectures.sort((a,b)=>
-                    b.like_cnt - a.like_cnt
-                )   
-            )
+            console.log(filterData);
         }).catch((err)=>{
             console.log(err);
         })
     },[])   
     useEffect(()=>{
         if(option==='인기순'){
+            setFilterData([]);
+            setFilterData(
+                allLectures.sort((a,b)=>
+                    b.like_cnt - a.like_cnt
+                )   
+            )
             setOptionBool(false);
         }else{
             setOptionBool(true);
         }
     },[option]);
     useEffect(()=>{
-        // setCategoryArray([]);
-        //실행안되네
+        setCategoryArray([]);
         console.log('test');
-        setCategoryArray([
+        setCategoryArray(
             allLectures.filter((ele)=>{
-                return (ele.main_category === categoryData) || (ele.sub_category === detailCategoryData);
+                return (ele.main_category === categoryData) && (ele.sub_category === detailCategoryData);
             })
-        ]);
-        console.log(categoryArray);
+        );
+        console.log(categoryArray.length);
+        if(detailCategoryData.length !== 0){
+            setFilterBool(true);
+        }
     },[categoryData,detailCategoryData]);
+    console.log(optionBool);
+    console.log(categoryArray.length);
+    console.log(filterBool);
 
     return (
         <div id="LectureBoxDiv">
             {
-                (optionBool===true)?
+                (optionBool===true && (categoryArray.length===0) && (filterBool===false))?
                 allLectures.map((ele)=>{
                     return <LectureItem id={ele.id} key={ele.id} /*title={ele.title} img={ele.img} price={ele.price}*/ categoryData={categoryData} detailCategoryData={detailCategoryData} />;
-                }):(categoryArray.length===0)?
+                }):(optionBool===false && categoryArray.length===0 && (filterBool===false))?
                 filterData.map((ele)=>{
                     return <LectureItem id={ele.id} key={ele.id} /*title={ele.title} img={ele.img} price={ele.price}*/ categoryData={categoryData} detailCategoryData={detailCategoryData} />;
-                }):
+                }):((categoryArray.length!==0) && (filterBool===true))?
                 categoryArray.map((ele)=>{
                     return <LectureItem id={ele.id} key={ele.id} /*title={ele.title} img={ele.img} price={ele.price}*/ categoryData={categoryData} detailCategoryData={detailCategoryData} />;
-                })
+                }):
+                <div style={{display:"block"}}>
+                    <img src='/img/questionMark.png' alt='물음표' />
+                    <p>이런! 찾는 강의가 없습니다.</p>
+                </div>
             }
         </div>
     );

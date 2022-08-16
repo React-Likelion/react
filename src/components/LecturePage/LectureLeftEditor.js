@@ -7,17 +7,19 @@ import '../../style/components/LecturePage/LectureLeftEditor.css';
 import { lectureCategoryData } from '../../data/CategoryData.js';
 
 // {setDesc, desc, setImage}
-const LectureLeftEditor = ({lectureId,titleLecture,lecturePrice,categoryData,detailCategoryData}) => { // (1)
-    const dummy = '<img src="https://cdn.class101.net/images/5b55d6d6-0e63-4915-9834-3f6bd356c530" alt="이미지" />';
-    const imgLink = "http://localhost:3000/images/"
+const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,imgSrc,lectureDescription}) => { // (1)
+    const dummy = `<img src=${imgSrc} />
+    ${lectureDescription}`;
+    console.log(titleLecture);
+    
     const [lectureData,setLectureData] = useState({
         'id':lectureId,
         'title':titleLecture,
         'description':'',
         'price':lecturePrice,
-        'youtube_link':'',
-        'field':categoryData,
-        'tag':detailCategoryData,
+        'youtube_link':lectureYoutube,
+        'field':'',
+        'tag':'',
     });
     
     const [imgFile,setImgFile] = useState([]);

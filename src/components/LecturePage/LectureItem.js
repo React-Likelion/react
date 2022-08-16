@@ -21,6 +21,11 @@ const LectureItem = ({id,categoryData,detailCategoryData}) => {
                 lectureImg:res.data.image1,
                 lecturePrice:res.data.price,
                 lectureLikeCnt:res.data.like_cnt,
+                lectureWriter:res.data.writer,
+                lectureEnroll:res.data.enroll_students,
+                lectureYoutube:res.data.youtube_link,
+                lectureLikeMember:res.data.like_members,
+                lectureDescription:res.data.description,
                 categoryData:categoryData,
                 detailCategoryData:detailCategoryData,
             })
@@ -38,10 +43,11 @@ const LectureItem = ({id,categoryData,detailCategoryData}) => {
     };
 
     const priceMent = `월 ${propsObj.lecturePrice}원`;
+    const imgSrc = `${PROXY}${propsObj.lectureImg}`
     return (
         <div onClick={clickLectureItem} style={{cursor:'pointer'}} id="LectureItemDiv">
             <section id="LectureItemImg">
-                <img src={propsObj.lectureImg} alt="강의 이미지" />
+                <img src={imgSrc} alt="강의 이미지" />
             </section>
             <section id="LectureItemTitle">
                 <p>{propsObj.lectureTitle}</p>
