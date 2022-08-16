@@ -1,0 +1,11 @@
+#DetailRepleBox {
+    margin: 5px;
+    margin-bottom: 30px;
+}
+
+#DetailRepleBox > div {
+    padding: 5px;
+    margin-left: 5%;
+    font-weight: bold;
+    color: #2E493A;
+}

@@ -1,0 +1,30 @@
+#DetailRepleItem {
+    width: 90%;
+    height: 100px;
+    padding: 5px;
+    margin: 0 auto;
+    border-bottom: 1px solid #2e493a73;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+#DetailRepleItem > div:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#DetailRepleItem > div > img {
+    background-color: #2e493a73;
+    width: 60px;
+    height: 60px;
+}
+
+#DetailRepleItem > div:nth-child(2) {
+    margin: 10px 0px 0px 10px;
+}
+
+#DetailRepleItem > div > div:nth-child(1) {
+    color: #2E493A;
+}
