@@ -1,0 +1,39 @@
+#pagenation-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin: 16px;
+}
+
+#pagenation-nav > button {
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 0;
+  color: rgb(56, 56, 56);
+  background-color: rgba(255, 255, 255, 0.26);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#pagenation-nav > button:hover {
+    background: #749683;
+    color: #fff;
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+#pagenation-nav > button[disabled] {
+    background: rgb(184, 184, 184);
+    cursor: revert;
+    transform: revert;
+}
+
+#pagenation-nav > button[aria-current] {
+    background: #749683;
+    color: #fff;
+    font-weight: bold;
+    cursor: revert;
+    transform: revert;
+}
