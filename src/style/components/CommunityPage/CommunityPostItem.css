@@ -1,0 +1,14 @@
+.CommunityPostItem {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr 1fr 2fr 2fr;
+}
+
+.CommunityPostItem > div {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
