@@ -7,6 +7,7 @@
 
 .CommunityUploadPage > .upload-container > div > input {
     font-family: 'NanumSquare';
+    height: 40px;
 }
 
 .CommunityUploadPage > .upload-container > textarea {
