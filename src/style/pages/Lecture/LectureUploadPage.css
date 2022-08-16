@@ -91,6 +91,16 @@
     outline: none;
 }
 
+#lecture-select-box > select > option:checked {
+    background-color: #749683;
+    color: #fff;
+}
+
+#lecture-select-box > select > option:hover {
+    background-color: #749683;
+    color: #fff;
+}
+
 .upload-container > textarea:focus {
     border: 3px solid #7496838f;
 }
