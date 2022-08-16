@@ -22,6 +22,7 @@ import ClubDetailPage from './pages/Club/ClubDetailPage';
 import ClubPictureUploadPage from './pages/Club/ClubPictureUploadPage';
 import ClubGalleryDetail from './pages/Club/ClubGalleryDetail';
 import Chat from './services/Chat';
+import PostDetailPage from './pages/PostDetailPage';
 
 
 const App = () => {
@@ -106,6 +107,7 @@ function Community() {
       <Routes>
           <Route path='' element={<CommunityPage/>}/>
           <Route path='upload' element={<CommunityUploadPage/>}/>
+          <Route path='/:id' element={<PostDetailPage />} />
       </Routes>
   );
 };
