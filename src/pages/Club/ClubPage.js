@@ -71,7 +71,7 @@ const ClubPage = () => {
                 <div className='searchBar'><SearchBar /></div>
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>동호회 등록하기</div>
             </div>
-            <Filter/>
+            <Filter field="clubs"/>
             <div className='clubPageContent'>
                 <div className='sortBtnBox'>
                     <select value={sort} onChange={onSort} className='sortBtn'>

@@ -6,8 +6,9 @@
     margin: 0 auto;
 }
 
-.clubName{
+.clubInfoName{
     font-size: 30px;
+    font-weight: bold;
 }
 
 .clubMembers {

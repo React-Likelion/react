@@ -11,10 +11,8 @@ const ClubInfo = ({params, member, name, image}) => {
         navigate('articleUpload')
     }
 
-    const [isJoin, setIsJoin] = useState(false)
-
     const clubJoinExit = () => {
-        if (isJoin === false) {
+        if (member && member.includes(Number(localStorage.getItem("react_userId"))) == false) {
             if (window.confirm("동호회에 가입 하시겠습니까?")) {
                 axios
                     .post(`${PROXY}/clubs/${params.clubId}/`, {
@@ -26,6 +24,7 @@ const ClubInfo = ({params, member, name, image}) => {
                     })
                     .then((res) => {
                         alert("동호회 가입 완료")
+                        window.location.reload();
                     })
                     .catch((err) => {
                         alert("에러 발생")
@@ -45,6 +44,7 @@ const ClubInfo = ({params, member, name, image}) => {
                     })
                     .then((res) => {
                         alert("동호회 탈퇴 완료")
+                        window.location.reload();
                     })
                     .catch((err) => {
                         alert("에러 발생")
@@ -54,24 +54,16 @@ const ClubInfo = ({params, member, name, image}) => {
         }
     }
 
-    useEffect(() => {
-        if (member && member.includes(Number(localStorage.getItem("react_userId")))) {
-            setIsJoin(true)
-        } else {
-            setIsJoin(false)
-        }
-    }, [])
-
     return (
         <section className='ClubInfoContainer'>
             <div className='clubInfo'>
                 <img className='clubImg' src={image}/>
-                <p className='clubName'>{name}</p>
+                <p className='clubInfoName'>{name}</p>
             </div>
             <div>
             <span className='clubMembers'>멤버 {member && member.length} &nbsp;&nbsp;&nbsp;</span>
                 <div onClick={clubJoinExit} className='clubJoin'>{
-                        isJoin
+                        member && member.includes(Number(localStorage.getItem("react_userId")))
                             ? "동호회 탈퇴하기"
                             : "동호회 가입하기"
                     }</div>
