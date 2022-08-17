@@ -38,12 +38,12 @@ const Header = () => {
                      />
                 </div>
                 <div className='headerright'>
-                    <span onClick={goUpload}><img src={`${process.env.PUBLIC_URL}/img/lectureBtn.png`} 
-                    className='lectureBtn' /></span>
                     {/* 라우터 파지면 Link or useNavigate 하기 */}
                     {
                         localStorage.getItem('react_accessToken') ?
                         <>
+                            <span onClick={goUpload}><img src={`${process.env.PUBLIC_URL}/img/lectureBtn.png`} 
+                                    className='lectureBtn' /></span>
                             <span onClick={goLogout} className='user-text'>로그아웃</span>
                             <span onClick={goMypage} id='my' className='user-text'>마이페이지</span>
                         </> :
