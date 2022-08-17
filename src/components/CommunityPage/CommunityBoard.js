@@ -39,8 +39,6 @@ const CommunityBoard = () => {
         })
     }, [])
 
-    // console.log(posts);
-
     return (
         <section className='CommunityBoard'>
             <article id='community-header'>

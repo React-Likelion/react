@@ -69,7 +69,8 @@ const ClubPage = () => {
             <Navbar val={'club'}/>
             <div className='SearchPostBox'>
                 <div className='searchBar'><SearchBar /></div>
-                <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>동호회 등록하기</div>
+                {localStorage.getItem('react_accessToken') &&
+                <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>동호회 등록하기</div>}
             </div>
             <Filter field="clubs"/>
             <div className='clubPageContent'>

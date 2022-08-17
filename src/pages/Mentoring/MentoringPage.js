@@ -28,7 +28,8 @@ const MentoringPage = () => {
             <Navbar val={'mentoring'}/>
             <div className='postBtnBox'>
                 <div className='searchBar'><SearchBar/></div>
-                <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>
+                {localStorage.getItem('react_accessToken') &&
+                <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>}
             </div>
             <div>
                 <Filter field="mentorings"/>
