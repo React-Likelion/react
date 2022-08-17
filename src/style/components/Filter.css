@@ -9,6 +9,7 @@
     justify-content: space-between;
     background-color: rgb(255, 255, 255, 0.3);
     border-radius: 15px;
+    padding: 10px;
 }
 
 .FilterBox {
@@ -18,7 +19,7 @@
 
 .FilterTitle {
     text-align: center;
-    font-weight: bold;
+    font-weight: 900;
     color: #2E493A;
 }
 

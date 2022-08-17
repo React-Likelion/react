@@ -10,9 +10,10 @@
 #detailTitleBox{
     /* border: 1px solid red; */
     margin-left: 3%;
+    margin-top: 10px;
     color: #2E493A;
     font-size: larger;
-    font-weight: bolder;
+    font-weight: 900;
 }
 #detailImgBox{
     /* border: 1px solid green; */
@@ -21,8 +22,9 @@
     align-items: center;
 }
 #detailImgBox img{
-    margin: 2%;
-    width: 100%;
+    margin: 30px;
+    width: 150px;
+    border-radius: 10px;
 }
 .detailSmallBox{
     display: flex;
@@ -35,7 +37,7 @@
     /* border: 1px solid blue; */
     border-radius: 8px;
     margin: 1%;
-    padding: 1%;
+    padding: 3%;
     background-color: #EFEDE1;
     color: rgba(46, 73, 58);
 }
@@ -50,9 +52,19 @@
     background-color: #EFEDE1;
 }
 #profileImg{
+    width: 20%;
     margin: 2%;
     /* background-color: #EFEDE1; */
     color: rgba(46, 73, 58);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+#profileImg > img {
+    width: 60px;
+    height: 60px;
 }
 .profileDetailBox{
     display: flex;
@@ -96,6 +108,10 @@
     text-align: center;
     font-size: larger;
     font-weight: bold;
+}
+
+.joinBtn:hover {
+    background-color: #2E493A;
 }
 
 @media (min-width:1024px) {

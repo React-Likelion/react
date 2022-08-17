@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import Header from './../../components/Header';
+import Header from '../../components/Header';
 import '../../style/pages/Mentoring/MentoringDetailPage.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
 import { PROXY } from '../../data/serverUrl';
-import Footer from './../../components/Footer';
+import Footer from '../../components/Footer';
 
 const MentoringDetailPage = () => {
     const navigate = useNavigate();
@@ -63,7 +63,7 @@ const MentoringDetailPage = () => {
                     <section className='detailProfileBox'>
                         <div id='profileImg'>
                             <img src='/img/Profile.png' alt='이미지' />
-                            <br />{mentoringList.nickname}
+                            {mentoringList.nickname}
                         </div>
                         <section className='profileDetailBox'>
                             <div id='info'>멤버{mentoringList.member_cnt}명/정원{mentoringList.limit}명</div>

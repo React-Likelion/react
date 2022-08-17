@@ -53,7 +53,7 @@ const PostDetailPage = () => {
     return (
         <section className='PostDetailPage'>
             <Header/>
-            <Navbar/>
+            <Navbar val={"community"}/>
             <div className='post-detail-container'>
                 <div id='post-detail-content'>
                     <div>{detailInfo.category}</div>

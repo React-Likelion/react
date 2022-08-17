@@ -1,0 +1,17 @@
+.my-container {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.my-container > #left-side {
+    background-color: rgb(247, 247, 247);
+    min-height: 90vh;
+}
+
+.my-container > #right-side {
+    background-color: rgb(223, 223, 223);
+    min-height: 90vh;
+}

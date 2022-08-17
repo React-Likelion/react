@@ -144,3 +144,10 @@
     font-size: 12px;
   }
 }
+
+#selectBox {
+  border: 2px solid #749683;
+  border-radius: 10px;
+  color: #2e493a;
+  text-align: center;
+}

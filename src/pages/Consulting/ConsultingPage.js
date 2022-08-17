@@ -6,7 +6,7 @@ const ConsultingPage = () => {
     return (
         <div>
             <Header />
-            <Navbar />
+            <Navbar val={"consulting"}/>
             
         </div>
     );

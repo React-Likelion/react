@@ -9,7 +9,7 @@ const CommunityPage = () => {
     return (
         <>
             <Header />
-            <Navbar />
+            <Navbar val={"community"}/>
                 <CommunityBoard/>
             <Footer/>
         </>
