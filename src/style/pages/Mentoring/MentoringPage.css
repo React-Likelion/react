@@ -39,8 +39,14 @@
     padding: 7px;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 15px;
+    width: 200px;
+}
+.postBtn:hover {
+    background-color: #2E493A;
 }
 .postBtn img{
     width: 30px;
     height: 30px;
+    margin-right: 10px;
 }
