@@ -62,11 +62,16 @@ const ClubInfo = ({params, member, name, image}) => {
             </div>
             <div>
             <span className='clubMembers'>멤버 {member && member.length} &nbsp;&nbsp;&nbsp;</span>
-                <div onClick={clubJoinExit} className='clubJoin'>{
+                {(localStorage.getItem('react_accessToken')) ? 
+                <div onClick={clubJoinExit} className='clubJoin'>
+                    {
                         member && member.includes(Number(localStorage.getItem("react_userId")))
                             ? "동호회 탈퇴하기"
                             : "동호회 가입하기"
-                    }</div>
+                    }
+                </div> 
+                :
+                 ""}
             </div>
             <div className='clubArticleUplodBtn' onClick={goArticleUpload}>글쓰기</div>
             {/* 글쓰기 버튼을 누르면 글 작성 페이지로 가게 해야 함.
