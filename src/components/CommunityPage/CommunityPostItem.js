@@ -2,22 +2,22 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../style/components/CommunityPage/CommunityPostItem.css';
 
-const CommunityPostItem = ({ele}) => {
-
+const CommunityPostItem = ({ele, num}) => {
+    
     const navigate = useNavigate();
 
     const showDetailPage = (e) => {
-        navigate(`/community/${e.target.id}`);
+        navigate(`/community/${e.currentTarget.id}`);
     }
-
+    
     return (
         <section onClick={showDetailPage} id={ele.id} className='CommunityPostItem'>
-            <div>분야</div>
-            <div>1</div>
+            <div>{ele.category}</div>
+            <div>{num}</div>
             <div>{ele.title}</div>
-            <div>[1]</div>
-            <div>{ele.writer}</div>
-            <div>{ele.date}</div>
+            <div>[{ele.comment_cnt}]</div>
+            <div>{ele.writer_id}</div>
+            <div>{ele.create_time.substr(0, 10)}</div>
         </section>
     );
 };

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../../style/components/CommunityPage/CommunityBoard.css';
 import CommunityPostItem from './CommunityPostItem';
-import { CommunityData } from '../../data/CommunityData';
 import Pagination from '../Pagenation';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -29,16 +28,18 @@ const CommunityBoard = () => {
         // 검색 버튼 눌렀을 때
     }
 
-    // useEffect(() => {
-    //     axios.get(`${PROXY}/community`)
-    //     .then((res) => {
-    //         console.log(res);
-    //         setPosts(res.data);
-    //     })
-    //     .catch((err) => {
-    //         console.log(err);
-    //     })
-    // }, [])
+    // 게시물 조회
+    useEffect(() => {
+        axios.get(`${PROXY}/community/`)
+        .then((res) => {
+            setPosts(res.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }, [])
+
+    // console.log(posts);
 
     return (
         <section className='CommunityBoard'>
@@ -59,13 +60,13 @@ const CommunityBoard = () => {
                     // 공지 데이터 매핑
                 }
                 {
-                    CommunityData.slice(offset, offset + limit).map((ele, idx) => 
-                        <CommunityPostItem ele={ele}/>)
+                    posts.slice(offset, offset + limit).map((ele, idx) => 
+                        <CommunityPostItem ele={ele} key={idx} num={idx+1+offset} />)
                 }
             </article>
             <article id='community-pagenation'>
                 <div></div>
-                <Pagination total={CommunityData.length}  limit={limit}
+                <Pagination total={posts.length}  limit={limit}
                     page={page} setPage={setPage} />
                 {localStorage.getItem('react_accessToken') && <div className='postBtn' onClick={uploadPostBtn}><img src='img/Teacher.png' alt=''/>게시글 등록하기</div>}
             </article>
@@ -75,7 +76,7 @@ const CommunityBoard = () => {
                     <option>게시물</option>
                     <option>게시물+제목</option>
                 </select>
-                <input type='text' value={searchVal} onChnage={handleSearchVal} placeholder='검색어를 입력해주세요'/>
+                <input type='text' value={searchVal} onChange={handleSearchVal} placeholder='검색어를 입력해주세요'/>
                 <button onClick={clickSearchBtn}>검색</button>
             </article>
         </section>
