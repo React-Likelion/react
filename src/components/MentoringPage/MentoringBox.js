@@ -17,13 +17,15 @@ function MentoringBox({sortValue}) {
                     alert('멘토링 리스트를 가져오는데 실패했습니다.')
                 }
             })
+            console.log(mentoringList);
+
     }, [sortValue]);
 
     return (
         <div className='mentoringBox' >
             {
                 mentoringList.map((element)=>{
-                    return <MentoringItem id={element.id} image={element.image} title={element.title} description={element.description} tag1={element.tag} tag2={element.tag2} tag3={element.tag3} limit={element.limit} member_cnt={element.member_cnt}/>
+                    return <MentoringItem id={element.id} image={element.image} title={element.title} description={element.description} tag1={element.tag} tag2={element.tag2} tag3={element.tag3} nickname={element.nickname} limit={element.limit} member_cnt={element.member_cnt}/>
                 })
             }
         </div>

@@ -3,7 +3,7 @@ import '../../style/components/MentoringPage/MentoringItem.css'
 import { useNavigate } from 'react-router-dom';
 
 
-function MentoringItem({id, image, title, description, tag1, tag2, tag3, limit, member_cnt}) {
+function MentoringItem({id, image, title, description, tag1, tag2, tag3, nickname, limit, member_cnt}) {
     const navigate = useNavigate();
 
     const onClickItemBox = () => {
@@ -24,7 +24,7 @@ function MentoringItem({id, image, title, description, tag1, tag2, tag3, limit, 
                         <div className='showTitle'>{title}</div>
                         <div className='showContent'>{description}</div>
                         <div className='showProfile'>
-                            <div className='showNickName'>이름</div>
+                            <div className='showNickName'>{nickname}</div>
                             <div className='showMember'>멤버 {member_cnt}/{limit}</div>
                         </div>
                     </section>
