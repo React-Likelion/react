@@ -5,12 +5,26 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {PROXY} from '../../data/serverUrl.js';
 import '../../style/components/LecturePage/LectureLeftEditor.css';
 import { lectureCategoryData } from '../../data/CategoryData.js';
+import { useNavigate } from 'react-router-dom';
 
 // {setDesc, desc, setImage}
-const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,imgSrc,lectureDescription}) => { // (1)
-    const dummy = `<img src=${imgSrc} />
-    ${lectureDescription}`;
+const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,imgThumbNail,lectureDescription,lectureThumbNail}) => { // (1)
+    // const dummy = `<img src=${lectureThumbNail} alt="이미지" />
+    // ${lectureDescription}`;
+    const navigate = useNavigate();
+
+    console.log(imgThumbNail);
     console.log(titleLecture);
+    //description 뿌리는 방법
+    // 1. 최초 강의 등록시 등록하는 이미지 및 내용 받아오기. (썸네일 및 기본내용)
+    // 2. 받아서 단순하게 뿌려주기.
+    // 3. 수정폼에도 같은 방식으로 뿌려주기.
+    // 4. 수정폼에서 수정하고 올리는 방식
+    // - html로 정리된 수정폼 내용과 이미지가 올라간 순서대로 formData 이미지 데이터
+    // 5. 다시 디테일 페이지 및 수정폼에 받아올때는 description(html 문서)를 받아온다.
+    // 6. 안에 있는 img태그에 src를 이미지 파일 순서대로 넣어준다. split 및 replace 이용
+    // 7. 짜르고 붙인 description을 새로만든 변수 (content)에 넣어준다.
+    // 8. 그걸 디테일 페이지 및 수정폼에 뿌린다.
     
     const [lectureData,setLectureData] = useState({
         'id':lectureId,
@@ -60,24 +74,49 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
         let data = new FormData();
 
         for(let i=0; i<imgFile.length; i++){
-            data.append('file',imgFile[i]);
+            data.append(`image${i+1}`,imgFile[i]);
         }
-        data.append("data", JSON.stringify(lectureData));
+        // data.append("data", JSON.stringify(lectureData));
+        if (Object.values(lectureData).includes('')) {
+            alert("입력되지 않은 값이 있습니다.");
+            return;
+        } 
+        data.append('title',lectureData.title);
+        data.append('description',lectureData.description);
+        data.append('price',lectureData.price);
+        data.append('youtube_link',lectureData.youtube_link);
+        data.append('main_category',lectureData.field);
+        data.append('sub_category',lectureData.tag);
+        
         for (let key of data.keys()) {
             console.log(key);
         }
         for (let value of data.values()) {
             console.log(value);
         }
-        // axios.put(`${PROXY}/lectures/${lectureId}/`, data, {
+        // fetch(`${PROXY}/lectures/${lectureId}/`, {
+        //     method: 'PATCH',
+        //     body:data,
         //     headers: {
-        //     'Content-type': 'multipart/form-data'
+        //     'Content-type': 'multipart/form-data',
+        //     'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
         //     }
         //     })
         //     .then(res => {
         //         console.log(res.data);
         //     })
         //     .catch(err => console.log(err))
+        axios.patch(`${PROXY}/lectures/${lectureId}/`,data,{
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+            }
+        })
+        .then((res)=>{
+            console.log(res);
+            navigate('/lecture');
+        })
+        .catch((err)=>console.log(err))
     };
 
     const customUploadAdapter = (loader) => { // (2)
@@ -129,9 +168,12 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
             config={{ // (4)
                 extraPlugins: [uploadPlugin]
             }}
-            data={dummy}
+            data="첫 번째 선택한 사진이 썸네일이 됩니다."
             onReady={editor => {
                 // console.log('Editor is ready to use!', editor);
+                const data = editor.getData();
+                setLectureData({...lectureData,
+                    description:data});
             }}
             onChange={(event, editor) => {
                 const data = editor.getData();

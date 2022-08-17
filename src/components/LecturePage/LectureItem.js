@@ -14,11 +14,14 @@ const LectureItem = ({id,categoryData,detailCategoryData}) => {
     useEffect(()=>{
         axios.get(`${PROXY}/lectures/${id}/`)
         .then((res)=>{
-            console.log(res.data);
             setPropsObj({
                 lectureId:res.data.id,
                 lectureTitle:res.data.title,
-                lectureImg:res.data.image1,
+                lectureThumbNail:res.data.image1,
+                lectureImg2:res.data.image2,
+                lectureImg3:res.data.image3,
+                lectureImg4:res.data.image4,
+                lectureImg5:res.data.image5,
                 lecturePrice:res.data.price,
                 lectureLikeCnt:res.data.like_cnt,
                 lectureWriter:res.data.writer,
@@ -29,7 +32,6 @@ const LectureItem = ({id,categoryData,detailCategoryData}) => {
                 categoryData:categoryData,
                 detailCategoryData:detailCategoryData,
             })
-            console.log(propsObj);
         }).catch((err)=>{
             console.log(err);
         })
@@ -43,7 +45,7 @@ const LectureItem = ({id,categoryData,detailCategoryData}) => {
     };
 
     const priceMent = `월 ${propsObj.lecturePrice}원`;
-    const imgSrc = `${PROXY}${propsObj.lectureImg}`
+    const imgSrc = `${PROXY}${propsObj.lectureThumbNail}`
     return (
         <div onClick={clickLectureItem} style={{cursor:'pointer'}} id="LectureItemDiv">
             <section id="LectureItemImg">

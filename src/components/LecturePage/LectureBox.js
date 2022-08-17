@@ -8,7 +8,6 @@ const LectureBox = ({categoryData,detailCategoryData,option}) => {
     //axios로 필터링 된 강의에 대한 정보들을 받아옴
     //정보의 형태는 [object]
     //그걸 map형태로 뿌려줌
-    console.log(option);
     const [allLectures,setAllLectures] = useState([]);
     const [filterData,setFilterData] = useState([]);
     const [optionBool,setOptionBool] = useState(true);
@@ -19,8 +18,6 @@ const LectureBox = ({categoryData,detailCategoryData,option}) => {
         axios.get(`${PROXY}/lectures/`)
         .then((res)=>{
             setAllLectures(res.data);
-            console.log(allLectures);
-            console.log(filterData);
         }).catch((err)=>{
             console.log(err);
         })
@@ -40,20 +37,15 @@ const LectureBox = ({categoryData,detailCategoryData,option}) => {
     },[option]);
     useEffect(()=>{
         setCategoryArray([]);
-        console.log('test');
         setCategoryArray(
             allLectures.filter((ele)=>{
                 return (ele.main_category === categoryData) && (ele.sub_category === detailCategoryData);
             })
         );
-        console.log(categoryArray.length);
         if(detailCategoryData.length !== 0){
             setFilterBool(true);
         }
     },[categoryData,detailCategoryData]);
-    console.log(optionBool);
-    console.log(categoryArray.length);
-    console.log(filterBool);
 
     return (
         <div id="LectureBoxDiv">
