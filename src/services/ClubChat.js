@@ -1,23 +1,23 @@
 import { database } from './firebase';
 import React, { useState, useEffect, useRef } from 'react';
 import { collection, addDoc, serverTimestamp, query, orderBy } from "firebase/firestore";
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, /**useLocation,**/ useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import '../style/services/Chat.css'
 import axios from "axios";
 import {PROXY} from '../data/serverUrl'
 import {onSnapshot} from 'firebase/firestore'
 
-function Chat() {
+function ClubChat() {
     const {id}=useParams();
-    const location = useLocation();
+    // const location = useLocation();
     const navigate = useNavigate();
 
     const [nickname, setNickname] = useState(); //유저 닉네임 저장
     const [msg, setMsg] = useState(""); //메세지
     const [chats, setChats]=useState([]); //채팅 목록
 
-    const {title} = location.state;
+    // const {title} = location.state;
     //채팅 가장 아래로 스크롤
     const messagesEndRef = useRef(null)
     const scrollToBottom = () => {
@@ -31,7 +31,7 @@ function Chat() {
         setMsg(e.target.value);
     };
 
-    const usersCollectionRef = collection(database, "chat-rooms", id, 'messages');
+    const usersCollectionRef = collection(database, "club-rooms", id, 'messages');
     //create messages
     const handleSumbit = async (e) => {
         e.preventDefault();
@@ -50,16 +50,16 @@ function Chat() {
         }
     }
 
-    const onClickDel = () => {
-        axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/withdraw/`, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-            }
-        })
-        alert('탈퇴되었습니다');
-        navigate('/mentoring');
-    }
+    // const onClickDel = () => {
+    //     axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/withdraw/`, {
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data',
+    //             'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+    //         }
+    //     })
+    //     alert('탈퇴되었습니다');
+    //     navigate('/mentoring');
+    // }
 
     // read messages
     useEffect(()=>{
@@ -77,12 +77,13 @@ function Chat() {
         };
         getData();
     },[]);
+
     return (
         <div>
             <Header/>
             <div className='chat-container'>
                 <div className='topBox'>
-                    <div className='titleP'>{title}</div>
+                    {/* <div className='titleP'>{title}</div> */}
                     <button className='delbtn'onClick={onClickDel}>탈퇴</button>
                 </div>
                 <div className='info-box'>                    
@@ -125,4 +126,4 @@ function Chat() {
     );
 }
 
-export default Chat;
+export default ClubChat;
