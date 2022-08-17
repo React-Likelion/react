@@ -17,7 +17,7 @@ const LectureUploadPage = () => {
         title : '',
         price : 0,
         main_category : '',
-        sub_category : '없음',
+        sub_category : '선택안함',
         description : '',
         writer: localStorage.getItem('react_nickname')
     });
@@ -72,6 +72,11 @@ const LectureUploadPage = () => {
             return;
         }
 
+        if(lectureInfo.sub_category === '선택안함'){
+            alert("세부 카테고리를 설정해주세요.");
+            return;
+        }
+
         // 강의 등록 통신
         // 1. formData 생성 후 데이터 append
         let form_data = new FormData();
@@ -87,6 +92,12 @@ const LectureUploadPage = () => {
         form_data.append('sub_category', lectureInfo.sub_category);
         form_data.append('price', lectureInfo.price);
         form_data.append('writer',lectureInfo.writer);
+        for (let key of form_data.keys()) {
+            console.log(key);
+        }
+        for (let value of form_data.values()) {
+            console.log(value);
+        }
 
         // 2. axios로 전송
         axios.post(`${PROXY}/lectures/`, form_data, {
