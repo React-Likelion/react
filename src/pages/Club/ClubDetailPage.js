@@ -27,9 +27,7 @@ const ClubDetailPage = () => {
     }
 
     useEffect(() => {
-        axios.get(`${PROXY}/clubs/${params.clubId}/`, {headers : {
-            'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
-        }})
+        axios.get(`${PROXY}/clubs/${params.clubId}/`)
         .then((res) => {
             console.log(res)
             setDetailData(res.data)
