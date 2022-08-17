@@ -1,19 +1,73 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { PROXY } from '../../data/serverUrl';
 import '../../style/components/CommunityPage/DetailRepleBox.css';
 import DetailRepleItem from './DetailRepleItem';
 
-const DetailRepleBox = () => {
+const DetailRepleBox = ({post_id}) => {
+    const [comments, setComments] = useState([]);
+    const [commentInfo, setCommentInfo] = useState({
+        content: '',
+        writer_id: localStorage.getItem('react_nickname'),
+        board_id: post_id
+    })
+
+    const handleChangeCommentData = (e) => {
+        setCommentInfo({
+            ...commentInfo,
+            content: e.target.value
+        })
+    }
+
+    // 댓글 등록
+    const handlePostCommentBtn = () => {
+        if(window.confirm('댓글을 등록하시겠습니까 ?')) {
+            axios.post(`${PROXY}/community/${post_id}/comments/`, commentInfo, {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
+                }
+            })
+            .then((res) => {
+                alert('댓글이 등록되었습니다.');
+                setComments([...comments, commentInfo]);
+                setCommentInfo({
+                    ...commentInfo, content: ''
+                })
+            })
+            .catch((err) => {
+                alert('댓글을 등록하지 못했습니다.');
+            })
+        }
+    }
+
+    // 댓글 조회
+    useEffect(() => {
+        axios.get(`${PROXY}/community/${post_id}/comments/`)
+        .then((res) => {
+            // console.log(res.data);
+            // console.log(post_id);
+            setComments(res.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }, []);
+
     return (
         <section id='DetailRepleBox'>
+            <div id='reple-input-bar'>
+                <input type='text' placeholder='  댓글을 입력해 주세요' value={commentInfo.content} onChange={handleChangeCommentData}/>
+                <button onClick={handlePostCommentBtn}>입력</button>
+            </div>
             <div>
                 댓글 <img src={`${process.env.PUBLIC_URL}/img/chat.png`} /> 
-                17
+                {comments.length}
             </div>
-            <DetailRepleItem/>
-            <DetailRepleItem/>
-            <DetailRepleItem/>
-            <DetailRepleItem/>
-            <DetailRepleItem/>
+            {
+                comments.map((ele, idx) => {
+                    return <DetailRepleItem ele={ele} key={idx} post_id={post_id} setComments={setComments}/>
+                })
+            }
         </section>
     );
 };
