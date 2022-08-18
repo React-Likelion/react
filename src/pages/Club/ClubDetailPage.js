@@ -18,6 +18,7 @@ const ClubDetailPage = () => {
     const [id, setId] = useState(params.clubId);
     const [detailData, setDetailData] = useState([])
     const [articleData, setArticleData] = useState([])
+    const [galleryData, setGalleryData] = useState([])
 
     // axios(`${PROXY}/club/${params.clubId}`) => 특정 동호회의 정보를 가져오기 위한 axios 
     // axios(`${PROXY}/club/${params.clubId}/articles`) => 특정 동호회의 게시글 가져오기 위한 axios 
@@ -38,7 +39,16 @@ const ClubDetailPage = () => {
         .catch((err) => {
             alert("디테일 페이지 에러")
         })
+        axios.get(`${PROXY}/clubs/${params.clubId}/galleries/`)
+        .then((res) => {
+            console.log(res)
+            setGalleryData(res.data)
+        })
+        .catch((err) => {
+            alert("갤러리 에러")
+        })
     }, [])
+    
 
     console.log(detailData);
 
@@ -56,7 +66,8 @@ const ClubDetailPage = () => {
                 </div>
                 <div className='clubDetailRight'>
                     <ClubChat id={params.clubId} title={detailData.name}/>
-                    <ClubGallery />
+                    <ClubGallery galleryData={galleryData} />
+
                 </div>
             </div>
         </section>

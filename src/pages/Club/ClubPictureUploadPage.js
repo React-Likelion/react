@@ -45,7 +45,7 @@ const ClubPictureUploadPage = () => {
         })
         .then((res) => {
             console.log(res);
-            navigate('/club');
+            navigate(`/club/detail/${state.club_id}`);
         })
         .catch((err) => {
             console.log(err);
