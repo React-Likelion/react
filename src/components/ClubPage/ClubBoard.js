@@ -2,7 +2,7 @@ import React from 'react';
 import "../../style/components/ClubPage/ClubBoard.css"
 import ClubArticle from './ClubArticle';
 
-const ClubBoard = () => {
+const ClubBoard = ({articleData}) => {
     return (
         <section className='ClubBoard'>
             <div className='clubBoardHeader'>

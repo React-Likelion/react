@@ -43,14 +43,14 @@ const FieldList = [
 const ageList = ["40대", "50대", "60대", "70대 이상"]
 const personnelList = ["5명+", "10명+", "20명+", "30명+"]
 
-const Filter = ({field}) => {
-    const [url, setUrl] = useState("");
+const Filter = ({field, search}) => {
     const PROXY = process.env.REACT_APP_PROXY;
-
+    const [url, setUrl] = useState("");
     const [choicedLocationList, setChoiceLocationList] = useState([]);
     const [choicedFieldList, setChoicedFieldList] = useState([]);
     const [choicedAgeList, setChoicedAgeList] = useState([]);
     const [choicedPersonnelList, setChoicedPersonnelList] = useState([]);
+    const [searchWord, setSearchWord] = useState('');
 
     const choicedLocation = (e) => {
         // 선택한 옵션에 내가 누른 옵션이 포함되어 있지 않을 때
@@ -139,11 +139,7 @@ const Filter = ({field}) => {
         let axiosUrl = url.slice(0, url.length - 1);
         // axios 통신
         axios
-            .get(`${PROXY}` + axiosUrl, {
-                headrs: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
-                }
-            })
+            .get(`${PROXY}` + axiosUrl)
             .then((res) => {
                 console.log(res)
             })
@@ -155,11 +151,12 @@ const Filter = ({field}) => {
     }, [url])
 
     useEffect(() => {
-        if (field = "clubs") {
-            setUrl("/clubs/?")
-        } else {
-            setUrl("/mentorings/?")
-        }
+        setUrl(url + `searchword=${encodeURIComponent(`${search}`)}&`)
+    }, [search])
+
+
+    useEffect(() => {
+        setUrl(`/${field}/?`) 
     }, [])
 
     return (
