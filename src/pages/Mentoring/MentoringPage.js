@@ -13,6 +13,7 @@ const MentoringPage = () => {
     const navigate = useNavigate();
     
     const [sortValue,setSortValue] = useState('');
+    const [search, setSearch] = useState('');
 
     const selectValue = (e) => {
         setSortValue(e.target.value);
@@ -26,12 +27,12 @@ const MentoringPage = () => {
             <Header />
             <Navbar val={'mentoring'}/>
             <div className='postBtnBox'>
-                <div className='searchBar'><SearchBar/></div>
+                <div className='searchBar'><SearchBar setSearch={setSearch}/></div>
                 {localStorage.getItem('react_accessToken') &&
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>}
             </div>
             <div>
-                <Filter field="mentorings"/>
+                <Filter field="mentorings" search={search}/>
             </div>
             <div className='selectBar'>
                 <select onChange={selectValue} id='selectBox'>
