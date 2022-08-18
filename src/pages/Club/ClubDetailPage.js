@@ -40,10 +40,11 @@ const ClubDetailPage = () => {
         })
     }, [])
 
-    console.log(detailData);
-
     return (
         <section className='ClubDetailPage'>
+            {
+                console.log(detailData)
+            }
             <Header/>
             <Navbar val={'club'}/>
             <div className='clubDeailContainer'>

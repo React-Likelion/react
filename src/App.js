@@ -73,6 +73,7 @@ function Lecture() {
           <Route path='' element={<LecturePage/>}/>
           <Route path='upload' element={<LectureUploadPage/>}/>
           <Route path='detail' element={<LectureDetailPage/>}/>
+          <Route path='detail/:id' element={<LectureDetailPage/>}/>
       </Routes>
   );
 };
