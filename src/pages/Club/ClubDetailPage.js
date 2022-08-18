@@ -15,7 +15,7 @@ const ClubDetailPage = () => {
     const PROXY = process.env.REACT_APP_PROXY;
     let params = useParams();
     const navigate = useNavigate();
-
+    const [id, setId] = useState(params.clubId);
     const [detailData, setDetailData] = useState([])
     const [articleData, setArticleData] = useState([])
 
@@ -23,9 +23,10 @@ const ClubDetailPage = () => {
     // axios(`${PROXY}/club/${params.clubId}/articles`) => 특정 동호회의 게시글 가져오기 위한 axios 
     // 특정 동호회 정보, 게시글을 가져온 후 각 컴포넌트의 props 로 넘겨준다
 
-
     const goPhotoUpload = () => {
-        navigate('pictureUpload');
+        navigate('pictureUpload', {state:{
+            club_id: id
+        }});
     }
 
     useEffect(() => {
@@ -39,7 +40,7 @@ const ClubDetailPage = () => {
         })
     }, [])
 
-    console.log(detailData)
+    console.log(detailData);
 
     return (
         <section className='ClubDetailPage'>

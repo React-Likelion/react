@@ -17,7 +17,7 @@ const ClubGalleryDetail = () => {
     return (
         <setion className="ClubGalleryDetail">
             <Header/>
-            <Navbar/>
+            <Navbar val="club"/>
             <div className="clubGalleryDetailContainer">
                 <div className="clubGalleryDetailBox">
                     <img onClick={modalHandle} className='clubGalleryDetailImg' src={`${process.env.PUBLIC_URL}/img/Example.png`}/>
