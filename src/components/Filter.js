@@ -43,14 +43,13 @@ const FieldList = [
 const ageList = ["40대", "50대", "60대", "70대 이상"]
 const personnelList = ["5명+", "10명+", "20명+", "30명+"]
 
-const Filter = ({field, search}) => {
+const Filter = ({field, search, sortValue}) => {
     const PROXY = process.env.REACT_APP_PROXY;
     const [url, setUrl] = useState("");
     const [choicedLocationList, setChoiceLocationList] = useState([]);
     const [choicedFieldList, setChoicedFieldList] = useState([]);
     const [choicedAgeList, setChoicedAgeList] = useState([]);
     const [choicedPersonnelList, setChoicedPersonnelList] = useState([]);
-    const [searchWord, setSearchWord] = useState('');
 
     const choicedLocation = (e) => {
         // 선택한 옵션에 내가 누른 옵션이 포함되어 있지 않을 때
@@ -149,16 +148,26 @@ const Filter = ({field, search}) => {
             
         console.log(`${PROXY}` + axiosUrl)
     }, [url])
-
+//검색어 추가
     useEffect(() => {
         setUrl(url + `searchword=${encodeURIComponent(`${search}`)}&`)
     }, [search])
-
+//인기순 최신순 변환
+    useEffect(() => {
+        if(sortValue === '최신순') {
+            setUrl(url.replace('popular=true&', ""))
+        }
+        else {
+            setUrl(url + "popular=true&")
+        }
+    }, [sortValue])
 
     useEffect(() => {
         setUrl(`/${field}/?`) 
     }, [])
 
+    console.log(url)
+    console.log(sortValue)
     return (
         <section>
             <div className="FilterContainer">

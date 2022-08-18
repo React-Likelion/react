@@ -32,13 +32,13 @@ const MentoringPage = () => {
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>}
             </div>
             <div>
-                <Filter field="mentorings" search={search}/>
+                <Filter field="mentorings" search={search} sortValue={sortValue}/>
             </div>
             <div className='selectBar'>
-                <select onChange={selectValue} id='selectBox'>
+                <select value={sortValue} onChange={selectValue} id='selectBox'>
                         <option disabled>정렬</option>
-                        <option value=''>최신순</option>
-                        <option value='listbycnt/'>인기순</option>
+                        <option value="최신순">최신순</option>
+                        <option value="인기순">인기순</option>
                 </select>
             </div>
             <section className='viewSection'>

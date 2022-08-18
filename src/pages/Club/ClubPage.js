@@ -67,7 +67,7 @@ const ClubPage = () => {
                 {localStorage.getItem('react_accessToken') &&
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>동호회 등록하기</div>}
             </div>
-            <Filter field="clubs" search={search} />
+            <Filter field="clubs" search={search} sortValue={sort} />
             <div className='clubPageContent'>
                 <div className='sortBtnBox'>
                     <select value={sort} onChange={onSort} className='sortBtn'>
