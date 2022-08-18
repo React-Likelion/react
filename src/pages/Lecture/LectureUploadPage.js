@@ -19,7 +19,8 @@ const LectureUploadPage = () => {
         main_category : '',
         sub_category : '선택안함',
         description : '',
-        writer: localStorage.getItem('react_nickname')
+        writer_nickname: localStorage.getItem('react_nickname'),
+        writer_id:localStorage.getItem('react_userId'),
     });
 
     const changeHandler = (checked, id) => {
@@ -91,7 +92,8 @@ const LectureUploadPage = () => {
         form_data.append('main_category', lectureInfo.main_category);
         form_data.append('sub_category', lectureInfo.sub_category);
         form_data.append('price', lectureInfo.price);
-        form_data.append('writer',lectureInfo.writer);
+        form_data.append('writer_nickname',lectureInfo.writer_nickname);
+        form_data.append('writer_id',lectureInfo.writer_id);
         for (let key of form_data.keys()) {
             console.log(key);
         }

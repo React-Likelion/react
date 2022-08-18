@@ -142,8 +142,6 @@ const LectureDetailPage = () => {
                 <section id="LectureRightSection">
                     
                     {/*클래스 수정/시청/신청 잘 돌아가는지 확인용, 통신하고 구현하면 지울것*/}
-                    --로직 확인용
-                    <button type="button" onClick={myLecture}>나의 강의</button> 로직 확인용--
 
                     <LectureRight lectureId={lectureId} lectureTitle={lectureTitle} lecturePrice={lecturePrice} />
                     {/* 조건
