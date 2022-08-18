@@ -1,6 +1,6 @@
 .clubGalleryContainer {
     min-width: 200px;
-    height: 39vh;
+    height: 41vh;
     background-color: rgb(255, 255, 255, 0.3);
 }
 
@@ -25,6 +25,7 @@
     height: 30px;
     border: 3px solid #749683;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .clubGalleryPhotos{
@@ -38,5 +39,6 @@
 
 .clubGalleryImg {
     width: 37%;
+    height: 37%;
     margin: 10px;
 }

@@ -1,0 +1,38 @@
+#ClubArticleRepleBox {
+    margin: 5px;
+    margin-bottom: 30px;
+}
+
+#ClubArticleRepleBox > div {
+    padding: 5px;
+    margin: 0px 5%;
+    font-weight: bold;
+    color: #2E493A;
+}
+
+#reple-input-bar > input {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+#reple-input-bar > input:focus {
+    border: 3px solid #2e493a73;
+}
+
+#reple-input-bar > button {
+    width: 20%;
+    background-color: rgba(46, 73, 58, 0.2);
+}
+
+#reple-input-bar > button:hover {
+    background-color: #2E493A;
+    color: #fff;
+}
+
+#reple-input-bar > input,
+#reple-input-bar > button {
+    outline: none;
+    border: none;
+    height: 40px;
+    border-radius: 5px;
+}
