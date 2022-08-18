@@ -55,7 +55,7 @@ const ClubDetailPage = () => {
                     <ClubBoard articleData={articleData} />
                 </div>
                 <div className='clubDetailRight'>
-                    <ClubChat />
+                    <ClubChat id={params.clubId} title={detailData.name}/>
                     <ClubGallery />
                 </div>
             </div>
