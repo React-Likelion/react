@@ -24,6 +24,8 @@ import ClubGalleryDetail from './pages/Club/ClubGalleryDetail';
 import Chat from './services/Chat';
 import PostDetailPage from './pages/PostDetailPage';
 import ClubArticleDetailPage from './pages/Club/ClubArticleDetailPage';
+import ClubChatRoom from './services/ClubChatRoom';
+
 
 
 const App = () => {
@@ -95,6 +97,7 @@ function Club() {
       <Routes>
           <Route path='' element={<ClubPage/>}/>
           <Route path='detail/:clubId' element={<ClubDetailPage />} />
+          <Route path='detail/:clubId/rooms/:clubId' element={<ClubChatRoom />} />
           <Route path='upload' element={<ClubUploadPage/>}/>
           <Route path='/detail/:clubId/pictureUpload' element={<ClubPictureUploadPage />} />
           <Route path='/detail/:clubId/articleUpload' element={<CommunityUploadPage />} />
