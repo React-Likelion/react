@@ -5,7 +5,6 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import '../style/services/Chat.css'
 import axios from "axios";
-// import {PROXY} from '../data/serverUrl'
 import {onSnapshot} from 'firebase/firestore'
 
 function Chat() {
@@ -78,6 +77,7 @@ function Chat() {
         };
         getData();
     },[]);
+    
     return (
         <div>
             <Header/>
