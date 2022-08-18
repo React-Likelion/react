@@ -1,13 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import '../../style/components/LecturePage/LectureLeft.css';
 import LectureLeftEditor from './LectureLeftEditor';
-import { PROXY } from '../../data/serverUrl';
+// import { PROXY } from '../../data/serverUrl';
 import Parser from 'html-react-parser';
 
 const LectureLeft = ({lectureId,lectureThumbNail,lectureImg2,lectureImg3,lectureImg4,lectureImg5,classModify,lectureYoutube,lectureTitle,lecturePrice,lectureDescription}) => {
     console.log(classModify);
     console.log(lectureId);
-
+    const PROXY = process.env.REACT_APP_PROXY;
     const imgThumbNail = `<img src=${PROXY+lectureThumbNail} alt='강의내용이미지' />`;
     const imgSrc2 = `<img src=${PROXY+lectureImg2} alt='강의내용이미지' />`;
     const imgSrc3 = `<img src=${PROXY+lectureImg3} alt='강의내용이미지' />`;

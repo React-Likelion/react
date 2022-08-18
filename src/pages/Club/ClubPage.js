@@ -7,12 +7,13 @@ import Navbar from './../../components/Navbar';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import SearchBar from './../../components/SearchBar';
-import {PROXY} from '../../data/serverUrl';
+// import {PROXY} from '../../data/serverUrl';
 
 const ClubPage = () => {
     const navigate = useNavigate();
     const [datas, setDatas] = useState([]);
-    const [sort, setSort] = useState("")
+    const [sort, setSort] = useState("");
+    const PROXY = process.env.REACT_APP_PROXY;
 
     const onClickBtnHandler = (e) => {
         navigate('upload');

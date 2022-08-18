@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {PROXY} from '../../data/serverUrl';
+// import {PROXY} from '../../data/serverUrl';
 import "../../style/components/ClubPage/ClubInfo.css"
 import axios from 'axios';
 
 
 const ClubInfo = ({params, member, name, image}) => {
+    const PROXY = process.env.REACT_APP_PROXY;
     const navigate = useNavigate();
     const goArticleUpload = () => {
         navigate('articleUpload')

@@ -7,9 +7,10 @@ import LectureLeft from '../../components/LecturePage/LectureLeft';
 import LectureRight from '../../components/LecturePage/LectureRight';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
-import { PROXY } from '../../data/serverUrl';
+// import { PROXY } from '../../data/serverUrl';
 
 const LectureDetailPage = () => {
+    const PROXY = process.env.REACT_APP_PROXY;
     const location = useLocation();
     const lectureId = location.state.lecture[0].lectureId;
     const lectureTitle = location.state.lecture[0].lectureTitle;
