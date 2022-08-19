@@ -17,8 +17,9 @@ function Chat() {
     const [msg, setMsg] = useState(""); //메세지
     const [chats, setChats]=useState([]); //채팅 목록
 
-    const {title} = location.state;
-    //채팅 가장 아래로 스크롤
+    const usedata = location.state;
+    const leaderNickname = usedata.usedata[0].leaderNick;
+   //채팅 가장 아래로 스크롤
     const messagesEndRef = useRef(null)
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -53,7 +54,6 @@ function Chat() {
     const onClickDel = () => {
         axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/withdraw/`, {
             headers: {
-                'Content-Type': 'multipart/form-data',
                 'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
             }
         })
@@ -77,14 +77,31 @@ function Chat() {
         };
         getData();
     },[]);
+
+    function check(){
+        if(leaderNickname === nickname){
+            return(
+                <>
+                    
+                </>
+            )
+        }
+        else{
+            return(
+                <>
+                    <button className='delbtn'onClick={onClickDel}>탈퇴</button>
+                </>
+            )
+        }
+    }
     
     return (
         <div>
             <Header/>
             <div className='chat-container'>
                 <div className='topBox'>
-                    <div className='titleP'>{title}</div>
-                    <button className='delbtn'onClick={onClickDel}>탈퇴</button>
+                    <div className='titleP'>{usedata.usedata[0].title}</div>
+                    {check()}
                 </div>
                 <div className='info-box'>                    
                     <div className='chat-box'>

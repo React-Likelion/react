@@ -15,6 +15,10 @@ const MentoringDetailPage = () => {
     const [member, setMember] = useState([]); //채팅방에 닉네임이 있을때 채팅방에 접근 가능
     const [getNickname,setGetNickname] = useState([]);
     const [mentoringList, setmentoringList] = useState([]); //멘토링 정보 리스트들
+    const [propsObj, setPropsObj]=useState({
+
+    });
+    const userArr=[]
     const ColRef = collection(database, "chat-rooms", id, 'messages');
     
     //채팅방에 입장되어있는 닉네임 받아오기
@@ -46,6 +50,10 @@ const MentoringDetailPage = () => {
                 if(res.data){
                     // console.log(res)
                     setmentoringList(res.data);//가져온 모든 리스트를 배열에 저장한다.
+                    setPropsObj({
+                        leaderNick: res.data.nickname,
+                        title: res.data.title,
+                    })
                 }else{
                     alert('멘토링 리스트를 가져오는데 실패했습니다.')
                 }
@@ -60,17 +68,18 @@ const MentoringDetailPage = () => {
             }
         })
             .then((res) => {
+                userArr.push(propsObj);
                 if(mentoringList.limit === mentoringList.member_cnt){
                     if(getNickname.includes(`${nick}`)){
                         alert('입장에 성공하였습니다');
                         navigate(`room/${mentoringList.id}`,{
                             state: {
-                                title: mentoringList.title,
+                                usedata: userArr,
                             }})
                     } else if(nick === mentoringList.nickname ){
                         navigate(`room/${mentoringList.id}`,{
                             state: {
-                                title: mentoringList.title,
+                                usedata: userArr,
                             }})
                     } else{
                         alert('인원이 가득찼습니다')
@@ -79,7 +88,7 @@ const MentoringDetailPage = () => {
                     alert('입장에 성공하였습니다');
                     navigate(`room/${mentoringList.id}`,{
                         state: {
-                            title: mentoringList.title,
+                            usedata: userArr,
                         }
                     });
                 }
