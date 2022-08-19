@@ -4,9 +4,8 @@ const LectureRight = ({lectureId,lectureTitle,lecturePrice}) => {
 
     return (
         <div>
-            <p>{lectureTitle}</p>
-            <p>{lecturePrice}</p>
-            <p>{lectureId}</p>
+            <h3>{lectureTitle}</h3><br/>
+            <p>가격 : {lecturePrice} <sub>Point</sub></p>
         </div>
     );
 };

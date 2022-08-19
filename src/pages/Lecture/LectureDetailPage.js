@@ -79,6 +79,22 @@ const LectureDetailPage = () => {
     };
     const purchaseLecture = ()=>{
         //강의 구매 로직
+
+        // axios.patch(`${PROXY}/lectures/${lectureId}/enroll/`,enroll_students,{
+        //     headers: {
+        //         // 'Content-Type': 'multipart/form-data',
+        //         'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+        //     }
+        // })
+        fetch(`${PROXY}/lectures/${lectureId}/enroll/`,{
+            method: 'PATCH',
+            body:({
+                enroll_students:localStorage.getItem('react_nickname')
+            }),
+                headers:{
+                    'Authorization' : 'Bearer '+localStorage.getItem('react_accessToken')
+                }
+        })
         setPurchaseStatus(!purchaseStatus);
         alert('클래스 수강 시작!');
         handleClose();
