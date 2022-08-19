@@ -24,7 +24,7 @@
     width: 12.6vw;
 }
 .scroll::-webkit-scrollbar {
-    width: 5px; /*스크롤바의 너비*/
+    height: 5px; /*스크롤바의 너비*/
 }
 
 .scroll::-webkit-scrollbar-thumb {
