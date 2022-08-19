@@ -4,7 +4,6 @@ import '../../style/pages/Mentoring/MentoringUploadPage.css';
 import ImagePreview from '../../components/ImagePreview.js';
 import { useNavigate } from 'react-router-dom';
 import { locationData, fieldData, ageData } from '../../data/CategoryData.js';
-// import { PROXY } from '../../data/serverUrl.js';
 import axios from 'axios';
 
 const MentoringUploadPage = () => {
@@ -42,7 +41,7 @@ const MentoringUploadPage = () => {
     }
 
     const submitTag = (e) => {
-        if(tag === '') {
+        if (tag === '') {
             alert("태그를 입력해주세요 !");
         } else if(mentoringInfo.tags.length === 3) {
             alert("태그는 반드시 3개여야 합니다.");
@@ -80,7 +79,7 @@ const MentoringUploadPage = () => {
             return;
         } else if (Number(mentoringInfo.limit) < 3 || isNaN(mentoringInfo.limit)) {
             alert("정원은 3명 이상의 숫자 형태이어야 합니다."); 
-        }else if(mentoringInfo.tags.length < 3){
+        } else if(mentoringInfo.tags.length < 3){
             alert('태그는 반드시 3개여야 합니다.');
         }
         // 멘토링 등록 통신
@@ -94,21 +93,22 @@ const MentoringUploadPage = () => {
         form_data.append('field', mentoringInfo.field);
         form_data.append('age_group', mentoringInfo.age_group);
         form_data.append('limit', mentoringInfo.limit);
-        form_data.append('tag', mentoringInfo.tags[0]);
-        form_data.append('tag2', mentoringInfo.tags[1]);
-        form_data.append('tag3', mentoringInfo.tags[2]);
+        form_data.append('tag', '#'+ mentoringInfo.tags[0]);
+        form_data.append('tag2', '#'+ mentoringInfo.tags[1]);
+        form_data.append('tag3', '#'+ mentoringInfo.tags[2]);
         
         // 2. axios로 전송
         axios.post(`${PROXY}/mentorings/`, form_data, {
             headers: {
-                'Content-Type': 'multipart/form-data',
-                'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+              'Content-Type': 'multipart/form-data',
+              'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
             }
         })
         .then((res) => {
             navigate('/mentoring');
         })
         .catch((err) => {
+            alert(err);
         })
     }
 

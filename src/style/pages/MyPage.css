@@ -86,7 +86,7 @@
     font-weight: bold;
 }
 
-li:hover, .my-selected {
+.my-selected:hover {
     background-color: #749683;
     border-radius: 8px;
     color: #fff;
