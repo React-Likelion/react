@@ -21,7 +21,6 @@ const MyTopBox = ({category}) => {
                     }
                 })
                 .then((res)=>{
-                    console.log(res);
                     setDatas(res.data);
                 }).catch((err)=>{
                     console.log(err);
@@ -35,8 +34,6 @@ const MyTopBox = ({category}) => {
                     }
                 })
                 .then((res)=>{
-                    console.log(res);
-                    console.log(res.data);
                     setDatas(res.data);
                 }).catch((err)=>{
                     console.log(err);
@@ -50,8 +47,6 @@ const MyTopBox = ({category}) => {
                     }
                 })
                 .then((res)=>{
-                    console.log(res);
-                    console.log(res.data);
                     setDatas(res.data);
                 })
                 .catch((err)=>{
@@ -66,8 +61,6 @@ const MyTopBox = ({category}) => {
                     }
                 })
                 .then((res)=>{
-                    console.log(res);
-                    console.log(res.data);
                     setDatas(res.data);
                 })
                 .catch((err)=>{
@@ -103,7 +96,6 @@ const MyTopBox = ({category}) => {
     async function clickItem(ele){
         try{
             let prop = await promise(ele);
-            console.log(prop);
             propsArray.push(prop);
             navigate('/lecture/detail',{state:{lecture:propsArray}});
         }catch(err){
@@ -120,7 +112,6 @@ const MyTopBox = ({category}) => {
         }
         
     }
-    console.log(category);
     return (
         <section id='MyTopBox'>
             {

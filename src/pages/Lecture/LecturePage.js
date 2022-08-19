@@ -19,7 +19,6 @@ const LecturePage = () => {
         "최신순", "인기순"
     ];
     const optionHandler = (e) => {
-        console.log(e.target.value);
         setOption(e.target.value);
         //정렬 값 받아서 정렬하기
     };

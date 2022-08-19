@@ -13,7 +13,6 @@ const MyBottomBox = ({category}) => {
 
     useEffect(() => {
         // set data
-        console.log(category);
         switch(category){
             case 'lecture' : {
                 axios.get(`${PROXY}/lectures/mypage/`,{
@@ -22,7 +21,6 @@ const MyBottomBox = ({category}) => {
                     }
                 })
                 .then((res)=>{
-                    console.log(res);
                     setDatas(res.data);
                 }).catch((err)=>{
                     console.log(err);
@@ -37,8 +35,6 @@ const MyBottomBox = ({category}) => {
                     }
                 })
                 .then((res)=>{
-                    console.log(res);
-                    console.log(res.data);
                     setDatas(res.data);
                 }).catch((err)=>{
                     console.log(err);
@@ -52,8 +48,6 @@ const MyBottomBox = ({category}) => {
                     }
                 })
                 .then((res)=>{
-                    console.log(res);
-                    console.log(res.data);
                     setDatas(res.data);
                 })
                 .catch((err)=>{
@@ -93,7 +87,6 @@ const MyBottomBox = ({category}) => {
     async function clickItem(ele){
         try{
             let prop = await promise(ele);
-            console.log(prop);
             propsArray.push(prop);
             navigate('/lecture/detail',{state:{lecture:propsArray}});
         }catch(err){

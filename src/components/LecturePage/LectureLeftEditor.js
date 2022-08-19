@@ -64,15 +64,9 @@ const LectureLeftEditor = ({imgFile,setImgFile,lectureId,titleLecture,lectureYou
     const imgArray = [];
 
     const clickModifySubmit = (e)=>{
-        
-        console.log('수정 제출');
-        console.log(imgArray);
-        console.log(imgFile);
         let data = new FormData();
-        console.log(imgFile.length);
 
         for(let i=0; i<imgFile.length; i++){
-            console.log('test');
             data.append(`image${i+1}`,imgFile[i]);
         }
         data.append('writer_nickname',localStorage.getItem('react_nickname'));
@@ -82,13 +76,6 @@ const LectureLeftEditor = ({imgFile,setImgFile,lectureId,titleLecture,lectureYou
         data.append('youtube_link',lectureData.youtube_link);
         data.append('main_category',lectureData.field);
         data.append('sub_category',lectureData.tag);
-        for (let key of data.keys()) {
-            console.log(key);
-        }
-        for (let value of data.values()) {
-            console.log(value);
-        }
-        
         data.append("data", JSON.stringify(lectureData));
         if (Object.values(lectureData).includes('')) {
             alert("입력되지 않은 값이 있습니다.");
@@ -101,7 +88,6 @@ const LectureLeftEditor = ({imgFile,setImgFile,lectureId,titleLecture,lectureYou
             }
         })
         .then((res)=>{
-            console.log(res);
             navigate('/lecture');
         })
         .catch((err)=>console.log(err))
@@ -112,18 +98,11 @@ const LectureLeftEditor = ({imgFile,setImgFile,lectureId,titleLecture,lectureYou
             upload(){
                 return new Promise ((resolve, reject) => {
                         loader.file.then( (file) => {
-                            // setImgFile([
-                            //     ...imgFile,
-                            //     file
-                            // ]);
                             imgArray.push(file);
                             setImgFile([
                                 ...imgFile,
                                 file
                             ]);
-                            // console.log(file);
-                            console.log(imgArray);
-                            console.log(imgFile);
                         })
                 })
             }
@@ -161,16 +140,12 @@ const LectureLeftEditor = ({imgFile,setImgFile,lectureId,titleLecture,lectureYou
             }}
             data="사진은 5장 까지 등록이 가능합니다."
             onReady={editor => {
-                // console.log('Editor is ready to use!', editor);
                 const data = editor.getData();
                 setLectureData({...lectureData,
                     description:data});
             }}
             onChange={(event, editor) => {
                 const data = editor.getData();
-                // setDesc(data);
-                // console.log(desc);
-                console.log(data);
                 setLectureData({...lectureData,
                     description:data});
             }}
