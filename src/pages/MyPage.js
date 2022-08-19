@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import '../style/pages/MyPage.css';
 import Header from './../components/Header';
 import Footer from '../components/Footer.js';
-// import MyTopBox from '../components/Mypage/MyTopBox';
-// import MyBottomBox from '../components/Mypage/MyBottomBox';
+import MyTopBox from '../components/Mypage/MyTopBox';
+import MyBottomBox from '../components/Mypage/MyBottomBox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Payment from '../Payment/index.js';
@@ -81,12 +81,12 @@ const MyPage = () => {
                     </ul>
                     <div id='signout' onClick={clickSecession}>회원탈퇴</div>
                 </article>
-                {/* <article id='right-side'>
+                <article id='right-side'>
                     <div>&nbsp;&nbsp;&nbsp;{mypageInfo[`${selected}`][0]}</div>
                     <MyTopBox category={selected}/>
                     <div>&nbsp;&nbsp;&nbsp;{mypageInfo[`${selected}`][1]}</div>
                     <MyBottomBox category={selected}/>
-                </article> */}
+                </article>
             </section>
             <Footer/>
         </>
