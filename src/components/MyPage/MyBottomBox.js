@@ -74,7 +74,7 @@ const MyBottomBox = ({category}) => {
                 lectureImg5:ele.image5,
                 lecturePrice:ele.price,
                 lectureLikeCnt:ele.like_cnt,
-                lectureWriter:ele.writer,
+                lectureWriter:ele.writer_nickname,
                 lectureEnroll:ele.enroll_students,
                 lectureYoutube:ele.youtube_link,
                 lectureLikeMember:ele.like_members,
