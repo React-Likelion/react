@@ -72,7 +72,6 @@ const MainContentsItem = ({category}) => {
                 <div id='mentoring-item'>
                     <img src={ele.image}/>
                     <div>{ele.title}</div>
-                    {ele.tag && ele.tag.map((ele) => <span>{ele}</span>)}
                 </div>
                 )
                 break;

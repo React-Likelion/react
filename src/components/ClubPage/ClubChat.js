@@ -26,13 +26,27 @@ const ClubChat = ({id, title}) => {
         getData();
     },[]);
 
+    //채팅 가장 아래로 스크롤
+    const messagesEndRef = useRef(null)
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+    useEffect(() => {
+        scrollToBottom()
+    }, [chats]);
+    //채팅 가장 아래로 스크롤
+
     return (
-        <section>
-            <div className='veiwChat' onClick={()=>navigate(`rooms/${id}`,{
+        <div className='clubChatContainer'>
+            <div className='clubChatHeader'>
+                    <p className='clubChatTitle'>채팅</p>
+                    <div className='clubChatIn' onClick={()=>navigate(`rooms/${id}`,{
                         state: {
                             title: title,
                         }
-                })}>
+                })}>입장하기</div>
+            </div>
+            <div className='veiwChat'>
                 {
                     chats.map((ele,i) => {
                         if(ele.nickname === nickname){ //내가 보낸 채팅
@@ -51,8 +65,9 @@ const ClubChat = ({id, title}) => {
                         }
                     })
                 }
+                <div ref={messagesEndRef} />
             </div>
-        </section>
+        </div>
     );
 }
 

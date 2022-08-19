@@ -15,15 +15,18 @@
 .veiwChat{
     padding: 1%;
     height: 40vh;
-    background-color: #749683;
-    margin-bottom: 3%;
+    background-color: rgb(255, 255, 255, 0.3);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    overflow: auto;
 }
 .chat-my{
-    background-color: white;
+    background-color: #FFFFFF;
+    color: #2E493A;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    margin: 2px;
+    margin: 8px 2px 8px 2px;
     padding: 10px;
     width: 50%;
     position: relative;
@@ -32,10 +35,11 @@
 }
 .chat-your{
     background-color: #fffdf6;
+    color: #2E493A;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
-    margin: 2px;
+    margin: 8px 2px 8px 2px;
     padding: 10px;
     width: 50%;
     position: relative;
@@ -47,4 +51,38 @@
     font-size: large;
     font-weight: bolder;
     margin-bottom: 3%;
+}
+
+.clubChatHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px;
+    background-color: rgb(255, 255, 255, 0.3);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.clubChatTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2E493A;
+}
+
+.clubChatIn {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #7C7C7C;
+    width: 90px;
+    text-align: center;
+    height: 30px;
+    border: 3px solid #749683;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.clubChatContainer{
+    border: 1px solid lightgray;
+    margin-bottom: 10%;
+    background-color: rgb(116, 150, 131, 0.5);
+    border-radius: 30px;
 }
