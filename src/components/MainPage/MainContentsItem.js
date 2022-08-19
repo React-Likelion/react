@@ -44,6 +44,8 @@ const MainContentsItem = ({category}) => {
         }
     }
 
+
+
     const clickLecture = (ele)=>{
         
         console.log(propsObj);
@@ -55,6 +57,7 @@ const MainContentsItem = ({category}) => {
 
     // 박스 하나 요소 정의
     const makeItem = (ele) => {
+        console.log(ele);
         const infoItem = [];
         switch (category) {
             case 'lecture': 
@@ -70,13 +73,16 @@ const MainContentsItem = ({category}) => {
                 <div id='mentoring-item'>
                     <img src={ele.image}/>
                     <div>{ele.title}</div>
+                    <span>{ele.tag}</span>
+                    <span>{ele.tag2}</span>
+                    <span>{ele.tag3}</span>
                 </div>
                 )
                 break;
             case 'club': 
                 infoItem.push(
                 <div id='club-item'>
-                    <img>{ele.image}</img>
+                    <img src={ele.image}/>
                     <div>{ele.name}</div>
                     <div>{ele.location}  {ele.member}명</div>
                 </div>
@@ -94,12 +100,18 @@ const MainContentsItem = ({category}) => {
     }
 
     useEffect(() => {
-        if(category === 'club' || category === 'community') return;
-        console.log(category);
-        axios.get(`${PROXY}/${category}s/main/`)
+        // if(category === 'lecture') return;
+        let url = '';
+        if(category === 'community') {
+            url = `${PROXY}/community/main/`;
+        } else {
+            url = `${PROXY}/${category}s/main/`;
+        }
+        
+        axios.get(url)
         .then((res) => {
-            setInfo(res.data);
             console.log(res.data);
+            setInfo(res.data);
         })
         .catch((err) => {
             console.log(err);

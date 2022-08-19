@@ -44,8 +44,8 @@ const MentoringUploadPage = () => {
     const submitTag = (e) => {
         if(tag === '') {
             alert("태그를 입력해주세요 !");
-        } else if(mentoringInfo.tags.length === 3) {
-            alert("태그는 3개까지 가능합니다.");
+        } else if(mentoringInfo.tags.length <= 3) {
+            alert("태그는 반드시 3개여야 합니다.");
             setTag('');
             return;
         } else if (tag.length > 10) {
