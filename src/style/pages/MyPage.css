@@ -51,14 +51,14 @@
     height: 20px;
 }
 
-#left-side > div:nth-child(4) {
+/* #left-side > div:nth-child(4) {
     font-size: 13px;
     line-height: 25px;
     border-bottom: 1px solid #2E493A;
     color: #2E493A;
     margin: 5px auto;
     width: 100px;
-}
+} */
 
 #left-side > div:nth-child(4):hover {
     cursor: pointer;

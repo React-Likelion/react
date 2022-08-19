@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../style/pages/MyPage.css';
 import Header from './../components/Header';
 import Footer from '../components/Footer.js';
@@ -6,7 +6,8 @@ import Footer from '../components/Footer.js';
 // import MyBottomBox from '../components/Mypage/MyBottomBox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import Payment from '../Payment/index.js';
+import '../style/pages/MyPage.css';
 
 const MyPage = () => {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ const MyPage = () => {
     });
     const [selected, setSelected] = useState('lecture');
     const PROXY = process.env.REACT_APP_PROXY;
+    const [useInfo, setUserInfo] = useState([]);
 
 
     const handleCategory = (e) => {
@@ -45,6 +47,21 @@ const MyPage = () => {
         }
     };
 
+    useEffect(() => {
+        axios.get(`${PROXY}/accounts/`, {
+            headers : {
+                Authorization: localStorage.getItem('react_accessToken')
+            }
+        })
+        .then((res) => {
+            console.log(res);
+            setUserInfo(res.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }, []);
+
     return (
         <>
             <Header />
@@ -53,7 +70,7 @@ const MyPage = () => {
                     <div><img src='' alt='이미지 없음'/></div>
                     <div>사용자</div>
                     <div id='point'><img src={`${process.env.PUBLIC_URL}/img/coin.png`}/>10,000 P</div>
-                    <div>포인트 충전하기</div><br/>
+                    <div><Payment/></div>
                     <span>내 정보</span>
                     <div></div>
                     <ul>
