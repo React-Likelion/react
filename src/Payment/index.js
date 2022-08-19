@@ -69,7 +69,7 @@ const Payment = (effect, deps) => {
                 point: paid_amount
             }, {
                 headers: {
-                    'Authorization': localStorage.getItem('react_accessToken')
+                    'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
                 }
             })
             .then((res) => {
