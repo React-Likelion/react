@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
-const ClubArticleReplyItem = ({ele, idx, post_id, setComments}) => {
+const ClubArticleReplyItem = ({ele, idx, post_id, club_id, setComments}) => {
     // console.log(ele);
     const PROXY = process.env.REACT_APP_PROXY;
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ const ClubArticleReplyItem = ({ele, idx, post_id, setComments}) => {
     
     const [replyInfo, setReplyInfo] = useState({
         content: '',
-        writer_id: localStorage.getItem('react_nickname'),
+        writer_id: localStorage.getItem('react_userId'),
         board_id: Number(post_id), 
         comment_id: ele.id
     })
@@ -38,32 +38,32 @@ const ClubArticleReplyItem = ({ele, idx, post_id, setComments}) => {
     }
 
     // 댓글 수정 -> 아직 안됨
-    const handleCommentModifyBtn = () => {
-        if(window.confirm('해당 댓글을 수정하시겠습니까 ?')) {
-            axios.post(`${PROXY}/community/${post_id}/comments/${ele.id}/`, {
-                content: modifyContent,
-                writer_id: localStorage.getItem('react_nickname'),
-                board_id: Number(post_id),
-                comment_id: ele.id
-            }, {
-                headers: {
-                    'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-                  }
-              })
-            .then((res) => {
-                console.log(res);
-                setModifyFlag(!modifyFlag);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-        }
-    }
+    // const handleCommentModifyBtn = () => {
+    //     if(window.confirm('해당 댓글을 수정하시겠습니까 ?')) {
+    //         axios.post(`${PROXY}/community/${post_id}/comments/${ele.id}/`, {
+    //             content: modifyContent,
+    //             writer_id: localStorage.getItem('react_nickname'),
+    //             board_id: Number(post_id),
+    //             comment_id: ele.id
+    //         }, {
+    //             headers: {
+    //                 'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+    //               }
+    //           })
+    //         .then((res) => {
+    //             console.log(res);
+    //             setModifyFlag(!modifyFlag);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         })
+    //     }
+    // }
 
     // 댓글 삭제
     const handleCommentDeleteBtn = () => {
         if(window.confirm('해당 댓글을 삭제하시겠습니까 ?')) {
-            axios.delete(`${PROXY}/community/${post_id}/comments/${ele.id}/`, {
+            axios.delete(`${PROXY}/clubs/${club_id}/articles/${post_id}/comment/${ele.id}/`, {
                 headers: {
                     'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
                   }
@@ -122,23 +122,26 @@ const ClubArticleReplyItem = ({ele, idx, post_id, setComments}) => {
             {
                 !modifyFlag ?
                 <div>
-                    <div>{ele.writer_id}</div>
+                    <div>{localStorage.getItem("react_nickname")}</div>
                     <div>{ele.content}</div>
                     <div>{ele.create_time && ele.create_time.substr(0,10)}</div>
                 </div> : 
                 <div id='modify-box'>
                     <div>{ele.writer_id}</div>
                     <input type='text' value={modifyContent} onChange={handleModifyContent}/>
-                    <button onClick={handleCommentModifyBtn}>수정</button>
+                    <button 
+                    // onClick={handleCommentModifyBtn}
+                    >
+                        수정</button>
                     <div>{ele.create_time && ele.create_time.substr(0,10)}</div>
                 </div>
             }
             <div id='extra-btns'>
                 {/* <button onClick={handleReplyFlagBtn}>대댓글</button> */}
                 {
-                    ele.writer_id === localStorage.getItem('react_nickname') && 
+                    ele.writer_id === localStorage.getItem('react_userId') && 
                     <>
-                        <button onClick={handleCommentModifyFlagBtn}>수정</button>
+                        {/* <button onClick={handleCommentModifyFlagBtn}>수정</button> */}
                         <button onClick={handleCommentDeleteBtn}>삭제</button>
                     </>
                 }

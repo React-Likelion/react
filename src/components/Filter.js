@@ -101,12 +101,12 @@ const Filter = ({field, search, sortValue, setDatas, searchType}) => {
                 e.target.id
             ])
             setUrl(
-                url + `age=${encodeURIComponent(e.target.id)}&`// 선택한 옵션에 내가 누른 옵션이 포함되어 있을 때
+                url + `age_group=${encodeURIComponent(e.target.id)}&`// 선택한 옵션에 내가 누른 옵션이 포함되어 있을 때
             )
         } else {
             const newChoicedAgeList = choicedAgeList.filter((item) => item !== e.target.id)
             setChoicedAgeList(newChoicedAgeList);
-            setUrl(url.replace(`age=${encodeURIComponent(e.target.id)}&`, ""))
+            setUrl(url.replace(`age_group=${encodeURIComponent(e.target.id)}&`, ""))
         }
         // if(!itemList.includes(e.target.id)) {     setChoiceItem(e.target.id);
         // setItemList([...itemList, e.target.id]); } else {     const newItemList =
