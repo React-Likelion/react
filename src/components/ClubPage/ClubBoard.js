@@ -18,7 +18,7 @@ const ClubBoard = ({articleData}) => {
             </div>
             {/* 게시글의 갯수만큼 map */}
             {
-                articleData.slice(offset, offset + limit).map((item, idx) => <ClubArticle item={item} />)
+                articleData.slice(offset, offset + limit).map((item, idx) => <ClubArticle item={item} idx={idx} />)
             }
             <Pagination total={articleData.length} limit={limit} page={page} setPage={setPage} />
         </section>

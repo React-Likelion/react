@@ -45,6 +45,7 @@ const ClubArticleRepleBox = ({club_id, post_id}) => {
                 setCommentInfo({
                     ...commentInfo, content: ''
                 })
+                window.location.reload();
             })
             .catch((err) => {
                 alert('댓글을 등록하지 못했습니다.');
@@ -56,12 +57,15 @@ const ClubArticleRepleBox = ({club_id, post_id}) => {
     useEffect(() => {
         axios.get(`${PROXY}/clubs/${club_id}/articles/${post_id}/comment/`)
         .then((res) => {
+            console.log(res.data)
             setComments(res.data);
         })
         .catch((err) => {
             console.log(err);
         })
     }, []);
+
+    console.log(comments)
 
     return (
         <section id='ClubArticleRepleBox'>

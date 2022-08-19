@@ -17,7 +17,7 @@ const CommunityBoard = () => {
     const [searchVal, setSearchVal] = useState('');
     
     const uploadPostBtn = () => {
-        navigate('/communitys/upload');
+        navigate('/community/upload');
     }
 
     const handleSearchVal = (e) => {
@@ -30,7 +30,7 @@ const CommunityBoard = () => {
 
     // 게시물 조회
     useEffect(() => {
-        axios.get(`${PROXY}/community/`)
+        axios.get(`${PROXY}/communitys/`)
         .then((res) => {
             setPosts(res.data);
         })

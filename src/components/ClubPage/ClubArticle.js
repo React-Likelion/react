@@ -2,7 +2,7 @@ import React from 'react';
 import "../../style/components/ClubPage/ClubArticle.css"
 import { useNavigate } from 'react-router-dom';
 
-const ClubArticle = ({item}) => {
+const ClubArticle = ({item, idx}) => {
     console.log(item)
     const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const ClubArticle = ({item}) => {
         <section>
             <div className='clubArticle' onClick={goArticleDetail}>
                 <div className='clubArticleTitle'>
-                    <p className='clubArticleTitleNum'>{item.id}</p>
+                    <p className='clubArticleTitleNum'>{idx+1}</p>
                     <p className='clubArticleTitleContentBox'>
                         <p className='clubArticleTitleContent'>{item.title}</p>
                         {/* <p className='clubArticleTitleComment'>[{item.comment_cnt}]</p> */}
