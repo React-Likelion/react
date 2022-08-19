@@ -43,7 +43,7 @@ const FieldList = [
 const ageList = ["40대", "50대", "60대", "70대 이상"]
 const personnelList = ["5명+", "10명+", "20명+", "30명+"]
 
-const Filter = ({field, search, sortValue}) => {
+const Filter = ({field, search, sortValue, setDatas, searchType}) => {
     const PROXY = process.env.REACT_APP_PROXY;
     const [url, setUrl] = useState("");
     const [choicedLocationList, setChoiceLocationList] = useState([]);
@@ -140,7 +140,8 @@ const Filter = ({field, search, sortValue}) => {
         axios
             .get(`${PROXY}` + axiosUrl)
             .then((res) => {
-                console.log(res)
+                console.log(res.data)
+                setDatas(res.data)
             })
             .catch((err) => {
                 console.log("clubs filter 오류")
@@ -150,8 +151,13 @@ const Filter = ({field, search, sortValue}) => {
     }, [url])
 //검색어 추가
     useEffect(() => {
-        setUrl(url + `searchword=${encodeURIComponent(`${search}`)}&`)
+        if(searchType === "club") {
+            setUrl(url + `name=${encodeURIComponent(`${search}`)}&`)
+        } else {
+            setUrl(url + `title=${encodeURIComponent(`${search}`)}&`)
+        }
     }, [search])
+    console.log(searchType)
 //인기순 최신순 변환
     useEffect(() => {
         if(sortValue === '최신순') {
@@ -166,8 +172,6 @@ const Filter = ({field, search, sortValue}) => {
         setUrl(`/${field}/?`) 
     }, [])
 
-    console.log(url)
-    console.log(sortValue)
     return (
         <section>
             <div className="FilterContainer">

@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import Header from './../../components/Header';
 import Navbar from '../../components/Navbar';
 import MentoringBox from './../../components/MentoringPage/MentoringBox';
@@ -14,6 +14,7 @@ const MentoringPage = () => {
     
     const [sortValue,setSortValue] = useState('');
     const [search, setSearch] = useState('');
+    const [searchType, setSearchType] = useState('');
 
     const selectValue = (e) => {
         setSortValue(e.target.value);
@@ -22,17 +23,22 @@ const MentoringPage = () => {
     const onClickBtnHandler = (e) => {
         navigate('upload');
     }
+
+    useEffect(() => {
+        setSearchType('mentoring')
+    }, [])
+
     return (
         <div>
             <Header />
             <Navbar val={'mentoring'}/>
             <div className='postBtnBox'>
-                <div className='searchBar'><SearchBar setSearch={setSearch}/></div>
+                <div className='searchBar'><SearchBar setSearch={setSearch} /></div>
                 {localStorage.getItem('react_accessToken') &&
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>}
             </div>
             <div>
-                <Filter field="mentorings" search={search} sortValue={sortValue}/>
+                <Filter field="mentorings" search={search} sortValue={sortValue} searchType={searchType}/>
             </div>
             <div className='selectBar'>
                 <select value={sortValue} onChange={selectValue} id='selectBox'>

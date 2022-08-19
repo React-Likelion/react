@@ -15,6 +15,7 @@ const ClubPage = () => {
     const [datas, setDatas] = useState([]);
     const [sort, setSort] = useState("");
     const [search, setSearch] = useState('');
+    const [searchType, setSearchType] = useState('');
     const PROXY = process.env.REACT_APP_PROXY;
 
     const onClickBtnHandler = (e) => {
@@ -56,7 +57,10 @@ const ClubPage = () => {
             alert("error 발생");
             console.log("클럽 페이지")
         })
+        setSearchType('club')
     }, [])
+
+    console.log(datas)
 
     return (
         <section>
@@ -67,7 +71,7 @@ const ClubPage = () => {
                 {localStorage.getItem('react_accessToken') &&
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>동호회 등록하기</div>}
             </div>
-            <Filter field="clubs" search={search} sortValue={sort} />
+            <Filter field="clubs" search={search} sortValue={sort} setDatas={setDatas} searchType={searchType} />
             <div className='clubPageContent'>
                 <div className='sortBtnBox'>
                     <select value={sort} onChange={onSort} className='sortBtn'>

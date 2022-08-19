@@ -25,6 +25,7 @@ import Chat from './services/Chat';
 import PostDetailPage from './pages/PostDetailPage';
 import ClubArticleDetailPage from './pages/Club/ClubArticleDetailPage';
 import ClubChatRoom from './services/ClubChatRoom';
+import ClubArticleUploadPage from './pages/Club/ClubArticleUpload';
 
 
 
@@ -101,7 +102,7 @@ function Club() {
           <Route path='detail/:clubId/rooms/:clubId' element={<ClubChatRoom />} />
           <Route path='upload' element={<ClubUploadPage/>}/>
           <Route path='/detail/:clubId/pictureUpload' element={<ClubPictureUploadPage />} />
-          <Route path='/detail/:clubId/articleUpload' element={<CommunityUploadPage />} />
+          <Route path='/detail/:clubId/articleUpload' element={<ClubArticleUploadPage />}/>
           <Route path='/detail/:clubId/galleryDetail' element={<ClubGalleryDetail />} />
           <Route path='/detail/:clubId/article/:articleId' element={<ClubArticleDetailPage />}/>
       </Routes>

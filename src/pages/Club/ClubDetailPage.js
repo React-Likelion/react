@@ -9,6 +9,7 @@ import Header from './../../components/Header';
 import Navbar from './../../components/Navbar';
 import ClubChat from '../../components/ClubPage/ClubChat';
 import ClubGallery from '../../components/ClubPage/ClubGallery';
+import SearchBar from '../../components/SearchBar';
 
 
 const ClubDetailPage = () => {
@@ -19,6 +20,9 @@ const ClubDetailPage = () => {
     const [detailData, setDetailData] = useState([])
     const [articleData, setArticleData] = useState([])
     const [galleryData, setGalleryData] = useState([])
+    const [search, setSearch] = useState("")
+
+    console.log(search)
 
     // axios(`${PROXY}/club/${params.clubId}`) => 특정 동호회의 정보를 가져오기 위한 axios 
     // axios(`${PROXY}/club/${params.clubId}/articles`) => 특정 동호회의 게시글 가져오기 위한 axios 
@@ -45,9 +49,27 @@ const ClubDetailPage = () => {
             setGalleryData(res.data)
         })
         .catch((err) => {
-            alert("갤러리 에러")
+            console.log(err)
+        })
+        axios.get(`${PROXY}/clubs/${params.clubId}/articles/`)
+        .then((res) => {
+            console.log(res)
+            setArticleData(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
         })
     }, [])
+
+    useEffect(() => {
+        axios.get(`${PROXY}/clubs/${params.clubId}/articles/?title=${search}`)
+        .then((res) => {
+            setArticleData(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }, [search])
     
 
     return (
@@ -59,11 +81,12 @@ const ClubDetailPage = () => {
             <Navbar val={'club'}/>
             <div className='clubDeailContainer'>
                 <div className='clubDetailLeft'>
-                    <div><ClubInfo params={params} name={detailData.name} member={detailData.member} image={detailData.image}/></div>
+                <div><ClubInfo params={params} name={detailData.name} member={detailData.member} image={detailData.image} leader={detailData.leader_id}/></div>
                     {(localStorage.getItem('react_accessToken')) ? <div className='clubImageUploadBtn' onClick={goPhotoUpload}><img src={`${process.env.PUBLIC_URL}/img/Teacher.png`} alt=''/>사진 업로드하기</div> : ""}
                 </div>
                 <div className='clubDetailCenter'>
                     <ClubBoard articleData={articleData} />
+                    <SearchBar setSearch={setSearch} />
                 </div>
                 <div className='clubDetailRight'>
                     <ClubChat id={params.clubId} title={detailData.name}/>
