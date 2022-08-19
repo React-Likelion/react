@@ -16,7 +16,6 @@
 #lecture-item, #mentoring-item, #club-item {
     height: auto;
     margin: 5px;
-    width: 15vw;
 }
 .scroll{
     overflow-x: auto;
@@ -24,11 +23,11 @@
     width: 12.6vw;
 }
 .scroll::-webkit-scrollbar {
-    height: 5px; /*스크롤바의 너비*/
+    height: 3px; /*스크롤바의 너비*/
 }
 
 .scroll::-webkit-scrollbar-thumb {
-    background-color: #9e9d94; /*스크롤바의 색상*/
+    background-color: #d7d4c0; /*스크롤바의 색상*/
     opacity: 30%;
     border-radius: 0.5rem;
 }
