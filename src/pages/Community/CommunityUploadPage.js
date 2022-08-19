@@ -15,7 +15,7 @@ const CommunityUploadPage = () => {
         title: '',
         category: '',
         description: '',
-        writer_id: localStorage.getItem('react_userId'),
+        writer_id: Number(localStorage.getItem('react_userId')),
         writer_nickname: localStorage.getItem('react_nickname')
     })
 
@@ -42,7 +42,7 @@ const CommunityUploadPage = () => {
         form_data.append('writer_nickname', postInfo.writer_nickname);
         
         // 2. axios로 전송
-        axios.post(`${PROXY}/community/`, form_data, {
+        axios.post(`${PROXY}/communitys/`, form_data, {
             headers: {
               'Content-Type': 'multipart/form-data',
               'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
