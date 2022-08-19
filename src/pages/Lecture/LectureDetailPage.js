@@ -38,6 +38,9 @@ const LectureDetailPage = () => {
 
     useEffect(()=>{
         //나의 강의 인지에 대한 state 실행
+        console.log(localStorage.getItem('react_nickname'));
+        console.log(lectureWriter);
+        console.log(location);
         if(localStorage.getItem('react_nickname') === lectureWriter){
             setMyLectureStatus(true);
         }
@@ -73,9 +76,6 @@ const LectureDetailPage = () => {
     const clickLectureModify = ()=>{
         console.log('강의 수정 로직 실행');
         setClassModify(!classModify);
-    };
-    const myLecture = ()=>{
-        setMyLectureStatus(!myLecutureStatus);
     };
     const purchaseLecture = ()=>{
         //강의 구매 로직

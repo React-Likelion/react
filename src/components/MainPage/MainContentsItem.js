@@ -44,8 +44,6 @@ const MainContentsItem = ({category}) => {
         }
     }
 
-
-
     const clickLecture = (ele)=>{
         
         console.log(propsObj);
@@ -72,7 +70,6 @@ const MainContentsItem = ({category}) => {
                 <div id='mentoring-item'>
                     <img src={ele.image}/>
                     <div>{ele.title}</div>
-                    {ele.tag && ele.tag.map((ele) => <span>{ele}</span>)}
                 </div>
                 )
                 break;
@@ -98,9 +95,11 @@ const MainContentsItem = ({category}) => {
 
     useEffect(() => {
         if(category === 'club' || category === 'community') return;
+        console.log(category);
         axios.get(`${PROXY}/${category}s/main/`)
         .then((res) => {
             setInfo(res.data);
+            console.log(res.data);
         })
         .catch((err) => {
             console.log(err);

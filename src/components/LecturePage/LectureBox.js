@@ -22,7 +22,7 @@ const LectureBox = ({categoryData,detailCategoryData,option}) => {
         }).catch((err)=>{
             console.log(err);
         })
-    },[])   
+    },[]);
     useEffect(()=>{
         if(option==='인기순'){
             setFilterData([]);
