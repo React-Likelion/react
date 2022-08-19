@@ -34,7 +34,7 @@ const ClubArticleDetailPage = () => {
               })
             .then((res) => {
                 console.log(res);
-                navigate('/community');
+                navigate('/clubs');
             })
             .catch((err) => {
                 console.log(err);
@@ -79,8 +79,8 @@ const ClubArticleDetailPage = () => {
                     <div>{location.state.content.category}</div>
                     <div id='post-detail-writer-box'>
                         <img src={profileImg} alt='x'/>
-                        <div>{location.state.content.writer_id} <br/>{location.state.content.create_time && location.state.content.create_time.substr(0, 10)}</div>
-                        {location.state.content.writer_id === localStorage.getItem('react_nickname') &&
+                        <div>{location.state.content.writer_nickname} <br/>{location.state.content.create_time && location.state.content.create_time.substr(0, 10)}</div>
+                        {location.state.content.writer_nickname === localStorage.getItem('react_nickname') &&
                             <div id='detail-btns'>
                                 <button onClick={clickModify}>수정</button>
                                 <button onClick={clickDelete}>삭제</button>
