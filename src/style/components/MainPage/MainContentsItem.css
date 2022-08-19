@@ -39,9 +39,9 @@
 }
 
 #community-item {
-     height: 75px;
-     background-color: #D8E2D2;
-     margin: 5px;
+    height: 75px;
+    background-color: #D8E2D2;
+    margin: 5px;
 }
 
 #lecture-item > img:nth-child(1),
@@ -63,7 +63,6 @@
 }
 
 .spanTag {
-    border: 1px solid red;
     font-size: 14px;
     margin: 2px;
     background-color: #7DC59D;

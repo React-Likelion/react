@@ -8,7 +8,6 @@ import {onSnapshot} from 'firebase/firestore'
 
 function ClubChatRoom() {
     const {clubId}=useParams();
-    // console.log(clubId)
     const location = useLocation();
     const [nickname, setNickname] = useState(); //유저 닉네임 저장
     const [msg, setMsg] = useState(""); //메세지
@@ -41,9 +40,7 @@ function ClubChatRoom() {
             const res = await addDoc(usersCollectionRef, newChat);
             setChats([...chats, newChat]);
             setMsg('');
-            console.log(res); // res는 undefined입니다.
         } catch (e) {
-            console.log(e);
         }
     }
 

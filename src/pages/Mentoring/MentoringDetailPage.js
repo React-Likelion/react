@@ -3,7 +3,6 @@ import Header from '../../components/Header';
 import '../../style/pages/Mentoring/MentoringDetailPage.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
-// import { PROXY } from '../../data/serverUrl';
 import Footer from '../../components/Footer';
 import { collection, query, getDocs } from 'firebase/firestore';
 import { database } from '../../services/firebase';
@@ -29,7 +28,6 @@ const MentoringDetailPage = () => {
             const newData = data.docs.map((doc) => ({
                 ...doc.data()
             }));
-            console.log(newData);
             setMember(newData.map(item => item.nickname));
             
         };
@@ -38,8 +36,6 @@ const MentoringDetailPage = () => {
         getData();
     },[member]);
 
-    console.log(member);
-    console.log(getNickname);
     const nick = localStorage.getItem('react_nickname');
 
     //채팅방에 입장되어있는 닉네임 받아오기
@@ -48,7 +44,6 @@ const MentoringDetailPage = () => {
         axios.get(`${PROXY}/mentorings/${id}/`)
             .then((res)=>{
                 if(res.data){
-                    // console.log(res)
                     setmentoringList(res.data);//가져온 모든 리스트를 배열에 저장한다.
                     setPropsObj({
                         leaderNick: res.data.nickname,
@@ -60,52 +55,49 @@ const MentoringDetailPage = () => {
             })
     }, []);
 
-    const onClickDetailDel = async() => {
-        axios.delete(`${PROXY}/mentorings/${id}/`, {
-            headers: {
-                'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-            }
-        })
-        alert('삭제되었습니다');
-        navigate('/mentoring');
-    }
-
     const inHandler = (e) => {
-        axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/`, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-            }
-        })
-            .then((res) => {
-                userArr.push(propsObj);
-                if(mentoringList.limit === mentoringList.member_cnt){
-                    if(getNickname.includes(`${nick}`)){
-                        alert('입장에 성공하였습니다');
-                        navigate(`room/${mentoringList.id}`,{
-                            state: {
-                                usedata: userArr,
-                            }})
-                    } else if(nick === mentoringList.nickname ){
-                        navigate(`room/${mentoringList.id}`,{
-                            state: {
-                                usedata: userArr,
-                            }})
-                    } else{
-                        alert('인원이 가득찼습니다')
+        userArr.push(propsObj);
+        if(mentoringList.limit === mentoringList.member_cnt){
+            if(getNickname.includes(`${nick}`)){
+                axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/`, {
+                    headers: {
+                        'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
                     }
-                }else{
-                    alert('입장에 성공하였습니다');
-                    navigate(`room/${mentoringList.id}`,{
-                        state: {
-                            usedata: userArr,
-                        }
-                    });
-                }
-                console.log(res);
+                })
+                    .catch(e => alert("로그인 후 시도해주세요"))
+                alert('입장에 성공하였습니다');
+                navigate(`room/${mentoringList.id}`,{
+                    state: {
+                        usedata: userArr,
+                    }})
+            } else if(nick === mentoringList.nickname ){
+                axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/`, {
+                    headers: {
+                        'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+                    }
+                })
+                    .catch(e => alert("로그인 후 시도해주세요"))
+                navigate(`room/${mentoringList.id}`,{
+                    state: {
+                        usedata: userArr,
+                    }})
+            } else{
+                alert('인원이 가득찼습니다')
             }
-            )
-            .catch(()=>{alert('로그인 후에 시도해주세요!')})
+        }else{
+            axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/`, {
+                headers: {
+                    'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+                }
+            })
+                .catch(e => alert("로그인 후 시도해주세요"))
+            alert('입장에 성공하였습니다');
+            navigate(`room/${mentoringList.id}`,{
+                state: {
+                    usedata: userArr,
+                }
+            });
+        }
     }
 
     return (
@@ -113,7 +105,6 @@ const MentoringDetailPage = () => {
             <Header />
             <div className='detailBox'>
                 <div id='detailTitleBox'>{mentoringList.title}</div>
-                <button className='deDelbtn'onClick={onClickDetailDel}>삭제하기</button>
                 <div id='detailImgBox'>
                     <img src={mentoringList.image} alt='이미지' />
                 </div>

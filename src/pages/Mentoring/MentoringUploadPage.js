@@ -75,7 +75,6 @@ const MentoringUploadPage = () => {
     }
 
     const clickUpload = () => {
-        console.log(mentoringInfo);
         if (Object.values(mentoringInfo).includes('')) {
             alert("입력되지 않은 값이 있습니다.");
             return;
@@ -102,25 +101,15 @@ const MentoringUploadPage = () => {
         // 2. axios로 전송
         axios.post(`${PROXY}/mentorings/`, form_data, {
             headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
             }
         })
         .then((res) => {
-            console.log(res);
             navigate('/mentoring');
         })
         .catch((err) => {
-            console.log(err);
         })
-
-        // formData 출력
-        // for (let key of form_data.keys()) {
-        //     console.log(key);
-        // }
-        // for (let value of form_data.values()) {
-        //     console.log(value);
-        // }
     }
 
     return (
