@@ -23,8 +23,9 @@ const DetailRepleItem = ({ele, idx, post_id, comments, setComments}) => {
 
     // 댓글 수정
     const handleCommentModifyBtn = (e) => {
+        console.log(modifyContent);
         if(window.confirm('해당 댓글을 수정하시겠습니까 ?')) {
-            axios.patch(`${PROXY}/community/${post_id}/comments/${ele.id}/`, {
+            axios.patch(`${PROXY}/communitys/${post_id}/comments/${ele.id}/`, {
                 content : modifyContent
             }, {
                 headers: {
@@ -33,8 +34,7 @@ const DetailRepleItem = ({ele, idx, post_id, comments, setComments}) => {
               })
             .then((res) => {
                 console.log(res);
-                setModifyFlag(!modifyFlag);
-                setModifyContent('');   
+                window.location.reload();
             })
             .catch((err) => {
                 console.log(err);
@@ -45,13 +45,14 @@ const DetailRepleItem = ({ele, idx, post_id, comments, setComments}) => {
     // 댓글 삭제
     const handleCommentDeleteBtn = () => {
         if(window.confirm('해당 댓글을 삭제하시겠습니까 ?')) {
-            axios.delete(`${PROXY}/community/${post_id}/comments/${ele.id}/`, {
+            axios.delete(`${PROXY}/communitys/${post_id}/comments/${ele.id}/`, {
                 headers: {
                     'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
                   }
               })
             .then((res) => {
                 console.log(res);
+                window.location.reload();
             })
             .catch((err) => {
                 console.log(err);
@@ -66,7 +67,7 @@ const DetailRepleItem = ({ele, idx, post_id, comments, setComments}) => {
                 !modifyFlag ?
                 <div>
                     <div>{ele.writer_nickname}</div>
-                    <div>{ele.content}</div>
+                    <div>{modifyContent}</div>
                     <div>{ele.create_time && ele.create_time.substr(0,10)}</div>
                 </div> : 
                 <div id='modify-box'>

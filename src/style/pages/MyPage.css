@@ -28,6 +28,10 @@
     margin: 20px auto 10px;
 }
 
+#left-side > div:nth-child(1) > img {
+    width: 100%;
+}
+
 #left-side > div:nth-child(2) {
     font-size: 20px;
     font-weight: bold;
@@ -72,7 +76,7 @@
     line-height: 50px;
 }
 
-li {
+#left-side > ul > li {
     list-style: none;
     width: 90%;
     height: 40px;
@@ -82,7 +86,7 @@ li {
     font-weight: bold;
 }
 
-li:hover, .selected {
+li:hover, .my-selected {
     background-color: #749683;
     border-radius: 8px;
     color: #fff;

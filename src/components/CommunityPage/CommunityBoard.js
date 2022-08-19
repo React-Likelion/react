@@ -17,7 +17,7 @@ const CommunityBoard = () => {
     const [searchVal, setSearchVal] = useState('');
     
     const uploadPostBtn = () => {
-        navigate('/communitys/upload');
+        navigate('/community/upload');
     }
 
     const handleSearchVal = (e) => {

@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import '../style/pages/MyPage.css';
-import Header from './../components/Header';
+import '../style/pages/Mypage.css';
+import Header from '../components/Header';
 import Footer from '../components/Footer.js';
 import MyTopBox from '../components/Mypage/MyTopBox';
 import MyBottomBox from '../components/Mypage/MyBottomBox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Payment from '../Payment/index.js';
-import '../style/pages/MyPage.css';
 
 const MyPage = () => {
     const navigate = useNavigate();
@@ -19,7 +18,7 @@ const MyPage = () => {
     });
     const [selected, setSelected] = useState('lecture');
     const PROXY = process.env.REACT_APP_PROXY;
-    const [useInfo, setUserInfo] = useState([]);
+    const [userInfo, setUserInfo] = useState([]);
 
 
     const handleCategory = (e) => {
@@ -48,9 +47,9 @@ const MyPage = () => {
     };
 
     useEffect(() => {
-        axios.get(`${PROXY}/accounts/`, {
+        axios.get(`${PROXY}/accounts/${localStorage.getItem('react_userId')}/`, {
             headers : {
-                Authorization: localStorage.getItem('react_accessToken')
+                Authorization: 'Bearer '+ localStorage.getItem('react_accessToken')
             }
         })
         .then((res) => {
@@ -67,17 +66,17 @@ const MyPage = () => {
             <Header />
             <section className='my-container'>
                 <article id='left-side'>
-                    <div><img src='' alt='이미지 없음'/></div>
-                    <div>사용자</div>
-                    <div id='point'><img src={`${process.env.PUBLIC_URL}/img/coin.png`}/>10,000 P</div>
+                    <div><img src={userInfo.image} alt='이미지 없음'/></div>
+                    <div>{userInfo.name} 님</div>
+                    <div id='point'><img src={`${process.env.PUBLIC_URL}/img/coin.png`}/>{userInfo.point} P</div>
                     <div><Payment/></div>
                     <span>내 정보</span>
                     <div></div>
                     <ul>
-                        <li id='lecture' className={selected === 'lecture' && 'selected'} onClick={handleCategory}>내 강의</li>
-                        <li id='club' className={selected === 'club' && 'selected'} onClick={handleCategory}>내 동호회</li>
-                        <li id='mentoring' className={selected === 'mentoring' && 'selected'} onClick={handleCategory}>내 멘토멘티</li>
-                        <li id='community' className={selected === 'community' && 'selected'} onClick={handleCategory}>내 커뮤니티</li>
+                        <li id='lecture' className={selected === 'lecture' && 'my-selected'} onClick={handleCategory}>내 강의</li>
+                        <li id='club' className={selected === 'club' && 'my-selected'} onClick={handleCategory}>내 동호회</li>
+                        <li id='mentoring' className={selected === 'mentoring' && 'my-selected'} onClick={handleCategory}>내 멘토멘티</li>
+                        <li id='community' className={selected === 'community' && 'my-selected'} onClick={handleCategory}>내 커뮤니티</li>
                     </ul>
                     <div id='signout' onClick={clickSecession}>회원탈퇴</div>
                 </article>
