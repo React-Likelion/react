@@ -22,10 +22,6 @@ const ClubDetailPage = () => {
     const [galleryData, setGalleryData] = useState([])
     const [search, setSearch] = useState("")
 
-    console.log(search)
-
-    console.log(detailData == [])
-
     // axios(`${PROXY}/club/${params.clubId}`) => 특정 동호회의 정보를 가져오기 위한 axios 
     // axios(`${PROXY}/club/${params.clubId}/articles`) => 특정 동호회의 게시글 가져오기 위한 axios 
     // 특정 동호회 정보, 게시글을 가져온 후 각 컴포넌트의 props 로 넘겨준다
@@ -73,6 +69,7 @@ const ClubDetailPage = () => {
         })
     }, [search])
     
+    console.log(articleData.length)
 
     return (
         <section className='ClubDetailPage'>
@@ -86,13 +83,11 @@ const ClubDetailPage = () => {
                 <div><ClubInfo params={params} name={detailData.name} member={detailData.member} image={detailData.image} leader={detailData.leader_id}/></div>
                     {(localStorage.getItem('react_accessToken')) ? <div className='clubImageUploadBtn' onClick={goPhotoUpload}><img src={`${process.env.PUBLIC_URL}/img/Teacher.png`} alt=''/>사진 업로드하기</div> : ""}
                 </div>
-                {
-                detailData == [] ?  
-                    <div className='clubDetailCenter'>
-                        <ClubBoard articleData={articleData} />
-                        <SearchBar setSearch={setSearch} />
-                    </div>
-                    : <p className='noArticle'>등록된 글이 없습니다.</p>
+                {articleData.length == 0 ? <p className='noArticle'>등록된 글이 없습니다.</p> : 
+                <div className='clubDetailCenter'>
+                    <ClubBoard articleData={articleData} />
+                    <SearchBar setSearch={setSearch} />
+                </div>
                 }
                 <div className='clubDetailRight'>
                     <ClubChat id={params.clubId} title={detailData.name}/>
