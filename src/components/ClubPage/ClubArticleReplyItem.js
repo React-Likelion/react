@@ -123,7 +123,7 @@ const ClubArticleReplyItem = ({ele, idx, board_id, post_id, club_id, setComments
             {
                 !modifyFlag ?
                 <div>
-                    <div>{localStorage.getItem("react_nickname")}</div>
+                    <div>{ele.writer_nickname}</div>
                     <div>{ele.content}</div>
                     <div>{ele.create_time && ele.create_time.substr(0,10)}</div>
                 </div> : 

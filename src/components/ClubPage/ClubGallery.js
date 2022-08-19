@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const ClubGallery = ({galleryData}) => {
 
-    console.log(galleryData)
-
     const navigate = useNavigate();
 
     const goClubGalleryDetail = () => {

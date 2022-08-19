@@ -27,11 +27,9 @@ const ClubPage = () => {
             setSort(e.target.value)
             axios.get(`${PROXY}/clubs/by-newset/`)
             .then((res) => {
-                console.log(res)
                 setDatas(res.data);
             })
             .catch((err) => {
-                console.log(err)
                 alert("최신순 에러")
             })
         }
@@ -50,17 +48,13 @@ const ClubPage = () => {
     useEffect(() => {
         axios.get(`${PROXY}/clubs/by-newset/`)
         .then((res) => {
-            console.log(res.data)
             setDatas(res.data);
         })
         .catch((err) => {
             alert("error 발생");
-            console.log("클럽 페이지")
         })
         setSearchType('club')
     }, [])
-
-    console.log(datas)
 
     return (
         <section>
