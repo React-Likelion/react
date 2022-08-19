@@ -41,7 +41,7 @@ const FieldList = [
     "창업/부업"
 ]
 const ageList = ["40대", "50대", "60대", "70대 이상"]
-const personnelList = ["5명+", "10명+", "20명+", "30명+"]
+const personnelList = ["5", "10", "20", "30"]
 
 const Filter = ({field, search, sortValue, setDatas, searchType}) => {
     const PROXY = process.env.REACT_APP_PROXY;
@@ -238,7 +238,7 @@ const Filter = ({field, search, sortValue, setDatas, searchType}) => {
                                         choicedPersonnelList.includes(item)
                                             ? "-choice"
                                             : ""
-                                    )}>{item}</span>
+                                    )}>{item}명+</span>
                             )
                         }
                     </div>
