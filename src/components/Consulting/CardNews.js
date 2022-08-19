@@ -1,9 +1,8 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import '../../style/components/Counsulting/CardNews.css';
-import { Link } from 'react-router-dom';
+
 function CardNews({title, text, img, link}) {
-    console.log(link)
     return (
         <Card className='cardborder'>
             <Card.Img variant="top" src={`${img}`} className='cardImg'/>

@@ -45,9 +45,7 @@ function Chat() {
             const res = await addDoc(usersCollectionRef, newChat);
             setChats([...chats, newChat]);
             setMsg('');
-            console.log(res); // res는 undefined입니다.
         } catch (e) {
-            console.log(e);
         }
     }
 
@@ -72,7 +70,6 @@ function Chat() {
                     chatList.push({...doc.data()})
                 })
                 setChats(chatList);
-                // console.log(chatList)
             })
         };
         getData();
@@ -81,9 +78,7 @@ function Chat() {
     function check(){
         if(leaderNickname === nickname){
             return(
-                <>
-                    
-                </>
+                <></>
             )
         }
         else{
