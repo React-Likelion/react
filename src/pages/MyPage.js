@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import '../style/pages/Mypage.css';
+import '../style/pages/MyPage.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer.js';
-import MyTopBox from '../components/Mypage/MyTopBox';
-import MyBottomBox from '../components/Mypage/MyBottomBox';
+import MyTopBox from '../components/MyPage/MyTopBox';
+import MyBottomBox from '../components/MyPage/MyBottomBox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Payment from '../Payment/index.js';

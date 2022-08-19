@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../../style/components/Mypage/MyTopBox.css';
+import '../../style/components/MyPage/MyTopBox.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
