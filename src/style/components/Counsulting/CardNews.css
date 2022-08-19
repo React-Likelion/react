@@ -21,17 +21,16 @@
     margin-top: 2%;
 }
 .cardBtn{
-    border: none;
-    width: 80%;
-    position: relative;
-    bottom: 3px;
-    margin: 0 auto;
-    background-color: #466b56;
-    color: white;
     text-decoration: none;
+    color: white;
 }
 .cardBtn:hover{
+    text-decoration: none;
+    color: white;
+}
+.btn-primary:hover{
     background-color: #2E493A;
+    border-color: #2E493A;
     color: white;
 }
 .cardTitle{
@@ -41,4 +40,9 @@
 .cardText{
     color: #749683;
     font-weight: bold;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #466b56;
+    border-color: #466b56;
 }

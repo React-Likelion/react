@@ -60,6 +60,16 @@ const MentoringDetailPage = () => {
             })
     }, []);
 
+    const onClickDetailDel = async() => {
+        axios.delete(`${PROXY}/mentorings/${id}/`, {
+            headers: {
+                'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+            }
+        })
+        alert('삭제되었습니다');
+        navigate('/mentoring');
+    }
+
     const inHandler = (e) => {
         axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/`, {
             headers: {
@@ -103,6 +113,7 @@ const MentoringDetailPage = () => {
             <Header />
             <div className='detailBox'>
                 <div id='detailTitleBox'>{mentoringList.title}</div>
+                <button className='deDelbtn'onClick={onClickDetailDel}>삭제하기</button>
                 <div id='detailImgBox'>
                     <img src={mentoringList.image} alt='이미지' />
                 </div>

@@ -75,6 +75,11 @@ const MainContentsItem = ({category}) => {
                 <div id='mentoring-item' style={{cursor:"pointer"}} onClick={()=>clickMentoring(ele)}>
                     <img src={ele.image}/>
                     <div>{ele.title}</div>
+                    <div className='scroll'>
+                        <span className='spanTag'>{ele.tag}</span>
+                        <span className='spanTag'>{ele.tag2}</span>
+                        <span className='spanTag'>{ele.tag3}</span>
+                    </div>
                 </div>
                 )
                 break;
