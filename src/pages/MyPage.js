@@ -58,7 +58,6 @@ const MyPage = () => {
             }
         })
         .then((res) => {
-            console.log(res);
             setUserInfo(res.data);
         })
         .catch((err) => {

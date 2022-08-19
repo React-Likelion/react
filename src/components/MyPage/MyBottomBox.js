@@ -101,7 +101,6 @@ const MyBottomBox = ({category}) => {
         }
         
     };
-    console.log({category}.category);
     return (
         <section id='MyTopBox'>
             {

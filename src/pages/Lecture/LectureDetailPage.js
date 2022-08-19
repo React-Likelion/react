@@ -35,12 +35,24 @@ const LectureDetailPage = () => {
     const [likeState,setLikeState] = useState(false);
     const [likeCount,setLikeCount] = useState(lectureLikeCnt);
     const [applicationModal,setApplicationModal] = useState(false);
+    const [pricePerson,setPricePerson] = useState(0);
 
     useEffect(()=>{
         //나의 강의 인지에 대한 state 실행
         if(localStorage.getItem('react_nickname') === lectureWriter){
             setMyLectureStatus(true);
         }
+    },[]);
+    useEffect(()=>{
+        axios.get(`${PROXY}/accounts/point/${localStorage.getItem('react_userId')}/`,{
+            headers:{
+                'Authorization' : 'Bearer '+localStorage.getItem('react_accessToken')
+            }
+        })
+        .then((res)=>{
+            setPricePerson(res.data.point);
+        })
+        .catch((err)=>console.log(err))
     },[]);
     
     useEffect(()=>{
@@ -79,6 +91,10 @@ const LectureDetailPage = () => {
         //         'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
         //     }
         // })
+        if(pricePerson < lecturePrice){
+            alert('포인트가 부족합니다 ! 포인트를 충전하세요.');
+            return;
+        }else{
         fetch(`${PROXY}/lectures/${lectureId}/enroll/`,{
             method: 'PATCH',
             body:({
@@ -91,6 +107,7 @@ const LectureDetailPage = () => {
         setPurchaseStatus(!purchaseStatus);
         alert('클래스 수강 시작!');
         handleClose();
+    }
     };
     const clickUnFill = ()=>{
         if(!purchaseStatus){
@@ -179,7 +196,7 @@ const LectureDetailPage = () => {
                         (!applicationModal) ||
                         <div id="modalDiv">
                             <Modal className="modal-container" show={applicationModal} onHide={handleClose}>
-                            {lectureThumbNail}<br/>
+                            <img src={PROXY+lectureThumbNail} alt="강의이미지" /><br/>
                             <p> &nbsp; 제목 : {lectureTitle}</p>
                             <p> &nbsp; 가격 : {lecturePrice}</p>
                             <p> &nbsp; 강의를 신청하시겠습니까?</p>
