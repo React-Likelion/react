@@ -30,7 +30,7 @@
     height: 50px;
     padding: 3px;
     border-radius: 5px;
-    background-color: #bebebe;
+    /* background-color: #bebebe; */
 }
 
 #post-detail-writer-box > div > img {

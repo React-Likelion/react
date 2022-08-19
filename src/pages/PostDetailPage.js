@@ -52,21 +52,23 @@ const PostDetailPage = () => {
             console.log(err);
         })
 
-        // writer id로 통신하게 추후 변경
-        const getUserData = axios.get(`${PROXY}/accounts/${localStorage.getItem('react_userId')}/update/`, {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
-            }
-        })
-        getUserData.then((res) => {
-            setProfileImg(res.data.image);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        // // writer id로 통신하게 추후 변경
+        // const getUserData = axios.get(`${PROXY}/accounts/${localStorage.getItem('react_userId')}/update/`, {
+        //     headers: {
+        //         'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
+        //     }
+        // })
+        // getUserData.then((res) => {
+        //     setProfileImg(res.data.image);
+        // })
+        // .catch((err) => {
+        //     console.log(err);
+        // })
 
         
     }, []);
+
+    console.log(profileImg);
 
     return (
         <section className='PostDetailPage'>
@@ -76,9 +78,9 @@ const PostDetailPage = () => {
                 <div id='post-detail-content'>
                     <div>{detailInfo.category}</div>
                     <div id='post-detail-writer-box'>
-                        <img src={profileImg} alt='x'/>
-                        <div>{detailInfo.writer_id} <br/>{detailInfo.create_time && detailInfo.create_time.substr(0, 10)}</div>
-                        {detailInfo.writer_id === localStorage.getItem('react_nickname') &&
+                        <img src={`${process.env.PUBLIC_URL}/img/default_profile.png`} alt='x'/>
+                        <div>{detailInfo.writer_nickname} <br/>{detailInfo.create_time && detailInfo.create_time.substr(0, 10)}</div>
+                        {detailInfo.writer_nickname === localStorage.getItem('react_nickname') &&
                             <div id='detail-btns'>
                                 <button onClick={clickModify}>수정</button>
                                 <button onClick={clickDelete}>삭제</button>

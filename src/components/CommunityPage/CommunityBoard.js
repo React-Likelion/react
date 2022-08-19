@@ -55,10 +55,13 @@ const CommunityBoard = () => {
             </article>
             <article id='community-body'>
                 {
+                    posts.length === 0 && <div id='nodata'>게시물이 없습니다 !</div>
+                }
+                {
                     // 공지 데이터 매핑
                 }
                 {
-                    posts.slice(offset, offset + limit).map((ele, idx) => 
+                    posts && posts.slice(offset, offset + limit).map((ele, idx) => 
                         <CommunityPostItem ele={ele} key={idx} num={idx+1+offset} />)
                 }
             </article>
