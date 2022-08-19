@@ -15,7 +15,7 @@ const MyTopBox = ({category}) => {
         // set data
         switch(category){
             case 'lecture' : {
-                axios.get(`${PROXY}/mypagelectures/`,{
+                axios.get(`${PROXY}/lectures/mypagelectures/`,{
                     headers: {
                         'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
                     }
@@ -29,15 +29,50 @@ const MyTopBox = ({category}) => {
                 break;
             }
             case 'club' : {
-                
+                axios.get(`${PROXY}/clubs/signed/${parseInt(localStorage.getItem('react_userId'))}/`,{
+                    headers: {
+                        'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+                    }
+                })
+                .then((res)=>{
+                    console.log(res);
+                    console.log(res.data);
+                    setDatas(res.data);
+                }).catch((err)=>{
+                    console.log(err);
+                })
                 break;
             }
             case 'mentoring' : {
-                
+                axios.get(`${PROXY}/mentorings/register/`,{
+                    headers: {
+                        'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+                    }
+                })
+                .then((res)=>{
+                    console.log(res);
+                    console.log(res.data);
+                    setDatas(res.data);
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
                 break;
             }
             case 'community' : {
-                
+                axios.get(`${PROXY}/communitys/?writer_id=${localStorage.getItem('react_userId')}`,{
+                    headers: {
+                        'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+                    }
+                })
+                .then((res)=>{
+                    console.log(res);
+                    console.log(res.data);
+                    setDatas(res.data);
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
                 break;
             }
         }
@@ -75,17 +110,33 @@ const MyTopBox = ({category}) => {
             console.log(err);
         }
     }
+    const clickItems = (ele)=>{
+        if(category === 'club'){
+            navigate(`/club/detail/${ele.id}`);
+        }else if(category === 'mentoring'){
+            navigate(`/mentoring/detail/${ele.id}`);
+        }else if(category === 'community'){
+            navigate(`/community/${ele.id}`);
+        }
+        
+    }
 
     return (
         <section id='MyTopBox'>
             {
-                (datas.length !== 0)?
+                (datas.length !== 0 && {category} === 'lecture')?
                 datas.map((ele, idx) => 
-                    <section id='my-container' onClick={()=>clickItem(ele)}>
+                    <section key={idx} id='my-container' style={{cursor:"pointer"}} onClick={()=>clickItem(ele)}>
                         <img src={PROXY+ele.image1} alt="강의이미지" />
                         <div>{ele.title}</div>
                     </section>
-                ):
+                ):(datas.length !== 0 && {category} !== 'lecture')?
+                datas.map((ele, idx) => 
+                    <section key={idx} id='my-container' style={{cursor:"pointer"}} onClick={()=>clickItems(ele)}>
+                        <img src={ele.image1} alt="이미지" />
+                        <div>{ele.title}</div>
+                        <div>{ele.name}</div>
+                    </section>):
                 <p>존재하지 않습니다.</p>
             }
         </section>

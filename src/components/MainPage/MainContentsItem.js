@@ -44,8 +44,6 @@ const MainContentsItem = ({category}) => {
         }
     }
 
-
-
     const clickLecture = (ele)=>{
         
         console.log(propsObj);
@@ -53,38 +51,39 @@ const MainContentsItem = ({category}) => {
         // 
         console.log();
     }
-
+    const clickMentoring = (ele)=>{
+        navigate(`/mentoring/detail/${ele.id}`);
+    };
+    const clickClub = (ele)=>{
+        navigate(`/club/detail/${ele.id}`);
+    };
 
     // 박스 하나 요소 정의
     const makeItem = (ele) => {
-        console.log(ele);
         const infoItem = [];
         switch (category) {
             case 'lecture': 
                 infoItem.push(
                 <div id='lecture-item' style={{cursor:"pointer"}} onClick={()=>callData(ele)}>
-                    <img src={ele.image1}/>
+                    <img src={PROXY+ele.image1}/>
                     <div>{ele.title}</div>
                 </div>
                 )
                 break;
             case 'mentoring': 
                 infoItem.push(
-                <div id='mentoring-item'>
+                <div id='mentoring-item' style={{cursor:"pointer"}} onClick={()=>clickMentoring(ele)}>
                     <img src={ele.image}/>
                     <div>{ele.title}</div>
-                    <span>{ele.tag}</span>
-                    <span>{ele.tag2}</span>
-                    <span>{ele.tag3}</span>
                 </div>
                 )
                 break;
             case 'club': 
                 infoItem.push(
-                <div id='club-item'>
-                    <img src={ele.image}/>
+                <div id='club-item' style={{cursor:"pointer"}} onClick={()=>clickClub(ele)}>
+                    <img src={ele.image} alt="클럽이미지" />
                     <div>{ele.name}</div>
-                    <div>{ele.location}  {ele.member}명</div>
+                    <div>{ele.location}  {ele.member.length}명</div>
                 </div>
                 )
                 break;
@@ -100,18 +99,11 @@ const MainContentsItem = ({category}) => {
     }
 
     useEffect(() => {
-        // if(category === 'lecture') return;
-        let url = '';
-        if(category === 'community') {
-            url = `${PROXY}/community/main/`;
-        } else {
-            url = `${PROXY}/${category}s/main/`;
-        }
-        
-        axios.get(url)
+        console.log(category);
+        axios.get(`${PROXY}/${category}s/main/`)
         .then((res) => {
-            console.log(res.data);
             setInfo(res.data);
+            console.log(res.data);
         })
         .catch((err) => {
             console.log(err);

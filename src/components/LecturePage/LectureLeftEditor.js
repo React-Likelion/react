@@ -78,7 +78,7 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
             console.log('test');
             data.append(`image${i+1}`,imgFile[i]);
         }
-        
+        data.append('writer_nickname',localStorage.getItem('react_nickname'));
         data.append('title',lectureData.title);
         data.append('description',lectureData.description);
         data.append('price',lectureData.price);

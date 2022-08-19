@@ -30,7 +30,7 @@ const CommunityBoard = () => {
 
     // 게시물 조회
     useEffect(() => {
-        axios.get(`${PROXY}/community/`)
+        axios.get(`${PROXY}/communitys/`)
         .then((res) => {
             setPosts(res.data);
         })
