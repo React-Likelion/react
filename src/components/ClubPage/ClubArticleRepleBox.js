@@ -9,7 +9,8 @@ const ClubArticleRepleBox = ({club_id, post_id}) => {
     const [comments, setComments] = useState([]);
     const [commentInfo, setCommentInfo] = useState({
         content: '',
-        writer_id: localStorage.getItem('react_userId'),
+        writer_id: Number(localStorage.getItem('react_userId')),
+        writer_nickname: localStorage.getItem('react_nickname'),
         board_id: Number(post_id),
     })
 
@@ -57,7 +58,6 @@ const ClubArticleRepleBox = ({club_id, post_id}) => {
     useEffect(() => {
         axios.get(`${PROXY}/clubs/${club_id}/articles/${post_id}/comment/`)
         .then((res) => {
-            console.log(res.data)
             setComments(res.data);
         })
         .catch((err) => {

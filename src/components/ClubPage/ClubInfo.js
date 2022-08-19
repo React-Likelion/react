@@ -34,7 +34,6 @@ const ClubInfo = ({params, member, name, image, leader}) => {
                     })
                     .catch((err) => {
                         alert("에러 발생")
-                        console.log(err)
                     })
             }
         } 
@@ -76,7 +75,6 @@ const ClubInfo = ({params, member, name, image, leader}) => {
                     })
                     .catch((err) => {
                         alert("에러 발생")
-                        console.log(err)
                     })
                 // }
             }
