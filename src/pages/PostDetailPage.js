@@ -25,7 +25,7 @@ const PostDetailPage = () => {
     // 게시물 삭제
     const clickDelete = (e) => {
         if(window.confirm('해당 글을 삭제하시겠습니까 ?')) {
-            axios.delete(`${PROXY}/community/${id}/`, {
+            axios.delete(`${PROXY}/communitys/${id}/`, {
                 headers: {
                     'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
                   }
