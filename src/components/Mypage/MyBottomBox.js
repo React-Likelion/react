@@ -30,7 +30,7 @@ const MyBottomBox = ({category}) => {
             }
             case 'club' : {
                 console.log(`${PROXY}/clubs/made/${parseInt(localStorage.getItem('react_userId'))}/`);
-                axios.get(`${PROXY}/clubs/made/${localStorage.getItem('react_userId')}/`,{
+                axios.get(`${PROXY}/clubs/made/${parseInt(localStorage.getItem('react_userId'))}/`,{
                     headers: {
                         'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
                     }
@@ -45,14 +45,26 @@ const MyBottomBox = ({category}) => {
                 break;
             }
             case 'mentoring' : {
-                
+                axios.get(`${PROXY}/mentorings/make/`,{
+                    headers: {
+                        'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+                    }
+                })
+                .then((res)=>{
+                    console.log(res);
+                    console.log(res.data);
+                    setDatas(res.data);
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
                 break;
             }
             case 'community' : {
-                
+                setDatas([]);
                 break;
             }
-        }  
+        }
     },[category]);
 
     function promise(ele){
@@ -86,18 +98,32 @@ const MyBottomBox = ({category}) => {
         }catch(err){
             console.log(err);
         }
-    }
-
+    };
+    const clickItems = (ele)=>{
+        if(category === 'club'){
+            navigate(`/club/detail/${ele.id}`);
+        }else if(category === 'mentoring'){
+            navigate(`/mentoring/detail/${ele.id}`);
+        }
+        
+    };
+    console.log({category}.category);
     return (
         <section id='MyTopBox'>
             {
-                (datas.length !== 0)?
-                datas.map((ele, idx) => 
-                    <section id='my-container' onClick={()=>clickItem(ele)}>
+                (datas.length !== 0 && {category}.category === 'lecture')?
+                datas.map((ele, idx) =>
+                    <section key={idx} id='my-container' style={{cursor:"pointer"}} onClick={()=>clickItem(ele)}>
                         <img src={PROXY+ele.image1} alt="강의이미지" />
                         <div>{ele.title}</div>
                     </section>
-                ):
+                ):(datas.length !== 0 && {category}.category !== 'lecture')?
+                datas.map((ele, idx) =>
+                    <section key={idx} id='my-container' style={{cursor:"pointer"}} onClick={()=>clickItems(ele)}>
+                        <img src={ele.image1} alt="이미지" />
+                        <div>{ele.title}</div>
+                        <div>{ele.name}</div>
+                    </section>):
                 <p>존재하지 않습니다.</p>
             }
         </section>

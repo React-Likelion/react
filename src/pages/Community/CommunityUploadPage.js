@@ -42,7 +42,7 @@ const CommunityUploadPage = () => {
         form_data.append('writer_nickname', postInfo.writer_nickname);
         
         // 2. axios로 전송
-        axios.post(`${PROXY}/community/`, form_data, {
+        axios.post(`${PROXY}/communitys/`, form_data, {
             headers: {
               'Content-Type': 'multipart/form-data',
               'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')

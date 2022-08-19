@@ -31,12 +31,12 @@ const MyPage = () => {
                 }
             })
             .then((res)=>{alert('회원탈퇴가 정상적으로 되었습니다.');
-        localStorage.removeItem('react_accessToken');
-        localStorage.removeItem('react_refreshToken');
-        localStorage.removeItem('react_userId');
-        localStorage.removeItem('react_email');
-        localStorage.removeItem('react_nickname');
-        navigate('/login');
+                localStorage.removeItem('react_accessToken');
+                localStorage.removeItem('react_refreshToken');
+                localStorage.removeItem('react_userId');
+                localStorage.removeItem('react_email');
+                localStorage.removeItem('react_nickname');
+                navigate('/login');
             
     })
             .catch((err)=>console.log(err));
