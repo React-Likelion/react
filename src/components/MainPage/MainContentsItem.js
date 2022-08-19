@@ -57,6 +57,9 @@ const MainContentsItem = ({category}) => {
     const clickClub = (ele)=>{
         navigate(`/club/detail/${ele.id}`);
     };
+    const clickCommunity = (ele)=>{
+        navigate(`/community/${ele.id}`);
+    }
 
     // 박스 하나 요소 정의
     const makeItem = (ele) => {
@@ -89,7 +92,7 @@ const MainContentsItem = ({category}) => {
                 break;
             case 'community': 
                 infoItem.push(
-                <div id='community-item'>
+                <div id='community-item' style={{cursor:"pointer"}} onClick={()=>clickCommunity(ele)}>
                     <div>{ele.title}  {ele.date}</div>
                 </div>
                 )

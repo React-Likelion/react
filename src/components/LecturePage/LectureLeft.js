@@ -11,6 +11,7 @@ const LectureLeft = ({lectureId,lectureThumbNail,lectureImg2,lectureImg3,lecture
     console.log(real);
     const [first,setFirst] = useState(true);
     const PROXY = process.env.REACT_APP_PROXY;
+    const [imgFile,setImgFile] = useState([]);
     // console.log(realDescription);
     // console.log(imgThumbNail.props);
     
@@ -45,7 +46,7 @@ const LectureLeft = ({lectureId,lectureThumbNail,lectureImg2,lectureImg3,lecture
         <div id="LectureLeftDiv">
             {
                 (classModify)?
-                <LectureLeftEditor lectureYoutube={lectureYoutube} lectureId={lectureId} titleLecture={lectureTitle} lecturePrice={lecturePrice} lectureDescription={lectureDescription}/>:
+                <LectureLeftEditor setImgFile={setImgFile} imgFile={imgFile} lectureYoutube={lectureYoutube} lectureId={lectureId} titleLecture={lectureTitle} lecturePrice={lecturePrice} lectureDescription={lectureDescription}/>:
                 <>
                     {
                         (first === true)?

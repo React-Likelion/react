@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
-import '../../style/components/MyPage/MyBottomBox.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../../style/components/Mypage/MyBottomBox.css';
 
 const MyBottomBox = ({category}) => {
     const [datas, setDatas] = useState([]);
