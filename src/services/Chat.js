@@ -52,7 +52,7 @@ function Chat() {
     }
 
     const onClickDel = () => {
-        axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/withdraw/`, {
+        axios.get(`${PROXY}/mentorings/${id}/withdraw/`, {
             headers: {
                 'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
             }
