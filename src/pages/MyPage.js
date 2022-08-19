@@ -8,7 +8,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Payment from '../Payment/index.js';
 import '../style/pages/MyPage.css';
-import MyTopBox from './../components/Mypage/MyTopBox';
 
 const MyPage = () => {
     const navigate = useNavigate();
