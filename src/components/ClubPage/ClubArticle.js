@@ -19,7 +19,7 @@ const ClubArticle = ({item}) => {
                     <p className='clubArticleTitleNum'>{item.id}</p>
                     <p className='clubArticleTitleContentBox'>
                         <p className='clubArticleTitleContent'>{item.title}</p>
-                        <p className='clubArticleTitleComment'>[{item.comment_cnt}]</p>
+                        {/* <p className='clubArticleTitleComment'>[{item.comment_cnt}]</p> */}
                     </p>
                 </div>
                 <p className='clubArticleWriter'>{item.writer_nickname}</p>
