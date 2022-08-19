@@ -1,0 +1,41 @@
+.cardSection{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.cardborder{
+    border: none;
+    width: 18rem;
+    margin: 3%;
+    height: 55vh;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.cardImg{
+    height: 15vh;
+}
+.cardBody{
+    margin-top: 2%;
+}
+.cardBtn{
+    border: none;
+    width: 80%;
+    position: relative;
+    bottom: 3px;
+    margin: 0 auto;
+    background-color: #466b56;
+}
+.cardBtn:hover{
+    background-color: #2E493A;
+}
+.cardTitle{
+    font-weight: bolder;
+    color: #2E493A;
+}
+.cardText{
+    color: #749683;
+    font-weight: bold;
+}
