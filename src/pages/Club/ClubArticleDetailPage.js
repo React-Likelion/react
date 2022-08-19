@@ -27,17 +27,18 @@ const ClubArticleDetailPage = () => {
     // 게시물 삭제
     const clickDelete = (e) => {
         if(window.confirm('해당 글을 삭제하시겠습니까 ?')) {
-            axios.delete(`${PROXY}/clubs/${location.state.content.club_id}/articles/${location.state.content.id}`, {
+            axios.delete(`${PROXY}/clubs/${location.state.content.club_id}/articles/${location.state.content.id}/`, {
                 headers: {
                     'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
                   }
               })
             .then((res) => {
                 console.log(res);
-                navigate('/clubs');
+                navigate('/club');
             })
             .catch((err) => {
                 console.log(err);
+                alert("클럽 게시물 삭제 에러")
             })
         }
     }
@@ -45,7 +46,7 @@ const ClubArticleDetailPage = () => {
     // 게시물 조회 & 유저 이미지 조회
     useEffect(() => {
         
-        const getDetail = axios.get(`${PROXY}/clubs/${location.state.content.club_id}/articles/${location.state.content.id}`)
+        const getDetail = axios.get(`${PROXY}/clubs/${location.state.content.club_id}/articles/${location.state.content.id}/`)
         getDetail.then((res) => {
             console.log(res.data);
             setDetailInfo(res.data);

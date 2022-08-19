@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
-const ClubArticleReplyItem = ({ele, idx, post_id, club_id, setComments}) => {
+const ClubArticleReplyItem = ({ele, idx, board_id, post_id, club_id, setComments}) => {
     // console.log(ele);
     const PROXY = process.env.REACT_APP_PROXY;
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ const ClubArticleReplyItem = ({ele, idx, post_id, club_id, setComments}) => {
     const [replyInfo, setReplyInfo] = useState({
         content: '',
         writer_id: localStorage.getItem('react_userId'),
-        board_id: Number(post_id), 
+        board_id: board_id, 
         comment_id: ele.id
     })
 
@@ -70,6 +70,7 @@ const ClubArticleReplyItem = ({ele, idx, post_id, club_id, setComments}) => {
               })
             .then((res) => {
                 console.log(res);
+                window.location.reload()
             })
             .catch((err) => {
                 console.log(err);
@@ -139,7 +140,7 @@ const ClubArticleReplyItem = ({ele, idx, post_id, club_id, setComments}) => {
             <div id='extra-btns'>
                 {/* <button onClick={handleReplyFlagBtn}>대댓글</button> */}
                 {
-                    ele.writer_id === localStorage.getItem('react_userId') && 
+                    ele.writer_id === Number(localStorage.getItem('react_userId')) && 
                     <>
                         {/* <button onClick={handleCommentModifyFlagBtn}>수정</button> */}
                         <button onClick={handleCommentDeleteBtn}>삭제</button>
