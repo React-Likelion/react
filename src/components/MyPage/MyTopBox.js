@@ -29,7 +29,7 @@ const MyTopBox = ({category}) => {
                 break;
             }
             case 'club' : {
-                axios.get(`${PROXY}/clubs/signed/${parseInt(localStorage.getItem('react_userId'))}/`,{
+                axios.get(`${PROXY}/clubs/signed/${localStorage.getItem('react_userId')}/`,{
                     headers: {
                         'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
                     }
@@ -120,20 +120,20 @@ const MyTopBox = ({category}) => {
         }
         
     }
-
+    console.log(category);
     return (
         <section id='MyTopBox'>
             {
-                (datas.length !== 0 && {category} === 'lecture')?
+                (datas.length !== 0 && category === 'lecture')?
                 datas.map((ele, idx) => 
                     <section key={idx} id='my-container' style={{cursor:"pointer"}} onClick={()=>clickItem(ele)}>
                         <img src={PROXY+ele.image1} alt="강의이미지" />
                         <div>{ele.title}</div>
                     </section>
-                ):(datas.length !== 0 && {category} !== 'lecture')?
+                ):(datas.length !== 0 && category !== 'lecture')?
                 datas.map((ele, idx) => 
                     <section key={idx} id='my-container' style={{cursor:"pointer"}} onClick={()=>clickItems(ele)}>
-                        <img src={ele.image1} alt="이미지" />
+                        <img src={ele.image} alt="이미지" />
                         <div>{ele.title}</div>
                         <div>{ele.name}</div>
                     </section>):
