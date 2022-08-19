@@ -27,9 +27,12 @@
     bottom: 3px;
     margin: 0 auto;
     background-color: #466b56;
+    color: white;
+    text-decoration: none;
 }
 .cardBtn:hover{
     background-color: #2E493A;
+    color: white;
 }
 .cardTitle{
     font-weight: bolder;
