@@ -156,7 +156,7 @@ const LectureUploadPage = () => {
                 <textarea id='description-textarea' 
                     onChange={handleLectureInfo} name='description'
                     placeholder='수업이나 활동 내용 입력'></textarea><br/>
-                    <ImagePreview text={'썸네일 첨부하기'} setImages={setImages} imgCnt={5}/>
+                    <ImagePreview text={'썸네일 첨부하기'} setImages={setImages} imgCnt={1}/>
                 <div className='picture-preview-box'></div>
                 <div className='checkbox-text'>
                     <input id='1' type='checkbox' onChange={(e) => {changeHandler(e.currentTarget.checked, '1')}} 

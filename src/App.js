@@ -26,7 +26,7 @@ import PostDetailPage from './pages/PostDetailPage';
 import ClubArticleDetailPage from './pages/Club/ClubArticleDetailPage';
 import ClubChatRoom from './services/ClubChatRoom';
 import ClubArticleUploadPage from './pages/Club/ClubArticleUpload';
-
+import Payment from './Payment';
 
 
 const App = () => {
@@ -60,6 +60,7 @@ console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
         <Route path='/club/*' element={<Club/>}/>
         <Route path='/community/*' element={<Community/>}/>
         <Route path='/consulting' element={<ConsultingPage/>}/>
+        <Route path='/payment' element={<Payment/>}/>
         <Route path="*" element={<div>404</div>}/>
       </Routes>
       :

@@ -9,7 +9,8 @@ const DetailRepleBox = ({post_id}) => {
     const [comments, setComments] = useState([]);
     const [commentInfo, setCommentInfo] = useState({
         content: '',
-        writer_id: localStorage.getItem('react_nickname'),
+        writer_id: localStorage.getItem('react_userId'),
+        writer_nickname: localStorage.getItem('react_nickname'),
         board_id: post_id
     })
 
@@ -40,7 +41,6 @@ const DetailRepleBox = ({post_id}) => {
                 }
             })
             .then((res) => {
-                alert('댓글이 등록되었습니다.');
                 setComments([...comments, commentInfo]);
                 setCommentInfo({
                     ...commentInfo, content: ''
@@ -75,7 +75,7 @@ const DetailRepleBox = ({post_id}) => {
             </div>
             {
                 comments.map((ele, idx) => {
-                    return <DetailRepleItem ele={ele} key={idx} post_id={post_id} setComments={setComments}/>
+                    return <DetailRepleItem ele={ele} key={idx} post_id={post_id} comments={comments} setComments={setComments}/>
                 })
             }
         </section>
