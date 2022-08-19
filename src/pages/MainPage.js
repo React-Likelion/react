@@ -18,7 +18,6 @@ const MainPage = () => {
                 <MainCarousel/>
                 {/* 메인 박스 */}
                 <MainBox/>
-                <button onClick={() => navigate('payment')}>결제</button>
             </section>
             <Footer/>
         </>
