@@ -13,7 +13,7 @@ function CardNews({title, text, img, link}) {
                     {text}
                 </Card.Text>
             </Card.Body>
-            <Button variant="primary" className='cardBtn'><a className='cardBtn' href={`${link}`}>Click here</a></Button>
+            <Button variant="primary" className='cardBotton'><a className='cardBtn' href={`${link}`}>Click here</a></Button>
         </Card>
     );
 }

@@ -15,7 +15,8 @@ const MentoringPage = () => {
     const [sortValue,setSortValue] = useState('');
     const [search, setSearch] = useState('');
     const [searchType, setSearchType] = useState('');
-    const [list, setList] = useState([]);   
+    const [datas, setDatas] = useState([]);
+
 
     const selectValue = (e) => {
         setSortValue(e.target.value);
@@ -39,7 +40,7 @@ const MentoringPage = () => {
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>}
             </div>
             <div>
-                <Filter field="mentorings" search={search} sortValue={sortValue} searchType={searchType} setList={setList}/>
+                <Filter field="mentorings" search={search} sortValue={sortValue} searchType={searchType} setDatas={setDatas}/>
             </div>
             <div className='selectBar'>
                 <select value={sortValue} onChange={selectValue} id='selectBox'>
@@ -49,7 +50,7 @@ const MentoringPage = () => {
                 </select>
             </div>
             <section className='viewSection'>
-                <MentoringBox sortValue={sortValue} list={list}/>
+                <MentoringBox sortValue={sortValue} datas={datas}/>
             </section>
             <Footer/>
         </div>

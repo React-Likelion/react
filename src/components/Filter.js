@@ -141,7 +141,7 @@ const Filter = ({field, search, sortValue, setDatas, searchType}) => {
             .get(`${PROXY}` + axiosUrl)
             .then((res) => {
                 console.log(res.data)
-                setDatas(res.data)
+                setDatas(res.data);
             })
             .catch((err) => {
                 console.log("clubs filter 오류")
