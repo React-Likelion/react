@@ -38,9 +38,6 @@ const LectureDetailPage = () => {
 
     useEffect(()=>{
         //나의 강의 인지에 대한 state 실행
-        console.log(localStorage.getItem('react_nickname'));
-        console.log(lectureWriter);
-        console.log(location);
         if(localStorage.getItem('react_nickname') === lectureWriter){
             setMyLectureStatus(true);
         }
@@ -56,7 +53,6 @@ const LectureDetailPage = () => {
     },[]);
 
     useEffect(()=>{
-        console.log(lectureLikeMember);
         for(let member of lectureLikeMember){
             if(member === localStorage.getItem('react_nickname')){
                 setLikeState(true);
@@ -66,15 +62,12 @@ const LectureDetailPage = () => {
     },[]);
 
     const clickRegistration = ()=>{
-        console.log('강의 신청 폼 or 페이지 or 모달 이동');
         handleShow();
     };
     const clickWatch = ()=>{
-        console.log('강의시청 유튜브 링크이동');
         window.open(lectureYoutube,'_blank');
     };
     const clickLectureModify = ()=>{
-        console.log('강의 수정 로직 실행');
         setClassModify(!classModify);
     };
     const purchaseLecture = ()=>{

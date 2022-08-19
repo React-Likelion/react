@@ -4,16 +4,11 @@ import LectureLeftEditor from './LectureLeftEditor';
 import Parser from 'html-react-parser';
 
 const LectureLeft = ({lectureId,lectureThumbNail,lectureImg2,lectureImg3,lectureImg4,lectureImg5,classModify,lectureYoutube,lectureTitle,lecturePrice,lectureDescription}) => {
-    console.log(classModify);
-    console.log(lectureId);
     let [realDescription,setRealDescription] = useState('');
     let real = lectureDescription;
-    console.log(real);
     const [first,setFirst] = useState(true);
     const PROXY = process.env.REACT_APP_PROXY;
     const [imgFile,setImgFile] = useState([]);
-    // console.log(realDescription);
-    // console.log(imgThumbNail.props);
     
     useEffect(()=>{
             const imgThumbNail = `<img src=${PROXY+lectureThumbNail} alt='강의내용이미지' />`;
@@ -36,11 +31,8 @@ const LectureLeft = ({lectureId,lectureThumbNail,lectureImg2,lectureImg3,lecture
                 real = real.replace('<figure class="image"><img></figure>',imgSrc5);
             }
 
-            console.log(real);
             setRealDescription(real);
     },[]);
-
-    console.log(PROXY+lectureThumbNail);
 
     return (
         <div id="LectureLeftDiv">

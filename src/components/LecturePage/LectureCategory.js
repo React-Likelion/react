@@ -30,8 +30,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
     ];
     
     const clickIt = (e)=>{
-        // console.log((e.target.innerHTML).split('<')[0]);
-        //console.log(ref.current.__reactProps$fn9mcx9ek2k.children[0]);
         setDetailFinance(true);
         setDetailExercise(true);
         setDetailBusiness(true);
@@ -45,8 +43,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailIt(!detailIt);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
-        console.log(categoryData);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -84,7 +80,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailFinance(!detailFinance);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -122,7 +117,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailExercise(!detailExercise);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -160,7 +154,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailBusiness(!detailBusiness);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -199,7 +192,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailArt(!detailArt);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -237,7 +229,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailForeign(!detailForeign);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -275,7 +266,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailCook(!detailCook);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -313,7 +303,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailLifeStyle(!detailLifeStyle);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -351,7 +340,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailMusic(!detailMusic);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -390,7 +378,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailFounded(!detailFounded);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -429,7 +416,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
         setDetailPicture(!detailPicture);
         const categoryDataBool = categoryData==='';
-        console.log(categoryDataBool);
         let existenceBool = false;
         for(let value of infoArray){
             if((e.target.innerHTML).split('<')[0]===value){
@@ -456,7 +442,6 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
 
     const clickCategory = (e)=>{
         const lectureCategory = e.target.innerHTML;
-        console.log(e);
         setDetailCategoryData(lectureCategory);
         handleClose();
         //클릭한 Category값을 이용한 filter 기능 수행

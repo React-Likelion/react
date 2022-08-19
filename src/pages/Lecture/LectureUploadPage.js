@@ -48,7 +48,6 @@ const LectureUploadPage = () => {
     }
 
     const clickUpload = () => {
-        console.log(lectureInfo);
 
         // 필수값 처리
         if (Object.values(lectureInfo).includes('')) {
@@ -94,12 +93,6 @@ const LectureUploadPage = () => {
         form_data.append('price', lectureInfo.price);
         form_data.append('writer_nickname',lectureInfo.writer_nickname);
         form_data.append('writer_id',lectureInfo.writer_id);
-        for (let key of form_data.keys()) {
-            console.log(key);
-        }
-        for (let value of form_data.values()) {
-            console.log(value);
-        }
 
         // 2. axios로 전송
         axios.post(`${PROXY}/lectures/`, form_data, {
@@ -109,21 +102,11 @@ const LectureUploadPage = () => {
               }
           })
         .then((res) => {
-            console.log(res);
             navigate('/lecture');
         })
         .catch((err) => {
             console.log(err);
         })
-
-        // // formData 출력
-        // for (let key of form_data.keys()) {
-        //     console.log(key);
-        // }
-        // for (let value of form_data.values()) {
-        //     console.log(value);
-        // }
-
     }
 
     return (

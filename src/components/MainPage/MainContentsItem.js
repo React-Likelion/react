@@ -23,7 +23,7 @@ const MainContentsItem = ({category}) => {
                 lectureImg5:ele.image5,
                 lecturePrice:ele.price,
                 lectureLikeCnt:ele.like_cnt,
-                lectureWriter:ele.writer,
+                lectureWriter:ele.writer_nickname,
                 lectureEnroll:ele.enroll_students,
                 lectureYoutube:ele.youtube_link,
                 lectureLikeMember:ele.like_members,
@@ -36,21 +36,12 @@ const MainContentsItem = ({category}) => {
     async function callData(ele){
         try{
             let prop = await promise(ele);
-            console.log(prop);
             propsArray.push(prop);
             navigate('/lecture/detail',{state:{lecture:propsArray}});
         }catch(err){
             console.log(err);
         }
-    }
-
-    const clickLecture = (ele)=>{
-        
-        console.log(propsObj);
-        propsArray.push(propsObj);
-        // 
-        console.log();
-    }
+    };
     const clickMentoring = (ele)=>{
         navigate(`/mentoring/detail/${ele.id}`);
     };
@@ -107,11 +98,9 @@ const MainContentsItem = ({category}) => {
     }
 
     useEffect(() => {
-        console.log(category);
         axios.get(`${PROXY}/${category}s/main/`)
         .then((res) => {
             setInfo(res.data);
-            console.log(res.data);
         })
         .catch((err) => {
             console.log(err);
