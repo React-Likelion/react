@@ -7,7 +7,7 @@ import { lectureCategoryData } from '../../data/CategoryData.js';
 import { useNavigate } from 'react-router-dom';
 
 // {setDesc, desc, setImage}
-const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,imgThumbNail,lectureDescription,lectureThumbNail}) => { // (1)
+const LectureLeftEditor = ({imgFile,setImgFile,lectureId,titleLecture,lectureYoutube,lecturePrice,imgThumbNail,lectureDescription,lectureThumbNail}) => { // (1)
     // const dummy = `<img src=${lectureThumbNail} alt="이미지" />
     // ${lectureDescription}`;
     const navigate = useNavigate();
@@ -33,8 +33,6 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
         'field':'',
         'tag':'',
     });
-    
-    const [imgFile,setImgFile] = useState([]);
     
     const titleHandler = (e)=>{
         setLectureData({...lectureData,
@@ -69,7 +67,6 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
         
         console.log('수정 제출');
         console.log(imgArray);
-        setImgFile(imgArray);
         console.log(imgFile);
         let data = new FormData();
         console.log(imgFile.length);
@@ -120,8 +117,11 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
                             //     file
                             // ]);
                             imgArray.push(file);
-                            setImgFile(imgArray);
-                            console.log(file);
+                            setImgFile([
+                                ...imgFile,
+                                file
+                            ]);
+                            // console.log(file);
                             console.log(imgArray);
                             console.log(imgFile);
                         })

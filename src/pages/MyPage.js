@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Payment from '../Payment/index.js';
 import '../style/pages/MyPage.css';
+import MyTopBox from './../components/Mypage/MyTopBox';
 
 const MyPage = () => {
     const navigate = useNavigate();
@@ -27,7 +28,12 @@ const MyPage = () => {
     };
     const clickSecession = ()=>{
         if (window.confirm("정말 삭제합니까?")){
-            fetch(`${PROXY}/accounts/${localStorage.getItem('react_userId')}/update/`,{ method: 'DELETE' },{
+            // fetch(`${PROXY}/accounts/${localStorage.getItem('react_userId')}/update/`,{ method: 'DELETE' },{
+            //     headers: {
+            //         'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+            //     }
+            // })
+            axios.delete(`${PROXY}/accounts/${localStorage.getItem('react_userId')}/update/`,{
                 headers: {
                     'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
                 }
@@ -41,7 +47,7 @@ const MyPage = () => {
                 navigate('/login');
             
     })
-            .catch((err)=>console.log(err));
+            .catch((err)=>alert(err));
         }else{
             alert("취소합니다.");
         }

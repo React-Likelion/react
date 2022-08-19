@@ -43,7 +43,7 @@ const PostDetailPage = () => {
     // 게시물 조회 & 유저 이미지 조회
     useEffect(() => {
         
-        const getDetail = axios.get(`${PROXY}/community/${id}/`)
+        const getDetail = axios.get(`${PROXY}/communitys/${id}/`)
         getDetail.then((res) => {
             console.log(res.data);
             setDetailInfo(res.data);
