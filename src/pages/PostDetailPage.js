@@ -4,6 +4,7 @@ import '../style/pages/PostDetailPage.css';
 import Header from '../components/Header.js';
 import Navbar from '../components/Navbar';
 import DetailRepleBox from '../components/CommunityPage/DetailRepleBox';
+import UpdateModal from '../components/CommunityPage/Modal/UpdateModal';
 import axios from 'axios';
 // import { PROXY } from '../data/serverUrl';
 import { useNavigate } from 'react-router-dom';
@@ -14,11 +15,13 @@ const PostDetailPage = () => {
     const navigate = useNavigate();
     const [detailInfo, setDetailInfo] = useState({});
     const [profileImg, setProfileImg] = useState('');
+    const [showModifyModal, setShowModifyModal] = useState(false);
 
     // 게시물 수정
     const clickModify = (e) => {
         if(window.confirm('해당 글을 수정하시겠습니까 ?')) {
             // 수정
+            setShowModifyModal(true);
         }
     }
 
@@ -92,6 +95,7 @@ const PostDetailPage = () => {
                 </div>
                 <DetailRepleBox post_id={id}/>
             </div>
+            <UpdateModal show={showModifyModal} onHide={() => setShowModifyModal(false)} info={detailInfo}/>
         </section>
     );
 };
