@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Payment = (effect, deps) => {
 
     const [show, setShow] = useState(false);
     const [point, setPoint] = useState('');
     const PROXY = process.env.REACT_APP_PROXY;
+    const navigate = useNavigate();
     
     useEffect(() => {
         const jquery = document.createElement('script');
@@ -60,9 +62,6 @@ const Payment = (effect, deps) => {
         const { success, error_msg, imp_uid, merchant_uid, pay_method, paid_amount, status } = response;
 
         if (success) {
-            alert(`${paid_amount}원 결제 성공하였습니다.`);
-            console.log(paid_amount);
-            console.log(point);
 
             // 백으로 포인트 보내기
             axios.patch(`${PROXY}/accounts/point/1/`, {
@@ -73,7 +72,8 @@ const Payment = (effect, deps) => {
                 }
             })
             .then((res) => {
-                console.log(res);
+                alert(`${paid_amount}원 결제 성공하였습니다.`);
+                navigate('/my');
             })
             .catch((err) => {
                 console.log(err);

@@ -1,0 +1,33 @@
+#update-select {
+    width: 50px;
+    height: 30px;
+    background-color: #efede1;
+    border: none;
+    outline: none;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#update-title {
+    width: 200px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: #efede1;
+    border-radius: 5px;
+}
+
+#update-title:focus, #update-select:focus {
+    border: 3px solid #7496838f;
+}
+
+.modal-body, .modal-header {
+    /* background-color: rgba(255, 255, 255, 0.3); */
+    background-color: #efede1;
+}
+
+.modal-header > span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #555555;
+}
