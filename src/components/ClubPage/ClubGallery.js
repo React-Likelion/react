@@ -17,11 +17,11 @@ const ClubGallery = ({galleryData}) => {
 
         if(galleryData.length < 5) {
             for (let i = 0; i < galleryData.length; i++) {
-                result.push(<img className='clubGalleryImg' src={galleryData[i].image} />);
+                result.push(<img onClick={goClubGalleryDetail} className='clubGalleryImg' src={galleryData[i].image} />);
             }
         } else {
             for (let i = 0; i < 3; i++) {
-                result.push(<img className='clubGalleryImg' src={galleryData[i].image} />);
+                result.push(<img onClick={goClubGalleryDetail} className='clubGalleryImg' src={galleryData[i].image} />);
             }
         }
 

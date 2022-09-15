@@ -18,6 +18,7 @@ const ClubDetailPage = () => {
     const navigate = useNavigate();
     const [id, setId] = useState(params.clubId);
     const [detailData, setDetailData] = useState([])
+    const [chatTrue, setClubTrue] = useState(false)
     const [articleData, setArticleData] = useState([])
     const [galleryData, setGalleryData] = useState([])
     const [search, setSearch] = useState("")
@@ -37,9 +38,14 @@ const ClubDetailPage = () => {
         .then((res) => {
             console.log(res)
             setDetailData(res.data)
+            if(detailData.member.include(localStorage.getItem("react_userID"))) {
+                setClubTrue(true)
+            } else {
+                setClubTrue(false)
+            }
         })
         .catch((err) => {
-            alert("디테일 페이지 에러")
+            console.log(err)
         })
         axios.get(`${PROXY}/clubs/${params.clubId}/galleries/`)
         .then((res) => {
@@ -89,10 +95,14 @@ const ClubDetailPage = () => {
                     <SearchBar setSearch={setSearch} />
                 </div>
                 }
-                <div className='clubDetailRight'>
-                    <ClubChat id={params.clubId} title={detailData.name}/>
-                    <ClubGallery galleryData={galleryData} />
-                </div>
+                {
+                    detailData.member && detailData.member.includes(Number(localStorage.getItem("react_userId"))) ?
+                    <div className='clubDetailRight'>
+                    {/* {chatTrue ? <ClubChat id={params.clubId} title={detailData.name}/> : ""} */}
+                        <ClubChat id={params.clubId} title={detailData.name}/>
+                        <ClubGallery galleryData={galleryData} />
+                    </div> : "" 
+                }
             </div>
         </section>
     );
