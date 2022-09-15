@@ -14,7 +14,7 @@ function SearchBar({setSearch}) {
     return (
         <div className='searchBox'>
             <input id='inputBar'type="text" value={word} onChange={onChangeSearch} />
-            <img src={`${process.env.PUBLIC_URL}/img/searchGlass.png`} alt='검색돋보기' onClick={onClickSearch}/>
+            <img id='searchBarImg' src={`${process.env.PUBLIC_URL}/img/searchGlass.png`} alt='검색돋보기' onClick={onClickSearch}/>
         </div>
     );
 }

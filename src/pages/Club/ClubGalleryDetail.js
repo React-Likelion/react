@@ -38,6 +38,7 @@ const ClubGalleryDetail = () => {
                     <div className="clubGalleryDetailBox">
                         <img onClick={modalHandle} id={idx} className='clubGalleryDetailImg' src={It.image}/>
                         <p className="clubGalleryDetailTitlle">{It.title}</p>
+                        <div className='clubGalleryImgDelete'>사진 삭제하기</div>
                     </div>
                 )
             }
