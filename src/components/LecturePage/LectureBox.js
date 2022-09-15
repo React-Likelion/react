@@ -2,63 +2,80 @@ import React,{useEffect,useState} from 'react';
 import LectureItem from './LectureItem';
 import '../../style/components/LecturePage/LectureBox.css';
 import axios from 'axios';
+import { compareDocumentPosition } from 'domutils';
 // import { PROXY } from '../../data/serverUrl';
 
-const LectureBox = ({categoryData,detailCategoryData,option}) => {
+const LectureBox = ({categoryData,detailCategoryData,option,search}) => {
     const PROXY = process.env.REACT_APP_PROXY;
     //axios로 필터링 된 강의에 대한 정보들을 받아옴
     //정보의 형태는 [object]
     //그걸 map형태로 뿌려줌
-    const [allLectures,setAllLectures] = useState([]);
-    const [filterData,setFilterData] = useState([]);
-    const [optionBool,setOptionBool] = useState(true);
-    const [categoryArray,setCategoryArray] = useState([]);
-    const [filterBool,setFilterBool] = useState(false);
+    const [Lectures,setLectures] = useState([]);
     
     useEffect(()=>{
         axios.get(`${PROXY}/lectures/`)
         .then((res)=>{
-            setAllLectures(res.data);
+            setLectures(res.data);
         }).catch((err)=>{
             console.log(err);
         })
     },[]);
+
     useEffect(()=>{
         if(option==='인기순'){
-            setFilterData([]);
-            setFilterData(
-                allLectures.sort((a,b)=>
-                    b.like_cnt - a.like_cnt
-                )   
-            )
-            setOptionBool(false);
+            axios.get(`${PROXY}/lectures/?sort=-like_cnt`)
+            .then((res)=>{
+                console.log(res.data);
+                setLectures(res.data);
+            }).catch((err)=>{
+                console.log(err);
+            })
         }else{
-            setOptionBool(true);
+            axios.get(`${PROXY}/lectures/`)
+            .then((res)=>{
+                console.log(res.data);
+                setLectures(res.data);
+            }).catch((err)=>{
+                console.log(err);
+            })
         }
     },[option]);
+
     useEffect(()=>{
-        setCategoryArray([]);
-        setCategoryArray(
-            allLectures.filter((ele)=>{
-                return (ele.main_category === categoryData) && (ele.sub_category === detailCategoryData);
+        if(detailCategoryData.length === 0){
+            axios.get(`${PROXY}/lectures/?main_category=${categoryData}`)
+            .then((res)=>{
+                console.log(res.data);
+                setLectures(res.data);
+            }).catch((err)=>{
+                console.log(err);
             })
-        );
-        if(detailCategoryData.length !== 0){
-            setFilterBool(true);
+        }else{
+            axios.get(`${PROXY}/lectures/?sub_category=${detailCategoryData}`)
+            .then((res)=>{
+                console.log(res.data);
+                setLectures(res.data);
+            }).catch((err)=>{
+                console.log(err);
+            })
         }
+        
     },[categoryData,detailCategoryData]);
+
+    useEffect(()=>{
+        axios.get(`${PROXY}/lectures/?title=${search}`)
+        .then((res)=>{
+            setLectures(res.data);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    },[search]);
 
     return (
         <div id="LectureBoxDiv">
             {
-                (optionBool===true && (categoryArray.length===0) && (filterBool===false))?
-                allLectures.map((ele)=>{
-                    return <LectureItem id={ele.id} key={ele.id} /*title={ele.title} img={ele.img} price={ele.price}*/ categoryData={categoryData} detailCategoryData={detailCategoryData} />;
-                }):(optionBool===false && categoryArray.length===0 && (filterBool===false))?
-                filterData.map((ele)=>{
-                    return <LectureItem id={ele.id} key={ele.id} /*title={ele.title} img={ele.img} price={ele.price}*/ categoryData={categoryData} detailCategoryData={detailCategoryData} />;
-                }):((categoryArray.length!==0) && (filterBool===true))?
-                categoryArray.map((ele)=>{
+                (Lectures.length!==0)?
+                Lectures.map((ele)=>{
                     return <LectureItem id={ele.id} key={ele.id} /*title={ele.title} img={ele.img} price={ele.price}*/ categoryData={categoryData} detailCategoryData={detailCategoryData} />;
                 }):
                 <div style={{display:"block"}}>
@@ -66,6 +83,7 @@ const LectureBox = ({categoryData,detailCategoryData,option}) => {
                     <p>이런! 찾는 강의가 없습니다.</p>
                 </div>
             }
+
         </div>
     );
 };
