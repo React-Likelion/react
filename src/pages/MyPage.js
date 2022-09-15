@@ -7,6 +7,7 @@ import MyBottomBox from '../components/MyPage/MyBottomBox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Payment from '../Payment/index.js';
+import Modal from 'react-bootstrap/Modal';
 
 const MyPage = () => {
     const navigate = useNavigate();
@@ -19,6 +20,9 @@ const MyPage = () => {
     const [selected, setSelected] = useState('lecture');
     const PROXY = process.env.REACT_APP_PROXY;
     const [userInfo, setUserInfo] = useState([]);
+    const [applicationModal,setApplicationModal] = useState(false);
+    const [detailImg,setDetailImg] = useState('');
+    const formData = new FormData();
 
 
     const handleCategory = (e) => {
@@ -42,7 +46,7 @@ const MyPage = () => {
                 localStorage.removeItem('react_userId');
                 localStorage.removeItem('react_email');
                 localStorage.removeItem('react_nickname');
-                navigate('/login');
+                navigate('/');
             
     })
             .catch((err)=>alert(err));
@@ -65,11 +69,64 @@ const MyPage = () => {
         })
     }, []);
 
+    const onImgChange = (e)=>{
+        e.preventDefault();
+
+        
+        let fileUrl;
+        let reader = new FileReader();
+        reader.onload = ()=>{
+            fileUrl = reader.result;
+            setDetailImg(fileUrl);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+        formData.append("image",e.target.files[0]);
+    };
+
+    const clickProfileChange = ()=>{
+        handleShow();
+    };
+
+    const handleClose = () => {
+        setApplicationModal(false);
+        setDetailImg('');
+    };
+    const handleShow = () =>{
+        setApplicationModal(true);
+    };
+
+    const clickChange = ()=>{
+        
+
+        axios.patch(`${PROXY}/accounts/${localStorage.getItem("react_userId")}/update/`,formData,{
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+            }
+        })
+        .then((res)=>{
+            console.log(res);
+        })
+        .catch((err)=>console.log(err))
+    };
+
     return (
         <>
             <Header />
             <section className='my-container'>
                 <article id='left-side'>
+                    
+                    <button type="button" onClick={clickProfileChange}>프로필 이미지 변경</button>
+                    {
+                        (!applicationModal) ||
+                        <div id="modalDiv" style={{padding:"3%"}}>
+                            <Modal className="modal-container" show={applicationModal} onHide={handleClose}>
+                                <input type="file" onChange={onImgChange} />
+                                <div style={{margin:"0 auto",textAlign:"center"}}><img src={detailImg} style={{width:"30%",border:"0 solid",borderRadius:"70%"}} alt='' /></div>
+                                <button type="button" onClick={clickChange}>확인</button>
+                            </Modal>
+                        </div>
+                    }
                     <div><img src={userInfo.image} alt='이미지 없음'/></div>
                     <div>{userInfo.name} 님</div>
                     <div id='point'><img src={`${process.env.PUBLIC_URL}/img/coin.png`}/>{userInfo.point} P</div>

@@ -9,7 +9,8 @@ function SearchBar({setSearch}) {
         setWord(e.target.value);
     }
     const onClickSearch= () => {
-        setSearch(word)
+        setSearch(word);
+        setWord('');
     }
     return (
         <div className='searchBox'>

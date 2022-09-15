@@ -534,7 +534,7 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
                         <ul>
                             <li onClick={clickCategory}>영어</li>
                             <li onClick={clickCategory}>외국어</li>
-                            <li onClick={clickCategory}>제2 외국어</li>
+                            <li onClick={clickCategory}>제2외국어</li>
                         </ul>
                     }
                     </li>
