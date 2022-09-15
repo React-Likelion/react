@@ -3,9 +3,6 @@ import '../style/pages/SignUpPage.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import { PROXY } from '../data/serverUrl';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './../services/firebase';
 import { jobData } from '../data/CategoryData';
 
 const SignUpPage = () => {
@@ -52,22 +49,6 @@ const SignUpPage = () => {
             alert(errText);
         })
     };
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
-    
-    // `회원가입` 버튼의 onClick에 할당
-    const register = async () => {
-        // 데이터의 이메일, 비밀번호 저장
-        setRegisterEmail(signUpData.email);
-        setRegisterPassword(signUpData.password);
-        try {
-            const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-            console.log(user);
-            
-        } catch(err){
-            console.log(err.messages);
-        }
-    }
 
     return (
         <div id="signupDiv">
@@ -89,10 +70,7 @@ const SignUpPage = () => {
                         <option value='' defaultValue>선택</option>
                         {jobData.map((ele, idx) => <option key={idx} value={ele}>{ele}</option>)}
                     </select>
-                    <button type="button" onClick={()=>{
-                        clickSignUp()
-                        register()
-                    }} id="signupSubmit">가입하기</button><br/>
+                    <button type="button" onClick={()=>{clickSignUp()}} id="signupSubmit">가입하기</button><br/>
                     <article>이미 회원이신가요 ? <Link to='/login' id="goToLogin">로그인 하러 가기</Link></article>
                 </form>
             </section>
