@@ -42,7 +42,7 @@ console.log('%c @likelionkumoh', 'font-size:25px; color:orange;');
 console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
 
   const showDevice = useMediaQuery({
-    query : "(min-width:420px)"
+    query : "(min-width:350px)"
   });
 
   return (
