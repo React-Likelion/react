@@ -91,7 +91,8 @@ const Payment = (effect, deps) => {
             'borderBottom': '1px solid #2E493A',
             'color': '#2E493A',
             'margin': '5px auto',
-            'width': '100px'
+            'width': '100px',
+            'cursor': 'pointer'
         },
         pointBox : {
             'width': '100%',
