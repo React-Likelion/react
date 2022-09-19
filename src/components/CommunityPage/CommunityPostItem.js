@@ -17,7 +17,7 @@ const CommunityPostItem = ({ele, num}) => {
             <div>{ele.title}</div>
             <div>[{ele.comment_cnt}]</div>
             <div>{ele.writer_nickname}</div>
-            <div>{ele.create_time.substr(0, 10)}</div>
+            <div>{ele.create_time && ele.create_time.substr(0, 10)}</div>
         </section>
     );
 };
