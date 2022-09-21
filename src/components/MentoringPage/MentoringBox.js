@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import MentoringItem from './MentoringItem';
 import '../../style/components/MentoringPage/MentoringBox.css'
-import axios from "axios";
 // import { PROXY } from '../../data/serverUrl';
 
 function MentoringBox({datas}) {
