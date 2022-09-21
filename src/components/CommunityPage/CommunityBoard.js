@@ -4,7 +4,7 @@ import CommunityPostItem from './CommunityPostItem';
 import Pagination from '../Pagenation';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import {PROXY} from '../../data/serverUrl';
+import { useMediaQuery } from 'react-responsive';
 
 const CommunityBoard = () => {
     const PROXY = process.env.REACT_APP_PROXY;
@@ -16,6 +16,10 @@ const CommunityBoard = () => {
     const offset = (page - 1) * limit; // 인덱스
     const [searchVal, setSearchVal] = useState('');
     const [searchCategory, setSearchCategory] = useState('');
+
+    const isTablet = useMediaQuery({
+        query: "(min-width:600px) and (max-width:1024px)",
+      });
     
     const uploadPostBtn = () => {
         navigate('/community/upload');
@@ -26,7 +30,7 @@ const CommunityBoard = () => {
     }
 
     const handleCategory = (e) => {
-        axios.get(`${PROXY}/communitys/?category=${e.target.value}`)
+        axios.get(`${PROXY}/community/?category=${e.target.value}`)
         .then((res) => {
             setPosts(res.data);
         })
@@ -43,7 +47,7 @@ const CommunityBoard = () => {
         // 검색 버튼 눌렀을 때
         let both_data = [];
         if(searchCategory === 'both') {
-            const title = axios.get(`${PROXY}/communitys/?title=${searchVal}`)
+            const title = axios.get(`${PROXY}/community/?title=${searchVal}`)
             .then((res) => {
                 setPosts([...posts, res.data]);
             })
@@ -52,7 +56,7 @@ const CommunityBoard = () => {
             })
 
             title.then(
-                axios.get(`${PROXY}/communitys/?description=${searchVal}`)
+                axios.get(`${PROXY}/community/?description=${searchVal}`)
                 .then((res) => {
                     setPosts([...posts, res.data]);
                 })
@@ -62,7 +66,7 @@ const CommunityBoard = () => {
             )
         }
         else {
-            axios.get(`${PROXY}/communitys/?${searchCategory}=${searchVal}`)
+            axios.get(`${PROXY}/community/?${searchCategory}=${searchVal}`)
             .then((res) => {
                 setPosts(res.data);
             })
@@ -77,7 +81,7 @@ const CommunityBoard = () => {
 
     // 게시물 조회
     useEffect(() => {
-        axios.get(`${PROXY}/communitys/`)
+        axios.get(`${PROXY}/community/`)
         .then((res) => {
             setPosts(res.data);
         })
@@ -117,7 +121,7 @@ const CommunityBoard = () => {
                 <div></div>
                 <Pagination total={posts.length} limit={limit}
                     page={page} setPage={setPage} />
-                {localStorage.getItem('react_accessToken') && <div className='postBtn' onClick={uploadPostBtn}><img src='img/Teacher.png' alt=''/>게시글 등록하기</div>}
+                {localStorage.getItem('react_accessToken') && <div className='postBtn' onClick={uploadPostBtn}><img src='img/Teacher.png' alt=''/>{isTablet ? '등록' : '게시글 등록하기'}</div>}
             </article>
             <article id='community-searchbar'>
                 <select onChange={handleSearchCategory} defaultValue=''>

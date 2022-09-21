@@ -7,9 +7,12 @@ function Pagination({ total, limit, page, setPage }) {
   return (
     <>
       <section id='pagenation-nav'>
-        <button onClick={() => setPage(page - 1)} disabled={page === 1}>
-          &lt;
-        </button>
+        {
+          total !== 0 && 
+          <button onClick={() => setPage(page - 1)} disabled={page === 1}>
+            &lt;
+          </button>
+        }
         {Array(numPages)
           .fill()
           .map((_, i) => (
@@ -21,9 +24,12 @@ function Pagination({ total, limit, page, setPage }) {
               {i + 1}
             </button>
           ))}
-        <button onClick={() => setPage(page + 1)} disabled={page === numPages}>
-          &gt;
-        </button>
+          {
+          total !== 0 && 
+          <button onClick={() => setPage(page + 1)} disabled={page === numPages}>
+            &gt;
+          </button>
+          }
       </section>
     </>
   );
