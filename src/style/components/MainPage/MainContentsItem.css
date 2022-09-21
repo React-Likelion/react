@@ -20,7 +20,7 @@
 .scroll{
     overflow-x: auto;
     white-space: nowrap;
-    width: 12.6vw;
+    width: 14vw;
 }
 .scroll::-webkit-scrollbar {
     height: 3px; /*스크롤바의 너비*/
@@ -39,8 +39,27 @@
 
 #community-item {
     height: 75px;
-    background-color: #D8E2D2;
+    /* background-color: #D8E2D2; */
     margin: 5px;
+    display: grid;
+    grid-template-columns: 3fr 0.5fr 1fr;
+    align-content: center;
+    border-radius: 10px;
+}
+
+#community-item > div:nth-child(1) {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+#community-item > div:nth-child(3) {
+    text-align: right;
+    margin-right: 20px;
+}
+
+#community-item:hover {
+    background-color: #dae7d8cb;
 }
 
 #lecture-item > img:nth-child(1),
@@ -80,9 +99,19 @@
     color: #3F3F3F;
 }
 
+@media (max-width:1024px) {
+    .scroll{
+        width: 28vw;   
+    }
+}
+
 @media (max-width:500px) {
     #lecture_container, #mentoring_container, 
     #club_container {
         grid-template-columns: 1fr;
+    }
+
+    .scroll{
+        width: 55vw;   
     }
 }

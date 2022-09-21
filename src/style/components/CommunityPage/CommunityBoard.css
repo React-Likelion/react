@@ -1,6 +1,6 @@
 .CommunityBoard {
     width: 70%;
-    min-width: 800px;
+    /* min-width: 800px; */
     height: auto;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.3);
@@ -43,7 +43,7 @@
 
 #community-pagenation > .postBtn {
     margin: 20px;
-    min-width: 150px;
+    min-width: 170px;
 }
 
 #community-searchbar {
@@ -91,4 +91,10 @@
     font-size: 20px;
     font-weight: 700;
     color: #2e493a;
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    #community-pagenation > .postBtn {
+        min-width: 100px;
+    }
 }
