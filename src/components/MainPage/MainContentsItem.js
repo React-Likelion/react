@@ -89,7 +89,9 @@ const MainContentsItem = ({category}) => {
             case 'community': 
                 infoItem.push(
                 <div id='community-item' style={{cursor:"pointer"}} onClick={()=>clickCommunity(ele)}>
-                    <div>{ele.title}  {ele.date}</div>
+                    <div>&nbsp;&nbsp;&nbsp;{ele.title} &nbsp;</div>
+                    <span style={{color: 'red'}}>[{ele.comment_cnt}]</span>
+                    <div>{ele.writer_nickname}</div>
                 </div>
                 )
                 break;
@@ -98,7 +100,11 @@ const MainContentsItem = ({category}) => {
     }
 
     useEffect(() => {
-        axios.get(`${PROXY}/${category}s/main/`)
+        let url = `${PROXY}/${category}s/main/`;
+        if(category === 'community') {
+            url = `${PROXY}/${category}/main/`;
+        }
+        axios.get(url)
         .then((res) => {
             setInfo(res.data);
         })
