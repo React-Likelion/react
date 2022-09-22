@@ -65,7 +65,7 @@ const LectureLeftEditor = ({imgFile,setImgFile,lectureId,titleLecture,lectureYou
 
     const clickModifySubmit = (e)=>{
         let data = new FormData();
-
+        console.log(imgFile);
         for(let i=0; i<imgFile.length; i++){
             data.append(`image${i+1}`,imgFile[i]);
         }
@@ -146,6 +146,7 @@ const LectureLeftEditor = ({imgFile,setImgFile,lectureId,titleLecture,lectureYou
             }}
             onChange={(event, editor) => {
                 const data = editor.getData();
+                console.log(data);
                 setLectureData({...lectureData,
                     description:data});
             }}

@@ -34,6 +34,7 @@ const MyTopBox = ({category}) => {
                     }
                 })
                 .then((res)=>{
+                    console.log(res.data);
                     setDatas(res.data);
                 }).catch((err)=>{
                     console.log(err);

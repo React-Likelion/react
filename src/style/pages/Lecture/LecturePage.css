@@ -45,7 +45,7 @@
     font-weight: 700;
   }
 }
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 600px) and (max-width: 1023px) {
   #selecBoxDiv {
     text-align: right;
   }
@@ -92,7 +92,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 600px) {
   #selecBoxDiv {
     text-align: right;
   }
