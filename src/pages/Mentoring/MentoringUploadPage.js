@@ -125,7 +125,7 @@ const MentoringUploadPage = () => {
                     </select>
                     <div>멘토링명</div>
                     <input type='text' onChange={handleMentoringInfo} name='title'></input>
-                    <div>멘토링 설명</div>
+                    <div id='m-description'>멘토링 설명</div>
                     <input type='text' onChange={handleMentoringInfo} name='description'></input>
                     <div>분야</div>
                     <select onChange={handleMentoringInfo} name='field'>

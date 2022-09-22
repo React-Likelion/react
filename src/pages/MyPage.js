@@ -14,7 +14,7 @@ const MyPage = () => {
     const [mypageInfo] = useState({
         'lecture' : ['수강중인 강의', '등록한 강의'],
         'club' : ['가입된 동호회', '개설한 동호회'],
-        'mentoring' : ['가입된 멘토멘티', '개설한 멘토멘티'],
+        'mentoring' : ['가입된 멘토링', '개설한 멘토링'],
         'community' : ['내가 쓴 글']
     });
     const [selected, setSelected] = useState('lecture');
@@ -137,7 +137,7 @@ const MyPage = () => {
                     <ul>
                         <li id='lecture' className={selected === 'lecture' ? 'my-selected' : null} onClick={handleCategory}>내 강의</li>
                         <li id='club' className={selected === 'club' ? 'my-selected' : null} onClick={handleCategory}>내 동호회</li>
-                        <li id='mentoring' className={selected === 'mentoring' ? 'my-selected' : null} onClick={handleCategory}>내 멘토멘티</li>
+                        <li id='mentoring' className={selected === 'mentoring' ? 'my-selected' : null} onClick={handleCategory}>내 멘토링</li>
                         <li id='community' className={selected === 'community' ? 'my-selected' : null} onClick={handleCategory}>내 커뮤니티</li>
                     </ul>
                     <div id='signout' onClick={clickSecession}>회원탈퇴</div>
