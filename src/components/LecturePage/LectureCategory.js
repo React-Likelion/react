@@ -492,7 +492,7 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
                         <ul>
                             <li onClick={clickCategory}>요가/필라테스</li>
                             <li onClick={clickCategory}>헬스</li>
-                            <li onClick={clickCategory}>기타</li>
+                            <li onClick={clickCategory}>운동기타</li>
                         </ul>
                     }
                     </li>
@@ -504,7 +504,9 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
                     {
                         (detailBusiness) ||
                         <ul>
-                            <li onClick={clickCategory}>선택안함</li>
+                            <li onClick={clickCategory}>비즈니스</li>
+                            <li onClick={clickCategory}>마케팅</li>
+                            <li onClick={clickCategory}>비즈니스/마케팅기타</li>
                         </ul>
                     }
                         
@@ -520,7 +522,7 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
                             <li onClick={clickCategory}>그림</li>
                             <li onClick={clickCategory}>공예</li>
                             <li onClick={clickCategory}>디자인</li>
-                            <li onClick={clickCategory}>기타</li>
+                            <li onClick={clickCategory}>미술기타</li>
                         </ul>
                     }
                     </li>
@@ -549,6 +551,7 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
                             <li onClick={clickCategory}>요리</li>
                             <li onClick={clickCategory}>베이킹</li>
                             <li onClick={clickCategory}>음료 및 주류</li>
+                            <li onClick={clickCategory}>요리기타</li>
                         </ul>
                     }
                     </li>
@@ -563,7 +566,7 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
                             <li onClick={clickCategory}>법률</li>
                             <li onClick={clickCategory}>상담</li>
                             <li onClick={clickCategory}>뷰티</li>
-                            <li onClick={clickCategory}>기타</li>
+                            <li onClick={clickCategory}>라이프스타일기타</li>
                         </ul>
                     }
                     </li>
@@ -575,7 +578,10 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
                     {
                         (detailMusic)||
                         <ul>
-                            <li onClick={clickCategory}>선택안함</li>
+                            <li onClick={clickCategory}>힙합</li>
+                            <li onClick={clickCategory}>발라드</li>
+                            <li onClick={clickCategory}>국악</li>
+                            <li onClick={clickCategory}>악기</li>
                         </ul>
                     }
                     </li>
@@ -587,7 +593,9 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
                     {
                         (detailPicture)||
                         <ul>
-                            <li onClick={clickCategory}>선택안함</li>
+                            <li onClick={clickCategory}>사진</li>
+                            <li onClick={clickCategory}>영상</li>
+                            <li onClick={clickCategory}>사진/영상기타</li>
                         </ul>
                     }
                     </li>
@@ -599,7 +607,9 @@ const LectureCategory = ({setDetailCategoryData,setCategoryData,categoryData,han
                     {
                         (detailFounded)||
                         <ul>
-                            <li onClick={clickCategory}>선택안함</li>
+                            <li onClick={clickCategory}>창업</li>
+                            <li onClick={clickCategory}>부업</li>
+                            <li onClick={clickCategory}>창업/부업기타</li>
                         </ul>
                     }
                     </li>

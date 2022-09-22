@@ -23,7 +23,7 @@ const LectureBox = ({categoryData,detailCategoryData,option,search}) => {
 
     useEffect(()=>{
         if(option==='인기순'){
-            axios.get(`${PROXY}/lectures/?sort=-like_cnt`)
+            axios.get(`${PROXY}/lectures/sort/?sort=-like_cnt`)
             .then((res)=>{
                 console.log(res.data);
                 setLectures(res.data);
@@ -43,7 +43,7 @@ const LectureBox = ({categoryData,detailCategoryData,option,search}) => {
 
     useEffect(()=>{
         if(detailCategoryData.length === 0){
-            axios.get(`${PROXY}/lectures/?main_category=${categoryData}`)
+            axios.get(`${PROXY}/lectures/sort/?main_category=${categoryData}`)
             .then((res)=>{
                 console.log(res.data);
                 setLectures(res.data);
@@ -51,7 +51,7 @@ const LectureBox = ({categoryData,detailCategoryData,option,search}) => {
                 console.log(err);
             })
         }else{
-            axios.get(`${PROXY}/lectures/?sub_category=${detailCategoryData}`)
+            axios.get(`${PROXY}/lectures/sort/?sub_category=${detailCategoryData}`)
             .then((res)=>{
                 console.log(res.data);
                 setLectures(res.data);

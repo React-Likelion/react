@@ -119,7 +119,11 @@ const MyPage = () => {
                         <div id="modalDiv" style={{padding:"3%"}}>
                             <Modal className="modal-container" show={applicationModal} onHide={handleClose}>
                                 <input type="file" onChange={onImgChange} />
-                                <div style={{margin:"0 auto",textAlign:"center"}}><img src={detailImg} style={{width:"30%",border:"0 solid",borderRadius:"70%"}} alt='' /></div>
+                                {
+                                    (detailImg.length!==0)?
+                                    <div style={{margin:"0 auto",textAlign:"center"}}><img src={detailImg} style={{width:"30%",border:"0 solid",borderRadius:"70%"}} alt='' /></div>:
+                                    <div style={{margin:"0 auto",textAlign:"center"}}><img src={userInfo.image} style={{width:"30%",border:"0 solid",borderRadius:"70%"}} alt='' /></div>
+                                }
                                 <button type="button" onClick={clickChange}>확인</button>
                             </Modal>
                         </div>
