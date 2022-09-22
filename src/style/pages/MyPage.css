@@ -14,7 +14,8 @@
 
 .my-container > #right-side {
     min-height: 90vh;
-    min-width: 400px;
+    /* min-width: 400px; */
+    max-width: 50vw;
 }
 
 #left-side > div {
@@ -110,4 +111,18 @@
     font-size: 20px;
     font-weight: 800;
     color: #2E493A;
+}
+
+@media (min-width: 900px) and (max-width: 1024px) {
+
+    .my-container {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+
+    .my-container > #right-side {
+        max-width: 40vw;
+    }   
 }

@@ -135,3 +135,32 @@
 #age-btn-box > button:hover {
     background-color: #2E493A;
 }
+
+@media (min-width: 700px) and (max-width: 1000px) {
+    .upload-container > .tag-box > div {
+        width: 100%;
+    }
+
+    .upload-container > .tag-box > div > input {
+        width: 75%;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 700px) {
+    .upload-container > .tag-box > div {
+        width: 100%;
+    }
+
+    .upload-container > .tag-box > div > input {
+        width: 75%;
+    }
+
+    #age-btn-box > .unclicked {
+        width: 90%;
+        font-size: 13px;
+    }
+
+    #m-description {
+        font-size: 14px;
+    }
+}

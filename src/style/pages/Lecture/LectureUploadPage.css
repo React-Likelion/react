@@ -150,3 +150,9 @@
 .upload-container > .upload-btn:hover {
     background-color: #2E493A;
 }
+
+@media (min-width: 600px) and (max-width: 749px) {
+    #url-text {
+        font-size: 14px;
+    }
+}

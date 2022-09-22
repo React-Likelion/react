@@ -115,7 +115,7 @@ const LectureUploadPage = () => {
             <div className='upload-container'>
                 <div>영상 업로드</div>
                 <div>
-                    <div>유튜브 URL</div>
+                    <div id='url-text'>유튜브 URL</div>
                     <input type='text' onChange={handleLectureInfo} name='youtube_link'></input>
                     <div>강의명</div>
                     <input type='text' onChange={handleLectureInfo} name='title'></input>

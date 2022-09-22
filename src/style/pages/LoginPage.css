@@ -5,7 +5,6 @@
 
 #login-left {
     width: 40%;
-    min-width: 300px;
     background-color: #2e493a;
     display: flex;
     justify-content: center;
@@ -84,4 +83,10 @@
 #go-sign-text > span {
     border-bottom: 1px solid rgb(136, 136, 136);
     cursor: pointer;
+}
+
+@media (min-width: 500px) and (max-width: 700px) {
+    #login-left > img {
+        min-width: 150px;
+    }
 }

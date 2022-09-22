@@ -94,6 +94,11 @@
 }
 
 @media (min-width: 600px) and (max-width: 1024px) {
+
+    .CommunityBoard {
+        width: 90%;
+    }
+
     #community-pagenation > .postBtn {
         min-width: 100px;
     }
