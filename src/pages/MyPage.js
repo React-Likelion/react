@@ -72,7 +72,6 @@ const MyPage = () => {
     const onImgChange = (e)=>{
         e.preventDefault();
 
-        
         let fileUrl;
         let reader = new FileReader();
         reader.onload = ()=>{
@@ -136,18 +135,23 @@ const MyPage = () => {
                     <span>내 정보</span>
                     <div></div>
                     <ul>
-                        <li id='lecture' className={selected === 'lecture' && 'my-selected'} onClick={handleCategory}>내 강의</li>
-                        <li id='club' className={selected === 'club' && 'my-selected'} onClick={handleCategory}>내 동호회</li>
-                        <li id='mentoring' className={selected === 'mentoring' && 'my-selected'} onClick={handleCategory}>내 멘토멘티</li>
-                        <li id='community' className={selected === 'community' && 'my-selected'} onClick={handleCategory}>내 커뮤니티</li>
+                        <li id='lecture' className={selected === 'lecture' ? 'my-selected' : null} onClick={handleCategory}>내 강의</li>
+                        <li id='club' className={selected === 'club' ? 'my-selected' : null} onClick={handleCategory}>내 동호회</li>
+                        <li id='mentoring' className={selected === 'mentoring' ? 'my-selected' : null} onClick={handleCategory}>내 멘토멘티</li>
+                        <li id='community' className={selected === 'community' ? 'my-selected' : null} onClick={handleCategory}>내 커뮤니티</li>
                     </ul>
                     <div id='signout' onClick={clickSecession}>회원탈퇴</div>
                 </article>
                 <article id='right-side'>
                     <div>&nbsp;&nbsp;&nbsp;{mypageInfo[`${selected}`][0]}</div>
                     <MyTopBox category={selected}/>
-                    <div>&nbsp;&nbsp;&nbsp;{mypageInfo[`${selected}`][1]}</div>
-                    <MyBottomBox category={selected}/>
+                    {
+                        selected !== 'community' ? 
+                        <>
+                            <div>&nbsp;&nbsp;&nbsp;{mypageInfo[`${selected}`][1]}</div>
+                            <MyBottomBox category={selected}/>
+                        </> : null
+                    }
                 </article>
             </section>
             <Footer/>

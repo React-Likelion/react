@@ -23,7 +23,7 @@ const Navbar = ({val}) => {
         <section className="navbar">
             <div className="navbarcontainer">
                 <div className={category.lecture ? 'selectNav' : ''} onClick={()=>navigate('/lecture')}>강의</div>
-                <div className={category.mentoring ? 'selectNav' : ''} onClick={()=>navigate('/mentoring')}>멘토 & 멘티</div>
+                <div className={category.mentoring ? 'selectNav' : ''} onClick={()=>navigate('/mentoring')}>멘토링</div>
                 <div className={category.club ? 'selectNav' : ''} onClick={()=>navigate('/club')}>동호회</div>
                 <div className={category.community ? 'selectNav' : ''} onClick={()=>navigate('/community')}>커뮤니티</div>
                 <div className={category.consulting ? 'selectNav' : ''} onClick={()=>navigate('/consulting')}>컨설팅</div>

@@ -87,7 +87,7 @@ const ClubDetailPage = () => {
             <div className='clubDeailContainer'>
                 <div className='clubDetailLeft'>
                 <div><ClubInfo params={params} name={detailData.name} member={detailData.member} image={detailData.image} leader={detailData.leader_id}/></div>
-                    {(localStorage.getItem('react_accessToken')) ? <div className='clubImageUploadBtn' onClick={goPhotoUpload}><img src={`${process.env.PUBLIC_URL}/img/Teacher.png`} alt=''/>사진 업로드하기</div> : ""}
+                    {detailData.member && detailData.member.includes(Number(localStorage.getItem("react_userId"))) ? <div className='clubImageUploadBtn' onClick={goPhotoUpload}><img src={`${process.env.PUBLIC_URL}/img/Teacher.png`} alt=''/>사진 업로드하기</div> : ""}
                 </div>
                 {articleData.length == 0 ? <p className='noArticle'>등록된 글이 없습니다.</p> : 
                 <div className='clubDetailCenter'>

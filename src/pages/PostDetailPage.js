@@ -28,7 +28,7 @@ const PostDetailPage = () => {
     // 게시물 삭제
     const clickDelete = (e) => {
         if(window.confirm('해당 글을 삭제하시겠습니까 ?')) {
-            axios.delete(`${PROXY}/communitys/${id}/`, {
+            axios.delete(`${PROXY}/community/${id}/`, {
                 headers: {
                     'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
                   }
@@ -46,7 +46,7 @@ const PostDetailPage = () => {
     // 게시물 조회 & 유저 이미지 조회
     useEffect(() => {
         
-        const getDetail = axios.get(`${PROXY}/communitys/${id}/`)
+        const getDetail = axios.get(`${PROXY}/community/${id}/`)
         getDetail.then((res) => {
             console.log(res.data);
             setDetailInfo(res.data);
@@ -91,7 +91,13 @@ const PostDetailPage = () => {
                     </div>
                     <div>{detailInfo.title}</div>
                     <div>{detailInfo.description}</div>
-                    <br/><img src={detailInfo.image} alt='x'/><br/><br/>
+                    <br/>
+                    {
+                        detailInfo.images && detailInfo.images.map((ele) => {
+                            return <img src={ele.image} alt='x'/>
+                        })
+                    }
+                    <br/><br/>
                 </div>
                 <DetailRepleBox post_id={id}/>
             </div>

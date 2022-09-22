@@ -9,6 +9,7 @@ const ImagePreview = ({text, setImages, imgCnt}) => {
     // 업로드 하는 함수
     const handleImageUpload = (e) => {
         const fileArr = e.target.files;
+        
         if(fileArr.length > imgCnt) {
             alert(`사진 첨부는 ${imgCnt}개 까지 가능합니다.`);
             return;
@@ -35,7 +36,7 @@ const ImagePreview = ({text, setImages, imgCnt}) => {
       };
 
     const removeImage = (e) => {
-        setDetailImgs(detailImgs.filter(ele => ele != e.target.value));
+        setDetailImgs(detailImgs.filter(ele => ele !== e.target.value));
     };
 
     return(

@@ -74,9 +74,12 @@ const DetailRepleBox = ({post_id}) => {
                 {comments.length}
             </div>
             {
-                comments.map((ele, idx) => {
+                comments.length !== 0 ? comments.map((ele, idx) => {
                     return <DetailRepleItem ele={ele} key={idx} post_id={post_id} comments={comments} setComments={setComments}/>
-                })
+                }) 
+                : <div id='no-comments'>
+                    작성된 댓글이 없습니다. 
+                </div>
             }
         </section>
     );

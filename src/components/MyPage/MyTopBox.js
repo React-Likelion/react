@@ -12,64 +12,39 @@ const MyTopBox = ({category}) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        let url = '';
         // set data
         switch(category){
             case 'lecture' : {
-                axios.get(`${PROXY}/lectures/mypagelectures/`,{
-                    headers: {
-                        'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-                    }
-                })
-                .then((res)=>{
-                    setDatas(res.data);
-                }).catch((err)=>{
-                    console.log(err);
-                })
+                url = `${PROXY}/lectures/mypagelectures/`;
                 break;
             }
             case 'club' : {
-                axios.get(`${PROXY}/clubs/signed/${localStorage.getItem('react_userId')}/`,{
-                    headers: {
-                        'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-                    }
-                })
-                .then((res)=>{
-                    console.log(res.data);
-                    setDatas(res.data);
-                }).catch((err)=>{
-                    console.log(err);
-                })
+                url = `${PROXY}/clubs/signed/${localStorage.getItem('react_userId')}/`;
                 break;
             }
             case 'mentoring' : {
-                axios.get(`${PROXY}/mentorings/register/`,{
-                    headers: {
-                        'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-                    }
-                })
-                .then((res)=>{
-                    setDatas(res.data);
-                })
-                .catch((err)=>{
-                    console.log(err);
-                })
+                url = `${PROXY}/mentorings/register/`;
                 break;
             }
             case 'community' : {
-                axios.get(`${PROXY}/communitys/?writer_id=${localStorage.getItem('react_userId')}`,{
-                    headers: {
-                        'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-                    }
-                })
-                .then((res)=>{
-                    setDatas(res.data);
-                })
-                .catch((err)=>{
-                    console.log(err);
-                })
+                url = `${PROXY}/communitys/?writer_id=${localStorage.getItem('react_userId')}`;
                 break;
             }
         }
+
+        axios.get( url ,{
+            headers: {
+                'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+            }
+        })
+        .then((res)=>{
+            setDatas(res.data);
+        }).catch((err)=>{
+            // console.log(err);
+            alert('데이터를 불러오지 못했습니다.');
+        })
+
     },[category]);
 
     function promise(ele){

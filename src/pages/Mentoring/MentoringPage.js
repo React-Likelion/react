@@ -37,7 +37,7 @@ const MentoringPage = () => {
             <div className='postBtnBox'>
                 <div className='searchBar'><SearchBar setSearch={setSearch} /></div>
                 {localStorage.getItem('react_accessToken') &&
-                <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>멘토멘티 등록하기</div>}
+                <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/><p></p></div>}
             </div>
             <div>
                 <Filter field="mentorings" search={search} sortValue={sortValue} searchType={searchType} setDatas={setDatas}/>

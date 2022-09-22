@@ -4,7 +4,7 @@ import CommunityPostItem from './CommunityPostItem';
 import Pagination from '../Pagenation';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import {PROXY} from '../../data/serverUrl';
+import { useMediaQuery } from 'react-responsive';
 
 const CommunityBoard = () => {
     const PROXY = process.env.REACT_APP_PROXY;
@@ -15,6 +15,11 @@ const CommunityBoard = () => {
     const [page, setPage] = useState(1); // 현재 페이지 설정
     const offset = (page - 1) * limit; // 인덱스
     const [searchVal, setSearchVal] = useState('');
+    const [searchCategory, setSearchCategory] = useState('');
+
+    const isTablet = useMediaQuery({
+        query: "(min-width:600px) and (max-width:1024px)",
+      });
     
     const uploadPostBtn = () => {
         navigate('/community/upload');
@@ -24,13 +29,59 @@ const CommunityBoard = () => {
         setSearchVal(e.target.value);
     }
 
+    const handleCategory = (e) => {
+        axios.get(`${PROXY}/community/?category=${e.target.value}`)
+        .then((res) => {
+            setPosts(res.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
+    const handleSearchCategory = (e) => {
+        setSearchCategory(e.target.value);
+    }
+
     const clickSearchBtn = (e) => {
         // 검색 버튼 눌렀을 때
+        let both_data = [];
+        if(searchCategory === 'both') {
+            const title = axios.get(`${PROXY}/community/?title=${searchVal}`)
+            .then((res) => {
+                setPosts([...posts, res.data]);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+            title.then(
+                axios.get(`${PROXY}/community/?description=${searchVal}`)
+                .then((res) => {
+                    setPosts([...posts, res.data]);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+            )
+        }
+        else {
+            axios.get(`${PROXY}/community/?${searchCategory}=${searchVal}`)
+            .then((res) => {
+                setPosts(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        }
+        
+        setSearchVal('');
+        setSearchCategory('');
     }
 
     // 게시물 조회
     useEffect(() => {
-        axios.get(`${PROXY}/communitys/`)
+        axios.get(`${PROXY}/community/`)
         .then((res) => {
             setPosts(res.data);
         })
@@ -43,11 +94,12 @@ const CommunityBoard = () => {
         <section className='CommunityBoard'>
             <article id='community-header'>
                 <div>
-                    {/* <select>
-                        <option>공지</option>
-                        <option>정보</option>
-                        <option>자유</option>
-                    </select> */}
+                    <select onChange={handleCategory} defaultValue="" >
+                        <option value="" >전체</option>
+                        <option value="공지" >공지</option>
+                        <option value="정보" >정보</option>
+                        <option value="자유" >자유</option>
+                    </select>
                 </div>
                 <div>제목</div>
                 <div>작성자</div>
@@ -67,15 +119,16 @@ const CommunityBoard = () => {
             </article>
             <article id='community-pagenation'>
                 <div></div>
-                <Pagination total={posts.length}  limit={limit}
+                <Pagination total={posts.length} limit={limit}
                     page={page} setPage={setPage} />
-                {localStorage.getItem('react_accessToken') && <div className='postBtn' onClick={uploadPostBtn}><img src='img/Teacher.png' alt=''/>게시글 등록하기</div>}
+                {localStorage.getItem('react_accessToken') && <div className='postBtn' onClick={uploadPostBtn}><img src='img/Teacher.png' alt=''/>{isTablet ? '등록' : '게시글 등록하기'}</div>}
             </article>
             <article id='community-searchbar'>
-                <select>
-                    <option>분류</option>
-                    <option>게시물</option>
-                    <option>게시물+제목</option>
+                <select onChange={handleSearchCategory} defaultValue=''>
+                    <option value='' disabled>분류</option>
+                    <option value='title'>제목</option>
+                    <option value='description'>내용</option>
+                    <option value='both'>제목+내용</option>
                 </select>
                 <input type='text' value={searchVal} onChange={handleSearchVal} placeholder='검색어를 입력해주세요'/>
                 <button onClick={clickSearchBtn}>검색</button>
