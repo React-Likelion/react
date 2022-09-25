@@ -70,7 +70,7 @@ const MentoringDetailPage = () => {
                     state: {
                         usedata: userArr,
                     }})
-            } else if(nick === mentoringList.nickname ){
+            } else if(nick === mentoringList.nickname){
                 axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/`, {
                     headers: {
                         'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
@@ -85,18 +85,23 @@ const MentoringDetailPage = () => {
                 alert('인원이 가득찼습니다')
             }
         }else{
-            axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/`, {
-                headers: {
-                    'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-                }
-            })
-                .catch(e => alert("로그인 후 시도해주세요"))
-            alert('입장에 성공하였습니다');
-            navigate(`room/${mentoringList.id}`,{
-                state: {
-                    usedata: userArr,
-                }
-            });
+            if(nick === null){
+                alert("로그인 후 시도해주세요")
+            }
+            else{
+                axios.get(`${PROXY}/mentorings/${id}/mentoring-chats/`, {
+                    headers: {
+                        'Authorization': 'Bearer '+ localStorage.getItem('react_accessToken')
+                    }
+                })
+                    .then(
+                        navigate(`room/${mentoringList.id}`,{
+                            state: {
+                                usedata: userArr,
+                            }
+                    }))
+                    .catch(e => alert("로그인 후 시도해주세요"))
+            }    
         }
     }
 
@@ -133,4 +138,3 @@ const MentoringDetailPage = () => {
 };
 
 export default MentoringDetailPage;
-
