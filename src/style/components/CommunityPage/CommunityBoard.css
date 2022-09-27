@@ -103,3 +103,14 @@
         min-width: 100px;
     }
 }
+
+@media (min-width: 350px) and (max-width: 599px) {
+
+    .CommunityBoard {
+        width: 95%;
+    }
+
+    #community-pagenation > .postBtn {
+        min-width: 50px;
+    }
+}
