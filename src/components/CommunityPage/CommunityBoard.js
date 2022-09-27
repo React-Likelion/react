@@ -20,6 +20,10 @@ const CommunityBoard = () => {
     const isTablet = useMediaQuery({
         query: "(min-width:600px) and (max-width:1024px)",
       });
+
+     const isMobile = useMediaQuery({
+        query: "(min-width:350px) and (max-width:599px)",
+      });
     
     const uploadPostBtn = () => {
         navigate('/community/upload');
@@ -43,27 +47,29 @@ const CommunityBoard = () => {
         setSearchCategory(e.target.value);
     }
 
+
+    const searchBoth = async () => {
+        try {
+            const res = await axios.get(`${PROXY}/community/?title=${searchVal}`)
+            const data = res.data;
+
+            const res2 = await axios.get(`${PROXY}/community/?description=${searchVal}`)
+            
+            const bothData = [...data, ...res2.data].filter(
+                (arr, idx, cb) => idx === cb.findIndex(t => t.id === arr.id)
+            );
+                
+            setPosts(bothData);
+
+        } catch(err){
+            console.log(err);
+        }
+    }
+
     const clickSearchBtn = (e) => {
         // 검색 버튼 눌렀을 때
-        let both_data = [];
         if(searchCategory === 'both') {
-            const title = axios.get(`${PROXY}/community/?title=${searchVal}`)
-            .then((res) => {
-                setPosts([...posts, res.data]);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-
-            title.then(
-                axios.get(`${PROXY}/community/?description=${searchVal}`)
-                .then((res) => {
-                    setPosts([...posts, res.data]);
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-            )
+            searchBoth();
         }
         else {
             axios.get(`${PROXY}/community/?${searchCategory}=${searchVal}`)
