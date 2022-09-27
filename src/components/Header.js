@@ -34,8 +34,13 @@ const Header = () => {
         <section className='header'>
             <div className='headercontainer'>
                 <div className='headerleft'>
-                    <img onClick={goHome} className='logo' src={`${process.env.PUBLIC_URL}/img/react_logo.png`} 
-                     />
+                    <div id="react_logo_original">
+                    <img onClick={goHome} className='logo' src={`${process.env.PUBLIC_URL}/img/react_logo.png`}
+                    />
+                    </div>
+                    <div id="react_logo_min">
+                    <img onClick={goHome} className='logo' src={`${process.env.PUBLIC_URL}/img/react_logo_hourglass.png`}
+                    /></div>
                 </div>
                 <div className='headerright'>
                     {/* 라우터 파지면 Link or useNavigate 하기 */}

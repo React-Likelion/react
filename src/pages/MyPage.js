@@ -24,6 +24,10 @@ const MyPage = () => {
     const [detailImg,setDetailImg] = useState('');
     const formData = new FormData();
 
+    useEffect(()=>{
+        //혹시 엑세스토큰이 유효한지 확인하는 api가 있다면 모든 페이지에 추가.
+    },[])
+
 
     const handleCategory = (e) => {
         setSelected(e.currentTarget.id);
@@ -112,8 +116,7 @@ const MyPage = () => {
             <Header />
             <section className='my-container'>
                 <article id='left-side'>
-                    
-                    <button type="button" onClick={clickProfileChange}>프로필 이미지 변경</button>
+                    <img src={`${process.env.PUBLIC_URL}/img/profileChange.png`} style={{cursor:"pointer",width:"30px"}} onClick={clickProfileChange} alt ="프로필 변경"/>
                     {
                         (!applicationModal) ||
                         <div id="modalDiv" style={{padding:"3%"}}>
@@ -129,7 +132,7 @@ const MyPage = () => {
                         </div>
                     }
                     <div><img src={userInfo.image} alt='이미지 없음'/></div>
-                    <div>{userInfo.name} 님</div>
+                    <div>{userInfo.name} 님</div> 
                     <div id='point'><img src={`${process.env.PUBLIC_URL}/img/coin.png`}/>{userInfo.point} P</div>
                     <div><Payment/></div>
                     <span>내 정보</span>
