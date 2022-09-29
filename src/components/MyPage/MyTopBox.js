@@ -28,7 +28,7 @@ const MyTopBox = ({category}) => {
                 break;
             }
             case 'community' : {
-                url = `${PROXY}/communitys/?writer_id=${localStorage.getItem('react_userId')}`;
+                url = `${PROXY}/community/?writer_id=${localStorage.getItem('react_userId')}`;
                 break;
             }
         }
@@ -41,8 +41,8 @@ const MyTopBox = ({category}) => {
         .then((res)=>{
             setDatas(res.data);
         }).catch((err)=>{
-            // console.log(err);
-            alert('데이터를 불러오지 못했습니다.');
+            console.log(err);
+            // alert('데이터를 불러오지 못했습니다.');
         })
 
     },[category]);
