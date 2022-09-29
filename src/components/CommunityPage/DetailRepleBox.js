@@ -35,7 +35,7 @@ const DetailRepleBox = ({post_id}) => {
         }
 
         if(window.confirm('댓글을 등록하시겠습니까 ?')) {
-            axios.post(`${PROXY}/communitys/${post_id}/comments/`, commentInfo, {
+            axios.post(`${PROXY}/community/${post_id}/comments/`, commentInfo, {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
                 }
@@ -54,7 +54,7 @@ const DetailRepleBox = ({post_id}) => {
 
     // 댓글 조회
     useEffect(() => {
-        axios.get(`${PROXY}/communitys/${post_id}/comments/`)
+        axios.get(`${PROXY}/community/${post_id}/comments/`)
         .then((res) => {
             setComments(res.data);
         })

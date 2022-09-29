@@ -44,13 +44,17 @@ const LectureDetailPage = () => {
         }
     },[]);
     useEffect(()=>{
-        axios.get(`${PROXY}/accounts/point/${localStorage.getItem('react_userId')}/`,{
+        axios.get(`${PROXY}/accounts/point/`,{
             headers:{
                 'Authorization' : 'Bearer '+localStorage.getItem('react_accessToken')
             }
         })
         .then((res)=>{
-            setPricePerson(res.data.point);
+            res.data.map((ele) => {
+                if(ele.id === localStorage.getItem('react_userId')) {
+                    setPricePerson(ele.point);
+                }
+            })
         })
         .catch((err)=>console.log(err))
     },[]);
@@ -91,6 +95,7 @@ const LectureDetailPage = () => {
         //         'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
         //     }
         // })
+        console.log(pricePerson);
         if(pricePerson < lecturePrice){
             alert('포인트가 부족합니다 ! 포인트를 충전하세요.');
             return;

@@ -110,7 +110,44 @@
         width: 95%;
     }
 
+    #community-pagenation {
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+    }
+    
     #community-pagenation > .postBtn {
         min-width: 50px;
+        width: 50px;
+    }
+
+    #community-pagenation > .postBtn > img {
+        margin: 0 auto;
+        width: 23px;
+        height: 23px;
+    }
+
+    #top-blank {
+        display: inline-block;
+        width: 85%;
+    }
+
+    #top-btn {
+        display: inline-block;
+        width: 10%;
+    }
+    
+    #top-btn > img {
+        width: 100%;
+        max-width: 35px;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 430px) {
+    #community-searchbar > select {
+        width: 50px;
+    }
+
+    #community-searchbar > button {
+        width: 50px;
     }
 }
