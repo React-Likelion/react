@@ -11,6 +11,7 @@ const LectureUploadPage = () => {
     const PROXY = process.env.REACT_APP_PROXY;
     const navigate = useNavigate();
     const [images, setImages] = useState();
+    const [thumbnail, setThumbnail] = useState();
     const [checkedInputs, setCheckedInputs] = useState([]);
     const [lectureInfo, setLectureInfo] = useState({
         youtube_link : '',
@@ -67,6 +68,11 @@ const LectureUploadPage = () => {
             return;
         }
 
+        if(!thumbnail) {
+            alert("썸네일을 첨부해 주세요.");
+            return;
+        }
+
         if(!images) {
             alert("이미지를 반드시 첨부해 주세요.(최대 5개까지 가능합니다)");
             return;
@@ -80,8 +86,9 @@ const LectureUploadPage = () => {
         // 강의 등록 통신
         // 1. formData 생성 후 데이터 append
         let form_data = new FormData();
+        form_data.append('thumbnail', thumbnail[0]);
         for(let i = 0; i < images.length; i++) {
-            form_data.append(`image${i+1}`, images[i]);
+            form_data.append('image', images[i]);
         }
         // 나머지 데이터들은 다 JSON으로 맞춰주기
         // form_data.append("data", JSON.stringify(lectureInfo));
@@ -139,7 +146,8 @@ const LectureUploadPage = () => {
                 <textarea id='description-textarea' 
                     onChange={handleLectureInfo} name='description'
                     placeholder='수업이나 활동 내용 입력'></textarea><br/>
-                    <ImagePreview text={'썸네일 첨부하기'} setImages={setImages} imgCnt={1}/>
+                    <ImagePreview text={'썸네일 첨부하기'} setImages={setThumbnail} imgCnt={1}/>
+                    <ImagePreview text={'강의 상세 사진 첨부하기'} setImages={setImages} imgCnt={10}/>
                 <div className='picture-preview-box'></div>
                 <div className='checkbox-text'>
                     <input id='1' type='checkbox' onChange={(e) => {changeHandler(e.currentTarget.checked, '1')}} 
