@@ -25,9 +25,6 @@ const ClubGalleryDetail = () => {
         setGalleryAllData(state.data)
     }, [])
 
-    console.log(galleryAllData)
-    console.log(galleryModal)
-
     return (
         <setion className="ClubGalleryDetail">
             <Header/>
