@@ -79,3 +79,42 @@
         cursor: pointer;
     }
 }
+
+@media (min-width: 350px) and (max-width: 600px) {
+    .clubInfo {
+        width: 100%;
+        min-width: 100px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+
+    .clubInfoName{
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .clubJoin {
+        height: 6vh;
+        line-height: 6vh;
+        margin : 15px 0 20px 0;
+        font-size: 0.8rem;
+        color : #EFEDE1;
+        background-color: #2E493A;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .clubArticleUplodBtn {
+        height: 6vh;
+        line-height: 6vh;
+        margin : 15px 0 20px 0;
+        font-size: 1rem;
+        color : #EFEDE1;
+        background-color: #2E493A;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+}
