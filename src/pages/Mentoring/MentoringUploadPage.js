@@ -117,7 +117,7 @@ const MentoringUploadPage = () => {
             <Header/>
             <div className='upload-container'>
                 <div>멘토링 등록하기</div>
-                <div>
+                <div id='mentoring-grid'>
                     <div>지역</div>
                     <select onChange={handleMentoringInfo} name='location'>
                         <option value='' defaultValue>선택</option>
