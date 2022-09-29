@@ -8,14 +8,6 @@ import { useMediaQuery } from 'react-responsive';
 
 const CommunityBoard = () => {
     const PROXY = process.env.REACT_APP_PROXY;
-    const navigate = useNavigate();
-    const [posts, setPosts] = useState([]); // axios로 받아와서 설정
-    const [notices, setNotices] = useState([]); 
-    const [limit, setLimit] = useState(5); // 한 페이지당 보여줄 게시물 수
-    const [page, setPage] = useState(1); // 현재 페이지 설정
-    const offset = (page - 1) * limit; // 인덱스
-    const [searchVal, setSearchVal] = useState('');
-    const [searchCategory, setSearchCategory] = useState('');
 
     const isTablet = useMediaQuery({
         query: "(min-width:600px) and (max-width:1024px)",
@@ -25,6 +17,16 @@ const CommunityBoard = () => {
         query: "(min-width:350px) and (max-width:599px)",
       });
     
+    const navigate = useNavigate();
+    const [posts, setPosts] = useState([]); // axios로 받아와서 설정
+    const [notices, setNotices] = useState([]);
+    // const postCnt = isMobile ? 100 : 5; 
+    const [limit, setLimit] = useState(5); // 한 페이지당 보여줄 게시물 수
+    const [page, setPage] = useState(1); // 현재 페이지 설정
+    const offset = (page - 1) * limit; // 인덱스
+    const [searchVal, setSearchVal] = useState('');
+    const [searchCategory, setSearchCategory] = useState('');
+
     const uploadPostBtn = () => {
         navigate('/community/upload');
     }
@@ -97,6 +99,14 @@ const CommunityBoard = () => {
     }, [])
 
     return (
+        <>
+        { 
+            isMobile && 
+            <>
+                <div id='top-blank'> </div>
+                <div id='top-btn' className='postBtn' onClick={uploadPostBtn}><img src='img/writing.png' alt=''/></div>
+            </>
+        }
         <section className='CommunityBoard'>
             <article id='community-header'>
                 <div>
@@ -125,9 +135,12 @@ const CommunityBoard = () => {
             </article>
             <article id='community-pagenation'>
                 <div></div>
-                <Pagination total={posts.length} limit={limit}
-                    page={page} setPage={setPage} />
-                {localStorage.getItem('react_accessToken') && <div className='postBtn' onClick={uploadPostBtn}><img src='img/Teacher.png' alt=''/>{isTablet ? '등록' : '게시글 등록하기'}</div>}
+                {
+                    isMobile || 
+                    <Pagination total={posts.length} limit={limit}
+                        page={page} setPage={setPage} />
+                }
+                {localStorage.getItem('react_accessToken') && !isMobile && <div className='postBtn' onClick={uploadPostBtn}><img src='img/writing.png' alt=''/>{isTablet ? '작성' : '게시글 작성하기'}</div>}
             </article>
             <article id='community-searchbar'>
                 <select onChange={handleSearchCategory} defaultValue=''>
@@ -140,6 +153,7 @@ const CommunityBoard = () => {
                 <button onClick={clickSearchBtn}>검색</button>
             </article>
         </section>
+        </>
     );
 };
 
