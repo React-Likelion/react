@@ -44,19 +44,17 @@ const LectureDetailPage = () => {
         }
     },[]);
     useEffect(()=>{
-        axios.get(`${PROXY}/accounts/point/`,{
+        axios.get(`${PROXY}/accounts/pointlog/${localStorage.getItem('react_userId')}/`,{
             headers:{
                 'Authorization' : 'Bearer '+localStorage.getItem('react_accessToken')
             }
         })
         .then((res)=>{
-            res.data.map((ele) => {
-                if(ele.id === localStorage.getItem('react_userId')) {
-                    setPricePerson(ele.point);
-                }
-            })
+            setPricePerson(res.data.point);
         })
-        .catch((err)=>console.log(err))
+        .catch((err)=>
+            console.log(err)
+        )
     },[]);
     
     useEffect(()=>{
