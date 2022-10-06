@@ -4,3 +4,7 @@
     background-color: #fff;
     margin: 10px auto;
 }
+
+#hoverBox {
+    background-color: rgba(0, 0, 0, 0.3);
+}
