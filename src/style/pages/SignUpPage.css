@@ -18,7 +18,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #efede1;
 }
 
 #signupLeft img {
@@ -40,7 +39,7 @@
 #signupSubmit {
   border: 1px solid #2e493a;
   background-color: #2e493a;
-  color: #efede1;
+  color: white;
   padding: 3%;
   border-radius: 10px;
   cursor: pointer;
@@ -53,7 +52,7 @@
 #signupForm input {
   border: none;
   border-bottom: 1px solid #2e493a;
-  background-color: #efede1;
+  background-color: white;
   width: 100%;
   height: 8%;
   margin: 2px auto;
@@ -65,7 +64,7 @@
 #signupForm button {
   border: 1px solid #2e493a;
   background-color: #2e493a;
-  color: #efede1;
+  color: white;
   border-radius: 10px;
   padding: 2%;
   margin: 3%;
@@ -103,7 +102,7 @@
 #signup-select-box {
   width: 100%;
   height: 40px;
-  background-color: #efede1;
+  background-color: white;
   border-radius: 10px;
   border: 2px solid #2e493a;
   color: #2e493a;
