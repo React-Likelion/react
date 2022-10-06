@@ -49,8 +49,8 @@ const ImagePreview = ({text, setImages, imgCnt}) => {
             { detailImgs.length !== 0 &&
             <div className='preview-box'>
                 {
-                    detailImgs.map((ele)=>{
-                        return <div>
+                    detailImgs.map((ele, idx)=>{
+                        return <div key={idx}>
                             <div>
                                 <div></div>
                                 <button value={ele} onClick={removeImage}>X</button>

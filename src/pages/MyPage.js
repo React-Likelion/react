@@ -73,7 +73,6 @@ const MyPage = () => {
         })
     }, []);
 
-    console.log(userInfo.image);
     const onImgChange = (e)=>{
         e.preventDefault();
 
