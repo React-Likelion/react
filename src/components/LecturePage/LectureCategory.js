@@ -1,23 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useCategoryHandler from '../../hooks/useCategoryHandler';
 import '../../style/components/LecturePage/LectureCategory.css';
 
-// Utility function to reset all categories' states
-const initializeVisibilityState = () => ({
-    프로그래밍: true,
-    '금융/제테크': true,
-    운동: true,
-    '비즈니스/마케팅': true,
-    미술: true,
-    외국어: true,
-    요리: true,
-    '라이프 스타일': true,
-    음악: true,
-    '사진/영상': true,
-    '창업/부업': true,
-});
-
 const LectureCategory = ({ setDetailCategoryData, setCategoryData, categoryData, handleClose }) => {
-    const [visibilityState, setVisibilityState] = useState(initializeVisibilityState());
     const infoArray = [
         '프로그래밍',
         '금융/제테크',
@@ -32,27 +17,11 @@ const LectureCategory = ({ setDetailCategoryData, setCategoryData, categoryData,
         '음악',
     ];
 
-    const handleCategoryClick = (category, e) => {
-        // Reset visibility state except for the selected category
-        setVisibilityState((prevState) => ({
-            ...initializeVisibilityState(),
-            [category]: !prevState[category],
-        }));
-
-        const selectedCategory = e.target.innerHTML.split('<')[0];
-        const categoryDataBool = categoryData === '';
-        let existenceBool = infoArray.includes(selectedCategory);
-
-        if (categoryDataBool) {
-            setCategoryData(selectedCategory);
-        } else if (existenceBool) {
-            const filteredInfoArray = infoArray.filter((value) => value !== selectedCategory);
-            if (filteredInfoArray.includes(categoryData)) {
-                setDetailCategoryData('');
-                setCategoryData(selectedCategory);
-            }
-        }
-    };
+    const [visibilityState, handleCategoryClick] = useCategoryHandler(
+        infoArray,
+        setCategoryData,
+        setDetailCategoryData
+    );
 
     const handleSubCategoryClick = (e) => {
         const lectureCategory = e.target.innerHTML;
@@ -69,7 +38,7 @@ const LectureCategory = ({ setDetailCategoryData, setCategoryData, categoryData,
                         <li
                             key={category}
                             style={{ cursor: 'pointer' }}
-                            onClick={(e) => handleCategoryClick(category, e)}
+                            onClick={(e) => handleCategoryClick(category, e, categoryData)}
                         >
                             {category}
                             {!visibilityState[category] && (
@@ -88,7 +57,6 @@ const LectureCategory = ({ setDetailCategoryData, setCategoryData, categoryData,
                                             <li onClick={handleSubCategoryClick}>부동산</li>
                                         </>
                                     )}
-                                    {/* Add similar subcategories for other main categories */}
                                 </ul>
                             )}
                         </li>
