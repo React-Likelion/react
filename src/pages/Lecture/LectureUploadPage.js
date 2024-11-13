@@ -11,6 +11,7 @@ const LectureUploadPage = () => {
     const PROXY = process.env.REACT_APP_PROXY;
     const navigate = useNavigate();
     const [images, setImages] = useState();
+    const [thumbnail, setThumbnail] = useState();
     const [checkedInputs, setCheckedInputs] = useState([]);
     const [lectureInfo, setLectureInfo] = useState({
         youtube_link : '',
@@ -19,7 +20,8 @@ const LectureUploadPage = () => {
         main_category : '',
         sub_category : '선택안함',
         description : '',
-        writer: localStorage.getItem('react_nickname')
+        writer_nickname: localStorage.getItem('react_nickname'),
+        writer_id:localStorage.getItem('react_userId'),
     });
 
     const changeHandler = (checked, id) => {
@@ -47,7 +49,6 @@ const LectureUploadPage = () => {
     }
 
     const clickUpload = () => {
-        console.log(lectureInfo);
 
         // 필수값 처리
         if (Object.values(lectureInfo).includes('')) {
@@ -67,6 +68,11 @@ const LectureUploadPage = () => {
             return;
         }
 
+        if(!thumbnail) {
+            alert("썸네일을 첨부해 주세요.");
+            return;
+        }
+
         if(!images) {
             alert("이미지를 반드시 첨부해 주세요.(최대 5개까지 가능합니다)");
             return;
@@ -80,8 +86,9 @@ const LectureUploadPage = () => {
         // 강의 등록 통신
         // 1. formData 생성 후 데이터 append
         let form_data = new FormData();
+        form_data.append('thumbnail', thumbnail[0]);
         for(let i = 0; i < images.length; i++) {
-            form_data.append(`image${i+1}`, images[i]);
+            form_data.append('image', images[i]);
         }
         // 나머지 데이터들은 다 JSON으로 맞춰주기
         // form_data.append("data", JSON.stringify(lectureInfo));
@@ -91,13 +98,8 @@ const LectureUploadPage = () => {
         form_data.append('main_category', lectureInfo.main_category);
         form_data.append('sub_category', lectureInfo.sub_category);
         form_data.append('price', lectureInfo.price);
-        form_data.append('writer',lectureInfo.writer);
-        for (let key of form_data.keys()) {
-            console.log(key);
-        }
-        for (let value of form_data.values()) {
-            console.log(value);
-        }
+        form_data.append('writer_nickname',lectureInfo.writer_nickname);
+        form_data.append('writer_id',lectureInfo.writer_id);
 
         // 2. axios로 전송
         axios.post(`${PROXY}/lectures/`, form_data, {
@@ -107,21 +109,11 @@ const LectureUploadPage = () => {
               }
           })
         .then((res) => {
-            console.log(res);
             navigate('/lecture');
         })
         .catch((err) => {
             console.log(err);
         })
-
-        // // formData 출력
-        // for (let key of form_data.keys()) {
-        //     console.log(key);
-        // }
-        // for (let value of form_data.values()) {
-        //     console.log(value);
-        // }
-
     }
 
     return (
@@ -130,7 +122,7 @@ const LectureUploadPage = () => {
             <div className='upload-container'>
                 <div>영상 업로드</div>
                 <div>
-                    <div>유튜브 URL</div>
+                    <div id='url-text'>유튜브 URL</div>
                     <input type='text' onChange={handleLectureInfo} name='youtube_link'></input>
                     <div>강의명</div>
                     <input type='text' onChange={handleLectureInfo} name='title'></input>
@@ -154,7 +146,8 @@ const LectureUploadPage = () => {
                 <textarea id='description-textarea' 
                     onChange={handleLectureInfo} name='description'
                     placeholder='수업이나 활동 내용 입력'></textarea><br/>
-                    <ImagePreview text={'썸네일 첨부하기'} setImages={setImages} imgCnt={5}/>
+                    <ImagePreview text={'썸네일 첨부하기'} setImages={setThumbnail} imgCnt={1}/>
+                    <ImagePreview text={'강의 상세 사진 첨부하기'} setImages={setImages} imgCnt={10}/>
                 <div className='picture-preview-box'></div>
                 <div className='checkbox-text'>
                     <input id='1' type='checkbox' onChange={(e) => {changeHandler(e.currentTarget.checked, '1')}} 

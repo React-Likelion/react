@@ -40,12 +40,11 @@
     margin-top: 10px;
     position: relative;
     right: 30px;
-    background-color: #efede1;
     color: #2e493a;
     font-weight: 700;
   }
 }
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 600px) and (max-width: 1023px) {
   #selecBoxDiv {
     text-align: right;
   }
@@ -86,13 +85,12 @@
     margin-top: 10px;
     position: relative;
     right: 30px;
-    background-color: #efede1;
     color: #2e493a;
     font-weight: 700;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 600px) {
   #selecBoxDiv {
     text-align: right;
   }
@@ -100,7 +98,6 @@
     margin-top: 10px;
     position: relative;
     right: 30px;
-    background-color: #efede1;
     color: #2e493a;
     font-weight: 700;
   }

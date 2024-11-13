@@ -1,20 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import axios from 'axios';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import {PROXY} from '../../data/serverUrl.js';
 import '../../style/components/LecturePage/LectureLeftEditor.css';
 import { lectureCategoryData } from '../../data/CategoryData.js';
 import { useNavigate } from 'react-router-dom';
 
 // {setDesc, desc, setImage}
-const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,imgThumbNail,lectureDescription,lectureThumbNail}) => { // (1)
+const LectureLeftEditor = ({imgFile,setImgFile,lectureId,titleLecture,lectureYoutube,lecturePrice,imgThumbNail,lectureDescription,lectureThumbNail}) => { // (1)
     // const dummy = `<img src=${lectureThumbNail} alt="이미지" />
     // ${lectureDescription}`;
     const navigate = useNavigate();
     const PROXY = process.env.REACT_APP_PROXY;
-    console.log(imgThumbNail);
-    console.log(titleLecture);
+
     //description 뿌리는 방법
     // 1. 최초 강의 등록시 등록하는 이미지 및 내용 받아오기. (썸네일 및 기본내용)
     // 2. 받아서 단순하게 뿌려주기.
@@ -35,8 +33,6 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
         'field':'',
         'tag':'',
     });
-    
-    const [imgFile,setImgFile] = useState([]);
     
     const titleHandler = (e)=>{
         setLectureData({...lectureData,
@@ -65,47 +61,26 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
         })
         return result;
     };
+    const imgArray = [];
 
     const clickModifySubmit = (e)=>{
-        
-        console.log('수정 제출');
-        console.log(imgFile);
-        console.log(lectureData);
         let data = new FormData();
-
+        console.log(imgFile);
         for(let i=0; i<imgFile.length; i++){
             data.append(`image${i+1}`,imgFile[i]);
         }
-        // data.append("data", JSON.stringify(lectureData));
-        if (Object.values(lectureData).includes('')) {
-            alert("입력되지 않은 값이 있습니다.");
-            return;
-        } 
+        data.append('writer_nickname',localStorage.getItem('react_nickname'));
         data.append('title',lectureData.title);
         data.append('description',lectureData.description);
         data.append('price',lectureData.price);
         data.append('youtube_link',lectureData.youtube_link);
         data.append('main_category',lectureData.field);
         data.append('sub_category',lectureData.tag);
-        
-        for (let key of data.keys()) {
-            console.log(key);
-        }
-        for (let value of data.values()) {
-            console.log(value);
-        }
-        // fetch(`${PROXY}/lectures/${lectureId}/`, {
-        //     method: 'PATCH',
-        //     body:data,
-        //     headers: {
-        //     'Content-type': 'multipart/form-data',
-        //     'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
-        //     }
-        //     })
-        //     .then(res => {
-        //         console.log(res.data);
-        //     })
-        //     .catch(err => console.log(err))
+        data.append("data", JSON.stringify(lectureData));
+        if (Object.values(lectureData).includes('')) {
+            alert("입력되지 않은 값이 있습니다.");
+            return;
+        } 
         axios.patch(`${PROXY}/lectures/${lectureId}/`,data,{
             headers: {
                 'Content-Type': 'multipart/form-data',
@@ -113,7 +88,6 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
             }
         })
         .then((res)=>{
-            console.log(res);
             navigate('/lecture');
         })
         .catch((err)=>console.log(err))
@@ -124,15 +98,11 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
             upload(){
                 return new Promise ((resolve, reject) => {
                         loader.file.then( (file) => {
-                            console.log(file);
+                            imgArray.push(file);
                             setImgFile([
                                 ...imgFile,
                                 file
                             ]);
-                            console.log(imgFile);
-                            // resolve({
-                            //     default: `${imgLink}/${res.data.filename}`
-                            // });
                         })
                 })
             }
@@ -168,17 +138,14 @@ const LectureLeftEditor = ({lectureId,titleLecture,lectureYoutube,lecturePrice,i
             config={{ // (4)
                 extraPlugins: [uploadPlugin]
             }}
-            data="첫 번째 선택한 사진이 썸네일이 됩니다."
+            data="사진은 5장 까지 등록이 가능합니다."
             onReady={editor => {
-                // console.log('Editor is ready to use!', editor);
                 const data = editor.getData();
                 setLectureData({...lectureData,
                     description:data});
             }}
             onChange={(event, editor) => {
                 const data = editor.getData();
-                // setDesc(data);
-                // console.log(desc);
                 console.log(data);
                 setLectureData({...lectureData,
                     description:data});

@@ -1,0 +1,90 @@
+#DetailRepleItem {
+    width: 90%;
+    height: auto;
+    min-height: 120px;
+    padding: 5px;
+    margin: 0 auto;
+    border-bottom: 1px solid #2e493a73;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 6fr 0.5fr;
+}
+
+#modify-box > input,
+#modify-box > button {
+    outline: none;
+    border: none;
+}
+
+#DetailRepleItem > div:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#DetailRepleItem > div > img {
+    /* background-color: #2e493a73; */
+    width: 60px;
+    height: 60px;
+}
+
+#DetailRepleItem > div:nth-child(2) {
+    margin: 10px 0px 0px 10px;
+}
+
+#DetailRepleItem > div > div:nth-child(1) {
+    color: #2E493A;
+}
+
+#extra-btns {
+    margin-top: 10px;
+}
+
+#extra-btns > button {
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 1px solid #2E493A;
+    width: 50px;
+    margin: 2px 0px;
+    font-size: 13px;
+    display: block;
+}
+
+#extra-btns > button:hover {
+    color: black;
+    font-weight: bold;
+}
+
+#reply-box {
+    width: 100%;
+    height: 50px;
+    margin: 10px auto;
+}
+
+#reply-box > input {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+#reply-box > input:focus {
+    border: 3px solid #2e493a73;
+}
+
+#reply-box > button {
+    width: 20%;
+    background-color: rgba(46, 73, 58, 0.2);
+}
+
+#reply-box > button:hover {
+    background-color: #2E493A;
+    color: #fff;
+}
+
+#reply-box > input,
+#reply-box > button {
+    outline: none;
+    border: none;
+    height: 40px;
+    border-radius: 5px;
+}

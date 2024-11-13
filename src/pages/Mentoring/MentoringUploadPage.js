@@ -4,7 +4,6 @@ import '../../style/pages/Mentoring/MentoringUploadPage.css';
 import ImagePreview from '../../components/ImagePreview.js';
 import { useNavigate } from 'react-router-dom';
 import { locationData, fieldData, ageData } from '../../data/CategoryData.js';
-// import { PROXY } from '../../data/serverUrl.js';
 import axios from 'axios';
 
 const MentoringUploadPage = () => {
@@ -42,10 +41,10 @@ const MentoringUploadPage = () => {
     }
 
     const submitTag = (e) => {
-        if(tag === '') {
+        if (tag === '') {
             alert("태그를 입력해주세요 !");
         } else if(mentoringInfo.tags.length === 3) {
-            alert("태그는 3개까지 가능합니다.");
+            alert("태그는 반드시 3개여야 합니다.");
             setTag('');
             return;
         } else if (tag.length > 10) {
@@ -75,12 +74,13 @@ const MentoringUploadPage = () => {
     }
 
     const clickUpload = () => {
-        console.log(mentoringInfo);
         if (Object.values(mentoringInfo).includes('')) {
             alert("입력되지 않은 값이 있습니다.");
             return;
         } else if (Number(mentoringInfo.limit) < 3 || isNaN(mentoringInfo.limit)) {
             alert("정원은 3명 이상의 숫자 형태이어야 합니다."); 
+        } else if(mentoringInfo.tags.length < 3){
+            alert('태그는 반드시 3개여야 합니다.');
         }
         // 멘토링 등록 통신
         let form_data = new FormData();
@@ -93,9 +93,9 @@ const MentoringUploadPage = () => {
         form_data.append('field', mentoringInfo.field);
         form_data.append('age_group', mentoringInfo.age_group);
         form_data.append('limit', mentoringInfo.limit);
-        form_data.append('tag', mentoringInfo.tags[0]);
-        form_data.append('tag2', mentoringInfo.tags[1]);
-        form_data.append('tag3', mentoringInfo.tags[2]);
+        form_data.append('tag', '#'+ mentoringInfo.tags[0]);
+        form_data.append('tag2', '#'+ mentoringInfo.tags[1]);
+        form_data.append('tag3', '#'+ mentoringInfo.tags[2]);
         
         // 2. axios로 전송
         axios.post(`${PROXY}/mentorings/`, form_data, {
@@ -105,20 +105,11 @@ const MentoringUploadPage = () => {
             }
         })
         .then((res) => {
-            console.log(res);
             navigate('/mentoring');
         })
         .catch((err) => {
-            console.log(err);
+            alert(err);
         })
-
-        // formData 출력
-        // for (let key of form_data.keys()) {
-        //     console.log(key);
-        // }
-        // for (let value of form_data.values()) {
-        //     console.log(value);
-        // }
     }
 
     return (
@@ -126,7 +117,7 @@ const MentoringUploadPage = () => {
             <Header/>
             <div className='upload-container'>
                 <div>멘토링 등록하기</div>
-                <div>
+                <div id='mentoring-grid'>
                     <div>지역</div>
                     <select onChange={handleMentoringInfo} name='location'>
                         <option value='' defaultValue>선택</option>
@@ -134,7 +125,7 @@ const MentoringUploadPage = () => {
                     </select>
                     <div>멘토링명</div>
                     <input type='text' onChange={handleMentoringInfo} name='title'></input>
-                    <div>멘토링 설명</div>
+                    <div id='m-description'>멘토링 설명</div>
                     <input type='text' onChange={handleMentoringInfo} name='description'></input>
                     <div>분야</div>
                     <select onChange={handleMentoringInfo} name='field'>

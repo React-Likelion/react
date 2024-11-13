@@ -1,6 +1,6 @@
 .CommunityBoard {
     width: 70%;
-    min-width: 800px;
+    /* min-width: 800px; */
     height: auto;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.3);
@@ -43,7 +43,7 @@
 
 #community-pagenation > .postBtn {
     margin: 20px;
-    min-width: 150px;
+    min-width: 170px;
 }
 
 #community-searchbar {
@@ -81,4 +81,73 @@
 
 #community-searchbar > button:hover {
     background-color: #2e493a;
+}
+
+#nodata {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2e493a;
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+
+    .CommunityBoard {
+        width: 90%;
+    }
+
+    #community-pagenation > .postBtn {
+        min-width: 100px;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 599px) {
+
+    .CommunityBoard {
+        width: 95%;
+    }
+
+    #community-pagenation {
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+    }
+    
+    #community-pagenation > .postBtn {
+        min-width: 50px;
+        width: 50px;
+    }
+
+    #community-pagenation > .postBtn > img {
+        margin: 0 auto;
+        width: 23px;
+        height: 23px;
+    }
+
+    #top-blank {
+        display: inline-block;
+        width: 85%;
+    }
+
+    #top-btn {
+        display: inline-block;
+        width: 10%;
+    }
+    
+    #top-btn > img {
+        width: 100%;
+        max-width: 35px;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 430px) {
+    #community-searchbar > select {
+        width: 50px;
+    }
+
+    #community-searchbar > button {
+        width: 50px;
+    }
 }

@@ -23,6 +23,10 @@ import ClubPictureUploadPage from './pages/Club/ClubPictureUploadPage';
 import ClubGalleryDetail from './pages/Club/ClubGalleryDetail';
 import Chat from './services/Chat';
 import PostDetailPage from './pages/PostDetailPage';
+import ClubArticleDetailPage from './pages/Club/ClubArticleDetailPage';
+import ClubChatRoom from './services/ClubChatRoom';
+import ClubArticleUploadPage from './pages/Club/ClubArticleUpload';
+import Payment from './Payment';
 
 
 const App = () => {
@@ -38,7 +42,7 @@ console.log('%c @likelionkumoh', 'font-size:25px; color:orange;');
 console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
 
   const showDevice = useMediaQuery({
-    query : "(min-width:420px)"
+    query : "(min-width:350px)"
   });
 
   return (
@@ -56,6 +60,7 @@ console.log('%c https://www.instagram.com/likelionkumoh/', 'font-size:25px;')
         <Route path='/club/*' element={<Club/>}/>
         <Route path='/community/*' element={<Community/>}/>
         <Route path='/consulting' element={<ConsultingPage/>}/>
+        <Route path='/payment' element={<Payment/>}/>
         <Route path="*" element={<div>404</div>}/>
       </Routes>
       :
@@ -73,6 +78,7 @@ function Lecture() {
           <Route path='' element={<LecturePage/>}/>
           <Route path='upload' element={<LectureUploadPage/>}/>
           <Route path='detail' element={<LectureDetailPage/>}/>
+          <Route path='detail/:id' element={<LectureDetailPage/>}/>
       </Routes>
   );
 };
@@ -94,10 +100,12 @@ function Club() {
       <Routes>
           <Route path='' element={<ClubPage/>}/>
           <Route path='detail/:clubId' element={<ClubDetailPage />} />
+          <Route path='detail/:clubId/rooms/:clubId' element={<ClubChatRoom />} />
           <Route path='upload' element={<ClubUploadPage/>}/>
           <Route path='/detail/:clubId/pictureUpload' element={<ClubPictureUploadPage />} />
-          <Route path='/detail/:clubId/articleUpload' element={<CommunityUploadPage />} />
+          <Route path='/detail/:clubId/articleUpload' element={<ClubArticleUploadPage />}/>
           <Route path='/detail/:clubId/galleryDetail' element={<ClubGalleryDetail />} />
+          <Route path='/detail/:clubId/article/:articleId' element={<ClubArticleDetailPage />}/>
       </Routes>
   );
 };

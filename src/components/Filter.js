@@ -41,12 +41,11 @@ const FieldList = [
     "창업/부업"
 ]
 const ageList = ["40대", "50대", "60대", "70대 이상"]
-const personnelList = ["5명+", "10명+", "20명+", "30명+"]
+const personnelList = ["5", "10", "20", "30"]
 
-const Filter = ({field}) => {
-    const [url, setUrl] = useState("");
+const Filter = ({field, search, sortValue, setDatas, searchType}) => {
     const PROXY = process.env.REACT_APP_PROXY;
-
+    const [url, setUrl] = useState("");
     const [choicedLocationList, setChoiceLocationList] = useState([]);
     const [choicedFieldList, setChoicedFieldList] = useState([]);
     const [choicedAgeList, setChoicedAgeList] = useState([]);
@@ -102,12 +101,12 @@ const Filter = ({field}) => {
                 e.target.id
             ])
             setUrl(
-                url + `age=${encodeURIComponent(e.target.id)}&`// 선택한 옵션에 내가 누른 옵션이 포함되어 있을 때
+                url + `age_group=${encodeURIComponent(e.target.id)}&`// 선택한 옵션에 내가 누른 옵션이 포함되어 있을 때
             )
         } else {
             const newChoicedAgeList = choicedAgeList.filter((item) => item !== e.target.id)
             setChoicedAgeList(newChoicedAgeList);
-            setUrl(url.replace(`age=${encodeURIComponent(e.target.id)}&`, ""))
+            setUrl(url.replace(`age_group=${encodeURIComponent(e.target.id)}&`, ""))
         }
         // if(!itemList.includes(e.target.id)) {     setChoiceItem(e.target.id);
         // setItemList([...itemList, e.target.id]); } else {     const newItemList =
@@ -139,13 +138,10 @@ const Filter = ({field}) => {
         let axiosUrl = url.slice(0, url.length - 1);
         // axios 통신
         axios
-            .get(`${PROXY}` + axiosUrl, {
-                headrs: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('react_accessToken')
-                }
-            })
+            .get(`${PROXY}` + axiosUrl)
             .then((res) => {
-                console.log(res)
+                console.log(res.data)
+                setDatas(res.data);
             })
             .catch((err) => {
                 console.log("clubs filter 오류")
@@ -153,13 +149,27 @@ const Filter = ({field}) => {
             
         console.log(`${PROXY}` + axiosUrl)
     }, [url])
+//검색어 추가
+    useEffect(() => {
+        if(searchType === "club") {
+            setUrl(url + `name=${encodeURIComponent(`${search}`)}&`)
+        } else {
+            setUrl(url + `title=${encodeURIComponent(`${search}`)}&`)
+        }
+    }, [search])
+    console.log(searchType)
+//인기순 최신순 변환
+    useEffect(() => {
+        if(sortValue === '최신순') {
+            setUrl(url.replace('popular=true&', ""))
+        }
+        else {
+            setUrl(url + "popular=true&")
+        }
+    }, [sortValue])
 
     useEffect(() => {
-        if (field = "clubs") {
-            setUrl("/clubs/?")
-        } else {
-            setUrl("/mentorings/?")
-        }
+        setUrl(`/${field}/?`) 
     }, [])
 
     return (
@@ -228,7 +238,7 @@ const Filter = ({field}) => {
                                         choicedPersonnelList.includes(item)
                                             ? "-choice"
                                             : ""
-                                    )}>{item}</span>
+                                    )}>{item}명+</span>
                             )
                         }
                     </div>

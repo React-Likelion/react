@@ -14,12 +14,12 @@ const LecturePage = () => {
     const detailCategoryDataBool = (detailCategoryData==='');
     const [applicationModal,setApplicationModal] = useState(false);
     const [option,setOption] = useState('최신순');
+    const [search,setSearch] = useState('');
 
     const optionList = [
         "최신순", "인기순"
     ];
     const optionHandler = (e) => {
-        console.log(e.target.value);
         setOption(e.target.value);
         //정렬 값 받아서 정렬하기
     };
@@ -57,7 +57,7 @@ const LecturePage = () => {
                         }
                         </section>
                         <article>
-                        <SearchBar />
+                        <SearchBar setSearch={setSearch} />
                         </article>
                     </div>
                     <div id="selecBoxDiv">
@@ -73,7 +73,7 @@ const LecturePage = () => {
                         </select>
                     </div>
                         
-                    <LectureBox categoryData={categoryData} detailCategoryData={detailCategoryData} option={option} />
+                    <LectureBox search={search} categoryData={categoryData} detailCategoryData={detailCategoryData} option={option} />
                 </section>
             </div>
         </div>

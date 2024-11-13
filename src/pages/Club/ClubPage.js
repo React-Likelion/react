@@ -7,12 +7,15 @@ import Navbar from './../../components/Navbar';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import SearchBar from './../../components/SearchBar';
+import Footer from './../../components/Footer';
 // import {PROXY} from '../../data/serverUrl';
 
 const ClubPage = () => {
     const navigate = useNavigate();
     const [datas, setDatas] = useState([]);
     const [sort, setSort] = useState("");
+    const [search, setSearch] = useState('');
+    const [searchType, setSearchType] = useState('');
     const PROXY = process.env.REACT_APP_PROXY;
 
     const onClickBtnHandler = (e) => {
@@ -24,11 +27,9 @@ const ClubPage = () => {
             setSort(e.target.value)
             axios.get(`${PROXY}/clubs/by-newset/`)
             .then((res) => {
-                console.log(res)
                 setDatas(res.data);
             })
             .catch((err) => {
-                console.log(err)
                 alert("최신순 에러")
             })
         }
@@ -47,13 +48,12 @@ const ClubPage = () => {
     useEffect(() => {
         axios.get(`${PROXY}/clubs/by-newset/`)
         .then((res) => {
-            console.log(res.data)
             setDatas(res.data);
         })
         .catch((err) => {
             alert("error 발생");
-            console.log("클럽 페이지")
         })
+        setSearchType('club')
     }, [])
 
     return (
@@ -61,11 +61,11 @@ const ClubPage = () => {
             <Header/>
             <Navbar val={'club'}/>
             <div className='SearchPostBox'>
-                <div className='searchBar'><SearchBar /></div>
+                <div className='searchBar'><SearchBar setSearch={setSearch} /></div>
                 {localStorage.getItem('react_accessToken') &&
                 <div className='postBtn' onClick={onClickBtnHandler}><img src='img/Teacher.png' alt=''/>동호회 등록하기</div>}
             </div>
-            <Filter field="clubs"/>
+            <Filter field="clubs" search={search} sortValue={sort} setDatas={setDatas} searchType={searchType} />
             <div className='clubPageContent'>
                 <div className='sortBtnBox'>
                     <select value={sort} onChange={onSort} className='sortBtn'>
@@ -76,6 +76,7 @@ const ClubPage = () => {
                 </div>
                 <ClubBox datas={datas}/>
             </div>
+            <Footer />
         </section>
     );
 };

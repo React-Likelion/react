@@ -35,12 +35,26 @@ const LectureDetailPage = () => {
     const [likeState,setLikeState] = useState(false);
     const [likeCount,setLikeCount] = useState(lectureLikeCnt);
     const [applicationModal,setApplicationModal] = useState(false);
+    const [pricePerson,setPricePerson] = useState(0);
 
     useEffect(()=>{
         //나의 강의 인지에 대한 state 실행
         if(localStorage.getItem('react_nickname') === lectureWriter){
             setMyLectureStatus(true);
         }
+    },[]);
+    useEffect(()=>{
+        axios.get(`${PROXY}/accounts/pointlog/${localStorage.getItem('react_userId')}/`,{
+            headers:{
+                'Authorization' : 'Bearer '+localStorage.getItem('react_accessToken')
+            }
+        })
+        .then((res)=>{
+            setPricePerson(res.data.point);
+        })
+        .catch((err)=>
+            console.log(err)
+        )
     },[]);
     
     useEffect(()=>{
@@ -53,7 +67,6 @@ const LectureDetailPage = () => {
     },[]);
 
     useEffect(()=>{
-        console.log(lectureLikeMember);
         for(let member of lectureLikeMember){
             if(member === localStorage.getItem('react_nickname')){
                 setLikeState(true);
@@ -63,25 +76,41 @@ const LectureDetailPage = () => {
     },[]);
 
     const clickRegistration = ()=>{
-        console.log('강의 신청 폼 or 페이지 or 모달 이동');
         handleShow();
     };
     const clickWatch = ()=>{
-        console.log('강의시청 유튜브 링크이동');
         window.open(lectureYoutube,'_blank');
     };
     const clickLectureModify = ()=>{
-        console.log('강의 수정 로직 실행');
         setClassModify(!classModify);
-    };
-    const myLecture = ()=>{
-        setMyLectureStatus(!myLecutureStatus);
     };
     const purchaseLecture = ()=>{
         //강의 구매 로직
+
+        // axios.patch(`${PROXY}/lectures/${lectureId}/enroll/`,enroll_students,{
+        //     headers: {
+        //         // 'Content-Type': 'multipart/form-data',
+        //         'Authorization': 'Bearer '+localStorage.getItem('react_accessToken')
+        //     }
+        // })
+        console.log(pricePerson);
+        if(pricePerson < lecturePrice){
+            alert('포인트가 부족합니다 ! 포인트를 충전하세요.');
+            return;
+        }else{
+        fetch(`${PROXY}/lectures/${lectureId}/enroll/`,{
+            method: 'PATCH',
+            body:({
+                enroll_students:localStorage.getItem('react_nickname')
+            }),
+                headers:{
+                    'Authorization' : 'Bearer '+localStorage.getItem('react_accessToken')
+                }
+        })
         setPurchaseStatus(!purchaseStatus);
         alert('클래스 수강 시작!');
         handleClose();
+    }
     };
     const clickUnFill = ()=>{
         if(!purchaseStatus){
@@ -142,8 +171,6 @@ const LectureDetailPage = () => {
                 <section id="LectureRightSection">
                     
                     {/*클래스 수정/시청/신청 잘 돌아가는지 확인용, 통신하고 구현하면 지울것*/}
-                    --로직 확인용
-                    <button type="button" onClick={myLecture}>나의 강의</button> 로직 확인용--
 
                     <LectureRight lectureId={lectureId} lectureTitle={lectureTitle} lecturePrice={lecturePrice} />
                     {/* 조건
@@ -172,7 +199,7 @@ const LectureDetailPage = () => {
                         (!applicationModal) ||
                         <div id="modalDiv">
                             <Modal className="modal-container" show={applicationModal} onHide={handleClose}>
-                            {lectureThumbNail}<br/>
+                            <img src={PROXY+lectureThumbNail} alt="강의이미지" /><br/>
                             <p> &nbsp; 제목 : {lectureTitle}</p>
                             <p> &nbsp; 가격 : {lecturePrice}</p>
                             <p> &nbsp; 강의를 신청하시겠습니까?</p>

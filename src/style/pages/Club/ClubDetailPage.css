@@ -39,3 +39,71 @@
     width: 30px;
     height: 30px;
 }
+
+.noArticle {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2e493a;
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    .clubDeailContainer {
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .ClubDetailLeft {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ClubDetailCenter {
+        display: flex;  
+        width: 100%;
+    }
+
+    .ClubDetailRight {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 600px) {
+    .clubDeailContainer {
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .ClubDetailLeft {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ClubDetailCenter {
+        display: flex;  
+        width: 100%;
+    }
+
+    .ClubDetailRight {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}

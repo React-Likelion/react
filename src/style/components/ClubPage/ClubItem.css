@@ -36,6 +36,16 @@
     }
 }
 
+@media (min-width : 350px) and (max-width : 600px) {
+    .clubItemContainer {
+        width: 95vw;
+        height: 350px;
+        background-color: #D8E2D2;
+        margin: 0 20px 40px 20px;
+        border-radius: 20px;
+    }
+}
+
 .clubContents{
     padding-top: 20px;
     display: flex;
@@ -61,7 +71,7 @@
 }
 
 .clubName{
-    font-size: 1.5rem;
+    font-size: 18px;
     font-weight: bold;
     margin-right: 10px;
 }

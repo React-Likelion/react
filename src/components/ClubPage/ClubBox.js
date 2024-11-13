@@ -6,7 +6,7 @@ const ClubBox = ({datas}) => {
     return (
         <section className='clubBox'>
             {
-               datas&&datas.map((item, idx) => 
+                datas&&datas.map((item, idx) => 
                     <ClubItem item={item} idx={idx}/>
                 )
             }

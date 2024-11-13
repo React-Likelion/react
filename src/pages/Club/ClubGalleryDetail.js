@@ -1,35 +1,52 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Header from "../../components/Header";
 import Navbar from '../../components/Navbar';
 import "../../style/pages/Club/ClubGalleryDetail.css"
 import Modal from 'react-bootstrap/Modal';
+import { useLocation } from 'react-router-dom';
 
 const ClubGalleryDetail = () => {
+    const {state} = useLocation();
+    // console.log(state.data)
+
+    const [galleryAllData, setGalleryAllData] = useState([])
+    const [galleryModal, setGalleryModal] = useState()
     const [clubGalleryDetailModal, setClubGalleryDetailModal] = useState(false);
 
-    const modalHandle = () => {
+    const modalHandle = (e) => {
         setClubGalleryDetailModal(!clubGalleryDetailModal);
+        setGalleryModal(e.target.id);
     }
     const clubGalleryDetailhandleClose = () => {
         setClubGalleryDetailModal(false)
     }
 
+    useEffect(() => {
+        setGalleryAllData(state.data)
+    }, [])
+
     return (
         <setion className="ClubGalleryDetail">
             <Header/>
-            <Navbar/>
+            <Navbar val="club"/>
             <div className="clubGalleryDetailContainer">
-                <div className="clubGalleryDetailBox">
-                    <img onClick={modalHandle} className='clubGalleryDetailImg' src={`${process.env.PUBLIC_URL}/img/Example.png`}/>
-                    <p className="clubGalleryDetailTitlle">오늘 저녁은 고기를 먹었따.</p>
-                </div>
+            {
+                galleryAllData.map((It, idx) => 
+                    <div className="clubGalleryDetailBox">
+                        <img onClick={modalHandle} id={idx} className='clubGalleryDetailImg' src={It.image}/>
+                        <p className="clubGalleryDetailTitlle">{It.title}</p>
+                        <div className='clubGalleryImgDelete'>사진 삭제하기</div>
+                    </div>
+                )
+            }
             </div>
 
             {
-                (!clubGalleryDetailModal) || <div id="modalDiv">
+                (!clubGalleryDetailModal) || 
+                    <div id="modalDiv">
                         <Modal className="modal-container" show={clubGalleryDetailModal} onHide={clubGalleryDetailhandleClose}>
-                            <img src={`${process.env.PUBLIC_URL}/img/Example.png`} alt="클럽 디테일 이미지"/><br/>
-                            <p>&nbsp;오늘 저녁은 고기를 먹었따.</p>
+                            <img src={galleryAllData[galleryModal].image} alt="클럽 디테일 이미지"/><br/>
+                            <p>&nbsp;{galleryAllData[galleryModal].title}</p>
                             <hr/>
                             <button id="clubGalleryDetailBtn" type="button" onClick={clubGalleryDetailhandleClose}>닫기</button>
                         </Modal>

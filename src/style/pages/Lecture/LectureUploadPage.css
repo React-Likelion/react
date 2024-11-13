@@ -150,3 +150,52 @@
 .upload-container > .upload-btn:hover {
     background-color: #2E493A;
 }
+
+@media (min-width: 600px) and (max-width: 749px) {
+    .upload-container {
+        width: 80%;
+    }
+
+    #url-text {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 599px) {
+    .upload-container {
+        width: 90%;
+    }
+
+    .upload-container > div:nth-child(2) {
+        grid-template-columns: 2fr 3fr;
+    }
+
+    .upload-container > .checkbox-text {
+        font-size: 15px;
+        font-weight: bold;
+        color: #749683;
+        margin: 0 30px;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 420px) {
+    .upload-container > div:nth-child(2) > div {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .upload-container > div:nth-child(2) {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 399px) {
+    .upload-container > div:nth-child(2) > div {
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .upload-container > div:nth-child(2) {
+        grid-template-columns: 1fr 1fr;
+    }
+}

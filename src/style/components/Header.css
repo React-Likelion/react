@@ -1,44 +1,154 @@
-.header {
+@media (min-width: 1024px) {
+  .header {
     height: 130px;
-    background-color: #2E493A;
-}
-
-.headercontainer {
+    background-color: #2e493a;
+  }
+  #react_logo_original {
+    display: block;
+  }
+  #react_logo_min {
+    display: none;
+  }
+  .headercontainer {
     display: grid;
     grid-template-columns: 3fr 1fr;
     width: 90%;
     height: 130px;
     margin: 0 auto;
-}
+  }
 
-.headerright {
+  .headerright {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-}
+  }
 
-.logo {
+  .logo {
     cursor: pointer;
     width: 200px;
     height: 90px;
     margin: 20px 0;
-}
+  }
 
-.lectureBtn {
+  .lectureBtn {
     cursor: pointer;
     width: 60px;
     height: 60px;
-}
+  }
 
-.user-text {
+  .user-text {
     font-size: 1.1em;
     min-width: 65px;
-    color: #EFEDE1;
+    color: #efede1;
     cursor: pointer;
     text-align: center;
-}
+  }
 
-#my {
+  #my {
     min-width: 88px;
+  }
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .header {
+    height: 130px;
+    background-color: #2e493a;
+  }
+  #react_logo_original {
+    display: block;
+  }
+  #react_logo_min {
+    display: none;
+  }
+  .headercontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    height: 130px;
+    margin: 0 auto;
+  }
+
+  .headerright {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .logo {
+    cursor: pointer;
+    width: 200px;
+    height: 90px;
+    margin: 20px 0;
+  }
+
+  .lectureBtn {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+  }
+
+  .user-text {
+    font-size: 1.1em;
+    min-width: 65px;
+    color: #efede1;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  #my {
+    min-width: 88px;
+  }
+}
+@media (max-width: 600px) {
+  .header {
+    height: 100px;
+    background-color: #2e493a;
+  }
+  #react_logo_original {
+    display: none;
+  }
+  #react_logo_min {
+    display: block;
+    height: 100px;
+  }
+  .headercontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  .headerright {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .logo {
+    cursor: pointer;
+    width: 50px;
+    height: 60px;
+    margin: 20px 0;
+  }
+
+  .lectureBtn {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+
+  .user-text {
+    font-size: 1.1em;
+    min-width: 80px;
+    color: #efede1;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  #my {
+    min-width: 88px;
+  }
 }

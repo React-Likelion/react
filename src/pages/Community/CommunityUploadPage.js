@@ -15,7 +15,8 @@ const CommunityUploadPage = () => {
         title: '',
         category: '',
         description: '',
-        writer_id: localStorage.getItem('react_nickname')
+        writer_id: Number(localStorage.getItem('react_userId')),
+        writer_nickname: localStorage.getItem('react_nickname')
     })
 
     const handlePostInfo = (e) => {
@@ -33,12 +34,24 @@ const CommunityUploadPage = () => {
         }
 
         let form_data = new FormData();
-        form_data.append('image', images[0]);
+        // form_data.append('image', images[0]);
+        for(let i of images) {
+            form_data.append('image', i);
+        }
         form_data.append('category', postInfo.category);
         form_data.append('title', postInfo.title);
         form_data.append('description', postInfo.description);
         form_data.append('writer_id', postInfo.writer_id);
+        form_data.append('writer_nickname', postInfo.writer_nickname);
         
+        // for (let key of form_data.keys()) {
+        //     console.log(key, ":", form_data.get(key));
+        // }
+
+        // for (let value of form_data.values()) {
+        //     console.log(value);
+        // }
+
         // 2. axios로 전송
         axios.post(`${PROXY}/community/`, form_data, {
             headers: {
@@ -71,7 +84,7 @@ const CommunityUploadPage = () => {
                     <input placeholder='제목을 입력해주세요' name='title' value={postInfo.title} onChange={handlePostInfo}></input>
                 </div>
                 <textarea id='description-textarea' name='description' value={postInfo.description} onChange={handlePostInfo} placeholder='본문이나 내용을 입력해주세요'></textarea><br/>
-                <ImagePreview text={'이미지 첨부하기'} setImages={setImages} imgCnt={1}/>
+                <ImagePreview text={'이미지 첨부하기'} setImages={setImages} imgCnt={10}/>
                 <div className='picture-preview-box'></div>
                 <button className='upload-btn' onClick={clickPostBtn}>작성하기</button>
             </div>

@@ -8,7 +8,7 @@ const MainContentsBox = ({category}) => {
 
     const categoryText = {
         'lecture': '인기 강의',
-        'mentoring': '멘토멘티',
+        'mentoring': '멘토링',
         'club': '최근 개설 동호회',
         'community': '커뮤니티'
     }

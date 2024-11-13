@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import '../style/components/SearchBar.css';
 
-function SearchBar() {
-    const [search, setSearch] = useState('');
+function SearchBar({setSearch}) {
+
+    const [word, setWord] = useState("")
 
     const onChangeSearch = (e) => {
-        setSearch(e.target.value);
+        setWord(e.target.value);
     }
-
+    const onClickSearch= () => {
+        setSearch(word);
+        setWord('');
+    }
     return (
         <div className='searchBox'>
-            <input id='inputBar'type="text" value={search} onChange={onChangeSearch} />
-            <img src='/img/searchGlass.png' alt='검색돋보기' />
+            <input id='inputBar'type="text" value={word} onChange={onChangeSearch} />
+            <img id='searchBarImg' src={`${process.env.PUBLIC_URL}/img/searchGlass.png`} alt='검색돋보기' onClick={onClickSearch}/>
         </div>
     );
 }

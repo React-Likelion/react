@@ -5,8 +5,10 @@ import Navbar from './../components/Navbar';
 import MainBox from '../components/MainPage/MainBox';
 import MainCarousel from '../components/MainPage/MainCarousel';
 import Footer from '../components/Footer.js';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
+    const navigate = useNavigate();
     return (
         <>
             <Header />

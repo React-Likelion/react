@@ -10,9 +10,6 @@
     border-radius: 8px;
 }
 .viewSection{
-    /* border: 1px solid pink; */
-    background-color: #EFEDE1;
-    /* height: 100vh; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,4 +46,68 @@
     width: 30px;
     height: 30px;
     margin-right: 10px;
+}
+.postBtn p{
+    margin: auto 0;
+}
+
+@media (min-width:1024px) {
+    .postBtn{
+    width: 28%;
+    font-size: 15px;
+    }
+    .FilterContainer{
+        width: 80%;
+        min-width: 600px;
+    }
+}
+/* 해상도 768px ~ 1023px */
+@media (min-width:600px) and (max-width:1023px) {
+    .postBtn{
+        width: 30%;
+        font-size: 90%;
+    }
+    .FilterContainer{
+        width: 80%;
+        min-width: 600px;
+    }
+}
+/* 해상도 480px ~ 767px */
+@media (max-width:599px) {
+    .detailBox{
+        width: 167px;
+        font-size: 10px;
+    }
+    .navbar{
+        width: 70%;
+        margin: 0 auto;
+    }
+    .FilterContainer{
+        width: 95%;
+    }
+    .FilterTitle{
+        width: 40px;
+    }
+    .FilterBox{
+        width: 30px;
+        font-size: small;
+    }
+    .FilterItems{
+        min-width: 55px;
+        padding-right: 3px;
+    }
+    .FilterItem{
+        margin: 5%;
+        padding: 0;
+    }
+}
+@media screen and (orientation : portrait){
+    .postBtn p:after{
+        content: "등록";
+    }
+}
+@media screen and (orientation : landscape){
+    .postBtn p:after{
+        content: "등록하기";
+    }
 }
